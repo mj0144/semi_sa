@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!--회원가입 ... DB에 회원정보 저장 -->
+	<insert id="join" parameterType="mem">
+		insert into user_info (user_num, user_id, nickname, pwd, name, sex, info_year, info_mon, info_day, info_hh, info_mm) 
+		values(user_num_seq.nextval, #{user_id}, #{nickname}, #{pwd}, #{name}, #{sex}, #{info_year}, #{info_mon}, #{info_day}, #{info_hh}, #{info_mm})
+	</insert>
+	
+	<!-- 아이디중복체크 -->
+	<select id="idchk" parameterType="String" resultType="int">
+		select count(*) from user_info where user_id=#{id}
+	</select>
+	
+	<!-- 별명 중복 체크 -->
+	<select id="nickchk" parameterType="String" resultType="int">
+		select count(*) from user_info where nickname=#{nickname}
+	</select>
+	
+</mapper>
