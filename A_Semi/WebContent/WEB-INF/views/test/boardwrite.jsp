@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 
-<%@include file="header.jsp"%>
-<%@include file="side.jsp"%>
 
 <div id="colorlib-main">
 	<section class="ftco-section ftco-bread">
@@ -52,5 +50,3 @@
 	            </div>
 
 	</section>
-
-<%@include file="footer.jsp"%>

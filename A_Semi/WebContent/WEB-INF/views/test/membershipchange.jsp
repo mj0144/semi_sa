@@ -64,8 +64,7 @@
 		<!-------    font awesome online plug --------------->
  		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="resources/js/main.js"></script>
-<%@ include file="header.jsp" %>
-<%@ include file="side.jsp" %>
+
 <div id="colorlib-main">
 	<section class="ftco-section ftco-bread">
 		<div class="container">
@@ -329,4 +328,3 @@
 		<!-- 내용들어갈자리 -->
 
 	</section>
-	<%@ include file="footer.jsp" %>

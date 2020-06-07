@@ -2,8 +2,6 @@
     pageEncoding="EUC-KR"%>
 <link rel="stylesheet" href="resources/css/viewsaju3.css">
 
-<%@include file="header.jsp" %>
-<%@include file="side.jsp" %>
 		<div id="colorlib-main">
 			<section class="ftco-section ftco-bread">
 				<div class="container">
@@ -21,7 +19,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="single-team">
                         <div class="team-photo">
-                            <img src="resources/img/iljuanimal.PNG" alt="">
+                            <img src="resources/img/iljuanimal2.PNG" alt="">
                         </div>
                         <h6>사주로 보는 성격</h6>
                         <h4>나는 어떤 일주 동물일까?</h4>
@@ -34,7 +32,7 @@
                         <h4>설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
                         	설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
                         	설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-                        </h4><br>
+                        </h4>
                         </div>
                     </div>
                     <br>
@@ -43,4 +41,3 @@
             </div>
             </div>
 	    </section>
-<%@ include file="footer.jsp" %>
