@@ -104,17 +104,13 @@
 					
 					<table><tbody>
 					
-					<tr><th>*아이디</th>
+						<tr><th>*별명</th>
 						<td><p>
-						<input class="w3-input" placeholder="아이디" type="text">
+						<input class="w3-input" placeholder="별명" type="text">
 						</p></td><td><button type="button" class="btn btn-warning">중복확인</button></td></tr>
 												
 						<tr><th>*이름</th>
 						<td><p><input class="w3-input" placeholder="이름" type="text"></p></td></tr>
-						
-						<tr><th>별명</th>
-						<td><p><input class="w3-input" placeholder="별명" type="text"></p></td></tr>
-						
 						
 						<tr><th>*성별</th>
 						<td><p><input class="w3-radio" type="radio" name="gender" value="male" checked>
@@ -208,32 +204,32 @@
 						<tr><th>태어난시</th>
 						<td><div class="row"><div class="col-4">
                                 <select name="HH" class="w3-select">
-                                                                        <option value="00">0시</option>
-                                                                        <option value="01">1시</option>
-                                                                        <option value="02">2시</option>
-                                                                        <option value="03">3시</option>
-                                                                        <option value="04">4시</option>
-                                                                        <option value="05">5시</option>
-                                                                        <option value="06">6시</option>
-                                                                        <option value="07">7시</option>
-                                                                        <option value="08">8시</option>
-                                                                        <option value="09">9시</option>
-                                                                        <option value="10">10시</option>
-                                                                        <option value="11">11시</option>
-                                                                        <option value="12">12시</option>
-                                                                        <option value="13">13시</option>
-                                                                        <option value="14">14시</option>
-                                                                        <option value="15">15시</option>
-                                                                        <option value="16">16시</option>
-                                                                        <option value="17">17시</option>
-                                                                        <option value="18">18시</option>
-                                                                        <option value="19">19시</option>
-                                                                        <option value="20">20시</option>
-                                                                        <option value="21">21시</option>
-                                                                        <option value="22">22시</option>
-                                                                        <option value="23">23시</option>
-                                                                    </select></div>
-                               <div class="col-4"> <select name="MI" class="w3-select">
+                                    <option value="00">0시</option>
+                                    <option value="01">1시</option>
+                                    <option value="02">2시</option>
+                                    <option value="03">3시</option>
+                                    <option value="04">4시</option>
+                                    <option value="05">5시</option>
+                                    <option value="06">6시</option>
+									<option value="07">7시</option>
+									<option value="08">8시</option>
+									<option value="09">9시</option>
+									<option value="10">10시</option>
+                                    <option value="11">11시</option>
+                                    <option value="12">12시</option>
+                                    <option value="13">13시</option>
+                                    <option value="14">14시</option>
+                                    <option value="15">15시</option>
+                                    <option value="16">16시</option>
+                                    <option value="17">17시</option>
+                                    <option value="18">18시</option>
+                                    <option value="19">19시</option>
+                                    <option value="20">20시</option>
+                                    <option value="21">21시</option>
+                                    <option value="22">22시</option>
+                                    <option value="23">23시</option>
+                                </select></div>
+                            <div class="col-4"> <select name="MI" class="w3-select">
                                                                         <option value="00">0분</option>
                                                                         <option value="01">1분</option>
                                                                         <option value="02">2분</option>
@@ -315,7 +311,7 @@
 					<div class="container-login100-form-btn" style="text-align: center;">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<a href="#" class="button white">비밀번호 변경</a>
+							<a href="pwdChange" class="button white">비밀번호 변경</a>
 						</div>
 					</div>
 
