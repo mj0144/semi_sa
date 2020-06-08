@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<%@include file="header.jsp"%>
-<%@include file="side.jsp"%>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -190,4 +189,3 @@
 			</div>
 		</div>
 	</section>
-	<%@include file="footer.jsp"%>
