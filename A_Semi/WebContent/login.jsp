@@ -74,20 +74,20 @@
 		</div>
 	</div>
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
+				<form method="post" action="logindo" class="login100-form validate-form">
 					<span class="login100-form-title p-b-49">
 						Login
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span class="label-input100">아이디</span>
-						<input class="input100" type="text" name="username" placeholder="Type your username">
+						<input class="input100" type="text" id="user_id" name="user_id" placeholder="Type your username">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">비밀번호</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your password">
+						<input class="input100" type="password" id="pwd" name="pwd" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
@@ -105,7 +105,7 @@
 							</button>
 						</div>
 					</div>
-					
+					</form>
 					<br>
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
@@ -136,7 +136,7 @@
 							<i class="fa fa-google"></i>
 						</a>
 					</div>
-				</form>
+				
 			</div>
 		</div>
 	</div>

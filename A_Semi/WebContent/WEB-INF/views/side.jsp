@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="mypage"><span class="img" style="background-image: url(images/author.jpg);"></span>ป็ฟ๋ภฺ</a></h1>
+			<h1 id="colorlib-logo"><a href="mypage"><span class="img" style="background-image: url(images/author.jpg);"></span><%=session.getAttribute("name") %></a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul style="line-height: 2;">
 					<li class="colorlib-active"><a href="index">Home</a></li>

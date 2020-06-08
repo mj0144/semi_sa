@@ -5,6 +5,6 @@
  
  <mapper namespace="member">
  <select id="login" parameterType="mem" resultType="mem">
-	select count(*) cnt, user_num from userinfo where user_id=#{user_id} and pwd=#{pwd} group by user_num
+	select count(*) cnt, user_num, name from user_info where user_id=#{user_id} and pwd=#{pwd} group by user_num
  </select>
 </mapper>

@@ -31,8 +31,8 @@
 	<!-- 모든 설정을 sqlsessionFactorbean이 관리함. -->
 	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<!-- <property name="configLocation" value="classpath:mvc/config/config.xml"/> 얘는 alias 쓸라고 있는거.
-		<property name="mapperLocations" value="classpath*:mvc/mapper/*.xml"></property> mapper의 id호출할라고. -->
+		 <property name="configLocation" value="classpath:mvc/config/config.xml"/>
+		<property name="mapperLocations" value="classpath*:mvc/mapper/*.xml"></property>
 	</bean>
 	
 	<!-- sqlSessionTemplate 설정 -->

@@ -7,7 +7,7 @@
 		type="javax.sql.DataSource"
 		driverClassName="oracle.jdbc.driver.OracleDriver"
 		url="jdbc:oracle:thin:@localhost:1521:orcl"
-		username="kosmo64"
+		username="project"
 		password="kosmo64"
 		maxActive="20" 
 		maxIdle="10" 
