@@ -12,7 +12,12 @@
 						</div>
 						<div class="author-info text p-4 p-md-5 mt-5 mb-5">
 							<div class="desc">
-								<span class="subheading">만나서 반가워요	</span><a href="memberchange" style="position:absolute; right:20px; top:0;"><img src="images/change.png"></a>
+							
+								<span class="subheading">만나서 반가워요	</span>
+								<div style="position: absolute; right: 20px; top: 0;">
+								<a href="logout">로그아웃</a>
+								<a href="memberchange"><img src="images/change.png"></a>
+								</div>
 								<h1 class="big-letter">사용자</h1>
 								<h1 class="mb-4"><span>제이름은 사용자입니다</span></h1>
 								<p class="mb-4">자기소개 아무거나 다써봐요 자기소개 아무거나 다써봐요자기소개 아무거나 다써봐요자기소개 아무거나 다써봐요자기소개 아무거나 다써봐요자기소개 아무거나 다써봐요자기소개 아무거나 다써봐요</p>

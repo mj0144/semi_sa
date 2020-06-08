@@ -16,16 +16,10 @@ package mvc.vo;
 
 public class MemberVO {
 	
-	private int user_num, info_year, info_mon, info_day, info_hh, info_mm, cnt;
+	private int user_num, info_year, info_mon, info_day, info_hh, info_mm;
 	private String user_id, nickname, pwd, name, sex, user_img_char, ilju;
 	
 	
-	public int getCnt() {
-		return cnt;
-	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
-	}
 	public int getUser_num() {
 		return user_num;
 	}

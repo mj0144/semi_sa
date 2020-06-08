@@ -1,13 +1,18 @@
 package mvc.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SajuController {
 
 	
-
+	@RequestMapping(value="/error")
+    public String loginerr(Model m) {
+		m.addAttribute("msg", "¿¡·¯´Ù");
+         return "error";
+      }
 	@RequestMapping(value="/index")
 	public String viewHome() {
 		return "index";
