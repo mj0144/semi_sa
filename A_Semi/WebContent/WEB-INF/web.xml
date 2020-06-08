@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>A_Semi</display-name>
-  	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
-	</context-param>
+ 
+ 
+  <display-name>SemiProject</display-name>
+
 	
 	<!-- 언어지원. -->
 	<!--servlet filter 요청이 들어오기전의 전처리 개념. -->
@@ -40,7 +39,7 @@
 			라는 초기화 파라미터 값에 빈 설정 파일 경로를 설정 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/Ajo-*.xml</param-value>
+			<param-value>/WEB-INF/Ajo-*.xml</param-value>
 		</init-param>
 	</servlet>
 
@@ -63,5 +62,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   
 </web-app>
