@@ -10,90 +10,90 @@ public class SajuController {
 
 	@RequestMapping(value="/index")
 	public String viewHome() {
-		return "test/index";
+		return "index";
 	}
 	@RequestMapping(value="/friend")
 	public String viewfriend() {
-		return "test/friend";
+		return "friend";
 	}
 	@RequestMapping(value="/resultsaju")
 	public String viewresultsaju() {
-		return "test/resultsaju";
+		return "resultsaju";
 	}
 	@RequestMapping(value="/resultsajutwo")
 	public String viewresultsaju2() {
-		return "test/resultsajutwo";
+		return "resultsajutwo";
 	}
 	@RequestMapping(value="/resultsajuthree")
 	public String viewresultsaju3() {
-		return "test/resultsajuthree";
+		return "resultsajuthree";
 	}
 	@RequestMapping(value="/signin")
 	public String viewsignin() {
-		return "test/signin";
+		return "signin";
 	}
 	@RequestMapping(value="/addFeed")
 	public String addFeed() {
-		return "test/addFeed";
+		return "addFeed";
 	}
 	@RequestMapping(value="/feed")
 	public String feed() {
-		return "test/feed";
+		return "feed";
 	}
 	@RequestMapping(value="/listSome")
 	public String listSome() {
-		return "test/listSome";
+		return "listSome";
 	}
 	@RequestMapping(value="/listfriend")
 	public String listFriend() {
-		return "test/listfriend";
+		return "listfriend";
 	}
 	@RequestMapping(value="/memberchange")
 	public String membershipchange() {
-		return "test/membershipchange";
+		return "membershipchange";
 	}
 	@RequestMapping(value="/board")
 	public String board() {
-		return "test/board";
+		return "board";
 	}
 	@RequestMapping(value="/mypage")
 	public String mypage() {
-		return "test/mypage";
+		return "mypage";
 	}
 	@RequestMapping(value="/profile")
 	public String profile() {
-		return "test/profile";
+		return "profile";
 	}
 	@RequestMapping(value="/pwdChange")
 	public String pwdChange() {
-		return "test/pwdChange";
+		return "pwdChange";
 	}
 	@RequestMapping(value="/readFeed")
 	public String readFeed() {
-		return "test/readFeed";
+		return "readFeed";
 	}
 	@RequestMapping(value="/viewsaju")
 	public String viewsaju() {
-		return "test/viewsaju";
+		return "viewsaju";
 	}
 	@RequestMapping(value="/resultsaju2")
 	public String resultsaju2() {
-		return "test/resultsaju2";
+		return "resultsaju2";
 	}
 	@RequestMapping(value="/resultsaju1")
 	public String resultsaju1() {
-		return "test/resultsaju1";
+		return "resultsaju1";
 	}
 	@RequestMapping(value="/resultsaju3")
 	public String resultsaju3() {
-		return "test/resultsaju3";
+		return "resultsaju3";
 	}
 	@RequestMapping(value="/chat")
 	public String chat() {
-		return "test/chat";
+		return "chat";
 	}
 	@RequestMapping(value="/boardwrite")
 	public String boardwrite() {
-		return "test/boardwrite";
+		return "boardwrite";
 	}
 }
