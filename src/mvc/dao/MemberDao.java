@@ -20,6 +20,10 @@ public class MemberDao {
 		return ss.insert("member.join", vo);
 	}
 	
+	public String ilju(MemberVO vo) {
+		return ss.selectOne("member.ilju", vo);
+	}
+	
 	public int idchk(String id) {
 		return ss.selectOne("member.idchk", id);
 	}
