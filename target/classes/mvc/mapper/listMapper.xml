@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="list">
+  
+  <select id="iljuselect" parameterType="int" resultType="iljuvo">
+	select ilju_sky_num, ilju_land_num from sajuilju where ilju=(select ilju from user_info where user_num=#{user_num})
+  </select>
+  
+  <select id="sexdt" parameterType="int" resultType="String">
+  select sex from user_info where user_num = #{user_num}
+  </select>
+  
+  
+  <resultMap type="iljuvo" id="simemResult">
+  <result property="result_img" column="result_img"/>
+  <collection property="mem" javaType="java.util.List" resultMap="memberResult" ofType="mem"/>
+  </resultMap>
+  
+  <resultMap type="mem" id="memberResult">
+  <result property="user_num" column="user_num" />
+  <result property="name" column="name" />
+  <result property="nickname" column="nickname" />
+  <result property="sex" column="sex" />
+  <result property="birth" column="birth" />
+  <result property="user_img" column="user_img" />
+  <result property="user_intro" column="user_intro" />
+  </resultMap>
+  
+  <select id="listResultm" parameterType="iljuvo" resultMap="simemResult">
+	SELECT user_num, name, nickname, sex, birth, user_intro, user_img, result_img FROM 
+	(select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img from user_info u, sajuilju s 
+	where u.ilju = s.ilju and u.sex='m' and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} ORDER BY dbms_random.value) 
+  </select>
+  
+  <select id="listResultf" parameterType="iljuvo" resultMap="simemResult">
+	SELECT user_num, name, nickname, sex, birth, user_intro, user_img, result_img FROM 
+	(select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img from user_info u, sajuilju s 
+	where u.ilju = s.ilju and u.sex='f' and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} ORDER BY dbms_random.value) 
+  </select>
+  
+    <select id="listfullm" resultMap="simemResult">
+	SELECT user_num, name, nickname, sex, birth, user_intro, result_img FROM 
+	(select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img from user_info u, sajuilju s 
+	where u.ilju = s.ilju and u.sex='m' ORDER BY dbms_random.value)
+  </select>
+  
+  <select id="listfullf" resultMap="simemResult">
+	SELECT user_num, name, nickname, sex, birth, user_intro, result_img FROM 
+	(select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img from user_info u, sajuilju s  
+	where u.ilju = s.ilju and u.sex='f' ORDER BY dbms_random.value)
+  </select>
+
+  
+     <select id="listResultm2" parameterType="map" resultMap="simemResult">
+  SELECT user_img, user_num, name, nickname, sex, birth, user_intro, result_img FROM 
+	(select u.user_img, u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img from user_info u, sajuilju s  
+	 where u.ilju=s.ilju and u.sex='m' and ((s.ilju_sky_num=${ilju_sky_num} and s.ilju_land_num=${ilju_land_num}) 
+  or (s.ilju_sky_num=${ilju_sky_num2} and s.ilju_land_num=${ilju_land_num2})) ORDER BY dbms_random.value ) 
+  where rownum  <![CDATA[<]]>6
+  
+  </select>
+  
+
+    <select id="listResultf2" parameterType="map" resultMap="simemResult">
+  SELECT user_img, user_num, name, nickname, sex, birth, user_intro, result_img FROM 
+	(select user_img, u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img from user_info u, sajuilju s  
+	 where u.ilju=s.ilju and u.sex='f' and ((s.ilju_sky_num=${ilju_sky_num} and s.ilju_land_num=${ilju_land_num}) 
+  or (s.ilju_sky_num=${ilju_sky_num2} and s.ilju_land_num=${ilju_land_num2})) ORDER BY dbms_random.value) 
+  where rownum <![CDATA[<]]>6
+  </select>
+  
+ 
+  
+  </mapper>
