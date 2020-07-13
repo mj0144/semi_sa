@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+   <mapper namespace="pagelist">
+
+  <select id="iljuselect" parameterType="int" resultType="iljuvo">
+  select ilju_sky_num, ilju_land_num from sajuilju where ilju=(select ilju from user_info where user_num=#{user_num})
+  </select>
+  
+  <select id="sexdt" parameterType="int" resultType="String">
+  select sex from user_info where user_num = #{user_num}
+  </select>
+  
+  
+  <resultMap type="iljuvo" id="simemResult">
+  <result property="result_img" column="result_img"/>
+  <collection property="mem" javaType="java.util.List" resultMap="memberResult" ofType="mem"/>
+  </resultMap>
+  
+  <resultMap type="mem" id="memberResult">
+  <result property="user_num" column="user_num" />
+  <result property="name" column="name" />
+  <result property="nickname" column="nickname" />
+  <result property="sex" column="sex" />
+  <result property="birth" column="birth" />
+  <result property="user_img" column="user_img" />
+  <result property="user_intro" column="user_intro" />
+  </resultMap>
+  
+  
+  <select id="listResult1" parameterType="pvo" resultMap="simemResult">
+  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} 
+  ) a) where r_num between #{start} and #{end}
+  </select>
+  
+  <select id="totalCount1" resultType="int" parameterType="pvo">
+  select count(*) cnt FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})
+  </select>
+  
+  <select id="listResult2" parameterType="pvo" resultMap="simemResult">
+  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img
+  from user_info u, sajuilju s where u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2}))) a) where r_num between #{start} and #{end}
+  </select>
+ 
+  <select id="totalCount2" resultType="int" parameterType="pvo">
+  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
+  from user_info u, sajuilju s where u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})))
+  </select>
+
+  <select id="listResult3" resultMap="simemResult" parameterType="pvo">
+  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num}) a) 
+  where r_num between #{start} and #{end}
+  </select>
+
+  <select id="totalCount3" resultType="int" parameterType="pvo">
+  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img 
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num})
+  </select>
+  
+  <select id="listWhole1" parameterType="pvo" resultMap="simemResult">
+  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
+  from user_info u, sajuilju s where u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num}) a) 
+  where r_num between #{start} and #{end}
+  </select>
+  
+  <select id="totalCountWhoel1" resultType="int" parameterType="pvo">
+  select count(*) cnt FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
+  from user_info u, sajuilju s where u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})  
+  </select>
+  
+  <select id="listWhole2" parameterType="pvo" resultMap="simemResult">
+  select * from (select rownum r_num, a.* from (SELECT * FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
+  from user_info u, sajuilju s where u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})) ORDER BY dbms_random.value)) a) where r_num between #{start} and #{end}
+  </select>
+  
+  <select id="totalCountWhole2" resultType="int" parameterType="pvo">
+  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
+  from user_info u, sajuilju s where u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})))
+  </select>
+  
+  <select id="listWhole3" resultMap="simemResult" parameterType="pvo">
+  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num}) a) 
+  where r_num between #{start} and #{end}
+  </select>
+  
+  <select id="totalCountWhole3" resultType="int" parameterType="pvo">
+  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img 
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num})
+  </select>
+  
+  <select id="searchlist" resultMap="simemResult" parameterType="pvo">
+  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num}
+  <if test="searchValue != null">
+  <choose>
+  <when test="searchType == 1">
+  and sex=#{sex}
+  </when>
+  <when test="searchType == 2">
+  and sex = #{sex}
+  </when>
+  </choose>
+  </if>
+  ) a where nickname like '%'||#{searchValue}||'%' or ilju like '%'||#{searchValue}||'%') 
+  where r_num between #{start} and #{end}
+  </select>
+  
+  <select id="totalCountSearch" resultType="int" parameterType="pvo">
+  select count(*) cnt from (select a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
+  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num} 
+  <if test="searchValue != null">
+  <choose>
+  <when test="searchType == '1'">
+  and sex=#{sex}
+  </when>
+  <when test="searchType == '2'">
+  and sex = #{sex}
+  </when>
+  </choose>
+  </if>
+  ) a 
+  where nickname like '%'||#{searchValue}||'%' or ilju like '%'||#{searchValue}||'%')
+  </select>
+  
+  </mapper>

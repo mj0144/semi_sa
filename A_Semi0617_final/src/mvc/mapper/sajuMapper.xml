@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ilju">
+	<select id="myilju" parameterType="iljuvo" resultType="iljuvo">
+		select * from sajuilju where ilju_sky_num like #{ilju_sky_num} and ilju_land_num like #{ilju_land_num}
+	</select>
+	<select id="setilju" parameterType="iljuvo" resultType="iljuvo">
+		 select * from sajuilju where ilju=#{ilju}
+	</select>
+	
+	<resultMap type="iljuvo" id="simemResult">
+ 	<result property="result_img" column="result_img"/>
+ 	 <collection property="mem" javaType="java.util.List" resultMap="memberResult" ofType="mem"/>
+ 	 </resultMap>
+ 	 
+	<select id="listResultm" parameterType="iljuvo" resultMap="simemResult">
+	SELECT user_num, name, nickname, sex, birth, user_intro, user_img, result_img FROM 
+	(select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img from user_info u, sajuilju s 
+	where u.ilju = s.ilju and u.sex='m' and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} ORDER BY dbms_random.value) 
+	  </select>
+	  
+	  <select id="listResultf" parameterType="iljuvo" resultMap="simemResult">
+		SELECT user_num, name, nickname, sex, birth, user_intro, user_img, result_img FROM 
+		(select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img from user_info u, sajuilju s 
+		where u.ilju = s.ilju and u.sex='f' and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} ORDER BY dbms_random.value) 
+	  </select>
+</mapper>

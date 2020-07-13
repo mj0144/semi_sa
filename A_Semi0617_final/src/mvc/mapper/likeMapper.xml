@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="like">
+     
+     <!-- liked_user 가져오기 -->
+     <select id="userpick" parameterType="mem" resultType="int">
+     select user_num from user_info where user_num=#{user_num}
+     </select>
+     
+     <!-- 좋아요 눌렀을때 -->
+     <insert id="follow" parameterType="like">
+     insert into likeuser values (#{user_num},#{liked_user},'true')
+     </insert>
+     
+     <!-- 좋아요 취소 -->
+     <delete id="delete" parameterType="like">     
+     delete from likeuser where user_num=#{user_num} and liked_user=#{liked_user}
+     </delete>
+     
+     <!-- 하트 눌린 상태 출력 -->
+     <select id="LikeorNot" resultType="like" parameterType="int">
+     select * from likeuser where user_num = #{user_num}
+     </select>
+     
+  </mapper>
