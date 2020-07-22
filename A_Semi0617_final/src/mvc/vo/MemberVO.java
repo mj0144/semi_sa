@@ -32,6 +32,8 @@ public class MemberVO {
 	private String email;
 	private int info_year, info_mon, info_day;
 	private IljuVO iljuvo;
+	private String reason;
+	
 
 	public IljuVO getIljuVO() {
 		return iljuvo;
@@ -166,6 +168,12 @@ public class MemberVO {
 	}
 	public void setApproval_key(String approval_key) {
 		this.approval_key = approval_key;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	

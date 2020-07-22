@@ -22,9 +22,13 @@
 </resultMap>
  
 <select id="sajuBasic" parameterType="int" resultMap="mem">
-    select u.user_intro as user_intro , u.nickname as nickname ,u.user_img as user_img, u.name as name, i.result_basic as result_basic 
+    select u.user_id as user_id, u.user_intro as user_intro, u.nickname as nickname,u.user_img as user_img, u.name as name, i.result_basic as result_basic 
 		from user_info u, sajuilju i 
 		where u.ilju=i.ilju and u.user_num=#{user_num}
+</select>
+
+<select id="delete" parameterType="int" resultType="mem">
+    select user_id as user_id , pwd as pwd from user_info where user_num=#{user_num}
 </select>
 
 
@@ -51,5 +55,12 @@ select count(board_writer_num) as maxnum from board_info where board_writer_num 
 </select>
 
 
+<insert id="withdrawalInsert" parameterType="mem">
+INSERT INTO withdrawal values (#{user_id},#{pwd},#{reason})
+</insert>
+
+<delete id="deletereason" parameterType="mem">
+delete from user_info where user_id = #{user_id}
+</delete>
 
 </mapper>

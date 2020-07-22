@@ -224,6 +224,8 @@
 					<div class="container-login100-form-btn text-center">
 						<div class="wrap-login100-form-btn text-center">
 							<div class="login100-form-bgbtn"></div>
+							<button class="btn btn-outline-dark" type="button" id="userdel" onclick="location.href='deletepage'">
+								È¸¿øÅ»Åð</button>
 							<button class="btn btn-outline-dark" type="button" id="send">
 								¼öÁ¤</button> &nbsp;
 							<button class="btn btn-outline-danger" onclick="location.href='mypage'">Cancel</button>
