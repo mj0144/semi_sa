@@ -11,15 +11,14 @@
 				<div class="author-image text img d-flex">
 					<section class="home-slider js-fullheight owl-carousel">
 						<div class="slider-item js-fullheight"
-							style="background-image: url(images/error404.jpg);"></div>
+							style="background-image: url(images/error500.jpg);"></div>
 
 					</section>
 				</div>
 				<div class="author-info text p-3 p-md-5">
 					<div class="desc">
 
-						<p class="mb-4">올바른 접근 경로가 아닙니다 메인으로 다시 돌아가주세요..! 항상 더 나은 서비스를
-							제공하기 위하여 최선을 다하겠습니다.</p>
+						<p class="mb-4">항상 더 나은 서비스를 <br>제공하기 위하여 최선을 다하겠습니다.</p>
 					</div>
 				</div>
 			</div>
