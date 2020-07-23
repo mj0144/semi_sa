@@ -1,0 +1,237 @@
+$gray: #555;
+$white: #fff;
+$sans : 'Yatra One', cursive;
+$blue : #00ffe0;
+$red : #ff3300;
+
+
+
+body{
+  height:100vh;
+  width:100vw;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:$sans;
+  color:$gray;
+  .exit{
+    position:absolute;
+    width:100%;
+    height:100%;
+    transition:0.4s ease-in-out;
+    .inner{
+      position:absolute;
+      width:90%;
+      max-width:500px;
+      left:50%;
+      top:50%;
+      background:$white;
+      padding:2em;
+      box-shadow:0px 20px 20px -10px rgba(0,0,0,0.1);
+      transform:translateX(-50%) translateY(250%) scale(0.5);
+      transition:0.7s ease-out;
+      overflow:scroll;
+      &::-webkit-scrollbar {
+    width: 2px;
+        position:absolute;
+        right:0;
+        z-index:-1;
+      }
+      h4{
+      position: absolute;
+      right: 10px;
+      top: -10px;
+      background: #ff3300;
+      color: #fff;
+      padding: 1em 0.5em;
+      z-index: 2;
+      border-radius: 100%;
+      transition:0.2s ease-in-out;
+        &:hover{
+          transform:rotate(-10deg);
+        }
+      }
+      div{
+        display:block;
+        margin-bottom:5px;
+        padding-bottom:5px;
+        border-bottom:1px solid #eee;
+      }
+      a{
+        color:$red;
+        margin-right:5px;
+      }
+      
+    }
+    &.dark{
+      background:$blue;
+      transition-delay:0.25s;
+      z-index:4;
+      .inner{
+        transform:translateX(-50%) translateY(-50%) scale(1);
+        transition-delay:0.25s;
+        height:80%;
+        h1{
+          margin-top:0px;
+          position:relative;
+          &:before{
+            content:'';
+            position:absolute;
+            width:60%;
+            height:0;
+            bottom:0;
+            left:0;
+            border-top:2px solid $gray;
+          }
+        }
+      }
+    }
+  }
+  .wrapper{
+    height:100px;
+    width:500px;
+    position:relative;
+    z-index:2;
+    &:before{
+      content:'';
+      width:50px;
+      height:50px;
+      position:absolute;
+      right:-10px;
+      bottom:45px;
+      background:$blue;
+      border-radius:100%;
+    }
+    .search{
+      display:block;
+      height:40px;
+      width:40px;
+      border-radius: 60% / 60% 60% 60% 60%;
+      box-shadow:0px 0px 0px 2px $gray, 0px 0px 0px 5px $white, 0px 0px 0px 7px $gray;
+      float:right;
+      position:relative;
+      z-index:2;
+      background:$white;
+      transition:border-radius 0.2s ease-in-out, width 0.3s ease-in-out;
+      &.spin{
+        float:none;
+        margin:0px auto;
+        animation-name:spin;
+        animation-iteration-count:1;
+        animation-duration:1s;
+        transform:scale(0);
+        background:transparent;
+        @keyframes spin{
+          0%{
+            transform:rotate(0deg) scale(1);  
+            margin-top:0px;
+          }
+          100%{
+            transform:rotate(360deg) scale(0);
+            margin-top:300px;
+          }
+        }
+        
+      }
+      .searchbox{
+        transition:0.3s ease-in-out;
+        width:0px;
+        height:0px;
+        cursor: pointer;
+        color : transparent;
+        text-shadow : 0 0 0 #000;
+        opacity:0;
+        border:0px solid;
+        overflow:hidden;
+        &::-webkit-input-placeholder{
+          opacity:0;
+          transition:0.3s ease-in-out;
+        }
+      }
+      &:before{
+        content:'';
+        position:absolute;
+        display:block;
+        width:4px;
+        height:30px;
+        background:$white;
+        box-shadow:0px -4px 0px 0px $white, 0px 0px 0px 2px $gray, inset 0px -20px 0px $gray;
+        z-index:-1;
+        bottom:-35px;
+        right:5px;
+        transform:rotate(-20deg);
+        transition:0.2s ease-in;
+        transition-delay:0.15s;
+      }
+      &.opened{
+        width:100%;
+        border-radius: 5% / 60% 60% 60% 60%;
+        &:before{                  transform:rotate(-90deg);
+        right:-25px;
+        bottom:5px;
+        transition-delay:0s;
+        }
+        .searchbox{
+          position:absolute;
+          left:20px;
+          height:30px;
+          padding-top:2.5px;
+          top:2.5px;
+          width:90%;
+          opacity:1;
+          border:0px solid;
+          color : transparent;
+          text-shadow : 0 0 0 $gray;
+          font-size:1.3em;
+          background:transparent;
+          &::-webkit-input-placeholder{
+            font-size:1em;
+            opacity:1;
+            color:$blue;
+          }
+          &:focus{
+            outline: none;
+            background:$white;
+          }
+        }
+        
+
+      }
+    }
+  }
+  input[type="submit"]{
+    display:none;
+  }
+  h3{
+    position:absolute;
+    color:$gray;
+    margin:0px;
+    right:55px;
+    top:5px;
+    z-index:-1;
+    transition:0.2s ease-in-out;
+    transform-origin:100% 50%;
+    &:after, &:before{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:110%;
+      border-bottom:2px solid $gray;
+    }
+    &:before{
+      bottom:-12.5px;
+      width:100%;
+      left:20px;
+      border-color:$blue;
+    }
+  }
+  .shrink{
+    &:before{
+      opacity:0;
+    }
+      h3{
+        transform:scaleX(0);
+      }
+    }
+}
