@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import mvc.vo.BoardVO;
 import mvc.vo.LikeVO;
@@ -52,7 +53,9 @@ public class ProfileDao {
 		 return vo;
 	}
 	
-	//비밀번호 및 탈퇴사유입력후, 회원탈퇴버튼투를시 
+	//비밀번호 및 탈퇴사유입력후, 회원탈퇴버튼 누를시 
+	//Transaction 처리
+		@Transactional
 		public void deleteconfirm(MemberVO vo) {
 			ss.insert("profile.withdrawalInsert", vo);
 			ss.delete("profile.deletereason", vo.getUser_id());

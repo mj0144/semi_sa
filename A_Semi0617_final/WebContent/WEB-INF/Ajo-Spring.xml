@@ -45,11 +45,12 @@
 	</bean> 
 	
 	
-	<!-- Transaction 설정 : AOP -->
+	<!-- Transaction 설정 : 회원탈퇴 -->
 	<bean id="tm" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-<tx:annotation-driven transaction-manager="tm"/>
+	
+	<tx:annotation-driven transaction-manager="tm"/>
 
 <!-- 메일 보내기  -->
 	   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
