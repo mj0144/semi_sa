@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-	<footer class="ftco-footer ftco-bg-dark ftco-section" style="padding: 50px 0;">
+    
+    
+	<footer class="ftco-footer ftco-bg-dark ftco-section" style="padding: 50px 0; background-color: skyblue">
 				<div class="container px-md-5 ft1" style="margin:0 auto; text-align:center;">
 					<div class="row">
 						<div class="col-md-12">
@@ -19,6 +21,7 @@
 					</div>
 				</div>
 			</footer>
+			
 		</div>
 		<!-- END COLORLIB-MAIN -->
 	</div>
