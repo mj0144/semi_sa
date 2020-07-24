@@ -79,7 +79,7 @@ button:hover {
 				<button onclick="location='boardwrite'">write</button>
 			</div>
 			<div class="row">
-				<c:forEach var="list" items="${ boardlist}">
+				<c:forEach var="list" items="${ list}">
 					<div class="col-md-4 ftco-animate" id="scrollFeed">
 						<a href="board?board_num=${ list.board_num }"> <input
 							type="hidden" id="${list.board_num }"> <img
