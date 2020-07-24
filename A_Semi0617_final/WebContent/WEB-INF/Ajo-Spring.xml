@@ -85,9 +85,7 @@
 		
 		
 		
-<!-- AOP -->
-<aop:aspectj-autoproxy />
-<bean id="logAspect" class="mvc.aspect.LogAspect" />		
+	
 
 		
 		
