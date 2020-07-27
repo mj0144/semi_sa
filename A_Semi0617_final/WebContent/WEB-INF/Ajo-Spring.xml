@@ -24,6 +24,7 @@
 <mvc:resources location="/js/" mapping="/js/**"/>
 <mvc:resources location="/resources/" mapping="/resources/**"/>
 <mvc:resources location="file:///c:/" mapping="/img/**" />
+<mvc:resources location="/se2/" mapping="/se2/**" />
 
 	<!-- dataSource 설정 -->
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
