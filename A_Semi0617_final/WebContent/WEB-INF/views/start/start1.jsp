@@ -121,7 +121,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
   
       <div class="container-login100">
       
-         <div class="col-md-6 banner-sec wrap-login100" style="background-color: rgba( 255, 255, 255, 0.95 );">
+         <div class="col-md-5 banner-sec wrap-login100" style="background-color: rgba( 255, 255, 255, 0.95 );">
          	<br><br><br>
            	<div class="wrapper">
 			      <div class="slidelist">
@@ -146,9 +146,6 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 					            </div>
 					            <div class="stepwizard-step col-xs-3"> 
 					                <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
-					            </div>
-					            <div class="stepwizard-step col-xs-3"> 
-					                <a href="#step-7" type="button" class="btn btn-default btn-circle" disabled="disabled">7</a>
 					            </div>
 					        </div>
 					    </div>
@@ -212,10 +209,13 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 				                
 				            </div>
 				            <div class="panel-body">
-				                <div class="form-group">
-				                    <label class="control-label">MBTI 예: ENTP </label>
-				                    <input maxlength="50" type="text" required="required" class="form-control" placeholder="예: ENTP" />
-				                </div>
+				                <!-- Text input-->
+								<div class="form-group">
+								  <label class="col-md-4 control-label" for="textinput">MBTI 입력</label>  
+								  <div class="col-md-2" style="float: none; margin: 0 auto;">
+								  <input id="textinput" name="textinput" type="text" placeholder="예)ENTP" class="form-control input-md" required="required">
+								  </div>
+								</div>
 				                <div class="form-group">
 				                    <label class="control-label" id="mbtihover">MBTI를 모르십니까?</label>
 				                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">MBTI 간단체크하기</button>
@@ -246,18 +246,113 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 				            	<span class="login100-form-title p-b-49">당신의 이상형은? </span>
 				            </div>
 				            <div class="panel-body">
-				                <div class="form-group">
-				                    <label class="control-label">체형</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-				                </div>
-				                <div class="form-group">
-				                    <label class="control-label">키</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-				                </div>
-				                <div class="form-group">
-				                    <label class="control-label">나이 차이</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-				                </div>
+				                <!-- Select Basic -->
+								<div class="form-group" style="float: none; margin: 0 auto;">
+								  <label class="col-md-4 control-label" for="selectbasic">체형</label>
+									  <div class="col-md-2" style="float: none; margin: 0 auto;">
+									    <select id="selectbasic" name="selectbasic" class="form-control">
+									      <option value="1">마름</option>
+									      <option value="2">보통</option>
+									      <option value="3">통통</option>
+									    </select>
+									  </div>
+									</div>
+								
+								<!-- Select Basic -->
+								<div class="form-group">
+								  <label class="col-md-4 control-label" for="키">키</label>
+								  <div class="col-md-2" style="float: none; margin: 0 auto;">
+								    <select id="키" name="키" class="form-control">
+								      <option value="140">140</option>
+								      <option value="141">141</option>
+								      <option value="142">142</option>
+								      <option value="143">143</option>
+								      <option value="144">144</option>
+								      <option value="145">145</option>
+								      <option value="146">146</option>
+								      <option value="147">147</option>
+								      <option value="148">148</option>
+								      <option value="149">149</option>
+								      <option value="150">150</option>
+								      <option value="151">151</option>
+								      <option value="152">152</option>
+								      <option value="153">153</option>
+								      <option value="154">154</option>
+								      <option value="155">155</option>
+								      <option value="156">156</option>
+								      <option value="157">157</option>
+								      <option value="158">158</option>
+								      <option value="159">159</option>
+								      <option value="160">160</option>
+								      <option value="161">161</option>
+								      <option value="162">162</option>
+								      <option value="163">163</option>
+								      <option value="164">164</option>
+								      <option value="165">165</option>
+								      <option value="166">166</option>
+								      <option value="167">167</option>
+								      <option value="168">168</option>
+								      <option value="169">169</option>
+								      <option value="170">170</option>
+								      <option value="171">171</option>
+								      <option value="172">172</option>
+								      <option value="173">173</option>
+								      <option value="174">174</option>
+								      <option value="175">175</option>
+								      <option value="176">176</option>
+								      <option value="177">177</option>
+								      <option value="178">178</option>
+								      <option value="179">179</option>
+								      <option value="180">180</option>
+								      <option value="181">181</option>
+								      <option value="182">182</option>
+								      <option value="183">183</option>
+								      <option value="184">184</option>
+								      <option value="185">185</option>
+								      <option value="186">186</option>
+								      <option value="187">187</option>
+								      <option value="188">188</option>
+								      <option value="189">189</option>
+								      <option value="190">190</option>
+								      <option value="191">191</option>
+								      <option value="192">192</option>
+								      <option value="193">193</option>
+								      <option value="194">194</option>
+								      <option value="195">195</option>
+								      <option value="196">196</option>
+								      <option value="197">197</option>
+								      <option value="198">198</option>
+								      <option value="199">199</option>
+								      <option value="200">200</option>
+								    </select>
+								  </div>
+								</div>
+								<!-- Select Basic -->
+								<div class="form-group" style="float: none; margin: 0 auto;">
+								  <label class="col-md-4 control-label" for="selectbasic">나이 차이는 몇 살 까지?</label>
+									  <div class="col-md-2" style="float: none; margin: 0 auto;">
+									    <select id="selectbasic" name="selectbasic" class="form-control">
+									      <option value="0">0</option>
+									      <option value="1">1</option>
+									      <option value="2">2</option>
+									      <option value="3">3</option>
+									      <option value="4">4</option>
+									      <option value="5">5</option>
+									      <option value="6">6</option>
+									      <option value="7">7</option>
+									      <option value="8">8</option>
+									      <option value="9">9</option>
+									      <option value="10">10</option>
+									      <option value="11">11</option>
+									      <option value="12">12</option>
+									      <option value="13">13</option>
+									      <option value="14">14</option>
+									      <option value="15">15</option>
+									      
+									    </select>
+									  </div>
+									</div>
+									
 				                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
 				                <br>
 				            </div>
@@ -266,51 +361,121 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 				        
 				        <div class="panel panel-primary setup-content" id="step-4">
 				            <div class="panel-heading">
-				            	<span class="login100-form-title p-b-49">나의 체형은? </span>
+				            	<span class="login100-form-title p-b-49">나의 정보 </span>
 				            </div>
 				            <div class="panel-body">
-				                <div class="form-group">
-				                    <label class="control-label">체형</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-				                </div>
-				                <div class="form-group">
-				                    <label class="control-label">키</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-				                </div>
-				                <div class="form-group">
-				                    <label class="control-label">나이</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-				                </div>
+				                <!-- Select Basic -->
+								<div class="form-group" style="float: none; margin: 0 auto;">
+								  <label class="col-md-4 control-label" for="selectbasic">체형</label>
+									  <div class="col-md-2" style="float: none; margin: 0 auto;">
+									    <select id="selectbasic" name="selectbasic" class="form-control">
+									      <option value="1">마름</option>
+									      <option value="2">보통</option>
+									      <option value="3">통통</option>
+									    </select>
+									  </div>
+									</div>
+								
+								<!-- Select Basic -->
+								<div class="form-group">
+								  <label class="col-md-4 control-label" for="키">키</label>
+								  <div class="col-md-2" style="float: none; margin: 0 auto;">
+								    <select id="키" name="키" class="form-control">
+								      <option value="140">140</option>
+								      <option value="141">141</option>
+								      <option value="142">142</option>
+								      <option value="143">143</option>
+								      <option value="144">144</option>
+								      <option value="145">145</option>
+								      <option value="146">146</option>
+								      <option value="147">147</option>
+								      <option value="148">148</option>
+								      <option value="149">149</option>
+								      <option value="150">150</option>
+								      <option value="151">151</option>
+								      <option value="152">152</option>
+								      <option value="153">153</option>
+								      <option value="154">154</option>
+								      <option value="155">155</option>
+								      <option value="156">156</option>
+								      <option value="157">157</option>
+								      <option value="158">158</option>
+								      <option value="159">159</option>
+								      <option value="160">160</option>
+								      <option value="161">161</option>
+								      <option value="162">162</option>
+								      <option value="163">163</option>
+								      <option value="164">164</option>
+								      <option value="165">165</option>
+								      <option value="166">166</option>
+								      <option value="167">167</option>
+								      <option value="168">168</option>
+								      <option value="169">169</option>
+								      <option value="170">170</option>
+								      <option value="171">171</option>
+								      <option value="172">172</option>
+								      <option value="173">173</option>
+								      <option value="174">174</option>
+								      <option value="175">175</option>
+								      <option value="176">176</option>
+								      <option value="177">177</option>
+								      <option value="178">178</option>
+								      <option value="179">179</option>
+								      <option value="180">180</option>
+								      <option value="181">181</option>
+								      <option value="182">182</option>
+								      <option value="183">183</option>
+								      <option value="184">184</option>
+								      <option value="185">185</option>
+								      <option value="186">186</option>
+								      <option value="187">187</option>
+								      <option value="188">188</option>
+								      <option value="189">189</option>
+								      <option value="190">190</option>
+								      <option value="191">191</option>
+								      <option value="192">192</option>
+								      <option value="193">193</option>
+								      <option value="194">194</option>
+								      <option value="195">195</option>
+								      <option value="196">196</option>
+								      <option value="197">197</option>
+								      <option value="198">198</option>
+								      <option value="199">199</option>
+								      <option value="200">200</option>
+								    </select>
+								  </div>
+								</div>
+				                 <!-- Select Basic -->
+								<div class="form-group">
+								  <label class="col-md-4 control-label" for="selectbasic">사는 지역</label>
+								  <div class="col-md-3" style="float: none; margin: 0 auto;">
+								    <select id="selectbasic" name="selectbasic" class="form-control">
+								      <option value="1">서울특별시</option>
+								      <option value="2">경기도</option>
+								      <option value="3">강원도</option>
+								      <option value="4">경상남도</option>
+								      <option value="5">경상북도</option>
+								      <option value="6">충청남도</option>
+								      <option value="7">충청북도</option>
+								      <option value="8">전라남도</option>
+								      <option value="8">전라북도</option>
+								      <option value="9">제주도</option>
+								      <option value="10">기타</option>
+								    </select>
+								  </div>
+								</div>
+
+				               
 				                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
 				                <br>
 				            </div>
 				        </div>
+				        
+				        
+				       
 				        
 				        
 				        <div class="panel panel-primary setup-content" id="step-5">
-				            <div class="panel-heading">
-				            	<span class="login100-form-title p-b-49">사는곳은? </span>
-				            </div>
-				            <div class="panel-body">
-				                <div class="form-group">
-				                    <label class="control-label">체형</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-				                </div>
-				                <div class="form-group">
-				                    <label class="control-label">키</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-				                </div>
-				                <div class="form-group">
-				                    <label class="control-label">나이 차이</label>
-				                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
-				                </div>
-				                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
-				                <br>
-				            </div>
-				        </div>
-				        
-				        
-				        <div class="panel panel-primary setup-content" id="step-6">
 				            <div class="panel-heading">
 				            	<span class="login100-form-title p-b-49">상세정보 </span>
 				                 
@@ -391,7 +556,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 				            </div>
 				        </div>
 				        
-				        <div class="panel panel-primary setup-content" id="step-7">
+				        <div class="panel panel-primary setup-content" id="step-6">
 				            <div class="panel-heading">
 				            	<span class="login100-form-title p-b-49">프로필 작성</span>
 				            </div>
