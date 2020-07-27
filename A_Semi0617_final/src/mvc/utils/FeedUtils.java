@@ -15,7 +15,7 @@ public class FeedUtils {
 		String filename = reName;
 		String ext = filename.substring(filename.lastIndexOf(".")+1, filename.length());
 		System.out.println("확장자명 : "+ext);
-		final String[] file_Boolean = {"png","jpg","gif","jpeg"};
+		final String[] file_Boolean = {"png","jpg","gif","jpeg","PNG"};
 		
 		int len = file_Boolean.length;
 		for(int i=0; i<len; i++) {

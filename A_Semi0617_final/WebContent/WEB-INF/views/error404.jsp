@@ -4,9 +4,6 @@
 <%@include file="header.jsp"%>
 <%@include file="side.jsp"%>
 <div id="colorlib-main">
-	<div style="position: absolute; right: 20px; top: 10;">
-		<a href="logout">·Î±×¾Æ¿ô</a>
-	</div>
 	<section class="ftco-section-no-padding bg-light">
 		<div class="hero-wrap">
 			<div class="overlay"></div>
@@ -14,7 +11,7 @@
 				<div class="author-image text img d-flex">
 					<section class="home-slider js-fullheight owl-carousel">
 						<div class="slider-item js-fullheight"
-							style="background-image: url(images/error.jpg);"></div>
+							style="background-image: url(images/error404.jpg);"></div>
 
 					</section>
 				</div>

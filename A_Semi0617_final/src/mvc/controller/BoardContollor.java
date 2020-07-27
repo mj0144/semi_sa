@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import mvc.dao.BoardDao;
 import mvc.service.FeedService;
 import mvc.utils.CommonUtils;
 import mvc.utils.FeedImgUpload;
 import mvc.vo.BoardVO;
+import mvc.vo.MemberVO;
 
 @Controller
 public class BoardContollor {
@@ -31,6 +33,9 @@ public class BoardContollor {
 
 	@Autowired
 	private FeedService boardService;
+	
+	@Autowired
+	private BoardDao boarddao;
 
 	// 전체게시글
 	@RequestMapping(value = "/feed")
@@ -68,7 +73,7 @@ public class BoardContollor {
 	public void write() {
 	}
 
-	//게시글 작성처리
+	// 게시글 작성처리
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(BoardVO vo, HttpSession session, HttpServletRequest request, MultipartFile[] files)
 			throws Exception {
@@ -88,7 +93,7 @@ public class BoardContollor {
 	}
 
 	// 댓글달기
-	
+
 	@RequestMapping(value = "/reply", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> insertReply(@RequestBody HashMap<String, String> params, HttpSession session) {
@@ -128,17 +133,35 @@ public class BoardContollor {
 	@RequestMapping(value = "upboard", method = RequestMethod.GET)
 	public String boardupdate(BoardVO vo, Model model) throws Exception {
 		model.addAttribute("updateB", boardService.read(vo.getBoard_num()));
-		System.out.println("수정창" +vo.getBoard_num());
+		System.out.println("수정창" + vo.getBoard_num());
 		return "boardupdate";
 	}
 
 	// 게시글 수정
 	@RequestMapping(value = "/updatefeed", method = RequestMethod.POST)
-	public String BoardUpdate(BoardVO vo, int BOARD_NUM, HttpServletRequest request, MultipartFile[] files) throws Exception {
+	public String BoardUpdate(BoardVO vo, int BOARD_NUM, HttpServletRequest request, MultipartFile[] files)
+			throws Exception {
 		String imgname = FeedImgUpload.imgUpload(files, request);
 		vo.setBoard_num(BOARD_NUM);
 		vo.setBoard_img(imgname);
 		boardService.boardUpdate(vo);
 		return "redirect:feed";
+	}
+
+	// 게시글 검색
+	@RequestMapping(value = "/feedsearch", method = RequestMethod.POST)
+	public ModelAndView search(BoardVO vo) throws Exception {
+
+		String getSearch_option = vo.getSearch_option(); String getKeyword = vo.getKeyword();
+		System.out.println(getSearch_option); 
+		System.out.println(getKeyword);
+		
+		List<BoardVO> list =boarddao.getSearchlist(vo);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list); // modelandview에 map를 저장
+
+		mav.setViewName("feedsearch");
+		return mav;
 	}
 }

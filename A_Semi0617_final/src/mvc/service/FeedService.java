@@ -21,4 +21,5 @@ public interface FeedService {
 	public int insertReply(HashMap<String, String> params);
 	//´ñ±Û ¸ñ·Ï
 	public List<HashMap<String, Object>> readReply(String board_num);
+
 }
