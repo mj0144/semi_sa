@@ -122,7 +122,7 @@
 								<td><button type="button" class="btn btn-outline-warning"
 										id="nickchk">중복확인</button></td>
 							</tr>
-
+							
 							<tr>
 								<th>*이메일</th>
 								<td>

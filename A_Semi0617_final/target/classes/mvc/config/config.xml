@@ -11,7 +11,5 @@
 		<typeAlias type="mvc.vo.LikeVO" alias="like"/>
 		<typeAlias type="mvc.vo.BoardVO" alias="board"/>
 		<typeAlias type="mvc.vo.PageVO" alias="pvo"/>
-	
-	
 	</typeAliases>
 </configuration>

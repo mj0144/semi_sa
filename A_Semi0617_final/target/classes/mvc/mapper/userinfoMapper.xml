@@ -15,6 +15,12 @@
 		update user_info set user_img=#{user_img}, name=#{name}, nickname=#{nickname}, sex=#{sex}, birth_hh=#{birth_hh}, birth_mm=#{birth_mm}, birth=#{birth}, email=#{email}, saju_year=#{saju_year}, saju_mon=#{saju_mon}, saju_day=#{saju_day}, ilju=#{ilju} where user_num=#{user_num}		
 	</update>
 	
+	<update id="pwdChange" parameterType="mem">
+		update user_info set pwd = #{pwd} where user_num = #{user_num}
+	</update>
 	
+	<select id="pwdchk" parameterType="int" resultType="String">
+		select pwd from user_info where user_num= #{user_num}
+	</select>
 	
 </mapper>

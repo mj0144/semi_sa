@@ -407,7 +407,6 @@
 					console.log("ajax error");
 				}
 			})
-
 		})
 
 		////별명 체크

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.MemberDao;
+import mvc.dao.UserInfoDao;
 import mvc.vo.IljuVO;
 import mvc.vo.MemberVO;
 
@@ -116,7 +117,15 @@ public class MemberService {
 		return vo;
 	}
 
+	@Autowired
+	UserInfoDao userinfodao;
+		public void pwdChange(MemberVO vo) throws Exception{
+			userinfodao.pwdChange(vo);
 	}
+	
+}
+
+
 
 
 
