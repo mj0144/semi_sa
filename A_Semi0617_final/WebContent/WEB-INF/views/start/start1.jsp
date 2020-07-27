@@ -384,7 +384,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 										</tr>
 				                	</tbody>
 				                </table>
-				                <button class="btn btn-primary nextBtn pull-right" type="button" id="send">Next</button>
+				                <button class="btn btn-primary nextBtn pull-right" type="button" id="spec_submit">Next</button>
 				                <br>
 				               </form>
 				               
@@ -404,7 +404,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 								</div>
 								<br>
 					
-					<form class="login100-form validate-form" method="post"	enctype="multipart/form-data" action="joinprofile" id="form">
+					<form class="login100-form validate-form" method="post"	enctype="multipart/form-data" action="joinprofile" id="introduce">
 						
 						
 						
@@ -437,7 +437,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 							                <div class="container-login100-form-btn text-center">
 			              					    <div class="wrap-login100-form-btn">
 			                   						  <div class="login100-form-bgbtn"></div>
-			                   							  <button type="submit" class="btn btn-outline-info" >
+			                   							  <button class="btn btn-outline-info" id="intro_submit">
 			                     							   회원가입완료
 			                     						</button>
 			                 						 </div>
@@ -456,7 +456,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
  		 </div>
  		 
          <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 ml-4" style="background-color: rgba( 255, 255, 255, 0.95 );" >
-            <form method="post" action="logindo" class="login100-form validate-form">
+            <form method="post" action="logindo" class="login100-form validate-form" id="logindo">
                <span class="login100-form-title p-b-49">
                   Login
                </span>
@@ -487,7 +487,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
                  <div class="container-login100-form-btn text-center">
                   <div class="wrap-login100-form-btn">
                      <div class="login100-form-bgbtn"></div>
-                     <button type="submit" class="btn btn-outline-info" >
+                     <button id="login_submit" class="btn btn-outline-info" >
                      		   로그인
                      </button>
                   </div>
@@ -857,11 +857,12 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 		
 		
 		
-		
+		//step1~7 전송
 		//전송할 때, 중복체크 여부 확인
-		$('#send').on('click', function(){
+		$('#spec_submit').on('click', function(){
 			if(nickchk==='true' && idchk==='true' && rexemail==='true' && emailchk==='true' && $("#form_dt" ).datepicker( "getDate" )!==null){				
 				$('#info_form').submit();
+				alert('마지막 단계입니다.')
 			}else if(idchk==='false'){
 				alert("아이디 중복체크를 해주세요");
 			}else if(nickchk==='false'){
@@ -874,8 +875,18 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 				alert("날짜를 입력해주세요");
 			}
 		})
+		//step7 전송
+		$('#intro_submit').on('click', function(){
+			alert('회원가입을 축하합니다. 로그인해주세요.')
+			$('#introduce').submit();
+		})
 		
 		
+		//로그인
+		$('#login_submit').on('click', function(){
+			alert('로그인')
+			$('#logindo').submit();
+		})
 		
 		var rexemail='false';
 
