@@ -70,7 +70,6 @@ ModelAndView mav = new ModelAndView("index");
 		if (listDao.sexdt(user_num).trim().equals("f")) {
 			list = listDao.listResultf2(map);
 			list2 = listDao.listResultm2(map);
-			System.out.println("if 어케했누:"+list2);
 			}
 		
 		else {
@@ -78,11 +77,9 @@ ModelAndView mav = new ModelAndView("index");
 				list2 = listDao.listResultf2(map);
 			}
 		
-		System.out.println("씌바"+list2);
 		
 		mav.addObject("list", list);
 		mav.addObject("list2", list2);
-		System.out.println("어케했누:"+mav);
 		return mav;
 		
 	}
