@@ -6,7 +6,7 @@
 
 
 	<display-name>SemiProject</display-name>
-	<!--<context-param>
+	<context-param>
 		<param-name>log4jConfigLocation</param-name>
 		<param-value>/WEB-INF/xml/log4j.xml</param-value>
 	</context-param>
