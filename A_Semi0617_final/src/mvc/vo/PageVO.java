@@ -1,5 +1,6 @@
 package mvc.vo;
 
+import java.util.List;
 import java.util.Map;
 
 public class PageVO {
@@ -19,6 +20,9 @@ public class PageVO {
  
  private int ilju_sky_num, ilju_land_num, ilju_sky_num2, ilju_land_num2,user_num;
  private char sex;
+ 
+ //블락리스트 
+ private List<Integer> blist;
 
  
  
@@ -203,6 +207,12 @@ public int getUser_num() {
 }
 public void setUser_num(int user_num) {
 	this.user_num = user_num;
+}
+public List<Integer> getBlist() {
+	return blist;
+}
+public void setBlist(List<Integer> blist) {
+	this.blist = blist;
 }
 
  

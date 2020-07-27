@@ -32,75 +32,127 @@
   
   <select id="listResult1" parameterType="pvo" resultMap="simemResult">
   select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} 
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} 
   ) a) where r_num between #{start} and #{end}
   </select>
   
   <select id="totalCount1" resultType="int" parameterType="pvo">
   select count(*) cnt FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})
+  from user_info u, sajuilju s where
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})
   </select>
   
   <select id="listResult2" parameterType="pvo" resultMap="simemResult">
   select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
   or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2}))) a) where r_num between #{start} and #{end}
   </select>
  
   <select id="totalCount2" resultType="int" parameterType="pvo">
   select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
   or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})))
   </select>
 
   <select id="listResult3" resultMap="simemResult" parameterType="pvo">
   select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num}) a) 
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+   	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num}) a) 
   where r_num between #{start} and #{end}
   </select>
 
   <select id="totalCount3" resultType="int" parameterType="pvo">
   select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num})
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num})
   </select>
   
   <select id="listWhole1" parameterType="pvo" resultMap="simemResult">
   select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num}) a) 
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num}) a) 
   where r_num between #{start} and #{end}
   </select>
   
   <select id="totalCountWhoel1" resultType="int" parameterType="pvo">
   select count(*) cnt FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})  
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})  
   </select>
   
   <select id="listWhole2" parameterType="pvo" resultMap="simemResult">
   select * from (select rownum r_num, a.* from (SELECT * FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
   or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})) ORDER BY dbms_random.value)) a) where r_num between #{start} and #{end}
   </select>
   
   <select id="totalCountWhole2" resultType="int" parameterType="pvo">
   select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
+  from user_info u, sajuilju s where
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
   or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})))
   </select>
   
   <select id="listWhole3" resultMap="simemResult" parameterType="pvo">
   select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num}) a) 
-  where r_num between #{start} and #{end}
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju) a) where r_num between #{start} and #{end}
   </select>
   
   <select id="totalCountWhole3" resultType="int" parameterType="pvo">
   select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num})
+  from user_info u, sajuilju s where 
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  and u.ilju = s.ilju)
   </select>
   
   <select id="searchlist" resultMap="simemResult" parameterType="pvo">
   select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num}
+  from user_info u, sajuilju s where u.ilju = s.ilju and 
+  
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+
   <if test="searchValue != null">
   <choose>
   <when test="searchType == 1">
@@ -117,7 +169,12 @@
   
   <select id="totalCountSearch" resultType="int" parameterType="pvo">
   select count(*) cnt from (select a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num} 
+  from user_info u, sajuilju s where u.ilju = s.ilju and 
+  
+  <foreach collection="blist" item="e" separator="and">
+  	u.user_num != ${e} 
+  </foreach>
+  
   <if test="searchValue != null">
   <choose>
   <when test="searchType == '1'">
