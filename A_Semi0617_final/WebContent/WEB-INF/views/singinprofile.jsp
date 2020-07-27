@@ -82,7 +82,7 @@ textarea{
 					<div class="profile_base" style="width: 90px; margin: 0 auto;">
 					
 							<img class="profile_img" style="width: 90px; margin: 0 auto;"
-								id="profileimg" src="resources/img/iu1.jpg">
+								id="profileimg" src="resources/upload/default.png">
 					
 					</div>
 					<br>
