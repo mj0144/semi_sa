@@ -47,7 +47,7 @@
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="pay_productcart?product_num=1" tabindex="0">
-                                <h5>상품 01</h5>
+                                <h5>인연보기 5회권</h5>
                               </a>
                             </div>
                             <!--Data-->
@@ -105,7 +105,7 @@
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="pay_productcart?product_num=3" tabindex="0">
-                                <h5>상품 03</h5>
+                                <h5>패키지</h5>
                               </a>
                             </div>
                             <!--Data-->

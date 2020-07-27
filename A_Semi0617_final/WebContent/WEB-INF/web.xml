@@ -3,14 +3,14 @@
  
  
   <display-name>SemiProject</display-name>
-	<context-param>
+<!-- 	<context-param>
 		<param-name>log4jConfigLocation</param-name>
 		<param-value>/WEB-INF/xml/log4j.xml</param-value>
 	</context-param>
 
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-	</listener>
+	</listener> -->
 	<!-- 언어지원. -->
 	<!--servlet filter 요청이 들어오기전의 전처리 개념. -->
 	<filter>
