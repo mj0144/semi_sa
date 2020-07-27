@@ -11,5 +11,11 @@
 		<typeAlias type="mvc.vo.LikeVO" alias="like"/>
 		<typeAlias type="mvc.vo.BoardVO" alias="board"/>
 		<typeAlias type="mvc.vo.PageVO" alias="pvo"/>
+<<<<<<< HEAD
+=======
+		<typeAlias type="mvc.vo.PaymentVO" alias="payvo"/>
+		<typeAlias type="mvc.vo.ProductVO" alias="productvo"/>
+	
+>>>>>>> 0f6557c40344124ec18983020b8428f5d540bed7
 	</typeAliases>
 </configuration>

@@ -35,7 +35,10 @@ public class LikeController {
       LikeVO likevo = new LikeVO();
       likevo.setUser_num(user_num);
       likevo.setLiked_user(liked_user);
+<<<<<<< HEAD
       System.out.println("like : " + like);
+=======
+>>>>>>> 0f6557c40344124ec18983020b8428f5d540bed7
       
       if (like.equals("true")) {
          //여기서 매퍼를 insert 문으로 갖고 와야하고

@@ -105,6 +105,14 @@
 		</dependency>
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 0f6557c40344124ec18983020b8428f5d540bed7
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -291,10 +299,22 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
+<<<<<<< HEAD
 		
+=======
+		<dependency>
+			<groupId>com.github.iamport</groupId>
+			<artifactId>iamport-rest-client-java</artifactId>
+			<version>0.2.7</version>
+		</dependency>
+>>>>>>> 0f6557c40344124ec18983020b8428f5d540bed7
 	</dependencies>
-	<repositories>
 
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
 		<repository>
 
 			<id>Spring Plugins</id>

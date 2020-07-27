@@ -5,6 +5,7 @@ public class BoardVO {
 
    private int board_writer_num , board_num;
    private String board_title , board_content , board_img , board_date , board_like_userid;
+   private String search_option, keyword;
 private int maxnum;
    
    
@@ -57,5 +58,17 @@ public void setMaxnum(int maxnum) {
    }
    public void setBoard_like_userid(String board_like_userid) {
       this.board_like_userid = board_like_userid;
-   } 
+   }
+public String getKeyword() {
+	return keyword;
+}
+public void setKeyword(String keyword) {
+	this.keyword = keyword;
+}
+public String getSearch_option() {
+	return search_option;
+}
+public void setSearch_option(String search_option) {
+	this.search_option = search_option;
+} 
 }
