@@ -30,7 +30,7 @@
 					<label for="name">제목</label> <input type="text"
 						class="form-control" name="board_title" id="board_title">
 				</div>
-				
+
 				<div class="jsx-2303464893 editor">
 					<div class="fr-box fr-basic fr-top" role="application">
 						<div class="fr-wrapper show-placeholder" dir="auto"
@@ -40,6 +40,12 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label for="file">이미지 추가하기</label> <input type="file" id="files"
+						name="files" multiple="multiple">
+				</div>
+
 				<input type="submit" value="작성하기" id="clickbtn"
 					class="btn py-3 px-4 btn-primary">
 
@@ -51,55 +57,63 @@
 
 	<%@include file="footer.jsp"%>
 	<script type="text/javascript" charset="EUC-KR">
-	var oEditors = [];
-	nhn.husky.EZCreator.createInIFrame({
-	 oAppRef: oEditors,
-	 elPlaceHolder: "content",
-	 sSkinURI: "se2/SmartEditor2Skin.html",
-	 fCreator: "createSEditor2"
-	});
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : oEditors,
+			elPlaceHolder : "content",
+			sSkinURI : "se2/SmartEditor2Skin.html",
+			fCreator : "createSEditor2"
+		});
 	</script>
 
-<script>
-	function submitContents() {
+	<script>
+		function submitContents() {
 
-        var elClickedObj = $("#form");
-         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-        var ir1 = $("#content").val();
-        //oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-       
-		//console.log('submitContents : ' + submitContents);
-		console.log('content : ' + ir1)
-        if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
-             alert("내용을 입력하세요.");
-             oEditors.getById["content"].exec("FOCUS"); //포커싱
-             return;
-        }
+			var elClickedObj = $("#form");
+			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+			var ir1 = $("#content").val();
+			//oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 
-        try {
-            elClickedObj.submit();
-        } catch(e) {}
-    }
-	
-	
-	
-	
-	
-		$('#clickbtn').click(function(){
+			//console.log('submitContents : ' + submitContents);
+			console.log('content : ' + ir1)
+			if (ir1 == "" || ir1 == null || ir1 == '&nbsp;'
+					|| ir1 == '<p>&nbsp;</p>') {
+				alert("내용을 입력하세요.");
+				oEditors.getById["content"].exec("FOCUS"); //포커싱
+				return;
+			}
+			if(imgFile == ""){
+	               alert("이미지가 없습니다.");
+	               return false;
+	            }
+	            imgFile = imgFile.slice(imgFile.indexOf(".")+1).toLowerCase();
+	            if(imgFile != "jpg" && imgFile != "png" && imgFile != "gif" && imgFile != "jpeg"){
+	               alert("이미지파일만 업로드 할 수 있습니다.");
+	               return false;
+	            }
+
+
+			try {
+				elClickedObj.submit();
+			} catch (e) {
+			}
+		}
+
+		$('#clickbtn').click(function() {
 			submitContents();
 		});
-			
-// 				function() {
-// 					var bTitle = $("#board_title").val();
-// 					var bContent = $("#board_content").val();
-// 					console.log('bContent: '+bContent)
-// 					if (bTitle == "") {
-// 						alert("제목을 입력하세요.");
-// 						return false;
-// 					}
-// 					if (bContent == "") {
-// 						alert("내용을 입력하세요.");
-// 						return false;
-// 					}
-//				});
+
+		// 				function() {
+		// 					var bTitle = $("#board_title").val();
+		// 					var bContent = $("#board_content").val();
+		// 					console.log('bContent: '+bContent)
+		// 					if (bTitle == "") {
+		// 						alert("제목을 입력하세요.");
+		// 						return false;
+		// 					}
+		// 					if (bContent == "") {
+		// 						alert("내용을 입력하세요.");
+		// 						return false;
+		// 					}
+		//				});
 	</script>
