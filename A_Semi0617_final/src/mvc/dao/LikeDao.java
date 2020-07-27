@@ -16,7 +16,6 @@ public class LikeDao {
    
    //좋아요 눌렀을 때
    public void likePush(LikeVO vo) {
-	   System.out.println("dao");
       ss.insert("like.follow", vo);
    }
    
