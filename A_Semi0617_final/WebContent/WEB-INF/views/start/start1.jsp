@@ -224,7 +224,7 @@ background:#555; color:#ff00ff;  <----   배경색이 #555색상으로 변하고 글자색상이
 									  <div class="modal-dialog" role="document">
 									    <div class="modal-content">
 									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        
 									        <h4 class="modal-title" id="myModalLabel">MBTI 간단체크하기!</h4>
 									      </div>
 									      <div class="modal-body">
