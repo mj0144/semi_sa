@@ -568,8 +568,6 @@ public class PageListController {
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
 			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 	 
-		System.out.println("오긴 하니?");
-	 
 		String searchType = vo.getSearchType(); String searchValue = vo.getSearchValue();
 		System.out.println(searchType); 
 		System.out.println(searchValue);
@@ -600,7 +598,7 @@ public class PageListController {
 				sex = "m"; 
 				}
 		}else {
-			System.out.println("안들어가니");
+			System.out.println("작동오류");
 		}
 		System.out.println(sex);
 	 

@@ -2,15 +2,21 @@ package mvc.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mvc.service.FeedAbstract;
 import mvc.vo.BoardVO;
+import mvc.vo.IljuVO;
+import mvc.vo.PageVO;
 
 @Repository
 public class BoardDao extends FeedAbstract {
 	
+	@Autowired SqlSessionTemplate ss;
 	
 	private String nameSpace = "board.";
 	
@@ -54,4 +60,10 @@ public class BoardDao extends FeedAbstract {
 	public void Delete(int num) throws Exception{
 		delete(nameSpace, num);
 	}
+	
+	//피드 검색
+	public List<BoardVO> getSearchlist(BoardVO vo) {
+	    return ss.selectList("board.searchlist", vo);
+		}
+	
 }

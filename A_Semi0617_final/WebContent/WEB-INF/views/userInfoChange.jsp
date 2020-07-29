@@ -122,7 +122,7 @@
 								<td><button type="button" class="btn btn-outline-warning"
 										id="nickchk">중복확인</button></td>
 							</tr>
-
+							
 							<tr>
 								<th>*이메일</th>
 								<td>
@@ -224,6 +224,8 @@
 					<div class="container-login100-form-btn text-center">
 						<div class="wrap-login100-form-btn text-center">
 							<div class="login100-form-bgbtn"></div>
+							<button class="btn btn-outline-dark" type="button" id="userdel" onclick="location.href='deletepage'">
+								회원탈퇴</button>
 							<button class="btn btn-outline-dark" type="button" id="send">
 								수정</button> &nbsp;
 							<button class="btn btn-outline-danger" onclick="location.href='mypage'">Cancel</button>

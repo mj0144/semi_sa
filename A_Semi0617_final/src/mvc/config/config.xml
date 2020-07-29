@@ -6,12 +6,15 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="mvc.vo.MemberVO" alias="mem"/>
+		<typeAlias type="mvc.vo.IdealVO" alias="ideal"/>
 		<typeAlias type="mvc.vo.IljuVO" alias="iljuvo"/>
 		<typeAlias type="mvc.vo.IljuVO" alias="ilju"/>
 		<typeAlias type="mvc.vo.LikeVO" alias="like"/>
 		<typeAlias type="mvc.vo.BoardVO" alias="board"/>
 		<typeAlias type="mvc.vo.PageVO" alias="pvo"/>
 	
+		<typeAlias type="mvc.vo.PaymentVO" alias="payvo"/>
+		<typeAlias type="mvc.vo.ProductVO" alias="productvo"/>
 	
 	</typeAliases>
 </configuration>
