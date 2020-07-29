@@ -19,7 +19,7 @@ public class PageVO {
  private boolean prev, next;
  
  private int ilju_sky_num, ilju_land_num, ilju_sky_num2, ilju_land_num2,user_num;
- private char sex;
+ private String sex;
  
  //블락리스트 
  private List<Integer> blist;
@@ -196,10 +196,10 @@ public int getIlju_land_num2() {
 public void setIlju_land_num2(int ilju_land_num2) {
 	this.ilju_land_num2 = ilju_land_num2;
 }
-public char getSex() {
+public String getSex() {
 	return sex;
 }
-public void setSex(char sex) {
+public void setSex(String sex) {
 	this.sex = sex;
 }
 public int getUser_num() {
