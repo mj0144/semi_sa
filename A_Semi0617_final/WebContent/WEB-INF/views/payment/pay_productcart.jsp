@@ -54,7 +54,8 @@ F
 	</section>
 
 	<div class="container">
-		<table id="cart" class="table table-hover table-condensed" style="margin-bottom: 430px; margin-top: 50px">
+		<table id="cart" class="table table-hover table-condensed"
+			style="margin-bottom: 430px; margin-top: 50px">
 			<thead>
 
 				<tr>
@@ -124,11 +125,7 @@ F
 			IMP.init('imp22395757'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			var msg;
 			var price = $('#price').text()
-			var buyer_num = $
-			{
-				sessionScope.user_num
-			}
-			;
+			var buyer_num = ${sessionScope.user_num};
 			var product_name = $('.nomargin').text();
 			//var count = $('.form-control, .text-center')
 			var count = $('#count').val()

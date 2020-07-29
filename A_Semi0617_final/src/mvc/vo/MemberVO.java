@@ -33,8 +33,15 @@ public class MemberVO {
 	private int info_year, info_mon, info_day;
 	private IljuVO iljuvo;
 	private String reason;
+	private String user_mbti;
 	
 
+	public String getUser_mbti() {
+		return user_mbti;
+	}
+	public void setUser_mbti(String user_mbti) {
+		this.user_mbti = user_mbti;
+	}
 	public IljuVO getIljuVO() {
 		return iljuvo;
 	}

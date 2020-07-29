@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="join">
+
+	<!--회원가입 ... DB에 회원정보 저장 -->
+	<insert id="join" parameterType="mem">
+		insert into user_info (user_num, user_id, nickname, pwd, name, sex, birth, birth_hh, birth_mm, saju_year, saju_mon, saju_day, ilju, email, user_img, user_intro) 
+		values(user_num_seq.nextval, #{user_id}, #{nickname}, #{pwd}, #{name}, #{sex}, #{birth}, #{birth_hh}, #{birth_mm}, #{saju_year}, #{saju_mon}, #{saju_day}, #{ilju}, #{email}, #{user_img}, #{user_intro})
+	</insert>
+	<insert id="idaelinsert" parameterType="ideal">
+		insert into ideal_type values(#{user_num}, #{ideal_height}, #{ideal_age}, #{ideal_body})
+	</insert>
+	<select id="selc_user_num">
+		select user_num from user_info where user_id=#{user_id}
+	</select>
+	
+	
+	
+		<!-- 회원가입 시 프로필 입력 -->
+<!-- 	<update id="joinprofile" parameterType="mem">
+		update user_info set user_img=#{user_img}, user_intro=#{user_intro} where user_num=#{user_num}
+	</update> -->
+		<!-- 회원가입시 일주 -->
+	<select id="ilju" parameterType="mem" resultType="String">
+		select distinct ilju from sajuinfo where saju_year=#{saju_year} and saju_mon=#{saju_mon} and saju_day=#{saju_day}	
+	</select>
+	
+		<!-- 아이디중복체크 -->
+	<select id="idchk" parameterType="String" resultType="int">
+		select count(*) from user_info where user_id=#{id}
+	</select>
+	
+	<!-- 별명 중복 체크 -->
+	<select id="nickchk" parameterType="String" resultType="int">
+		select count(*) from user_info where nickname=#{nickname}
+	</select>
+	
+		<!-- 이메일 중복 체크 -->
+	<select id="emailchk" parameterType="String" resultType="int">
+		select count(*) from user_info where email=#{email}
+	</select>
+	
+
+
+</mapper>

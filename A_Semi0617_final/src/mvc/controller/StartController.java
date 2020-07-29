@@ -10,7 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.dao.IljuDao;
+import mvc.dao.JoinDao;
 import mvc.dao.MemberDao;
+import mvc.service.JoinService;
 import mvc.service.MemberService;
 import mvc.utils.ImgUtils;
 import mvc.vo.IljuVO;
@@ -20,12 +22,13 @@ import mvc.vo.MemberVO;
 public class StartController {
 	@Autowired
 	private IljuDao iljudao;
-	@Autowired
-	private MemberService memberService;
-	@Autowired
-	private MemberDao memberDao;
+
 	@Autowired
 	ImgUtils imgUtils;
+	@Autowired
+	private JoinService joinService;
+	@Autowired
+	private JoinDao joinDao;
 
 	// 간단한 정보 보여주기.
 	@RequestMapping("/viewanimal")
@@ -33,8 +36,8 @@ public class StartController {
 	public ModelAndView emailchk(IljuVO svo, MemberVO mvo, String email) {
 		ModelAndView m = new ModelAndView();
 		m.setViewName("resultsaju1F");
-		mvo = memberService.yunYeon(mvo);
-		String ilju = memberDao.ilju(mvo);
+		mvo = joinService.yunYeon(mvo);
+		String ilju = joinDao.ilju(mvo);
 		svo.setIlju(ilju);
 		svo = iljudao.setIlju(svo);
 		m.addObject("ilju", svo);
