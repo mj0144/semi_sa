@@ -21,15 +21,14 @@
 				<div id="dropdown-lvl1" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<li style="font-size: 12px; margin-top: 5px; margin-bottom: 1px;"><a href="listSome?code=3">이성</a></li>
-							<li style="font-size: 12px; margin-bottom: 1px;"><a href="listFriend?code=3">동성</a></li>
-							<li style="font-size: 12px; margin-bottom: 0px;"><a href="listWhole?code=3">전체</a></li>
+							<li style="font-size: 12px; margin-top: 5px; margin-bottom: 1px;"><a href="listSome">합이 잘 맞는 인연</a></li>
+							<li style="font-size: 12px; margin-bottom: 1px;"><a href="listFriend">나의 귀인인 인연</a></li>
+							<li style="font-size: 12px; margin-bottom: 0px;"><a href="listWhole">전체</a></li>
 						</ul>
 					</div>
 				</div>
 			</li>
 			<li><a href="mypage">마이페이지</a></li>
-			<li><a href="pay">결제상품</a></li>
 			<br>
 			<br>
 			<br>
