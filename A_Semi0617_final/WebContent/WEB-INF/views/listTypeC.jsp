@@ -14,7 +14,6 @@
 		$(this).children('#send_num').submit();
 	});
 </script>
-
 <script>
 		
 	$(document).on('click', '.img1', function(event) { 
@@ -54,15 +53,84 @@
    }
 </script>
 
+
 <script>
 	$(document).on('click', '#block img', function(event) {
 		$(this).closest("#block").children('#send_num').submit();
 	});
 </script>
 
+<script>
+<!--  체크박스 전체선택 및 전체해제 -->
+$(document).on('click', '#box-3', function(event) {
+
+    if($("#box-3").is(":checked")){
+        $(".chk").prop("checked", true);
+    }
+    else{
+        $(".chk").prop("checked", false);
+    }
+});
+
+    
+<!-- // 한개의 체크박스 선택 해제시 전체선택 체크박스도 해제 -->
+$(document).on('click', '.chk', function(event) {
+    if($("input[class='chk']:checked").length == 2){
+        $("#box-3").prop("checked", true);
+    }else{
+        $("#box-3").prop("checked", false);
+    }
+});
+
+</script>
+
+
+<style>
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin: 0 35px 0 10px;
+  margin-bottom: 20px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  float: left;
+}
+
+input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccb78f;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+</style>
+
 <div id="colorlib-main">
-	<c:choose>
-	<c:when test="${pm eq 'listSome'}">
 	<section class="ftco-section ftco-bread">
 		<div class="container">
 			<div
@@ -71,63 +139,37 @@
 					<p class="breadcrumbs">
 						<span class="mr-2"><a href="index">Home</a></span> <span>인연찾기</span>
 					</p>
-					<h1 class="bread">이성인연 찾기</h1>
+					<h1 class="bread">전체 인연 찾기</h1>
 				</div>
 			</div>
 		</div>
 	</section>
 	<section class="ftco-section">
-		<div style="margin-bottom: 30px; margin-left: 30px; font-size: 20px;">
-			<a href="listSome?code=1">합이 잘 맞는 이성</a> &nbsp;<span>/</span>&nbsp; <a
-				href="listSome?code=2">나에게 귀인인 이성 찾기</a> &nbsp;<span>/</span>&nbsp;
-			<a>이성 전체보기</a>
-		</div>
-	</c:when>
-	<c:when test="${pm eq 'listFriend'}">
-	<section class="ftco-section ftco-bread">
-		<div class="container">
-			<div
-				class="row no-gutters slider-text justify-content-center align-items-center">
-				<div class="col-md-8 ftco-animate">
-					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index">Home</a></span> <span>인연찾기</span>
-					</p>
-					<h1 class="bread">인생친구 찾기</h1>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="ftco-section">
-		<div style="margin-bottom: 30px; margin-left: 30px; font-size: 20px;">
-			<a href="listFriend?code=1">합이 잘맞는 동성</a> &nbsp;<span>/</span>&nbsp;
-			<a href="listFriend?code=2">나에게 귀인인 동성</a> &nbsp;<span>/</span>&nbsp;
-			<a>동성 전체보기</a>
-		</div>
-	</c:when>
-	<c:when test="${pm eq 'listWhole'}">
-		<section class="ftco-section ftco-bread">
-		<div class="container">
-			<div
-				class="row no-gutters slider-text justify-content-center align-items-center">
-				<div class="col-md-8 ftco-animate">
-					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index">Home</a></span> <span>인연찾기</span>
-					</p>
-					<h1 class="bread">전체 찾기</h1>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="ftco-section">
-		<div style="margin-bottom: 30px; margin-left: 30px; font-size: 20px;">
-			<a href="listWhole?code=1">합이 잘맞는 인연</a> &nbsp;<span>/</span>&nbsp;
-			<a href="listWhole?code=2">나에게 귀인인 인연</a> &nbsp;<span>/</span>&nbsp;
-			<a>전체 인연 찾기</a>
-		</div>
-	</c:when>
-	</c:choose>
+
 		<div class="container">
 			<div class="row d-flex">
+				<div class="col-md-12" style="border: 1px solid #ccb78f; margin-bottom: 30px; padding: 30px;">
+					<form action="listWhole?code=3" class="detailck" method="post">
+					<div class="boxes" style="padding-bottom: 30px;">
+					  <div style="float: left; margin-right: 100px;">성별 </div>
+					  <input type="checkbox" id="box-1" class="chk" name="sex" value="m"<c:if test="${paging.sex =='m' ||paging.sex ==null }">checked</c:if>>
+					  <label for="box-1">남자</label>
+					  
+					  <input type="checkbox" id="box-2" class="chk" name="sex" value="f" <c:if test="${paging.sex =='f'||paging.sex ==null}">checked</c:if>>
+					  <label for="box-2">여자</label>
+					   
+					  <input type="checkbox" id="box-3" name="sex" value="a" <c:if test="${paging.sex ==null}">checked</c:if>>
+					  <label for="box-3">전체</label>
+					  
+					</div>
+					<div>
+<!-- 					여기는 키, 나이, 체형, 위치, 사주, MBTI 선택사항이 들어갈 예정 -->
+					</div>
+					<div>
+					<input type="submit" value="실행" style="float: right;">
+					</div>
+					</form>
+				</div>
 				<div class="col-md-11">
 					<div class="row">
 						<c:forEach var="e" items="${list}">
@@ -183,7 +225,9 @@
 												<form action="block" method="post" id="send_num">
 												<input type="hidden" name="user_num" id="user_num" value="${f.user_num }">
 												<input type="hidden" name="pm" id="pm" value="${pm}">
-												<input type="hidden" name="code" id="code" value="${code}">
+												<input type="hidden" name="sex" id="sex" value="${paging.sex}">
+												<input type="hidden" name="nowPage" value="${paging.nowPage }">
+												<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
 												</form>
 											</div>
 											</div>
@@ -192,7 +236,6 @@
 								</div>
 							</c:forEach>
 						</c:forEach>
-						<c:if test="${pm eq 'listWhole' }">
 					<div style="margin: 0 auto;" class="col-md-12">
 						<form action="listSearch" method="POST" style="text-align:center;">
 							<select name="searchType">
@@ -207,48 +250,49 @@
 								</span>
 						</form>
 					</div>
-					</c:if>
 
 					</div>
 					<!-- END-->
+					<!-- Page 이동 -->
 					<div class="row">
 						<div class="col">
 							<div class="block-27">
 								<div style="display: block; text-align: center;">
 									<!-- 이전으로 -->
 									<c:if test="${paging.prev }">
-									<a href = "${pm }?code=${code }&nowPage=${paging.startPage - 1 }">&lt;</a>
+									<a href = "${pm }?nowPage=${paging.startPage - 1 }&sex=${paging.sex}">&lt;</a>
 									</c:if>
 									<!-- 이전페이지 -->
 									<c:if test="${paging.startPage != 1 }">
 										<a
-											href="${pm }?code=${code }&nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a>
+											href="${pm }?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&sex=${paging.sex}" >&nbsp;</a>
 									</c:if>
-									<c:forEach begin="${paging.startPage }"
-										end="${paging.endPage }" var="p">
+									<!-- 현재페이지 -->
+									<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
 										<c:choose>
 											<c:when test="${p == paging.nowPage }">
 												<b>${p }</b>
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
 												<a
-													href="${pm }?code=${code }&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+													href="${pm }?nowPage=${p }&cntPerPage=${paging.cntPerPage}&sex=${paging.sex}">${p }</a>
 											</c:when>
 										</c:choose>
 									</c:forEach>
 									<!-- 다음페이지 -->
 									<c:if test="${paging.endPage != paging.lastPage}">
 										<a
-											href="${pm }?code=${code }&nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&nbsp;</a>
+											href="${pm }?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&sex=${paging.sex}">&nbsp;</a>
 									</c:if>
 									<!-- 다음으로 -->
 									<c:if test="${paging.next && paging.endPage > 0 }">
-									<a href = "${pm }?code=${code }&nowPage=${paging.endPage + 1 }">&gt;</a>
+									<a href = "${pm }?nowPage=${paging.endPage + 1 }&sex=${paging.sex}">&gt;</a>
 									</c:if>
 								</div>
 							</div>
 						</div>
 					</div>
+					<!-- Page 이동 end -->
 				</div>
 			</div>
 		</div>
