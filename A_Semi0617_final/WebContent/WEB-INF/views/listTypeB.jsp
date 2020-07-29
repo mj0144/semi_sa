@@ -53,6 +53,11 @@ error : function(){
 }
    
 </script>
+<script>
+	$(document).on('click', '#block img', function(event) {
+		$(this).closest("#block").children('#send_num').submit();
+	});
+</script>
 
 		<div id="colorlib-main">
 	<c:choose>
@@ -122,31 +127,37 @@ error : function(){
 	</c:choose>
 	    	<div class="container">
 	    		<div class="row d-flex">
-	    			<div class="col-lg-8">
+	    			<div class="col-md-11">
 	    				<div class="row">
 	    				
 	    				<c:forEach var="e" items="${list}">
 			    			<c:forEach var="f" items="${e.mem }">
-			    			<div class="col-md-12">
+			    			<div class="col-md-6">
 			    				<div class="blog-entry ftco-animate d-md-flex">
 									<a id="person" class="img img-2" style="background-image: url(resources/upload/${f.user_img}); cursor: pointer;">
 									<form action="friend" method="post" id="send_num">
 									<input type="hidden" name="user_num" id="user_num" value="${f.user_num }">
 									</form>
 									</a>
-									<div class="text text-2 p-4">
-				              <h3 class="mb-2">${f.nickname}</h3>
-				              <div class="meta-wrap">
+										<div class="text text-2 p-4">
+											<div style="float: left; width: 70%; height: 40px;">
+												<h3 class="mb-2">${f.nickname}</h3>
+											</div>
+											<div style="float: right; width: 30%;">
+												<img src="resources/img/ilju_animal/${e.result_img}.png" alt="iljuanimal" style="width: 40px; float: right;">
+											</div>
+				              			<div class="meta-wrap">
 												<p class="meta">
 				              		<span>${f.birth}</span>
 				              	</p>
 			              	</div>
 				              <p class="mb-4"> ${f.user_intro} </p>
-
-				              <br>
-				              <p>
-								좋아요 &nbsp;
-							<c:set var="hearton" value="false"/>
+							  <div style="position:absolute; width: 100%;" >
+							  <div style="clear:both;">											
+								<p>
+								<span style="float:left;">좋아요</span> 
+								</p>
+								<c:set var="hearton" value="false"/>
 											<c:forEach var="g" items="${heart }">
 												<c:choose>
 													<c:when test="${g.liked_user == f.user_num}">
@@ -157,19 +168,25 @@ error : function(){
 											 		
 											<c:choose>
 												<c:when test="${hearton == 'true'}">
-													<img id="${f.user_num}" class="img1" src="images/hearton.png" />
+													<img id="${f.user_num}" class="img1" style="width: 20px; cursor:pointer; float: left;" src="images/hearton.png" />
 												</c:when>
 												<c:otherwise>
-													<img id="${f.user_num}" class="img1" src="images/heartoff.png"/>												
+													<img id="${f.user_num}" class="img1" style="width: 20px; cursor:pointer; float: left;" src="images/heartoff.png"/>												
 												</c:otherwise>
 											</c:choose>
-                           		<input type="hidden" name="friend_num" id="friend_num" value="${f.user_num}"/>
-				              </p>
 				            </div>
-				            <div>
-									<img src="resources/img/ilju_animal/${e.result_img}.png" alt="iljuanimal" style="width: 70px;">
+				            <div style="float:left;" id="block">
+								<span style="position:absolute; right:45px;">차단</span>
+								<img id="${f.user_num}" class="img2" style="width: 40px; position:absolute;right:10px; bottom:0; cursor:pointer;" src="images/blockon.png" />
+								<form action="block" method="post" id="send_num">
+									<input type="hidden" name="user_num" id="user_num" value="${f.user_num }">
+									<input type="hidden" name="pm" id="pm" value="${pm}">
+									<input type="hidden" name="code" id="code" value="${code}">
+								</form>
 							</div>
 							</div>
+			    			</div>
+			    			</div>
 			    			</div>
 			    			</c:forEach>
 			    		</c:forEach>

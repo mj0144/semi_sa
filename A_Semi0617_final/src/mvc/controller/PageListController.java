@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import mvc.dao.BlockDao;
 import mvc.dao.LikeDao;
 import mvc.dao.PageListDao;
 import mvc.vo.IljuVO;
@@ -27,10 +28,13 @@ public class PageListController {
 	@Autowired
 	private LikeDao likeDao;
 	
+	@Autowired
+	private BlockDao blockDao;
+	
 	@RequestMapping(value= "/listSome", params = "code=1")
 	public String listSome1(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 			
 		int user_num=(int)session.getAttribute("user_num");	
 		
@@ -72,10 +76,13 @@ public class PageListController {
 			sex="m";
 		}
 		
+		List<Integer> blist = blockDao.blockList(user_num);
+		
 		PageVO svo = new PageVO();
 		svo.setIlju_sky_num(ilju_sky_num);
 		svo.setIlju_land_num(ilju_land_num);
 		svo.setSex(sex.charAt(0));
+		svo.setBlist(blist);
 
 		int total = pagelistDao.getTotalCount1(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -83,6 +90,7 @@ public class PageListController {
 		vo.setSex(sex.charAt(0));
 		vo.setIlju_sky_num(ilju_sky_num);
 		vo.setIlju_land_num(ilju_land_num);
+		vo.setBlist(blist);
 		
 		list = pagelistDao.getListResult1(vo);
 		List<LikeVO> list2 = likeDao.likeornot(user_num);
@@ -102,7 +110,7 @@ public class PageListController {
 	@RequestMapping(value= "/listSome", params = "code=2")
 	public String listSome2(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 		
 		int user_num=(int)session.getAttribute("user_num");	
 		
@@ -140,13 +148,16 @@ public class PageListController {
 			sex="m";
 		}
 		
+		List<Integer> blist = blockDao.blockList(user_num);
+		
 		PageVO svo = new PageVO();
 		svo.setSex(sex.charAt(0));
 		svo.setIlju_sky_num(ilju_sky_num);
 		svo.setIlju_land_num(ilju_land_num);
 		svo.setIlju_sky_num2(ilju_sky_num2);
 		svo.setIlju_land_num2(ilju_land_num2);
-
+		svo.setBlist(blist);
+		
 		int total = pagelistDao.getTotalCount2(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		System.out.println(vo.toString());
@@ -155,6 +166,7 @@ public class PageListController {
 		vo.setIlju_land_num(ilju_land_num);
 		vo.setIlju_sky_num2(ilju_sky_num2);
 		vo.setIlju_land_num2(ilju_land_num2);
+		vo.setBlist(blist);
 		
 		list = pagelistDao.getListResult2(vo);
 		List<LikeVO> list2 = likeDao.likeornot(user_num);
@@ -172,28 +184,31 @@ public class PageListController {
 	@RequestMapping(value= "/listSome", params = "code=3")
 	public String listSome3(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 			
 		int user_num=(int)session.getAttribute("user_num");	
 		
 		//이성의 성별로 변환
 		String sex = pagelistDao.sexdt(user_num).trim();
-		System.out.println(sex.length());
 		if (sex.equals("m")) {
 			sex="f";
 		}else {
 			sex="m";
 		}
 		
+		List<Integer> blist = blockDao.blockList(user_num);
+		
 		PageVO svo = new PageVO();
 		svo.setSex(sex.charAt(0));
 		svo.setUser_num(user_num);
+		svo.setBlist(blist);
 		
 		//리스트 갯수 구하고 페이징 처리.
 		int total = pagelistDao.getTotalCount3(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		vo.setSex(sex.charAt(0));
 		vo.setUser_num(user_num);
+		vo.setBlist(blist);
 		
 		//결과 값 넣기
 		List<IljuVO> list = null;	
@@ -215,7 +230,7 @@ public class PageListController {
 	@RequestMapping(value= "/listFriend", params = "code=1")
 	public String listFriend1(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 			
 		int user_num=(int)session.getAttribute("user_num");	
 		
@@ -244,10 +259,13 @@ public class PageListController {
 		IljuVO list = null;	
 		String sex = pagelistDao.sexdt(user_num).trim();
 		
+		List<Integer> blist = blockDao.blockList(user_num);
+		
 		PageVO svo = new PageVO();
 		svo.setIlju_sky_num(ilju_sky_num);
 		svo.setIlju_land_num(ilju_land_num);
 		svo.setSex(sex.charAt(0));
+		svo.setBlist(blist);
 
 		int total = pagelistDao.getTotalCount1(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -255,6 +273,7 @@ public class PageListController {
 		vo.setSex(sex.charAt(0));
 		vo.setIlju_sky_num(ilju_sky_num);
 		vo.setIlju_land_num(ilju_land_num);
+		vo.setBlist(blist);
 		
 		list = pagelistDao.getListResult1(vo);
 		List<LikeVO> list2 = likeDao.likeornot(user_num);
@@ -273,7 +292,7 @@ public class PageListController {
 	@RequestMapping(value= "/listFriend", params = "code=2")
 	public String listFriend2(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 		
 		int user_num=(int)session.getAttribute("user_num");	
 		
@@ -304,6 +323,8 @@ public class PageListController {
         
 		List<IljuVO> list = null;	
 		String sex = pagelistDao.sexdt(user_num).trim();
+		
+		List<Integer> blist = blockDao.blockList(user_num);
 
 		PageVO svo = new PageVO();
 		svo.setSex(sex.charAt(0));
@@ -311,6 +332,7 @@ public class PageListController {
 		svo.setIlju_land_num(ilju_land_num);
 		svo.setIlju_sky_num2(ilju_sky_num2);
 		svo.setIlju_land_num2(ilju_land_num2);
+		svo.setBlist(blist);
 
 		int total = pagelistDao.getTotalCount2(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -320,6 +342,7 @@ public class PageListController {
 		vo.setIlju_land_num(ilju_land_num);
 		vo.setIlju_sky_num2(ilju_sky_num2);
 		vo.setIlju_land_num2(ilju_land_num2);
+		vo.setBlist(blist);
 		
 		list = pagelistDao.getListResult2(vo);
 		List<LikeVO> list2 = likeDao.likeornot(user_num);
@@ -337,22 +360,25 @@ public class PageListController {
 	@RequestMapping(value= "/listFriend", params = "code=3")
 	public String listFriend3(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 
 		int user_num=(int)session.getAttribute("user_num");	
 
 		List<IljuVO> list = null;
 		
 		String sex = pagelistDao.sexdt(user_num).trim();
+		List<Integer> blist = blockDao.blockList(user_num);
 		
 		PageVO svo = new PageVO();
 		svo.setSex(sex.charAt(0));
 		svo.setUser_num(user_num);
+		svo.setBlist(blist);
 		
 		int total = pagelistDao.getTotalCount3(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		vo.setSex(sex.charAt(0));
 		vo.setUser_num(user_num);
+		vo.setBlist(blist);
 
 		list = pagelistDao.getListResult3(vo);
 		
@@ -372,7 +398,7 @@ public class PageListController {
 	@RequestMapping(value= "/listWhole", params = "code=1")
 	public String listWhole1(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 			
 		int user_num=(int)session.getAttribute("user_num");	
 		
@@ -400,15 +426,19 @@ public class PageListController {
 		
 		IljuVO list = null;	
 		
+		List<Integer> blist = blockDao.blockList(user_num);
+		
 		PageVO svo = new PageVO();
 		svo.setIlju_sky_num(ilju_sky_num);
 		svo.setIlju_land_num(ilju_land_num);
+		svo.setBlist(blist);
 
 		int total = pagelistDao.getTotalCountWhole1(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		System.out.println(vo.toString());
 		vo.setIlju_sky_num(ilju_sky_num);
 		vo.setIlju_land_num(ilju_land_num);
+		vo.setBlist(blist);
 		
 		list = pagelistDao.getListWhole1(vo);
 		List<LikeVO> list2 = likeDao.likeornot(user_num);
@@ -433,7 +463,7 @@ public class PageListController {
 	@RequestMapping(value= "/listWhole", params = "code=2")
 	public String listWhole2(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 		
 		int user_num=(int)session.getAttribute("user_num");	
 		
@@ -462,13 +492,16 @@ public class PageListController {
         System.out.println("2-1: "+ilju_sky_num2);
         System.out.println("2-2: "+ilju_land_num2);
         
-		List<IljuVO> list = null;	
+		List<IljuVO> list = null;
+		
+		List<Integer> blist = blockDao.blockList(user_num);
 
 		PageVO svo = new PageVO();
 		svo.setIlju_sky_num(ilju_sky_num);
 		svo.setIlju_land_num(ilju_land_num);
 		svo.setIlju_sky_num2(ilju_sky_num2);
 		svo.setIlju_land_num2(ilju_land_num2);
+		svo.setBlist(blist);
 
 		int total = pagelistDao.getTotalCountWhole2(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -477,6 +510,7 @@ public class PageListController {
 		vo.setIlju_land_num(ilju_land_num);
 		vo.setIlju_sky_num2(ilju_sky_num2);
 		vo.setIlju_land_num2(ilju_land_num2);
+		vo.setBlist(blist);
 		
 		list = pagelistDao.getListWhole2(vo);
 		List<LikeVO> list2 = likeDao.likeornot(user_num);
@@ -494,20 +528,24 @@ public class PageListController {
 	@RequestMapping(value= "/listWhole", params = "code=3")
 	public String listWhole3(PageVO vo, Model model, HttpSession session, String code, 
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 
 		int user_num=(int)session.getAttribute("user_num");	
 
 		List<IljuVO> list = null;
 		
+		List<Integer> blist = blockDao.blockList(user_num);
+		
 		PageVO svo = new PageVO();
 		svo.setUser_num(user_num);
+		svo.setBlist(blist);
 		
 		int total = pagelistDao.getTotalCountWhole3(svo);
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		vo.setUser_num(user_num);
+		vo.setBlist(blist);
 
-		System.out.println("user_num: "+ user_num);
+		//System.out.println("user_num: "+ user_num);
 		
 		list = pagelistDao.getListWhole3(vo);
 
@@ -528,7 +566,7 @@ public class PageListController {
 	@RequestMapping(value= "/listSearch", params = "code=1")
 	public String listSearch(PageVO vo, Model model, HttpSession session, String code,
 			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false, defaultValue = "10") String cntPerPage) {
 	 
 		String searchType = vo.getSearchType(); String searchValue = vo.getSearchValue();
 		System.out.println(searchType); 
@@ -541,8 +579,11 @@ public class PageListController {
 		System.out.println(sex);
 	 
 		List<IljuVO> list = null;
+		
+		List<Integer> blist = blockDao.blockList(user_num);
 	 
-		PageVO svo = new PageVO(); svo.setUser_num(user_num);
+		PageVO svo = new PageVO(); 
+		svo.setUser_num(user_num);
 	 
 		if (searchType.equals("2")) { 
 			System.out.println("2일때");
@@ -561,8 +602,10 @@ public class PageListController {
 		}
 		System.out.println(sex);
 	 
-		svo.setSex(sex.charAt(0)); svo.setSearchType(vo.getSearchType());
+		svo.setSex(sex.charAt(0)); 
+		svo.setSearchType(vo.getSearchType());
 		svo.setSearchValue(vo.getSearchValue());
+		svo.setBlist(blist);
 	  
 		int total = pagelistDao.getTotalCountSearch(svo); System.out.println(total);
 	 
@@ -570,6 +613,7 @@ public class PageListController {
 		vo.setUser_num(user_num);
 		vo.setSex(sex.charAt(0)); vo.setSearchType(searchType);
 		vo.setSearchValue(searchValue);
+		vo.setBlist(blist);
 	 
 		System.out.println("user_num: "+ user_num);
 		System.out.println(vo.toString()); System.out.println("searchType: "+ vo.getSearchType()); 
