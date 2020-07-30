@@ -43,9 +43,9 @@ button:hover {
 				class="row no-gutters slider-text justify-content-center align-items-center">
 				<div class="col-md-8 ftco-animate">
 					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index">Home</a></span> <span>QnA</span>
+						<span class="mr-2"><a href="index">Home</a></span> <span>Q&A</span>
 					</p>
-					<h1 class="bread">QnA</h1>
+					<h1 class="bread">Q&A</h1>
 				</div>
 			</div>
 		</div>
