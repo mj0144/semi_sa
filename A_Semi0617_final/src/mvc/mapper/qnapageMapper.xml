@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qnapage">
+
+<select id="list" parameterType="mem" resultType="qna">
+	
+	select * from qna where user_num=#{user_num} order by 3 asc
+
+</select>
+
+<select id="detaillist" parameterType="qna" resultType="qna">
+	
+	select * from qna where qna_num=#{qna_num}
+
+</select>
+
+<delete id="delete" parameterType="qna">
+	delete from qna where qna_num=#{qna_num}
+</delete>
+
+<select id="deletelist" parameterType="mem" resultType="qna">
+	
+	select * from qna where user_id=#{user_id}
+
+</select>
+
+<insert id="addqna" parameterType="qna">
+	insert into qna (user_num,user_id,qna_num,qtitle,askcontent,qdate) values(#{user_num},#{user_id},qna_seq.nextVal,#{qtitle},#{askcontent},sysdate)
+</insert>
+
+</mapper>
