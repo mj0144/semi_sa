@@ -22,7 +22,6 @@
 					변경할 비밀번호를 입력해주세요.<br> 
 						변경할 비밀번호 입력 : <input type = "number" name = "pwd"
                                                   placeholder = "비밀번호를 입력하세요." >
-				
 				<p class="w3-center">
 					<button type="submit" id="Btn" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">비밀번호 변경</button>
 				</p>

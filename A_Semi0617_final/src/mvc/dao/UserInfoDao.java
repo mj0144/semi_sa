@@ -20,4 +20,11 @@ public class UserInfoDao {
 		ss.update("userinfo.infoUpdate", vo);
 	}
 	
+	public void pwdChange(MemberVO vo) {
+		ss.update("userinfo.pwdChange", vo);
+	}
+	
+	public String pwdchk(int user_num) {
+		return ss.selectOne("userinfo.pwdchk", user_num);
+	}
 }

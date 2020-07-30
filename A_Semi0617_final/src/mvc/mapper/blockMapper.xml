@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="block">
+
+<insert id="block" parameterType="hashMap">
+	insert into blockuser VALUES (#{user_num}, #{blocked_user},'true')
+</insert>
+
+<select id="blocklist" parameterType="int" resultType="int">
+	select blocked_user from blockuser where user_num = #{user_num}
+</select>
+
+</mapper>

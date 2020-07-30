@@ -57,47 +57,14 @@ public class MemberDao {
 
 	}
 
-	// 회원가입
-	public int join(MemberVO vo) {
-		return ss.insert("member.join", vo);
-	}
-
-	// 일주뽑기
-	public String ilju(MemberVO vo) {
-		return ss.selectOne("member.ilju", vo);
-	}
-
-	// 아이디 체크
-	public int idChk(String id) {
-		return ss.selectOne("member.idchk", id);
-	}
-
-	// 별명체크
-	public int nickChk(String nickname) {
-		return ss.selectOne("member.nickchk", nickname);
-
-	}
-
-	// 이메일체크
-	public int emailChk(String email) {
-		System.out.println(" dlapdd");
-		return ss.selectOne("member.emailchk", email);
-
-	}
-
 	// 이메일 인증
 	public int approval_member(MemberVO vo) throws Exception {
 		return ss.update("email.approval_member", vo);
 	}
-	
-	//가입시 프로필 입력
-		public void joinprofile(MemberVO vo) {
-			ss.update("member.joinprofile", vo);
-		}
-		
-		//유저넘버 출력
-		public int userNumber(MemberVO vo) {
-			return ss.selectOne("member.usernumber", vo);
-		}
+
+	// 유저넘버 출력
+	public int userNumber(MemberVO vo) {
+		return ss.selectOne("member.usernumber", vo);
+	}
 
 }
