@@ -3,7 +3,7 @@
 
 
 <footer class="ftco-footer ftco-bg-dark ftco-section"
-	style="padding: 50px 0; background-color: skyblue">
+	style="padding: 50px 0; background-color: skyblue;">
 	<div class="container px-md-5 ft1"
 		style="margin: 0 auto; text-align: center;">
 		<div class="row">

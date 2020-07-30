@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="header.jsp"%>
 <%@include file="side.jsp"%>
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
+
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -24,7 +22,7 @@ button {
 
 button:hover {
 	background: black;
-	color: white;
+	color: black;
 	font-weight: bold;
 	cursor: pointer;
 	transition: 0.5s;
@@ -49,23 +47,22 @@ button:hover {
 		<div class="photograhy">
 
 			
-				<div class="col-sm-12 pull-center well" style="background-color: #FFFFE9">
+				<div class="col-sm-12 pull-center well">
 					<form class="form-inline" action="feedsearch" method="post">
-						<center>
-							<select class="form-control" name="search_option">
+							<div class="input-group custom-search-form">
+							<select class="form-control" name="search_option" style="width: 130px; border:0.5px solid; border-radius: 10px 0px 0px 10px;">
 								<option value="1" >글 제목</option>
 								<option value="2">작성자</option>
 								<option value="3">내용</option>
 								<option value="4">전체</option>
-								
 							</select>
-
-
-							<div class="input-group custom-search-form">
-								<input type="text" name="keyword" class="form-control" placeholder="Search..."  style="width: 400px;">
+								<input type="text" name="keyword" class="form-control" placeholder="Search..." 
+								style="width: 400px; border-radius: 0px 10px 10px 0px; border:0.5px solid;">
+								&nbsp;&nbsp;&nbsp;
 								<span class="input-group-btn">
-									<button class="btn btn-default" id="searchbtn" type="submit" style="height: 52px; width: 70px;">
-										<i>search</i>
+									<button class="btn btn-default" id="searchbtn" type="submit" style="height: 52px; width: 75px;
+									border-radius: 10px 10px 10px 10px; background-color: black; color:white; border: 0.5px solid;">
+										search
 									</button>
 								</span>
 							</div>
@@ -76,7 +73,7 @@ button:hover {
 
 
 			<div class="ftco-section2">
-				<button onclick="location='boardwrite'">write</button>
+				<button style="background-color: white; border-radius: 10px;" onclick="location='boardwrite'">write</button>
 			</div>
 			<div class="row">
 				<c:forEach var="list" items="${ list}">
