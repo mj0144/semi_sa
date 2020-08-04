@@ -6,9 +6,12 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
+var sessiontest
+
       $(document).ready(function(){
-         var session  ='<%=session.getAttribute("user_num")%>
-	'
+    	  sessiontest='aaa'
+         var session  ='<%=session.getAttribute("user_num")%>'
+	
 		console.log(session);
 
 		if (session === '' || session === 'null') {

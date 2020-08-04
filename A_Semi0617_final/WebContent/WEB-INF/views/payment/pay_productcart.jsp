@@ -125,6 +125,7 @@ F
 			IMP.init('imp22395757'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 			var msg;
 			var price = $('#price').text()
+			var total_price = $('#total_price').text()
 			var buyer_num = ${sessionScope.user_num};
 			var product_name = $('.nomargin').text();
 			//var count = $('.form-control, .text-center')
@@ -139,7 +140,7 @@ F
 				pay_method : 'card',
 				merchant_uid : 'merchant_' + new Date().getTime(), //가맹점에서 생성/관리하는 고유 주문번호
 				name : $('.nomargin').text(), // 주문명
-				amount : $('#price').text(), //결제할 금액	
+				amount : total_price, //결제할 금액	
 			// buyer_name :  //주문자명
 			//buyer_name : '판매자'
 

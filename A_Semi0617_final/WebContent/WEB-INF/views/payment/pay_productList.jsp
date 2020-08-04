@@ -8,7 +8,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="resources/css/payment/pay_productList.css"></script>
 <!------ Include the above in your HEAD tag ---------->
+<script>
 
+
+</script>
  
 	 <div id="colorlib-main">
 	 <section class="ftco-section ftco-bread">

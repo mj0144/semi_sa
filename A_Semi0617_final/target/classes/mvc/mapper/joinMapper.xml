@@ -7,13 +7,13 @@
 
 	<!--회원가입 ... DB에 회원정보 저장 -->
 	<insert id="join" parameterType="mem">
-		insert into user_info (user_num, user_id, nickname, pwd, name, sex, birth, birth_hh, birth_mm, saju_year, saju_mon, saju_day, ilju, email, user_img, user_intro) 
-		values(user_num_seq.nextval, #{user_id}, #{nickname}, #{pwd}, #{name}, #{sex}, #{birth}, #{birth_hh}, #{birth_mm}, #{saju_year}, #{saju_mon}, #{saju_day}, #{ilju}, #{email}, #{user_img}, #{user_intro})
+		insert into user_info (user_num, user_id, nickname, pwd, name, sex, birth, birth_hh, birth_mm, saju_year, saju_mon, saju_day, ilju, email, user_img, user_intro, user_mbti, user_height, user_loc, user_body) 
+		values(user_num_seq.nextval, #{user_id}, #{nickname}, #{pwd}, #{name}, #{sex}, #{birth}, #{birth_hh}, #{birth_mm}, #{saju_year}, #{saju_mon}, #{saju_day}, #{ilju}, #{email}, #{user_img}, #{user_intro}, #{user_mbti}, #{user_height}, #{user_loc}, #{user_body})
 	</insert>
 	<insert id="idaelinsert" parameterType="ideal">
 		insert into ideal_type values(#{user_num}, #{ideal_height}, #{ideal_age}, #{ideal_body})
 	</insert>
-	<select id="selc_user_num">
+	<select id="selc_user_num" parameterType="String" resultType="int">
 		select user_num from user_info where user_id=#{user_id}
 	</select>
 	
