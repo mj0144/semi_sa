@@ -22,7 +22,7 @@ public class QnAController {
 	    private QnaService qnaService;
 		
 		//QNA페이지
-	    /** 게시판 - 목록 페이지 이동 */
+	    /** QnA - 목록 페이지 이동 */
 	    @RequestMapping( value = "/qnapage")
 	    public ModelAndView qnapage(HttpSession session) throws Exception{
 	    	String user_id = (String) session.getAttribute("user_id");
@@ -37,7 +37,7 @@ public class QnAController {
 	    }
 
 	    
-	    /** 게시판 - 상세 페이지 이동 */
+	    /** QnA - 상세 페이지 이동 */
 	    @RequestMapping( value = "/qnaDetail")
 	    public ModelAndView qnaDetail(HttpSession session, QnaVO vo) throws Exception{
 	    	
@@ -52,7 +52,7 @@ public class QnAController {
 	    }    
 	    
 	    
-	    /** 게시판 - 삭제 */
+	    /** QnA- 삭제 */
 	    @RequestMapping( value = "/deleteqnapage" , method = RequestMethod.POST)
 	    public ModelAndView deleteqnapage(HttpSession session, QnaVO vo) throws Exception{
 	    	List<QnaVO> deletelist = new ArrayList<QnaVO>();
@@ -63,6 +63,7 @@ public class QnAController {
 	    	return mav;
 	    }
 	    
+	    /** QnA - 작성페이지 */
 	    @RequestMapping( value = "/qnawritepage")
 	    public ModelAndView qnawritePage(HttpSession session, QnaVO vo) throws Exception{
 	    	ModelAndView mav = new ModelAndView();
@@ -70,16 +71,13 @@ public class QnAController {
 	    	mav.setViewName("qnawrite");
 	    	mav.addObject("user_id", vo.getUser_id());
 	    	mav.addObject("user_num", num);
-	    	System.out.println("222222220"+vo.getUser_num());
 	    	return mav;
 	    }
 	    
-	    
+	    /** QnA - 글 작성 */
 	    @RequestMapping( value = "/qnawrite", method = RequestMethod.POST)
 	    public String qnawrite(HttpSession session, QnaVO vo) throws Exception{
-			//ModelAndView mav = new ModelAndView();
 			qnaService.addQna(session, vo);
-			//mav.addObject("user_id", vo.getUser_id());
 	    	return "redirect:qnapage";
 	    }
 
