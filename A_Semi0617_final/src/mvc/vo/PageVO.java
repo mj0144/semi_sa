@@ -13,17 +13,25 @@ public class PageVO {
     // lastPage - 마지막페이지
     // start, end  - 페이지 분할 값
  private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
-//패이지 블록의 Cnt
+ // 페이지 블록의 Cnt
  private int cntPage = 5;
- private String searchType, searchValue;
+ 
+ // 이전페이지, 다음 페이지
  private boolean prev, next;
  
- private int ilju_sky_num, ilju_land_num, ilju_sky_num2, ilju_land_num2,user_num;
- private String sex;
+ // 검색 타입, 검색어
+ private String searchType, searchValue;
  
- //블락리스트 
+ // 일간, 일지, 유저번호, 유저 성별
+ private int ilju_sky_num, ilju_land_num, ilju_sky_num2, ilju_land_num2, user_num;
+ private String sex;
+ private String sex2;
+ 
+ // 블락리스트 
  private List<Integer> blist;
 
+ // 사주, mbti 선택
+ private String samb;
  
  
  public int getCntPage() {
@@ -202,6 +210,12 @@ public String getSex() {
 public void setSex(String sex) {
 	this.sex = sex;
 }
+public String getSex2() {
+	return sex2;
+}
+public void setSex2(String sex2) {
+	this.sex2 = sex2;
+}
 public int getUser_num() {
 	return user_num;
 }
@@ -214,6 +228,13 @@ public List<Integer> getBlist() {
 public void setBlist(List<Integer> blist) {
 	this.blist = blist;
 }
+public String getSamb() {
+	return samb;
+}
+public void setSamb(String samb) {
+	this.samb = samb;
+}
+
 
  
 }
