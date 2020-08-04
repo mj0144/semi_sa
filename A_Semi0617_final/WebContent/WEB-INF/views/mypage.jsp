@@ -16,10 +16,7 @@
 							
 								<span class="subheading">Mypage</span>
 								<div style="position: absolute; right: 20px; top: 0;">
-								<a style="color: #FFA7A7; font-size: 18px;">나의 정보수정</a>
-								<a href="infochangepage"><img src="images/change.png"></a><br>
-								<a style="color: #FFA7A7; font-size: 18px;">비밀번호 변경</a>
-								<a href="pwdChange"><img src="images/change.png"></a><br>
+								
 								</div>
 								<h1 class="big-letter"></h1>
 								<h1 class="mb-4"><span>${member.name }님의 마이페이지</span></h1>

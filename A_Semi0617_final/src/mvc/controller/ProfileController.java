@@ -42,8 +42,10 @@ public class ProfileController {
 	public ModelAndView mypage(HttpSession session) throws Exception {
 		
 		MemberVO vo= profileservice.result_basic(session);
+		
 		//side _user_img
 		session.setAttribute("user_img", vo.getUser_img());
+
 		//
 		int cnt1 =likeService.like1(session);
 		int cnt2 =likeService.like2(session);

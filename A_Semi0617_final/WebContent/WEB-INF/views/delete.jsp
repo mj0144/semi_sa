@@ -134,7 +134,7 @@
 							<button class="btn btn-outline-dark" type="button" id="userdel">
 								È¸¿øÅ»Åð È®ÀÎ</button>
 							 &nbsp;
-							<button class="btn btn-outline-danger" onclick="location.href='mypage'">Cancel</button>
+							<button class="btn btn-outline-danger" onclick="location.href='setting'">Cancel</button>
 						</div>
 					</div>
 				</form>

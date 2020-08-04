@@ -121,7 +121,7 @@ $(document).ready(function(){
 							<span>회원님의 계정을 탈퇴할 수 있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a href="deletepage">Learn More</a>
 
 					</div>
 				</div>

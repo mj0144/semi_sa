@@ -22,20 +22,22 @@ public class QnAController {
 	    private QnaService qnaService;
 		
 		//QNA페이지
-	    /** 게시판 - 목록 페이지 이동 */
+	    /** QnA - 목록 페이지 이동 */
 	    @RequestMapping( value = "/qnapage")
 	    public ModelAndView qnapage(HttpSession session) throws Exception{
-	    	List<QnaVO> qnalist = new ArrayList<QnaVO>();
-	    	qnalist = qnaService.getQnaList(session);
+	    	String user_id = (String) session.getAttribute("user_id");
+	    	System.out.println("dwdawdaw"+user_id);
+	    	List<QnaVO> qnalist = qnaService.getQnaList(session);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("qnapage");
 			mav.addObject("vo", qnalist);
+			mav.addObject("user_id", user_id);
 			
 			return mav;
 	    }
 
 	    
-	    /** 게시판 - 상세 페이지 이동 */
+	    /** QnA - 상세 페이지 이동 */
 	    @RequestMapping( value = "/qnaDetail")
 	    public ModelAndView qnaDetail(HttpSession session, QnaVO vo) throws Exception{
 	    	
@@ -50,7 +52,7 @@ public class QnAController {
 	    }    
 	    
 	    
-	    /** 게시판 - 삭제 */
+	    /** QnA- 삭제 */
 	    @RequestMapping( value = "/deleteqnapage" , method = RequestMethod.POST)
 	    public ModelAndView deleteqnapage(HttpSession session, QnaVO vo) throws Exception{
 	    	List<QnaVO> deletelist = new ArrayList<QnaVO>();
@@ -61,26 +63,22 @@ public class QnAController {
 	    	return mav;
 	    }
 	    
+	    /** QnA - 작성페이지 */
 	    @RequestMapping( value = "/qnawritepage")
 	    public ModelAndView qnawritePage(HttpSession session, QnaVO vo) throws Exception{
 	    	ModelAndView mav = new ModelAndView();
 	    	int num = (int) session.getAttribute("user_num");
-	    	
 	    	mav.setViewName("qnawrite");
 	    	mav.addObject("user_id", vo.getUser_id());
 	    	mav.addObject("user_num", num);
-	    	System.out.println("222222220"+vo.getUser_num());
 	    	return mav;
 	    }
 	    
-	    
+	    /** QnA - 글 작성 */
 	    @RequestMapping( value = "/qnawrite", method = RequestMethod.POST)
-	    public ModelAndView qnawrite(HttpSession session, QnaVO vo) throws Exception{
-			ModelAndView mav = new ModelAndView();
+	    public String qnawrite(HttpSession session, QnaVO vo) throws Exception{
 			qnaService.addQna(session, vo);
-			mav.setViewName("qnawrite");
-			mav.addObject("user_id", vo.getUser_id());
-	    	return mav;
+	    	return "redirect:qnapage";
 	    }
 
 
