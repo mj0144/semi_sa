@@ -40,10 +40,7 @@
 }
 </style>
 <script>
-$(document).ready(function(){
 
-	console.log('세션 테스트 : ' + sessiontest)
-})
 </script>
 <div id="colorlib-main">
 	<section class="ftco-section ftco-bread">
@@ -81,7 +78,7 @@ $(document).ready(function(){
 								회원님의 기본정보를 수정할수있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a href="userInfoChange">Learn More</a>
 
 					</div>
 				</div>

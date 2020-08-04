@@ -350,67 +350,10 @@ body {
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_height" name="ideal_height"
 														class="form-control">
-														<option value="140">140</option>
-														<option value="141">141</option>
-														<option value="142">142</option>
-														<option value="143">143</option>
-														<option value="144">144</option>
-														<option value="145">145</option>
-														<option value="146">146</option>
-														<option value="147">147</option>
-														<option value="148">148</option>
-														<option value="149">149</option>
-														<option value="150">150</option>
-														<option value="151">151</option>
-														<option value="152">152</option>
-														<option value="153">153</option>
-														<option value="154">154</option>
-														<option value="155">155</option>
-														<option value="156">156</option>
-														<option value="157">157</option>
-														<option value="158">158</option>
-														<option value="159">159</option>
-														<option value="160">160</option>
-														<option value="161">161</option>
-														<option value="162">162</option>
-														<option value="163">163</option>
-														<option value="164">164</option>
-														<option value="165">165</option>
-														<option value="166">166</option>
-														<option value="167">167</option>
-														<option value="168">168</option>
-														<option value="169">169</option>
-														<option value="170">170</option>
-														<option value="171">171</option>
-														<option value="172">172</option>
-														<option value="173">173</option>
-														<option value="174">174</option>
-														<option value="175">175</option>
-														<option value="176">176</option>
-														<option value="177">177</option>
-														<option value="178">178</option>
-														<option value="179">179</option>
-														<option value="180">180</option>
-														<option value="181">181</option>
-														<option value="182">182</option>
-														<option value="183">183</option>
-														<option value="184">184</option>
-														<option value="185">185</option>
-														<option value="186">186</option>
-														<option value="187">187</option>
-														<option value="188">188</option>
-														<option value="189">189</option>
-														<option value="190">190</option>
-														<option value="191">191</option>
-														<option value="192">192</option>
-														<option value="193">193</option>
-														<option value="194">194</option>
-														<option value="195">195</option>
-														<option value="196">196</option>
-														<option value="197">197</option>
-														<option value="198">198</option>
-														<option value="199">199</option>
-														<option value="200">200</option>
+														<c:forEach begin="140" step="1" end="200" var="i">
+															<option value="${i }">${i }</option>
+														</c:forEach>
+														
 													</select>
 												</div>
 											</div>
@@ -421,22 +364,10 @@ body {
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_age" name="ideal_age"
 														class="form-control">
-														<option value="0">0</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-														<option value="10">10</option>
-														<option value="11">11</option>
-														<option value="12">12</option>
-														<option value="13">13</option>
-														<option value="14">14</option>
-														<option value="15">15</option>
+														<c:forEach begin="0" step="1" end="15" var="i">
+															<option value="${i }">${i }</option>
+														</c:forEach>
+														
 
 													</select>
 												</div>
@@ -472,67 +403,10 @@ body {
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="user_height" name="user_height"
 														class="form-control">
-														<option value="140">140</option>
-														<option value="141">141</option>
-														<option value="142">142</option>
-														<option value="143">143</option>
-														<option value="144">144</option>
-														<option value="145">145</option>
-														<option value="146">146</option>
-														<option value="147">147</option>
-														<option value="148">148</option>
-														<option value="149">149</option>
-														<option value="150">150</option>
-														<option value="151">151</option>
-														<option value="152">152</option>
-														<option value="153">153</option>
-														<option value="154">154</option>
-														<option value="155">155</option>
-														<option value="156">156</option>
-														<option value="157">157</option>
-														<option value="158">158</option>
-														<option value="159">159</option>
-														<option value="160">160</option>
-														<option value="161">161</option>
-														<option value="162">162</option>
-														<option value="163">163</option>
-														<option value="164">164</option>
-														<option value="165">165</option>
-														<option value="166">166</option>
-														<option value="167">167</option>
-														<option value="168">168</option>
-														<option value="169">169</option>
-														<option value="170">170</option>
-														<option value="171">171</option>
-														<option value="172">172</option>
-														<option value="173">173</option>
-														<option value="174">174</option>
-														<option value="175">175</option>
-														<option value="176">176</option>
-														<option value="177">177</option>
-														<option value="178">178</option>
-														<option value="179">179</option>
-														<option value="180">180</option>
-														<option value="181">181</option>
-														<option value="182">182</option>
-														<option value="183">183</option>
-														<option value="184">184</option>
-														<option value="185">185</option>
-														<option value="186">186</option>
-														<option value="187">187</option>
-														<option value="188">188</option>
-														<option value="189">189</option>
-														<option value="190">190</option>
-														<option value="191">191</option>
-														<option value="192">192</option>
-														<option value="193">193</option>
-														<option value="194">194</option>
-														<option value="195">195</option>
-														<option value="196">196</option>
-														<option value="197">197</option>
-														<option value="198">198</option>
-														<option value="199">199</option>
-														<option value="200">200</option>
+														<c:forEach begin="140" step="1" end="200" var="i">
+															<option value="${i }">${i }</option>
+														</c:forEach>
+														
 													</select>
 												</div>
 											</div>

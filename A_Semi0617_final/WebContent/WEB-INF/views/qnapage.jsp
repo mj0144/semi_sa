@@ -90,16 +90,18 @@ button:hover {
 									<input type="hidden" name="qna_num" value="${list.qna_num}">
 								</form> </a></td>
 						<td><c:out value="${list.user_id}" />
-						<form action="qnawritepage" method="post" id="qnawritepage">
-							<input type="hidden" name="user_id" value="${list.user_id}" >
-						</form> </td>
+						 </td>
 						<td><c:out value="${list.qdate}" /></td>
 					</tr>
 				</c:forEach>
 
 			</table>
 			</div>			
-			<button id="test_btn1">1:1 문의하기</button>
+			<form action="qnawritepage" method="post" id="qnawritepage">
+					<input type="hidden" name="user_id" value="${list.user_id}" >
+					<button type="submit" id="test_btn1">1:1 문의하기</button>
+			</form>
+			
 			<div class="col-md-offset-3">
 				<ul class="pagination">
 					<c:if test="${pageMaker.prev}">
@@ -125,19 +127,12 @@ button:hover {
 		</section>
 	</div>
 	<div id="list_deobogi"></div>
-
-
-	<%@ include file="footer.jsp"%>
 	<script>
 		$(document).on('click', '#qtitle', function() {
 			$(this).children('#qnalistform').submit();
 		});
 
-		$(document).on('click', '#test_btn1', function() {
-			$('#qnawritepage').submit();
-		});
 
-		//         var f = document.forms['qnalistform'];
-
-		//         f.submit();
 	</script>
+
+	<%@ include file="footer.jsp"%>
