@@ -12,7 +12,8 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <!-- <link rel="stylesheet" -->
 <!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-<!-- <!-- 부가적인 테마 --> -->
+<!-- <!-- 부가적인 테마 -->
+-->
 <!-- <link rel="stylesheet" -->
 <!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
 <style>
@@ -29,18 +30,17 @@ button {
 }
 
 #test_btn1 {
-	float:right;
+	float: right;
 	border-radius: 5px;
 	border: 1px solid white;
 	background-color: #FFE08C;
 	padding: 5px;
 	color: white;
-	
 }
 
-#test_btn1:hover{
+#test_btn1:hover {
 	background: white;
-	color:black;
+	color: black;
 }
 
 button:hover {
@@ -71,35 +71,35 @@ button:hover {
 
 		<section id="container">
 			<div style="height: 570px;">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>글 번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>등록일</th>
-					</tr>
-				</thead>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>글 번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>등록일</th>
+						</tr>
+					</thead>
 
-				<c:forEach items="${vo}" var="list">
-					<tr>
-						<td><c:out value="${list.qna_num}" /></td>
-						<td><a id="qtitle" style="cursor: pointer;"><c:out
-									value="${list.qtitle}" />
-								<form action="qnaDetail" method="post" id="qnalistform">
-									<input type="hidden" name="qna_num" value="${list.qna_num}">
-								</form> </a></td>
-						<td><c:out value="${list.user_id}" />
-						<form action="qnawritepage" method="post" id="qnawritepage">
-							<input type="hidden" name="user_id" value="${list.user_id}" >
-						</form> </td>
-						<td><c:out value="${list.qdate}" /></td>
-					</tr>
-				</c:forEach>
+					<c:forEach items="${vo}" var="list">
+						<tr>
+							<td><c:out value="${list.qna_num}" /></td>
+							<td><a id="qtitle" style="cursor: pointer;"><c:out
+										value="${list.qtitle}" />
+									<form action="qnaDetail" method="post" id="qnalistform">
+										<input type="hidden" name="qna_num" value="${list.qna_num}">
+									</form> </a></td>
+							<td><c:out value="${list.user_id}" /></td>
+							<td><c:out value="${list.qdate}" /></td>
+						</tr>
+					</c:forEach>
 
-			</table>
-			</div>			
-			<button id="test_btn1">1:1 문의하기</button>
+				</table>
+			</div>
+			<form action="qnawritepage" method="post" id="qnawritepage">
+				<input type="hidden" name="user_id" value="${user_id}">
+				<button type="submit" id="test_btn1">1:1 문의하기</button>
+			</form>
 			<div class="col-md-offset-3">
 				<ul class="pagination">
 					<c:if test="${pageMaker.prev}">
@@ -130,12 +130,13 @@ button:hover {
 	<%@ include file="footer.jsp"%>
 	<script>
 		$(document).on('click', '#qtitle', function() {
+
 			$(this).children('#qnalistform').submit();
 		});
 
-		$(document).on('click', '#test_btn1', function() {
-			$('#qnawritepage').submit();
-		});
+		// 		$(document).on('click', '#test_btn1', function() {
+		// 			$('#qnawritepage').submit();
+		// 		});
 
 		//         var f = document.forms['qnalistform'];
 

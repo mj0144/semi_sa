@@ -25,11 +25,13 @@ public class QnAController {
 	    /** 게시판 - 목록 페이지 이동 */
 	    @RequestMapping( value = "/qnapage")
 	    public ModelAndView qnapage(HttpSession session) throws Exception{
-	    	List<QnaVO> qnalist = new ArrayList<QnaVO>();
-	    	qnalist = qnaService.getQnaList(session);
+	    	String user_id = (String) session.getAttribute("user_id");
+	    	System.out.println("dwdawdaw"+user_id);
+	    	List<QnaVO> qnalist = qnaService.getQnaList(session);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("qnapage");
 			mav.addObject("vo", qnalist);
+			mav.addObject("user_id", user_id);
 			
 			return mav;
 	    }
@@ -65,7 +67,6 @@ public class QnAController {
 	    public ModelAndView qnawritePage(HttpSession session, QnaVO vo) throws Exception{
 	    	ModelAndView mav = new ModelAndView();
 	    	int num = (int) session.getAttribute("user_num");
-	    	
 	    	mav.setViewName("qnawrite");
 	    	mav.addObject("user_id", vo.getUser_id());
 	    	mav.addObject("user_num", num);
@@ -75,12 +76,11 @@ public class QnAController {
 	    
 	    
 	    @RequestMapping( value = "/qnawrite", method = RequestMethod.POST)
-	    public ModelAndView qnawrite(HttpSession session, QnaVO vo) throws Exception{
-			ModelAndView mav = new ModelAndView();
+	    public String qnawrite(HttpSession session, QnaVO vo) throws Exception{
+			//ModelAndView mav = new ModelAndView();
 			qnaService.addQna(session, vo);
-			mav.setViewName("qnawrite");
-			mav.addObject("user_id", vo.getUser_id());
-	    	return mav;
+			//mav.addObject("user_id", vo.getUser_id());
+	    	return "redirect:qnapage";
 	    }
 
 
