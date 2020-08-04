@@ -10,6 +10,9 @@
 
 
 <script>
+console.log('세션테스트 : ' + sessions)
+
+
 	$(document).on('click', '#person', function(event) {
 		$(this).children('#send_num').submit();
 	});

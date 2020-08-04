@@ -39,7 +39,7 @@ public class JoinController {
 
 			vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // 파일 저장.
 
-			if (vo.getUser_intro().equals(null)) { // 자기소개를 입력하지 않았으면, 기본값 넣어주기.
+			if (vo.getUser_intro().equals("")) { // 자기소개를 입력하지 않았으면, 기본값 넣어주기.
 				vo.setUser_intro("자기소개를 입력해주세요");
 			}
 

@@ -16,7 +16,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
-
 .settingspan {
 	font-size: 15px;
 }
@@ -40,6 +39,12 @@
 	color: #4183D7;
 }
 </style>
+<script>
+$(document).ready(function(){
+
+	console.log('세션 테스트 : ' + sessiontest)
+})
+</script>
 <div id="colorlib-main">
 	<section class="ftco-section ftco-bread">
 		<div class="container">
