@@ -9,10 +9,10 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!-- ÇÕÃÄÁö°í ÃÖ¼ÒÈ­µÈ ÃÖ½Å CSS -->
+<!-- í•©ì³ì§€ê³  ìµœì†Œí™”ëœ ìµœì‹  CSS -->
 <!-- <link rel="stylesheet" -->
 <!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-<!-- <!-- ºÎ°¡ÀûÀÎ Å×¸¶ -->
+<!-- <!-- ë¶€ê°€ì ì¸ í…Œë§ˆ -->
 -->
 <!-- <link rel="stylesheet" -->
 <!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
@@ -65,7 +65,7 @@ button:hover {
 			</div>
 		</div>
 	</section>
-	<!-- ¿©±âºÎÅÍ-->
+	<!-- ì—¬ê¸°ë¶€í„°-->
 	<div class="container">
 		<hr />
 
@@ -74,12 +74,35 @@ button:hover {
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>±Û ¹øÈ£</th>
-							<th>Á¦¸ñ</th>
-							<th>ÀÛ¼ºÀÚ</th>
-							<th>µî·ÏÀÏ</th>
+							<th>ê¸€ ë²ˆí˜¸</th>
+							<th>ì œëª©</th>
+							<th>ì‘ì„±ì</th>
+							<th>ë“±ë¡ì¼</th>
 						</tr>
 					</thead>
+
+
+				<c:forEach items="${vo}" var="list">
+					<tr>
+						<td><c:out value="${list.qna_num}" /></td>
+						<td><a id="qtitle" style="cursor: pointer;"><c:out
+									value="${list.qtitle}" />
+								<form action="qnaDetail" method="post" id="qnalistform">
+									<input type="hidden" name="qna_num" value="${list.qna_num}">
+								</form> </a></td>
+						<td><c:out value="${list.user_id}" />
+						 </td>
+						<td><c:out value="${list.qdate}" /></td>
+					</tr>
+				</c:forEach>
+
+			</table>
+			</div>			
+			<form action="qnawritepage" method="post" id="qnawritepage">
+					<input type="hidden" name="user_id" value="${list.user_id}" >
+					<button type="submit" id="test_btn1">1:1 ë¬¸ì˜í•˜ê¸°</button>
+			</form>
+			
 
 					<c:forEach items="${vo}" var="list">
 						<tr>
@@ -98,13 +121,14 @@ button:hover {
 			</div>
 			<form action="qnawritepage" method="post" id="qnawritepage">
 				<input type="hidden" name="user_id" value="${user_id}">
-				<button type="submit" id="test_btn1">1:1 ¹®ÀÇÇÏ±â</button>
+				<button type="submit" id="test_btn1">1:1 ë¬¸ì˜í•˜ê¸°</button>
 			</form>
+
 			<div class="col-md-offset-3">
 				<ul class="pagination">
 					<c:if test="${pageMaker.prev}">
 						<li><a
-							href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">ÀÌÀü</a></li>
+							href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">ì´ì „</a></li>
 					</c:if>
 
 					<c:forEach begin="${pageMaker.startPage}"
@@ -117,7 +141,7 @@ button:hover {
 
 					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						<li><a
-							href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">´ÙÀ½</a></li>
+							href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">ë‹¤ìŒ</a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -125,9 +149,6 @@ button:hover {
 		</section>
 	</div>
 	<div id="list_deobogi"></div>
-
-
-	<%@ include file="footer.jsp"%>
 	<script>
 		$(document).on('click', '#qtitle', function() {
 
@@ -138,7 +159,7 @@ button:hover {
 		// 			$('#qnawritepage').submit();
 		// 		});
 
-		//         var f = document.forms['qnalistform'];
 
-		//         f.submit();
 	</script>
+
+	<%@ include file="footer.jsp"%>

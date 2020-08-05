@@ -37,8 +37,15 @@ public class MemberVO {
 	private String user_height;
 	private String user_loc;
 	private String user_body;
+	private IdealVO idealvo;
 	
 
+	public IdealVO getIdealvo() {
+		return idealvo;
+	}
+	public void setIdealvo(IdealVO idealvo) {
+		this.idealvo = idealvo;
+	}
 	public String getUser_height() {
 		return user_height;
 	}

@@ -153,18 +153,12 @@
 		</div>
 	</section>
 	<section class="ftco-section-3">
-
-
-	<!-- 내용들어갈자리 -->
-
-	
-	
  
  
 	<div class="limiter" style="background: white;">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 borderrr">
-				<form class="login100-form validate-form" action="gologin" method="post" name="pw_form" onsubmit="return chksubmit()">
+				<form class="login100-form validate-form" action="pwdChange" method="post" name="pw_form" onsubmit="return chksubmit()">
 					<span class="login100-form-title p-b-49">
 						비밀번호 수정
 					</span>
@@ -227,7 +221,7 @@
 	</div>
 
 	<div id="dropDownSelect1"></div>
-		<!-- 내용들어갈자리 -->
+
 
 	</section>
 

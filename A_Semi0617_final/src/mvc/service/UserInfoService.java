@@ -53,6 +53,7 @@ public class UserInfoService {
 
 		} catch (Exception e) {
 			System.out.println("db오류"); // db오류 시, 업로드한 파일 삭제.
+			e.printStackTrace();
 			imgUtils.deleteimg();
 		}
 
