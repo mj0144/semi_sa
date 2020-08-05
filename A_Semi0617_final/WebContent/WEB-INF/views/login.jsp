@@ -660,6 +660,18 @@ body {
 
 
 	<div id="dropDownSelect1"></div>
+	
+	<script>
+		$(function(){
+			var msg = '${msg}'
+			if(msg !== '' && msg !== 'failure'){
+				alert(msg);
+			}
+			
+		})
+	</script>
+	
+	
 	<script>
 		$(document)
 				.ready(
@@ -1031,46 +1043,15 @@ body {
 					alert("날짜를 입력해주세요");
 				}else if (nickchk === 'true' && idchk === 'true'&& rexemail === 'true' && emailchk === 'true'
 						&& $("#form_dt").datepicker("getDate") !== null) 
-				{
-					console.log($('#joinform'));
-					console.log($("#joinform").serialize());
-					
+				{					
 					$('form')[0].submit();
-					//$('#joinform').submit(); 
-			
-					
-			/* 	var formData = new FormData($("#file"));
-                formData.append("file", $("#file"));
-                var list = [formData, $("#joinform").serialize()]
-					  $.ajax({
-						url : "joining",
-						type : "POST",
-						data :list,
-						processData: false,
-						contentType: false,						
-						success : function(data) {
-							console.log("succes : " +data)
-						},
-						error:function(request,status,error){
-						    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-						    }
-					})	 */ 
-					
 					
 				}
 		}
-	/* 	$('#joinsucess').click(function() {
-					
-				}); */
-		
-		
-		
-		
-		
+
 
 		//로그인
 		$('#login_submit').on('click', function() {
-			alert('로그인')
 			$('#logindo').submit();
 		})
 
@@ -1084,12 +1065,8 @@ body {
 
 			if (rex.test(email)) {
 				rexemail = 'true';
-				console.log("가능: " + rexemail);
-
 			} else {
 				rexemail = 'false';
-
-				console.log("오류: " + rexemail);
 			}
 		}
 

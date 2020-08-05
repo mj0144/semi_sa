@@ -31,8 +31,7 @@ public class JoinController {
 	// 회원가입
 		@RequestMapping(value="/joinaction", method = RequestMethod.POST)
 		public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
-			//ModelAndView m = new ModelAndView("index");
-			System.out.println("실행되나");
+
 			vo = joinService.yunYeon(vo); // 생년월일 가공.
 			String ilju = joinDao.ilju(vo);
 			vo.setIlju(ilju); // 일주 세팅.
@@ -46,36 +45,11 @@ public class JoinController {
 			try {
 				joinService.join(vo, ivo); // 회원정보,이상형정보 저장.
 			} catch (Exception e) {
-				//m.setViewName("error500");
 				e.printStackTrace();
-			}
-			
+			}		
 			return "login";
-
 		}
-//		public ModelAndView join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
-//			ModelAndView m = new ModelAndView("index");
-//			System.out.println("실행되나");
-//			vo = joinService.yunYeon(vo); // 생년월일 가공.
-//			String ilju = joinDao.ilju(vo);
-//			vo.setIlju(ilju); // 일주 세팅.
-//
-//			vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // 파일 저장.
-//
-//			if (vo.getUser_intro().equals(null)) { // 자기소개를 입력하지 않았으면, 기본값 넣어주기.
-//				vo.setUser_intro("자기소개를 입력해주세요");
-//			}
-//
-//			try {
-//				joinService.join(vo, ivo); // 회원정보,이상형정보 저장.
-//			} catch (Exception e) {
-//				//m.setViewName("error500");
-//				e.printStackTrace();
-//			}
-//			
-//			return m;
-//
-//		}
+
 
 		// 아이디 중복확인
 		@RequestMapping("/idchk")

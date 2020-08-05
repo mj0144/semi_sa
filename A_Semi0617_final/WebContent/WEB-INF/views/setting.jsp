@@ -98,7 +98,7 @@
 							<span>회원님의 비밀번호를 수정할수있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a href="pwdChange">Learn More</a>
 
 					</div>
 				</div>
