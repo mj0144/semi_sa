@@ -16,13 +16,15 @@
 							
 								<span class="subheading">Mypage</span>
 								<div style="position: absolute; right: 20px; top: 0;">
-								<a style="color: #FFA7A7; font-size: 18px;">³ªÀÇ Á¤º¸¼öÁ¤</a>
+
+								<a style="color: #FFA7A7; font-size: 18px;">ë‚˜ì˜ ì •ë³´ìˆ˜ì •</a>
 								<a href="userInfoChange"><img src="images/change.png"></a><br>
-								<a style="color: #FFA7A7; font-size: 18px;">ºñ¹Ð¹øÈ£ º¯°æ</a>
+								<a style="color: #FFA7A7; font-size: 18px;">ë¹„ë°€ë²ˆí˜¸ ë³€ê²½</a>
 								<a href="pwdChange"><img src="images/change.png"></a><br>
+
 								</div>
 								<h1 class="big-letter"></h1>
-								<h1 class="mb-4"><span>${member.name }´ÔÀÇ ¸¶ÀÌÆäÀÌÁö</span></h1>
+								<h1 class="mb-4"><span>${member.name }ë‹˜ì˜ ë§ˆì´íŽ˜ì´ì§€</span></h1>
 								<p class="mb-4">${member.user_intro }</p>
 								<h3 class="signature h1">${member.nickname }</h3>
 	            </div>
@@ -45,7 +47,7 @@
 			          <div class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text d-flex align-items-center">
-			                <span>¹ÞÀº ÁÁ¾Æ¿ä</span>
+			                <span>ë°›ì€ ì¢‹ì•„ìš”</span>
 			                <strong class="number" data-number=${cnt2 }>0</strong>
 			              </div>
 			            </div>
@@ -53,7 +55,7 @@
 			          <div class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text d-flex align-items-center">
-			                <span>º¸³½ ÁÁ¾Æ¿ä</span>
+			                <span>ë³´ë‚¸ ì¢‹ì•„ìš”</span>
 			                <strong class="number" data-number="${cnt1 }">0</strong>
 			              </div>
 			            </div>
@@ -61,7 +63,7 @@
 			          <div class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
 			            <div class="block-18">
 			              <div class="text d-flex align-items-center">
-			                <span>°Ô½Ã¹°</span>
+			                <span>ê²Œì‹œë¬¼</span>
 			                <strong class="number" data-number="${maxnum }">0</strong>
 			              </div>
 			            </div>
