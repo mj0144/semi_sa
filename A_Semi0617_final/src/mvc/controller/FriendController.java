@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,7 @@ public class FriendController {
 
 	@RequestMapping(value = "/friend")
 	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { // user_num : 글쓴이.
+		
 		ModelAndView mav = new ModelAndView("friend");
 		
 		IljuVO ilvo = friendDao.friendprofile(user_num); // 글쓴이의 정보.
@@ -57,6 +59,8 @@ public class FriendController {
 		} else {
 			heartchk = 0;
 		}
+		
+		int blockchk = friendDao.blockChk(map);
 
 		mav.addObject("blist", blist);
 		mav.addObject("membervo", vo);
@@ -65,6 +69,7 @@ public class FriendController {
 		mav.addObject("liked_cnt", liked_cnt);
 		mav.addObject("board_writer", user_num); // 글쓴이
 		mav.addObject("heartchk", heartchk);
+		mav.addObject("blockchk", blockchk);
 
 		return mav;
 	}

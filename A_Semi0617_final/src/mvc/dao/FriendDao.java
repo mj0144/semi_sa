@@ -41,12 +41,18 @@ public class FriendDao {
 		return vo;
 	}
 	
+	//좋아요 유무 확인
 	public int heartChk(Map<String,Integer> map) {
 		return ss.selectOne("friend.heartchk", map);
 	}
 	
 	public List<BoardVO> board_info(int user_num){
 		return ss.selectList("friend.board_info", user_num);
+	}
+	
+	//블락 유무 확인
+	public int blockChk(Map<String,Integer> map) {
+		return ss.selectOne("friend.blockchk", map);
 	}
 	
 	
