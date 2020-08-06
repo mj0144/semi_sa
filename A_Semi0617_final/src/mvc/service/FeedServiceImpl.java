@@ -99,8 +99,8 @@ public class FeedServiceImpl implements FeedService{
 			
 	//´ñ±Û ¼öÁ¤
 	@Override
-	public void commentUpdate(BoardVO vo) throws Exception {
-		boardDao.updateComment(vo);
+	public void commentUpdate(HashMap<String, String> params) throws Exception {
+		boardDao.updateComment(params);
 		
 	}
 }
