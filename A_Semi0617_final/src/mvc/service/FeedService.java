@@ -21,5 +21,9 @@ public interface FeedService {
 	public int insertReply(HashMap<String, String> params);
 	//´ñ±Û ¸ñ·Ï
 	public List<HashMap<String, Object>> readReply(String board_num);
-
+	//´ñ±Û »èÁ¦
+	public void commentDelete(int cm_num)throws Exception;
+	//´ñ±Û ¼öÁ¤
+	public void commentUpdate(BoardVO vo) throws Exception;
+	
 }

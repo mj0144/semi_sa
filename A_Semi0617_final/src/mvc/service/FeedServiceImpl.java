@@ -90,4 +90,18 @@ public class FeedServiceImpl implements FeedService{
 		}
 		return resultLsit;
 	}
+	
+	//´ñ±Û »èÁ¦
+	@Override
+	public void commentDelete(int cm_num) throws Exception {
+		boardDao.deleteComment(cm_num);
+		
+	}
+		
+	//´ñ±Û ¼öÁ¤
+	@Override
+	public void commentUpdate(BoardVO vo) throws Exception {
+		boardDao.updateComment(vo);
+		
+	}
 }

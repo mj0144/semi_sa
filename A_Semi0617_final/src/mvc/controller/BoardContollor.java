@@ -147,6 +147,19 @@ public class BoardContollor {
 		boardService.boardUpdate(vo);
 		return "redirect:feed";
 	}
+	
+	//댓글 삭제
+	@RequestMapping(value = "/commentDel")
+	public String commentDel(@RequestParam int cm_num) throws Exception{
+		boardService.commentDelete(cm_num);
+		return "redirect:board";
+	}
+		
+	//댓글 수정
+//	@RequestMapping(value = "/commentUpdate")
+//	public String commentUpdate(BoardVO vo, ) throws Exception{
+//		S
+//	}
 
 	// 게시글 검색
 	@RequestMapping(value = "/feedsearch", method = RequestMethod.POST)
