@@ -69,6 +69,8 @@
 									<div class="comment-body">
 										<h3>${item.NICKNAME}</h3>
 										<div class="meta">${item.CM_DATE}</div>
+										<button type="button" id="cm_delete_btn" name="cm_delete_btn">삭제</button>
+										<button type="button" id="cm_update_btn" name="cm_update_btn">수정</button>
 										<p>${item.CM_CONTENT}</p>
 										<p>
 											<a href="javascript:openReplyInput('${item.CM_NUM}');" class="reply">대댓글달기</a>

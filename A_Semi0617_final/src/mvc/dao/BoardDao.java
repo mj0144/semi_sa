@@ -65,5 +65,13 @@ public class BoardDao extends FeedAbstract {
 	public List<BoardVO> getSearchlist(BoardVO vo) {
 	    return ss.selectList("board.searchlist", vo);
 		}
+	//´ñ±Û »èÁ¦
+	public void deleteComment(int num) throws Exception{
+		delete(nameSpace + "comment_delete", num);
+	}
+	//´ñ±Û ¼öÁ¤
+	public void updateComment(BoardVO vo) throws Exception{
+		update(nameSpace + "comment_update", vo);
+	}
 	
 }
