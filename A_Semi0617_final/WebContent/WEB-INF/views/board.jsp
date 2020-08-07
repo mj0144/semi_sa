@@ -23,7 +23,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 ftco-animate">
-					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }">
+					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }"><input type="hidden" id="usernum" value="${view.USER_NUM }">
 					<h2 class="titless">제목 :  ${view.BOARD_TITLE } </h2>
 					<p><a href = "friend?user_num=${view.USER_NUM }">작성자 : ${view.NICKNAME }</a></p>
 					<p>작성시간 : ${view.BOARD_DATE }</p>

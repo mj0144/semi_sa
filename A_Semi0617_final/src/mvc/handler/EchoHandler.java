@@ -13,7 +13,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Configuration
-public class EchoHandler extends TextWebSocketHandler{
+public class EchoHandler extends TextWebSocketHandler {
 	//로그인한 전체
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	
@@ -33,7 +33,6 @@ public class EchoHandler extends TextWebSocketHandler{
 	//메세지 전송 실행 메소드
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		System.out.println("핸들텍스트메세지");
 		userSession = session.getAttributes();
 		userid = userSession.get("user_num").toString();
 		System.out.println("유저아이디"+userid);

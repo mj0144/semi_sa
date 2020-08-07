@@ -52,7 +52,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/Ajo-*.xml</param-value>
 		</init-param>
-		<!-- 웹소켓 비동기식 설정 -->
+		<!-- 웹소켓 비동기 설정 -->
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
 	</servlet>

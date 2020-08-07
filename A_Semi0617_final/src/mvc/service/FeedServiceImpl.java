@@ -52,7 +52,7 @@ public class FeedServiceImpl implements FeedService{
 	}
 	//¥Ò±€ ¿€º∫
 	@Override
-	public int insertReply(HashMap<String, String> params) {
+	public int insertReply(HashMap<String, Object> params) {
 		int result = 0;
 		try {
 			result = boardDao.insertReply(params);

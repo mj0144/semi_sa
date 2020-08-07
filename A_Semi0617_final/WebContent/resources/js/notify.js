@@ -19,7 +19,7 @@
 		console.log(result);
 		sock.send(result);
 	}
-	var sock = new SockJS('http://localhost:8080/AteamTest/echo');
+	var sock = new SockJS('http://localhost:8080/AFinal/echo');
 	var notification;
 	sock.onmessage = function onMessage(evt) {
 		var data = evt.data;
