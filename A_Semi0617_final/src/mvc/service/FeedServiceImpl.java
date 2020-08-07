@@ -7,11 +7,11 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.BoardDao;
 import mvc.vo.BoardVO;
+import mvc.vo.NotifyVO;
 
 @Service
 public class FeedServiceImpl implements FeedService{
@@ -90,6 +90,11 @@ public class FeedServiceImpl implements FeedService{
 		}
 		return resultLsit;
 	}
+	//´ñ±Û¾Ë¶÷NotifyÀü¼Û
+	@Override
+	public Object notifyReply(NotifyVO vo) throws Exception {
+		return boardDao.Notifyinsert(vo);
+	}
 	
 	//´ñ±Û »èÁ¦
 	@Override
@@ -101,6 +106,5 @@ public class FeedServiceImpl implements FeedService{
 	@Override
 	public void commentUpdate(BoardVO vo) throws Exception {
 		boardDao.updateComment(vo);
-		
 	}
 }

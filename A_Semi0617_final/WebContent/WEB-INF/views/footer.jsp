@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-
-
 <footer class="ftco-footer ftco-bg-dark ftco-section"
 	style="padding: 50px 0; background-color: skyblue;">
 	<div class="container px-md-5 ft1"
 		style="margin: 0 auto; text-align: center;">
 		<div class="row">
 			<div class="col-md-12">
-
+				<input type="hidden" id="session_id_ssg" value="${sessionScope.user_num }">
 				<p>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
@@ -55,6 +53,11 @@
 <script src="js/jquery.timepicker.min.js"></script>
 <script src="js/scrollax.min.js"></script>
 <script src="js/main.js"></script>
+<script src = " https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
+<script src="resources/js/bootstrap-notify.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+<script src="resources/js/notify.js"></script>
+<link href="css/notify.css" rel="stylesheet" type="text/css">
 
 </body>
 </html>

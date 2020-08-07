@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import mvc.service.FeedAbstract;
 import mvc.vo.BoardVO;
 import mvc.vo.IljuVO;
+import mvc.vo.NotifyVO;
 import mvc.vo.PageVO;
 
 @Repository
@@ -45,6 +46,10 @@ public class BoardDao extends FeedAbstract {
 	//´ñ±ÛÀÛ¼º
 	public int insertReply(HashMap<String, String> params) throws Exception {
 		return insert(nameSpace + "insertReply", params);
+	}
+	//´ñ±Û ¾Ë¶÷Ã³¸®
+	public Object Notifyinsert(NotifyVO vo) throws Exception{
+		return insert("Notify.Notifyin", vo);
 	}
 	//´ñ±Û¸ñ·Ï
 	@SuppressWarnings("unchecked")
