@@ -23,7 +23,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 ftco-animate">
-					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }">
+					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }"><input type="hidden" id="usernum" value="${view.USER_NUM }">
 					<h2 class="titless">제목 :  ${view.BOARD_TITLE } </h2>
 					<p><a href = "friend?user_num=${view.USER_NUM }">작성자 : ${view.NICKNAME }</a></p>
 					<p>작성시간 : ${view.BOARD_DATE }</p>
@@ -50,7 +50,7 @@
 							<div class="mb-1">Leave a comment</div>
 							<form action="#" class="bg-light">
 								<div class="form-group">
-									<input type="text" class="form-control" id="content" style="color: black;">
+									<input type="text" class="form-control" id="content" onkeyup="Contententerkey()" style="color: black;">
 								</div>
 								<div class="form-group">
 									<button type="button" id="replySubmit" 
@@ -69,6 +69,7 @@
 										</a>
 									</div>
 									<div class="comment-body">
+									<input type="hidden" id="notifyNickname" value="${item.NICKNAME }">
 									<div>
 									<div class="cmtup" style="color: black;">${item.NICKNAME} | ${item.CM_DATE}</div>
 									<div style="float: right; font: bold; color: black;" >
@@ -125,7 +126,7 @@
 												<form action="#" class="bg-light">
 													<div class="form-group">
 													
-													<input type="text" id="replyContent${item.CM_NUM}" placeholder="내용을 입력하세요.">
+													<input type="text" id="replyContent${item.CM_NUM}" onkeyup="replyenterkey" placeholder="내용을 입력하세요.">
               										 <span class="input-group-btn">
                  									   <button type="button" onclick="applyRecomment('${item.CM_NUM}')"
 															class="btn py-2 px-2 btn-primary">댓글달기</button>
@@ -158,12 +159,14 @@
 			//----
 			
 		});
-		
-		
-		
+		var notifyon;
+		var link;
+		var notifyLink = document.location.href;
+		var usernum = $("#usernum").val();
 		function insertReplySubmit() {
 			var content = $("#content").val();
 			var boardNum = '${param.board_num}';
+			var notifycontent = $("#notifyNickname").val();
 			var param = new Object();
 			if(content == '') {
 				alert("아무내용이 없습니다. 댓글을 입력할 수 없습니다.");
@@ -175,8 +178,10 @@
 			}
 			param.content = content;
 			param.boardNum = boardNum;
+			param.notifyLink = notifyLink;
+			param.notifycontent = notifycontent+"님이 댓글을 달았습니다.";
+			param.usernum = usernum;
 			var paramJson = JSON.stringify(param);
-			console.log(paramJson);
 			$.ajax({
 				type : "POST",
 				url : "reply",
@@ -187,6 +192,9 @@
 					console.log(res);
 					if(res.result == "success") {
 						alert("정상적으로 댓글이 입력되었습니다.");
+						//댓글 알람 소켓으로 전송
+						link = '댓글|'+notifyLink+'|'+notifycontent;
+						notifyon(link);
 						document.location.href =document.location.href
 					}else {
 						alert("서버와의 통신중에 오류가 발생하였습니다.");
@@ -209,11 +217,10 @@
 		
 		function applyRecomment(replyNum) {
 			var param = new Object();
-			
 			var content = $("#replyContent" + replyNum).val();
 			var boardNum = '${param.board_num}';
 			var recommentNum = replyNum;
-			
+			var notifycontent = $("#notifyNickname").val();
 			if(content == '') {
 				alert("아무내용이 없습니다. 댓글을 입력할 수 없습니다.");
 				return;
@@ -221,8 +228,10 @@
 			param.content = content;
 			param.boardNum = boardNum;
 			param.recommentNum = recommentNum;
+			param.notifyLink = notifyLink;
+			param.notifycontent = notifycontent+"님이 댓글에 답글을 달았습니다.";
+			param.usernum = usernum;
 			var paramJson = JSON.stringify(param);
-			console.log(paramJson);
 			$.ajax({
 				type : "POST",
 				url : "reply",
@@ -233,6 +242,8 @@
 					console.log(res);
 					if(res.result == "success") {
 						alert("정상적으로 댓글이 입력되었습니다.");
+						link = '답글|'+notifyLink;
+						notifyon(link);
 						document.location.href =document.location.href
 					}else {
 						alert("서버와의 통신중에 오류가 발생하였습니다.");
@@ -243,6 +254,17 @@
 			       }
 			});
 		}
+		//엔터키로 인한 입력처리
+	  	function Contententerkey() {
+	        if (window.event.keyCode == 13) {
+	        	insertReplySubmit();
+	        }
+	    }
+	  	function replyenterkey() {
+	        if (window.event.keyCode == 13) {
+	        	applyRecomment();
+	        }
+	    }
 	
 		$('#boardDel').click(function () {
 			if(confirm("삭제하시겠습니까?")){
@@ -276,6 +298,4 @@
 				});
 			}
 		}
-		
-		
 	</script>
