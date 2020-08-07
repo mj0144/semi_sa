@@ -1,8 +1,10 @@
 package mvc.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import mvc.dao.BlockDao;
 import mvc.dao.LikeDao;
@@ -50,7 +57,8 @@ public class PageListController {
 		int user_num=(int)session.getAttribute("user_num");	
 		
 		// 유저 성별 가져오기
-		String sex2 = pagelistDao.getUserSex(user_num);
+		char sex2 = (char) session.getAttribute("gender");
+		String sex3 = String.valueOf(sex2);
 		
 		// 유저가 차단한 사람 목록 가져오기
 		List<Integer> blist = blockDao.blockList(user_num);
@@ -63,7 +71,7 @@ public class PageListController {
 		svo.setBlist(blist);
 		svo.setSex(sex);
 		svo.setSamb(samb);
-		svo.setSex2(sex2);
+		svo.setSex2(sex3);
 		
 		int total2 = pagelistDao.getTotalListCount(svo);
 		System.out.println("number"+total2);
@@ -75,7 +83,7 @@ public class PageListController {
 		vo.setBlist(blist);
 		vo.setSex(sex);
 		vo.setSamb(samb);
-		vo.setSex2(sex2);
+		vo.setSex2(sex3);
 		
 		//list = pagelistDao.getListWhole3(vo);
 		List<HashMap<String, Object>> list3 = pagelistDao.getTotalList(vo);
@@ -94,6 +102,84 @@ public class PageListController {
 		model.addAttribute("list", list3);
 		
 		return "listTypeC";
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value= "/listChart", produces = "application/json; charset=euc-kr")
+	public String listChart(HttpSession session, 
+			@RequestParam(value = "sex", required = false, defaultValue = "m,f,a") String sex,
+			@RequestParam(value = "samb", required = false, defaultValue = "all") String samb) {
+		
+		// 성별 값이 male, female 이 동시에 들어올 때 null값으로 처리
+		if (sex.length() > 1) {
+			sex = null;
+		}
+		
+		// 유저 번호 세션으로 받아옴
+		int user_num=(int)session.getAttribute("user_num");	
+		
+		// 유저 성별 가져오기
+		char sex2 = (char) session.getAttribute("gender");
+		String sex3 = String.valueOf(sex2);
+		
+		// 유저가 차단한 사람 목록 가져오기
+		List<Integer> blist = blockDao.blockList(user_num);
+		
+		// jquery로 페이징 처리를 했을 경우
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("user_num", user_num);
+		map.put("sex2", sex3);
+		map.put("blist", blist);
+		map.put("sex", sex);
+		map.put("samb", samb);
+		map.put("score", 90);
+		
+		int num90 = pagelistDao.getChartCount(map);
+		
+		map.put("score", 80);
+		
+		int num80 = pagelistDao.getChartCount(map);
+		
+		map.put("score", 70);
+		
+		int num70 = pagelistDao.getChartCount(map);
+		
+		map.put("score", 60);
+		
+		int num60 = pagelistDao.getChartCount(map);
+		
+		System.out.println("90점대:"+num90);
+		System.out.println("80점대:"+num80);
+		System.out.println("70점대:"+num70);
+		System.out.println("그 이하:"+num60);
+
+		
+		
+		Map<String, Integer> map2 = new HashMap<>();
+		map2.put("90점대", num90);
+		map2.put("80점대", num80);
+		map2.put("70점대", num70);
+		map2.put("그 이하", num60);
+		
+		String result = null;
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			result = mapper.writeValueAsString(map2);
+		} catch (JsonMappingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (JsonGenerationException e2) {
+			// TODO: handle exception
+			e2.printStackTrace();
+		} catch (IOException e3) {
+			e3.printStackTrace();
+		}
+
+		System.out.println(result);
+		return result;	
 		
 	}
 	
