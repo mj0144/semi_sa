@@ -44,7 +44,7 @@ public class BoardDao extends FeedAbstract {
 		return (List<BoardVO>) selectList(nameSpace + "boardList");
 	}
 	//댓글작성
-	public int insertReply(HashMap<String, String> params) throws Exception {
+	public int insertReply(HashMap<String, Object> params) throws Exception {
 		return insert(nameSpace + "insertReply", params);
 	}
 	//댓글 알람처리

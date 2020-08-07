@@ -23,7 +23,6 @@ import mvc.service.FeedService;
 import mvc.utils.CommonUtils;
 import mvc.utils.FeedImgUpload;
 import mvc.vo.BoardVO;
-import mvc.vo.MemberVO;
 import mvc.vo.NotifyVO;
 
 @Controller

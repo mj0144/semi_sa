@@ -19,7 +19,7 @@ public interface FeedService {
 	//게시글 전체목록
 	public List<BoardVO> listAll()throws Exception;
 	//댓글작성
-	public int insertReply(HashMap<String, String> params);
+	public int insertReply(HashMap<String, Object> params);
 	//댓글 목록
 	public List<HashMap<String, Object>> readReply(String board_num);
 	//댓글알람작성
