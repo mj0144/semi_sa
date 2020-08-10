@@ -76,7 +76,7 @@
 	}
 
 	sock.onclose = function onClose() {
-		alert("서버에 문제가 발생하였습니다. 다시 접속해주세요");
+		alert("알람창 서버 오류 다시 접속해주세요");
 		console.log("notify서버 연결끊김");
 	}
 	sock.onopen = function(){
