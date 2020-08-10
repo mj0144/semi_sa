@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import mvc.service.FeedAbstract;
 import mvc.vo.BoardVO;
 import mvc.vo.IljuVO;
+import mvc.vo.NotifyVO;
 import mvc.vo.PageVO;
 
 @Repository
@@ -43,8 +44,12 @@ public class BoardDao extends FeedAbstract {
 		return (List<BoardVO>) selectList(nameSpace + "boardList");
 	}
 	//댓글작성
-	public int insertReply(HashMap<String, String> params) throws Exception {
+	public int insertReply(HashMap<String, Object> params) throws Exception {
 		return insert(nameSpace + "insertReply", params);
+	}
+	//댓글 알람처리
+	public Object Notifyinsert(NotifyVO vo) throws Exception{
+		return insert("Notify.Notifyin", vo);
 	}
 	//댓글목록
 	@SuppressWarnings("unchecked")
@@ -64,6 +69,14 @@ public class BoardDao extends FeedAbstract {
 	//피드 검색
 	public List<BoardVO> getSearchlist(BoardVO vo) {
 	    return ss.selectList("board.searchlist", vo);
+		}
+	//댓글 삭제
+		public void deleteComment(int num) throws Exception{
+			delete(nameSpace + "comment_delete", num);
+		}
+		//댓글 수정
+		public void updateComment(BoardVO vo) throws Exception{
+			update(nameSpace + "comment_update", vo);
 		}
 	
 }

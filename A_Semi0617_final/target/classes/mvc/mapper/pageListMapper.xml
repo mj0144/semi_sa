@@ -4,121 +4,82 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
    <mapper namespace="pagelist">
-
-  <select id="iljuselect" parameterType="int" resultType="iljuvo">
-  select ilju_sky_num, ilju_land_num from sajuilju where ilju=(select ilju from user_info where user_num=#{user_num})
-  </select>
-
-  <resultMap type="iljuvo" id="simemResult">
-  <result property="result_img" column="result_img"/>
-  <collection property="mem" javaType="java.util.List" resultMap="memberResult" ofType="mem"/>
-  </resultMap>
-  
-  <resultMap type="mem" id="memberResult">
-  <result property="user_num" column="user_num" />
-  <result property="name" column="name" />
-  <result property="nickname" column="nickname" />
-  <result property="sex" column="sex" />
-  <result property="birth" column="birth" />
-  <result property="user_img" column="user_img" />
-  <result property="user_intro" column="user_intro" />
-  </resultMap>
-  
-  
-  <select id="listResult1" parameterType="pvo" resultMap="simemResult">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju 
-  
-  <if test="sex != null">
-  and u.sex = #{sex}
-  </if>
-  
-  <if test="blist != null">
-  <foreach collection="blist" item="e">
-   and u.user_num != ${e}
-  </foreach>
-  </if>
-  
-  and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} 
-  ) a) where r_num between #{start} and #{end}
+   
+  <!-- 사용자 성별 출력 -->
+  <select id="usersex" parameterType="int" resultType="String">
+  select sex from user_info where user_num = #{user_num}
   </select>
   
-  <select id="totalCount1" resultType="int" parameterType="pvo">
-  select count(*) cnt FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju 
+  
+  <!-- 페이징 처리를 위한 총 리스트 갯수 출력 -->
+  <select id="totalListCount" resultType="int" parameterType="pvo">
+  
+  select count(*) cnt from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
+  
+  <choose>
+  <when test="samb == 'saju'">
+  , (s.sky_score + d.land_score) f_score, s.sky, s.sky_score, d.land, d.land_score
+  </when>
+  <when test="samb == 'mbti'">
+  , m.score f_score, m.youmbti, m.score mbti_score 
+  </when>
+  <otherwise>
+  , (s.sky_score + d.land_score + m.score) f_score, m.youmbti, m.score mbti_score, s.sky, s.sky_score, d.land, d.land_score
+  </otherwise>
+  </choose>
+  
+  from user_info u 
+  
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
+  </choose>
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
+  </if>
+  
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
   
   <if test="sex != null">
-  and u.sex = #{sex}
-  </if>
-  
-  <if test="blist != null">
-  <foreach collection="blist" item="e">
-   and u.user_num != ${e}
-  </foreach>
-  </if>
-  
-  and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})
-  </select>
-  
-  <select id="listResult2" parameterType="pvo" resultMap="simemResult">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img
-  from user_info u, sajuilju s where u.ilju = s.ilju 
-  
-  <if test="sex != null">
-  and u.sex = #{sex}
-  </if>
-  
-  <if test="blist != null">
-  <foreach collection="blist" item="e">
-   and u.user_num != ${e}
-  </foreach>
-  </if>
-  
-  and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
-  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2}))) a) where r_num between #{start} and #{end}
-  </select>
- 
-  <select id="totalCount2" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju = s.ilju 
-  
-  <if test="sex != null">
-  and u.sex = #{sex}
-  </if>
-  
-  <if test="blist != null">
-  <foreach collection="blist" item="e">
-   and u.user_num != ${e}
-  </foreach>
-  </if>
-  
-  and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
-  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})))
-  </select>
-
-  <select id="listWhole3" resultMap="simemResult" parameterType="pvo">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju = s.ilju 
-  
-  <if test="sex != null">
-  and u.sex = #{sex}
-  </if>
-  
-  <if test="blist != null">
-  <foreach collection="blist" item="e">
-   and u.user_num != ${e}
-  </foreach>
-  </if>
-  
-  ) a) where r_num between #{start} and #{end}
-  </select>
-  
-  <select id="totalCountWhole3" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju 
-  
-  <if test="sex != null">
-  and u.sex = #{sex}
+  and sex = #{sex}
   </if>
   
   <if test="blist != null">
@@ -128,50 +89,89 @@
   </if>
 
   )
+  
   </select>
   
-  <select id="searchlist" resultMap="simemResult" parameterType="pvo">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
-  from user_info u, sajuilju s where u.ilju = s.ilju and 
   
-  <foreach collection="blist" item="e" separator="and">
-  	u.user_num != ${e} 
-  </foreach>
-
-  <if test="searchValue != null">
+  <!-- 리스트 출력 -->
+  <select id="totalList" resultType="hashMap" parameterType="pvo">
+  select * from (select rownum r_num, a.* from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
+  
   <choose>
-  <when test="searchType == 1">
-  and sex=#{sex}
+  <when test="samb == 'saju'">
+  , (s.sky_score + d.land_score) f_score, s.sky, s.sky_score, d.land, d.land_score
   </when>
-  <when test="searchType == 2">
-  and sex = #{sex}
+  <when test="samb == 'mbti'">
+  , m.score f_score, m.youmbti, m.score mbti_score 
   </when>
+  <otherwise>
+  , (s.sky_score + d.land_score + m.score) f_score, m.youmbti, m.score mbti_score, s.sky, s.sky_score, d.land, d.land_score
+  </otherwise>
   </choose>
-  </if>
-  ) a where nickname like '%'||#{searchValue}||'%' or ilju like '%'||#{searchValue}||'%') 
-  where r_num between #{start} and #{end}
-  </select>
   
-  <select id="totalCountSearch" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
-  from user_info u, sajuilju s where u.ilju = s.ilju and 
+  from user_info u 
   
-  <foreach collection="blist" item="e" separator="and">
-  	u.user_num != ${e} 
-  </foreach>
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
   
-  <if test="searchValue != null">
   <choose>
-  <when test="searchType == '1'">
-  and sex=#{sex}
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
   </when>
-  <when test="searchType == '2'">
-  and sex = #{sex}
-  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
   </choose>
-  </if>
-  ) a 
-  where nickname like '%'||#{searchValue}||'%' or ilju like '%'||#{searchValue}||'%')
-  </select>
   
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
+  </if>
+  
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
+  
+  <if test="sex != null">
+  and sex = #{sex}
+  </if>
+  
+  <if test="blist != null">
+  <foreach collection="blist" item="e">
+   and u.user_num != ${e}
+  </foreach>
+  </if>
+   
+  ) a) where r_num between #{start} and #{end}
+  
+   </select>
+   
   </mapper>

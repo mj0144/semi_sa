@@ -59,21 +59,15 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 
 		if (result == true) { // 로그인 성공
-			System.out.println("login() logging is running ");
 			mav = mainservice.main1(session);
-//			mav.setViewName("index");
-//			mav.addObject("msg", "success");
-
 		} else { // 로그인 실패
 			try {
 				session.invalidate(); // 실패해도 session이 남아있어서 모두 제거.
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-
 				mav.setViewName("login");
 				mav.addObject("msg", "failure");
-
 			}
 		}
 		return mav;

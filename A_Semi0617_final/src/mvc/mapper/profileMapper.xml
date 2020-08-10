@@ -56,7 +56,7 @@ select count(board_writer_num) as maxnum from board_info where board_writer_num 
 
 
 <insert id="withdrawalInsert" parameterType="mem">
-INSERT INTO withdrawal values (#{user_id},#{pwd},#{reason})
+INSERT INTO withdrawal (user_id,pwd,reason,user_num) values (#{user_id},#{pwd},#{reason},del_seq.nextval)
 </insert>
 
 <delete id="deletereason" parameterType="mem">

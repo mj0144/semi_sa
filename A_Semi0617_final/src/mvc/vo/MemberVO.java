@@ -34,8 +34,39 @@ public class MemberVO {
 	private IljuVO iljuvo;
 	private String reason;
 	private String user_mbti;
+	private String user_height;
+	private String user_loc;
+	private String user_body;
+	private IdealVO idealvo;
 	
 
+	public IdealVO getIdealvo() {
+		return idealvo;
+	}
+	public void setIdealvo(IdealVO idealvo) {
+		this.idealvo = idealvo;
+	}
+	public String getUser_height() {
+		return user_height;
+	}
+	public void setUser_height(String user_height) {
+		this.user_height = user_height;
+	}
+	public String getUser_loc() {
+		return user_loc;
+	}
+	public void setUser_loc(String user_loc) {
+		this.user_loc = user_loc;
+	}
+	public String getUser_body() {
+		return user_body;
+	}
+	public void setUser_body(String user_body) {
+		this.user_body = user_body;
+	}
+	public IljuVO getIljuvo() {
+		return iljuvo;
+	}
 	public String getUser_mbti() {
 		return user_mbti;
 	}

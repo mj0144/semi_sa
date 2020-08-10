@@ -333,6 +333,11 @@ public class SajuController {
 	        }
 	 
 	 }
+	
+	@RequestMapping(value="/dailyRecommand")
+	public String dailyRecommand() {
+		return "dailyRecommand";
+	}
 
 
 

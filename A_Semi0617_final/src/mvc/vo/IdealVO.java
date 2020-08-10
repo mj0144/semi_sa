@@ -5,6 +5,8 @@ public class IdealVO {
 	private int ideal_height;
 	private int ideal_age;
 	private String ideal_body;
+	
+	
 	public int getUser_num() {
 		return user_num;
 	}

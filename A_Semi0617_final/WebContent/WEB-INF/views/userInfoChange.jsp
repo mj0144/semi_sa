@@ -76,6 +76,7 @@
 <!-------    font awesome online plug --------------->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 </head>
 <body>
@@ -84,154 +85,259 @@
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 borderrr">
 				<span class="login100-form-title p-b-49"> 회원정보 수정 </span> 				
 
-				 <div class="profile_base" style="width: 90px; margin: 0 auto;">
+				 <div class="profile_base" style="width: 200px; margin: 0 auto;">
 					
 						<img class="profile_base" style="width: 90px; margin: 0 auto;"
 							id="profileimg" name="profileimg" src="resources/upload/${sessionScope.user_img }">
 				 	
 				</div> 
 				<br>
-				<form class="login100-form validate-form text-center" method="post"
-					enctype="multipart/form-data" action="infochange" id="form">
-						
-					<input type="file" id="file" name="file" style="display:none" accept=".jpg,.jpeg,.png,.gif,.PNG">
-						<div id="file_upload" class="btn btn-outline-dark " onclick="document.getElementById('file').click()">사진추가</div>					
-					<br>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+	<form class="form-horizontal" method="post"
+					enctype="multipart/form-data" action="userInfoChange" id="form" style="width:450px">
+		<fieldset>
+		
+		
+		<!-- Form Name -->
+		<div class="form-group">
+			<input type="file" id="file" name="file" style="display:none;" accept=".jpg,.jpeg,.png,.gif,.PNG">
+			<div id="file_upload" style="text-align: center"class="btn btn-outline-dark " onclick="document.getElementById('file').click()">사진추가</div>		
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4" for="selectbasic">이름</label>
+		  <div class="col-md-4">
+		    <input placeholder="이름" type="text"
+				required="required" name="name" id="name" onchange="namechange()"
+				value=${vo.NAME }><label id="namelabel"></label>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4" for="selectbasic">*별명</label>
+		  <div class="col-md-4">
+		    <input placeholder="별명" type="text"
+				name="nickname" id="nickname" value=${vo.NICKNAME }
+				onchange="nickchange()"> <p id="nicklabel" style='color:white'>중복확인을 해주세요</p>
+		  </div>
+		  <div class="col-md-4">
+		  	<button type="button" class="btn btn-primary" id="nickchk">중복확인</button>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">*이메일</label>
+		  <div class="col-md-4">
+		    <input placeholder="이메일" type="email"
+													name="email" id="email" value=${vo.EMAIL }
+													onchange="emailchange()"> <p id="emaillabel" style='color:white'>중복확인을 해주세요</p>
+		  </div>
+		  <div class="col-md-4">
+		  <button type="button" class="btn btn-primary" id="emailchk">중복확인</button>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">*성별</label>
+		  <div class="col-md-4">
+		    <c:choose>
+				<c:when test="${vo.SEX eq 'm'}">
+					<input  type="radio" name="sex" value="m" checked>
+						<label>남자</label>
+							&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="sex" value="f">
+						<label>여자</label>
+				</c:when>
+				<c:otherwise>
+					<input type="radio" name="sex" value="m">
+					<label>남자</label>
+						<input type="radio" name="sex" value="f"checked>
+					<label>여자</label>
+				</c:otherwise>
+			</c:choose>
+		  </div>
+		</div>
+		
+		<div class="form-group">
+		  <label class="col-md-4 " for="radios">*양/음력</label>
+		  <div class="col-md-12" style="width:200px"> 
+		     <input type="radio" name="calendar" value="solar" checked> 
+				<label>양력</label> 
+&nbsp;&nbsp;&nbsp;
 
+			<input type="radio" name="calendar" value="lunar">
+				<label>음력</label>
+			</div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">*생년월일</label>
+		  <div class="col-md-4">
+		    <c:set var="date" value="${vo.BIRTH }"/>
+				&nbsp;<input name="birth" type="text"
+					style="text-decoration: none; width: 100px" id="form_dt" size="5" value="">
+		  </div>
+		</div>
+		
+		<div class="form-group">
+		 <label class="col-md-4 " for="radios">태어난시</label>
+		  	<div class="col-md-4"> 
+			    <select name="birth_hh">
+					<c:forEach begin="0" step="1" end="23" var="i">
+						<option value="${i }">${i }시</option>
+					</c:forEach>
+			
+				</select>
+				<select name="birth_mm" id="birth_mm">
+					<c:forEach begin="0" step="1" end="59" var="i">
+						<option value="${i }">${i}분</option>
+					</c:forEach>		
+				</select>
+			</div>
+		</div>
+		
+		
+		
+		<div class="form-group">
+		 <label class="col-md-4 " for="radios">MBTI</label>
+		 
+		 <div class="col-md-4" style="float: none; margin: 0 auto;">
+			<select id="user_mbti" name="user_mbti" class="w3-select">
+														<option value="ISTJ">ISTJ</option>
+														<option value="ISFJ">ISFJ</option>
+														<option value="INFJ">INFJ</option>
+														<option value="INTJ">INTJ</option>
+														<option value="ISTP">ISTP</option>
+														<option value="ISFP">ISFP</option>
+														<option value="INFP">INFP</option>
+														<option value="INTP">INTP</option>
+														<option value="ESTP">ESTP</option>
+														<option value="ESFP">ESFP</option>
+														<option value="ENFP">ENFP</option>
+														<option value="ENTP">ENTP</option>
+														<option value="ESTJ">ESTJ</option>
+														<option value="ESFJ">ESFJ</option>
+														<option value="ENFJ">ENFJ</option>
+														<option value="ENTJ">ENTJ</option>
+													</select>
 
-
-					<table>
-						<tbody>
-							<tr>
-								<th>*이름</th>
-								<td><p style="margin: 0;">
-										<input class="w3-input" placeholder="이름" type="text"
-											required="required" name="name" id="name" onchange="namechange()"
-											value=${vo.getName() }><label id="namelabel"></label>
-									</p></td>
-							</tr>
-
-							<tr>
-								<th>*별명</th>
-								<td><p style="margin: 0;">
-										<input class="w3-input" placeholder="별명" type="text"
-											name="nickname" id="nickname" value=${vo.getNickname() }
-											onchange="nickchange()"> <p id="nicklabel"></p>
-									</p></td>
-								<td><button type="button" class="btn btn-outline-warning"
-										id="nickchk">중복확인</button></td>
-							</tr>
-							
-							<tr>
-								<th>*이메일</th>
-								<td>
-								<p style="margin: 0;">
-										<input class="w3-input" placeholder="이메일" type="email"
-											name="email" id="email" value=${vo.getEmail() }
-											onchange="emailchange()"> <label id="emaillabel"></label>
-
-									</p></td>
-								<td><button type="button" class="btn btn-outline-warning"
-										id="emailchk">중복확인</button></td>
-										
-							</tr>
-
-
-							<tr>
-								<th>*성별</th>
-								<td><p>
-
-
-										<c:choose>
-											<c:when test="${vo.getSex() eq 'm'.charAt(0)}">
-												<input class="w3-radio" type="radio" name="sex" value="m"
-													checked>
-												<label>남자</label>
-												<input class="w3-radio" type="radio" name="sex" value="f">
-												<label>여자</label>
-											</c:when>
-											<c:otherwise>
-												<input class="w3-radio" type="radio" name="sex" value="m">
-												<label>남자</label>
-												<input class="w3-radio" type="radio" name="sex" value="f"
-													checked>
-												<label>여자</label>
-											</c:otherwise>
-										</c:choose>
-
-									</p></td>
-							</tr>
-
-
-
-							<tr>
-								<th>*양/음력</th>
-								<td><p>
-										<br> <input class="w3-radio" type="radio" name="calendar"
-											value="solar" checked> <label>양력</label> <input
-											class="w3-radio" type="radio" name="calendar" value=lunar>
-										<label>음력</label>
-									</p></td>
-							</tr>
-
-
-
-							<tr>
-								<th><br>*생년월일</th>
-
-								<c:set var="date" value="${vo.getBirth() }"/>
-								<td>&nbsp;<br> <input name="birth" type="text"
-									style="text-decoration: none; width: 100px" id="form_dt"
-									size="5" value=""></td>
-							</tr>
-
-							<tr>
-								<td><br></td>
-							</tr>
-							<tr>
-								<th>태어난시</th>
-								<td><div class="row">
-										<div class="col-4">
-											<select name="birth_hh" class="w3-select">
-												<c:forEach begin="0" step="1" end="23" var="i">
-													<option value="${i }" selected="${vo.getBirth_hh()}">${i }시</option>
+												</div>
+		</div>
+		
+		
+		
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">키</label>
+		  <div class="col-md-4">
+		    <select id="user_height" name="user_height" class="w3-select" style="width:100px; height:30px">
+												<c:forEach begin="140" step="1" end="200" var="i">
+													<option value="${i }">${i }</option>
 												</c:forEach>
-
+																
 											</select>
-										</div>
-										<div class="col-4" >
-											<select name="birth_mm"  class="w3-select">
-												<c:forEach begin="0" step="1" end="59" var="i">
-													<option value="${i }" selected="${vo.getBirth_mm()}">${i}분</option>
-												</c:forEach>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">사는지역</label>
+		  <div class="col-md-4">
+		    <select id="user_loc" name="user_loc" class="w3-select" style="width:100px; height:30px">
+				<option value="서울특별시">서울특별시</option>
+				<option value="경기도">경기도</option>
+				<option value="강원도">강원도</option>
+				<option value="경상남도">경상남도</option>
+				<option value="경상북도">경상북도</option>
+				<option value="충청남도">충청남도</option>
+				<option value="충청북도">충청북도</option>
+				<option value="전라남도">전라남도</option>
+				<option value="전라북도">전라북도</option>
+				<option value="제주도">제주도</option>
+				<option value="기타">기타</option>
+			</select>
+		  </div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">체형</label>
+		  <div class="col-md-4">
+		    <select id="user_body" name="user_body" class="w3-select" style="width:100px; height:30px">
+				<option value="마름">마름</option>
+				<option value="보통">보통</option>
+				<option value="통통">통통</option>
+			</select>
+		  </div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">이상형 키</label>
+		  <div class="col-md-4">
+		    <select id="ideal_height" name="idealvo.ideal_height" class="w3-select" style="width:100px; height:30px">
+				<c:forEach begin="140" step="1" end="200" var="i">
+					<option value="${i }">${i }</option>
+				</c:forEach>																
+			</select>
+		  </div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">이상형 체형</label>
+		  <div class="col-md-4">
+		    <select id="ideal_body" name="idealvo.ideal_body"
+			class="w3-select" style="width:100px; height:30px">
+				<option value="마름">마름</option>
+				<option value="보통">보통</option>
+				<option value="통통">통통</option>
+			</select>
+		  </div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">이상형 나이차이</label>
+		  <div class="col-md-4">
+		    <select id="ideal_age" name="idealvo.ideal_age">
+				<c:forEach begin="0" step="1" end="15" var="i">
+					<option value="${i }">${i }</option>
+				</c:forEach>
+			</select>
+		  </div>
+		</div>
+		
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">자기소개</label>
+		  <div class="col-md-4">
 
-											</select>
-										</div>
-									</div></td>
-							</tr>
+				<textarea name="user_intro" id="user_intro" cols="50"
+				rows="10" class="form-control" placeholder="자기소개를 입력해주세요"></textarea>
+			</div>
+		</div>
+		
+		
+		
+		
+		<!-- Button -->
+		<div class="form-group">
+		  <div class="col-md-4">
+		    <button class="btn btn-primary" type="button" id="send" style="text-align: center">수정</button>
 
+		    <button class="btn btn-primary" onclick="location.href='mypage'" style="text-align: center">Cancel</button>
+		  </div>
+		  
+		</div>
+		
+		</fieldset>
+	</form>
 
-
-
-						</tbody>
-					</table>
-					<br>
-					<p style="text-align: right; color: red;">*는 필수항목입니다.</p>
-					<br> <br>
-
-
-					<div class="container-login100-form-btn text-center">
-						<div class="wrap-login100-form-btn text-center">
-							<div class="login100-form-bgbtn"></div>
-							<button class="btn btn-outline-dark" type="button" id="userdel" onclick="location.href='deletepage'">
-								회원탈퇴</button>
-							<button class="btn btn-outline-dark" type="button" id="send">
-								수정</button> &nbsp;
-							<button class="btn btn-outline-danger" onclick="location.href='mypage'">Cancel</button>
-						</div>
-					</div>
-				</form>
+			
 			</div>
 		</div>
 	</div>
@@ -260,7 +366,38 @@
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
+<script>
+$(function(){
+	/*기본값 설정*/
+	var birth_mm = ${vo.BIRTH_MM}
+	var birth_hh = ${vo.BIRTH_HH}
+	var user_height = ${vo.USER_HEIGHT}
+	var user_loc = '${vo.USER_LOC}'
+	var user_body = '${vo.USER_BODY}'
+	var ideal_height= ${vo.IDEAL_HEIGHT}
+	var ideal_body= '${vo.IDEAL_BODY}'
+	var ideal_age = ${vo.IDEAL_AGE}
+	var user_mbti= '${vo.USER_MBTI}'
+	
+	$('#birth_mm option').eq(birth_mm).attr('selected', 'selected');
+	
+	$('#birth_hh option').eq(birth_hh).attr('selected', 'selected');
+	
+	$('#user_height option').val(user_height).attr('selected', 'selected');
+	$('#user_loc option').val(user_loc).attr('selected', 'selected');
+	$('#user_body option').val(user_body).attr('selected', 'selected');
+	$('#ideal_height option').val(ideal_height).attr('selected', 'selected');
+	$('#ideal_body option').val(ideal_body).attr('selected', 'selected');
+	$('#ideal_age option').val(ideal_age).attr('selected', 'selected');
+	$('#user_mbti option').val(user_mbti).attr('selected', 'selected');
+	
+	
+	
+	
+})
+	
+	
+</script>
 
 	<script>
 		$(document)
@@ -335,25 +472,26 @@
 		//값이 달라졌을 때, 중복체크하게. && 값이 없을때.
 		//별명
 		function nickchange() {
-			document.getElementById("nicklabel").innerHTML = "";
+			$('#nicklabel').attr('style', 'color:white')
 
 			if ($('#nickname').val() === nickname) {
 				nickchk = 'true';
-			} else if($('#nickname').val() !== nickname && $('#nickname').val() === ''){ //값이 달라졌는데 빈칸이면
-				document.getElementById("nicklabel").innerHTML = "<p style='color:red'>별명을 입력해주세요.</p>";
+			} else if($('#nickname').val() !== nickname || $('#nickname').val() === ''){ //값이 달라졌는데 빈칸이면
+				
+				$('#nicklabel').attr('style', 'color:red')
 				nickchk = 'false';
 			}
 
 		}
 		//이메일
 		function emailchange() {
-			document.getElementById("emaillabel").innerHTML = "";
 
+			$('#emaillabel').attr('style', 'color:white')
 			if ($('#email').val() === email) {
 				console.log("값");
 				emailchk = 'true';
 			} else if($('#email').val() !== email && $('#email').val() === ''){
-				document.getElementById("emaillabel").innerHTML = "<p style='color:red'>이메일을 입력해주세요.</p>";
+				$('#emaillabel').attr('style', 'color:red')
 				emailchk = 'false';
 			}
 			rexEmail(); //정규식 체크.
@@ -361,10 +499,10 @@
 		}
 		//이름
 		function namechange(){
-			document.getElementById("namelabel").innerHTML = "";
+			$('#namelabel').attr('style', 'color:white')
 			if($('#name').val() === ''){
 				namechk='false';
-				document.getElementById("namelabel").innerHTML = "<p style='color:red'>이름을 입력해주세요.</p>";
+				$('#namelabel').attr('style', 'color:red')
 			}
 		}
 		

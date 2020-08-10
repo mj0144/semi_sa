@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="header.jsp" %>
@@ -20,218 +21,157 @@
 	</section>
 	<section class="ftco-section-3" style="background-color: #e0e0e0; padding: 100px;">
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag -------- -->
-
-<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag -------- -->
+<link href="css/chat.css" rel="stylesheet" type="text/css">
 
+<script src = " https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
 
-<script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
-<script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script>
-<script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
-<meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
-<link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
-<link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+" />
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
-
-<script src="https://use.typekit.net/hoy3lrg.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
-<link href="resources/css/chat.css" rel="stylesheet"> 
-
-<div id="frame" style="margin: 0 auto;">
-	<div id="sidepanel">
-		<div id="profile">
-			<div class="wrap">
-				<img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-				<p>ikosmo</p>
-				<i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
-				<div id="status-options">
-					<ul>
-						<li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
-						<li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
-						<li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
-						<li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
-					</ul>
-				</div>
-				<div id="expanded">
-					<label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-					<input name="twitter" type="text" value="mikeross" />
-					<label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-					<input name="twitter" type="text" value="ross81" />
-					<label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-					<input name="twitter" type="text" value="mike.ross" />
-				</div>
-			</div>
-		</div>
-		<div id="search">
-			<label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-			<input type="text" placeholder="Search contacts..." />
-		</div>
-		<div id="contacts">
-			<ul>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status online"></span>
-						<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자1</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact active">
-					<div class="wrap">
-						<span class="contact-status busy"></span>
-						<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자2</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status away"></span>
-						<img src="http://emilcarlsson.se/assets/rachelzane.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자3</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status online"></span>
-						<img src="http://emilcarlsson.se/assets/donnapaulsen.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자4</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status busy"></span>
-						<img src="http://emilcarlsson.se/assets/jessicapearson.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자5</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/haroldgunderson.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자6</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/danielhardman.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자7</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status busy"></span>
-						<img src="http://emilcarlsson.se/assets/katrinabennett.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자8</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/charlesforstman.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자9</p>
-							<p class="preview">메세지</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/jonathansidwell.png" alt="" />
-						<div class="meta">
-							<p class="name">사용자10</p>
-							<p class="preview"><span>You:</span>메세지</p>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div id="bottom-bar">
-			<button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
-			<button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
-		</div>
-	</div>
-	<div class="content">
-		<div class="contact-profile">
-			<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-			<p>MJ</p>
-		</div>
-		<div class="messages">
-			<ul>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-					<p>ㅎㅇ</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>ㅂㅇ</p>
-				</li>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-					<p>ㅂㅇ</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>ㅎㅇ</p>
-				</li>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-					<p>ㅎㅇ</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>ㅂㅇ</p>
-				</li>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-					<p>ㅎㅇ</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>ㅂㅇ</p>
-				</li>
-				
-			</ul>
-		</div>
-		<div class="message-input">
-			<div class="wrap">
-			<input type="text" placeholder="Write your message..." />
-			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-			</div>
-		</div>
-	</div>
-</div>
+<div class="container">
+<h3 class=" text-center">Messaging</h3>
+<div class="messaging">
+  <input type="hidden" value='${sessionid}' id="sessionuserid">
+      <div class="inbox_msg">
+        <div class="inbox_people">
+          <div class="headind_srch">
+            <div class="recent_heading">
+              <h4>Recent</h4>
+            </div>
+            <div class="srch_bar">
+              <div class="stylish-input-group">
+                <input type="text" class="search-bar"  placeholder="Search" >
+                <span class="input-group-addon">
+                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span> </div>
+            </div>
+          </div>
+          <div class="inbox_chat">
+            <div class="chat_list active_chat">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>ㅇㅇ</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>11</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mesgs">
+          <div class="msg_history" id="msg_history">
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> 
+              </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>상대가보낸거</p>
+                  <span class="time_date_left"> 11:01 AM    |    June 9</span></div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>내가보낸거</p>
+                <span class="time_date_right"> 11:01 AM    |    June 9</span> </div>
+            </div>
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input type="text" id="ChatText" class="write_msg" onkeyup="enterkey()"/>
+              <button class="msg_send_btn" type="button" id="chatsend"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
+      
+    </div></div>
 	</section>
 <%@ include file="footer.jsp" %>
-	    
+
+<script>
+	$(document).ready(function() {
+		$("#chatsend").click(function() {
+			sendMessage();
+		});
+	});
+	var sock = new SockJS('<c:url value="/echo"/>');
+	//메세지가 나한테 전달됫을때 실행되는 함수
+	sock.onmessage = onMessage;
+	//연결을 해제할때 실행
+	sock.onclose = onClose;
+	//소켓 연결됫을때 실행됨
+	sock.onopen = function () {
+		console.log("소켓연결성공");
+	}
+
+	//메시지 전송
+	function sendMessage(){
+		sock.send($("#ChatText").val());
+		$('#ChatText').val('')
+	}
+	//서버로부터 메세지를 받음
+	function onMessage(evt) {
+		var data = evt.data;
+		var message = data.split('|');
+		var sender = message[0]; //보내는사람의 세션
+		var content = message[1]; //메세지내용
+		var sessionid = $('#sessionuserid').val();
+		if(sessionid == sender){
+			var printHTML = "<div class='outgoing_msg'>";
+			printHTML += "<div class='sent_msg'>";
+			printHTML += "<p>"+content+"</p>";
+			printHTML += "<span class='time_date_right'> 11:01 AM    |    June 9</span> </div>";
+			printHTML += "</div>";
+			$('#msg_history').append(printHTML);
+			if(content==="" || content === null){
+				console.log("테스트입니다.")
+				sender = "";
+				return sock.onclose;
+				if(sender === ""){
+					return false
+				}
+			}
+		}else{
+			var printHTML = '<div class="incoming_msg">';
+			printHTML += '<div class="incoming_msg_img">';
+			printHTML += '<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">';
+			printHTML += '</div>';
+			printHTML += '<div class="received_msg">';
+			printHTML += '<div class="received_withd_msg">';
+			printHTML += '<p>'+content+'</p>';
+			printHTML += '<span class="time_date_left">시간';
+			printHTML += '</span></div>';
+			printHTML += '</div>';
+			printHTML += '</div>';
+			$('#msg_history').append(printHTML);
+			if(content==="" || content === null){
+				console.log("테스트입니다.")
+				sender = "";
+				return sock.onclose;
+				if(sender === ""){
+					return false
+				}
+			}
+		}
+	}
+	//서버로부터 연결이 끊음
+	function onClose(evt){
+		alert("채팅서버에 문제가 발생했습니다. 다시 접속해주세요.");
+		console.log("소켓끊김");
+	}
+	//엔터키로 인한 입력처리
+  	function enterkey() {
+        if (window.event.keyCode == 13) {
+        	sendMessage();
+        }
+    }
+</script>

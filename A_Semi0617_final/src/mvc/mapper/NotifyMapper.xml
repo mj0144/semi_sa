@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Notify">
+	<insert id="Notifyin" parameterType="notify">
+	insert into notify values(notify_seq.nextVal, #{notifyuser} ,#{notifyusernum} , #{notifycontent} , sysdate , #{notifylink} )
+	</insert>
+	<select id="NotifySelect" parameterType="int" resultType="HashMap">
+select 
+	n.notifynum,
+	n.notifyuser,
+	n.notifyusernum,
+	n.notifycontent,
+	n.notifydate,
+	n.notifylink,
+	
+	one.user_num,
+	one.nickname,
+	one.user_img
+
+from
+	notify n, user_info one
+where 
+	n.notifyusernum = one.user_num
+and
+	n.notifyuser = ${notifyuser}
+order by 1 desc
+	</select>
+	<select id="ButtonNotify" parameterType="int" resultType="HashMap">
+select count(*) 
+from 
+	notify n, user_info u
+where
+	n.notifyuser = u.user_num
+and
+	n.notifyuser = ${notifyuser}
+	</select>
+</mapper>

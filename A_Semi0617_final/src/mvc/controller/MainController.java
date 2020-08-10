@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.dao.ListDao;
@@ -29,10 +30,6 @@ ModelAndView mav = new ModelAndView("index");
 		int user_num=(int)session.getAttribute("user_num");
 		int sky = listDao.sajuilju(user_num).getIlju_sky_num();
 		int land = listDao.sajuilju(user_num).getIlju_land_num();
-		
-		System.out.println(user_num);
-		System.out.println(sky);
-	    System.out.println(land);
 	    
 	    
 	    int ilju_sky_num = 0;
@@ -53,10 +50,6 @@ ModelAndView mav = new ModelAndView("index");
         
         Map<String, Integer> map = new HashMap<String, Integer>();
         
-        System.out.println("1-1: "+ilju_sky_num);
-        System.out.println("1-2: "+ilju_land_num);
-        System.out.println("2-1: "+ilju_sky_num2);
-        System.out.println("2-2: "+ilju_land_num2);
         
         map.put("ilju_sky_num", ilju_sky_num);
         map.put("ilju_land_num", ilju_land_num);        
@@ -83,4 +76,14 @@ ModelAndView mav = new ModelAndView("index");
 		return mav;
 		
 	}
+	
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public ModelAndView Login(String msg) {
+		ModelAndView mav = new ModelAndView("login");
+		mav.addObject("msg", msg);
+		
+		return mav;
+	}
+	
 }

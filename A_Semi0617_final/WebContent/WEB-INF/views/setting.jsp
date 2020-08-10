@@ -16,7 +16,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
-
 .settingspan {
 	font-size: 15px;
 }
@@ -40,6 +39,9 @@
 	color: #4183D7;
 }
 </style>
+<script>
+
+</script>
 <div id="colorlib-main">
 	<section class="ftco-section ftco-bread">
 		<div class="container">
@@ -76,7 +78,7 @@
 								회원님의 기본정보를 수정할수있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a href="userInfoChange">Learn More</a>
 
 					</div>
 				</div>
@@ -96,7 +98,7 @@
 							<span>회원님의 비밀번호를 수정할수있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a href="pwdChange">Learn More</a>
 
 					</div>
 				</div>
@@ -116,7 +118,7 @@
 							<span>회원님의 계정을 탈퇴할 수 있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a href="deletepage">Learn More</a>
 
 					</div>
 				</div>

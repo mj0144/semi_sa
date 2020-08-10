@@ -129,7 +129,14 @@
 		board_img = #{board_img}
 		where board_num = #{board_num}
 	</update>
-
+	<!--  댓글 수정 -->
+ 	<update id="comment_update" parameterType="board">
+ 	update comment_info set cm_content=#{cm_content} where cm_num=#{cm_num}
+ 	</update>
+ 	<!-- 댓글 삭제 -->
+ 	<delete id="comment_delete" parameterType="java.util.Map">
+ 	delete from comment_info where cm_num=#{cm_num}
+ 	</delete>
 
 
 
