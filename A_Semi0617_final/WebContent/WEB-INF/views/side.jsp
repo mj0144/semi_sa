@@ -225,6 +225,7 @@
 	});
 	</script>
 <%@include file="notications.jsp"%>
+	<a href="setting" style="float:right; margin-top:-10%"><img src="images/setting.png"></a>
    <h1 id="colorlib-logo">
       <a href="mypage"><span class="img"
          style="background-image: url(resources/upload/${sessionScope.user_img});"></span>${sessionScope.name }</a>
@@ -243,7 +244,7 @@
          <br>
          <br>
          <br>
-         <li><a href="setting"><img src="images/setting.png"></a></li>
+         
          <li><a href="logoutdo">·Î±×¾Æ¿ô</a></li>
       </ul>
       <h3>
