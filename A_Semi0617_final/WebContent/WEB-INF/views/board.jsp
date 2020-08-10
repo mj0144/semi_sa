@@ -195,7 +195,7 @@
 						//댓글 알람 소켓으로 전송
 						link = '댓글|'+notifyLink+'|'+notifycontent;
 						notifyon(link);
-						document.location.href =document.location.href
+						/* document.location.href =document.location.href */
 					}else {
 						alert("서버와의 통신중에 오류가 발생하였습니다.");
 					}
