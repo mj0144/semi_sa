@@ -7,15 +7,9 @@
 
 	<display-name>SemiProject</display-name>
 	
-	<!-- 
-	<context-param>
-		<param-name>log4jConfigLocation</param-name>
-		<param-value>/WEB-INF/xml/log4j.xml</param-value>
-	</context-param>
-
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-	</listener>-->
+	</listener>
 	<!-- 언어지원. -->
 	<!--servlet filter 요청이 들어오기전의 전처리 개념. -->
 	<filter>
@@ -58,8 +52,19 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/Ajo-*.xml</param-value>
 		</init-param>
-
+		<!-- 웹소켓 비동기 설정 -->
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
 	</servlet>
+	
+	<!-- log4J -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.xml</param-value>
+	</context-param>
 
 
 	<!-- /인 요청은 전부 DispatcherServlet으로 가라고 -->

@@ -32,6 +32,7 @@
 
 					<p style="text-align: right;"><a href = "friend?user_num=${view.USER_NUM }">
 					작성자 : ${view.NICKNAME }</a> | 작성시간 : ${view.BOARD_DATE }</p></div>
+
 					<p>
 						<img src="resources/upload/${view.BOARD_IMG }" alt="" class="img-fluid">
 					</p>
@@ -55,10 +56,12 @@
 							<div class="mb-1">Leave a comment</div>
 							<form action="#" class="bg-light">
 								<div class="form-group">
+
 									<input type="text" class="form-control" id="content" name="content" style="display: inline-block; color: black;">
 									<span>
 									<button type="button" id="replySubmit" class="btn py-2 px-2 btn-primary" style="float: right;">댓글달기</button>
 									</span>
+
 								</div>
 							</form>
 						</div>
@@ -73,6 +76,7 @@
 										</a>
 									</div>
 									<div class="comment-body">
+									<input type="hidden" id="notifyNickname" value="${item.NICKNAME }">
 									<div>
 									<div class="cmtup" style="color: black;">${item.NICKNAME} | ${item.CM_DATE}</div>
 									<div id="cmt01" style="display: '';">
@@ -141,7 +145,9 @@
 											<div class="comment-body">
 												<form action="#" class="bg-light">
 													<div class="form-group">
+
 													<input type="text" id="replyContent${item.CM_NUM}" placeholder="내용을 입력하세요.">
+
               										 <span class="input-group-btn">
                  									   <button type="button" onclick="applyRecomment('${item.CM_NUM}')"
 															class="btn py-2 px-2 btn-primary">댓글달기</button>
@@ -173,12 +179,14 @@
 			//----
 			
 		});
-		
-		
-		
+		var notifyon;
+		var link;
+		var notifyLink = document.location.href;
+		var usernum = $("#usernum").val();
 		function insertReplySubmit() {
 			var content = $("#content").val();
 			var boardNum = '${param.board_num}';
+			var notifycontent = $("#notifyNickname").val();
 			var param = new Object();
 			if(content == '') {
 				alert("아무내용이 없습니다. 댓글을 입력할 수 없습니다.");
@@ -190,8 +198,10 @@
 			}
 			param.content = content;
 			param.boardNum = boardNum;
+			param.notifyLink = notifyLink;
+			param.notifycontent = notifycontent+"님이 댓글을 달았습니다.";
+			param.usernum = usernum;
 			var paramJson = JSON.stringify(param);
-			console.log(paramJson);
 			$.ajax({
 				type : "POST",
 				url : "reply",
@@ -202,7 +212,10 @@
 					console.log(res);
 					if(res.result == "success") {
 						alert("정상적으로 댓글이 입력되었습니다.");
-						document.location.href =document.location.href
+						//댓글 알람 소켓으로 전송
+						link = '댓글|'+notifyLink+'|'+notifycontent;
+						notifyon(link);
+						/* document.location.href =document.location.href */
 					}else {
 						alert("서버와의 통신중에 오류가 발생하였습니다.");
 					}
@@ -224,11 +237,10 @@
 		
 		function applyRecomment(replyNum) {
 			var param = new Object();
-			
 			var content = $("#replyContent" + replyNum).val();
 			var boardNum = '${param.board_num}';
 			var recommentNum = replyNum;
-			
+			var notifycontent = $("#notifyNickname").val();
 			if(content == '') {
 				alert("아무내용이 없습니다. 댓글을 입력할 수 없습니다.");
 				return;
@@ -236,8 +248,10 @@
 			param.content = content;
 			param.boardNum = boardNum;
 			param.recommentNum = recommentNum;
+			param.notifyLink = notifyLink;
+			param.notifycontent = notifycontent+"님이 댓글에 답글을 달았습니다.";
+			param.usernum = usernum;
 			var paramJson = JSON.stringify(param);
-			console.log(paramJson);
 			$.ajax({
 				type : "POST",
 				url : "reply",
@@ -248,6 +262,8 @@
 					console.log(res);
 					if(res.result == "success") {
 						alert("정상적으로 댓글이 입력되었습니다.");
+						link = '답글|'+notifyLink;
+						notifyon(link);
 						document.location.href =document.location.href
 					}else {
 						alert("서버와의 통신중에 오류가 발생하였습니다.");
@@ -258,6 +274,17 @@
 			       }
 			});
 		}
+		//엔터키로 인한 입력처리
+	  	function Contententerkey() {
+	        if (window.event.keyCode == 13) {
+	        	insertReplySubmit();
+	        }
+	    }
+	  	function replyenterkey() {
+	        if (window.event.keyCode == 13) {
+	        	applyRecomment();
+	        }
+	    }
 	
 		$('#boardDel').click(function () {
 			if(confirm("삭제하시겠습니까?")){
@@ -291,6 +318,7 @@
 				});
 			}
 		}
+
 		
 		function updatecmt_chk1() {
 			document.getElementById('cmt01').style.display = 'none';
@@ -331,4 +359,5 @@
 			}
 		}
 		
+
 	</script>
