@@ -74,12 +74,12 @@
 	      </property>
 	   </bean>
   	<!-- 웹소켓 API설정 -->
-	<websocket:handlers>
+	<websocket:handlers  allowed-origins="*">
 	    <websocket:mapping handler="echoHandler" path="/echo" />
 	    <websocket:handshake-interceptors>
   		 	<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
    		</websocket:handshake-interceptors>
-   		<websocket:sockjs/>
+   		<websocket:sockjs websocket-enabled="true" />
 	</websocket:handlers>
 	<bean id="echoHandler" class="mvc.handler.EchoHandler" />
 
