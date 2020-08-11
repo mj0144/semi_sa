@@ -26,10 +26,13 @@
 					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }">
 					
 					 <div class="col-xs-12" style="margin:15px auto;">
+        			<div>
         			<img src="images/board.PNG" style="width: 20px;">
-        			<label style="font-size:20px; color: black; font: bolder;">제목 :  ${view.BOARD_TITLE }</label>
+        			<label style="font-size:20px; color: black; font: bolder; float: left;">제목 :  ${view.BOARD_TITLE }</label>
+        			<button type="button" id="modal_open_btn" style="float: right;">신고하기</button>
     				<hr style="color: gray;">
-
+					</div>
+					
 					<p style="text-align: right;"><a href = "friend?user_num=${view.USER_NUM }">
 					작성자 : ${view.NICKNAME }</a> | 작성시간 : ${view.BOARD_DATE }</p></div>
 
