@@ -21,36 +21,36 @@ public class FeedServiceImpl implements FeedService{
 	@Autowired
 	private HttpSession session;
 
-	//°Ô½Ã±Û ÀÛ¼º
+	//ï¿½Ô½Ã±ï¿½ ï¿½Û¼ï¿½
 	@Override
 	public Object create(BoardVO vo) throws Exception {
 		return boardDao.create(vo);
 	}
 	
-	//°Ô½Ã±Û »ó¼¼º¸±â
+	//ï¿½Ô½Ã±ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	@Override
 	public HashMap<String, Object> read(int board_num) throws Exception {
 		return boardDao.read(board_num);
 	}
 	
-	//°Ô½Ã±Û ¼öÁ¤
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void boardUpdate(BoardVO vo) throws Exception {
 		boardDao.boardUpdate(vo);
 	}
 	
-	//°Ô½Ã±Û »èÁ¦
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void boardDelete(int BOARD_NUM) throws Exception {
 		boardDao.boardDelete(BOARD_NUM);
 	}
 	
-	//°Ô½Ã±Û ÀüÃ¼¸ñ·Ï
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return boardDao.listAll();
 	}
-	//´ñ±Û ÀÛ¼º
+	//ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	@Override
 	public int insertReply(HashMap<String, Object> params) {
 		int result = 0;
@@ -61,7 +61,7 @@ public class FeedServiceImpl implements FeedService{
 		}
 		return result;
 	}
-	//´ñ±Û ¸ñ·Ï
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@Override
 	public List<HashMap<String, Object>> readReply(String board_num) {
 		List<HashMap<String, Object>> resultLsit = new ArrayList<HashMap<String,Object>>();
@@ -82,29 +82,31 @@ public class FeedServiceImpl implements FeedService{
 				reply.put("subList", tempList);
 				replyList.set(i, reply);
 			}
-			System.out.println("´ñ±Û : "+replyList);
-			System.out.println("´ë´ñ±Û : " +subList);
+			System.out.println("ï¿½ï¿½ï¿½ : "+replyList);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ : " +subList);
 			resultLsit = replyList;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return resultLsit;
 	}
-	//´ñ±Û¾Ë¶÷NotifyÀü¼Û
+	//ï¿½ï¿½Û¾Ë¶ï¿½Notifyï¿½ï¿½ï¿½ï¿½
 	@Override
 	public Object notifyReply(NotifyVO vo) throws Exception {
 		return boardDao.Notifyinsert(vo);
 	}
 	
-	//´ñ±Û »èÁ¦
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void commentDelete(int cm_num) throws Exception {
 			boardDao.deleteComment(cm_num);
 	}
 			
-	//´ñ±Û ¼öÁ¤
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
-	public void commentUpdate(BoardVO vo) throws Exception {
-		boardDao.updateComment(vo);
+
+	public void commentUpdate(HashMap<String, String> params) throws Exception {
+		boardDao.updateComment(params);
+
 	}
 }

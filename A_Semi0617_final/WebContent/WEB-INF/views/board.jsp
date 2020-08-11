@@ -23,10 +23,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 ftco-animate">
-					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }"><input type="hidden" id="usernum" value="${view.USER_NUM }">
-					<h2 class="titless">제목 :  ${view.BOARD_TITLE } </h2>
-					<p><a href = "friend?user_num=${view.USER_NUM }">작성자 : ${view.NICKNAME }</a></p>
-					<p>작성시간 : ${view.BOARD_DATE }</p>
+					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }">
+					
+					 <div class="col-xs-12" style="margin:15px auto;">
+        			<div>
+        			<img src="images/board.PNG" style="width: 20px;">
+        			<label style="font-size:20px; color: black; font: bolder; float: left;">제목 :  ${view.BOARD_TITLE }</label>
+        			<button type="button" id="modal_open_btn" style="float: right;">신고하기</button>
+    				<hr style="color: gray;">
+					</div>
+					
+					<p style="text-align: right;"><a href = "friend?user_num=${view.USER_NUM }">
+					작성자 : ${view.NICKNAME }</a> | 작성시간 : ${view.BOARD_DATE }</p></div>
+
 					<p>
 						<img src="resources/upload/${view.BOARD_IMG }" alt="" class="img-fluid">
 					</p>
@@ -37,8 +46,8 @@
 					<form name="delUp" action="post">
 					<div class="ftco-section2">
 					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }">
-					
-					<div class="boardbtn" role="group" style="float:right;">
+					<br><br><br>
+					<div id="boardBtn_group" role="group" style="float:right;">
 						<button type="button" id="boardup">게시글수정</button>
 						<button type="button" id="boardDel">게시글삭제</button>
 					</div>
@@ -50,11 +59,12 @@
 							<div class="mb-1">Leave a comment</div>
 							<form action="#" class="bg-light">
 								<div class="form-group">
-									<input type="text" class="form-control" id="content" onkeyup="Contententerkey()" style="color: black;">
-								</div>
-								<div class="form-group">
-									<button type="button" id="replySubmit" 
-										class="btn py-2 px-2 btn-primary">댓글달기</button>
+
+									<input type="text" class="form-control" id="content" name="content" style="display: inline-block; color: black;">
+									<span>
+									<button type="button" id="replySubmit" class="btn py-2 px-2 btn-primary" style="float: right;">댓글달기</button>
+									</span>
+
 								</div>
 							</form>
 						</div>
@@ -72,18 +82,31 @@
 									<input type="hidden" id="notifyNickname" value="${item.NICKNAME }">
 									<div>
 									<div class="cmtup" style="color: black;">${item.NICKNAME} | ${item.CM_DATE}</div>
+									<div id="cmt01" style="display: '';">
 									<div style="float: right; font: bold; color: black;" >
 									<c:if test = "${sessionScope.user_num == item.USER_NUM}">
-									<a onclick="deletedComment('${item.CM_NUM}')" >수정</a> | 
+									<div id="cmBtn_group">
+									<button type="button" onclick="updatecmt_chk1()" id="cntUpdateBtn">수정</button>
+									<button type="button" onclick="deletedComment('${item.CM_NUM}')" id="cntDeleteBtn">삭제</button>
+									</div>
+									<%-- <a onclick="deletedComment('${item.CM_NUM}')" >수정</a> | 
 									<a onclick="deletedComment('${item.CM_NUM}')" >삭제</a>
-									</c:if>
+ --%>									</c:if>
 									</div>
-									</div>
-									<div>
+									
+									
 									<p>${item.CM_CONTENT}</p>
 									<p>
 									<a href="javascript:openReplyInput('${item.CM_NUM}');" class="reply">대댓글달기</a>
 									</p>
+									</div>
+									<div id="cmt02" style="display: none;">
+									<div><input type="text" id="updatdtxt" name="updatdtxt" style="width:450px; border: 1px solid gray; outline: none;"></div>
+									<div id="cmBtn_group2" style="float: right;">
+									<button type="button" onclick="updatecmt_chk12('${item.CM_NUM}')" id="cntUpdateBtn2">수정</button>
+									<button type="button" onclick="cancel_updatecmt()" id="cntDeleteBtn2">취소</button>
+									</div>
+									</div>
 									</div>
 
 									
@@ -125,8 +148,9 @@
 											<div class="comment-body">
 												<form action="#" class="bg-light">
 													<div class="form-group">
-													
-													<input type="text" id="replyContent${item.CM_NUM}" onkeyup="replyenterkey" placeholder="내용을 입력하세요.">
+
+													<input type="text" id="replyContent${item.CM_NUM}" placeholder="내용을 입력하세요.">
+
               										 <span class="input-group-btn">
                  									   <button type="button" onclick="applyRecomment('${item.CM_NUM}')"
 															class="btn py-2 px-2 btn-primary">댓글달기</button>
@@ -155,7 +179,6 @@
 				insertReplySubmit();
 			});
 			//----
-			
 			//----
 			
 		});
@@ -288,14 +311,56 @@
 					
 						
 					success :function(res){
-						alert("댓글이 삭제되었습니다.");
+						//alert("댓글이 삭제되었습니다.");
 						document.location.href =document.location.href;
 				},
 					
-					error : function(error) {
-						alert("댓글삭제에러"+error)
-					}
+				error:function(request,status,error){
+			        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+			       }
 				});
 			}
 		}
+
+		
+		function updatecmt_chk1() {
+			document.getElementById('cmt01').style.display = 'none';
+		    document.getElementById('cmt02').style.display = '';
+		}
+		
+		function cancel_updatecmt() {
+			document.getElementById('cmt02').style.display = 'none';
+		    document.getElementById('cmt01').style.display = '';
+		}
+		
+		function updatecmt_chk12(cm_num) {
+			if(confirm("댓글을 수정하시겠습니까?")){
+				var cm_content = $("#updatdtxt").val();
+				var param = new Object();
+				if(content == '') {
+					alert("아무내용이 없습니다. 댓글을 입력해주세요.");
+					return;
+				}
+				param.cm_content = cm_content;
+				param.cm_num = cm_num;
+				var paramJson = JSON.stringify(param);
+				
+				$.ajax({
+					type : "POST",
+					url : "commentUpdate",
+					contentType : "application/json; charset=utf-8", 
+					dataType : "text" ,
+					data : paramJson,
+					success : function(res){
+						//alert("정상적으로 댓글이 수정되었습니다.");
+						document.location.href =document.location.href;
+					},
+					error:function(request,status,error){
+				        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+				       }
+				});
+			}
+		}
+		
+
 	</script>

@@ -27,6 +27,6 @@ public interface FeedService {
 	//´ñ±Û »èÁ¦
 	public void commentDelete(int cm_num)throws Exception;
 	//´ñ±Û ¼öÁ¤
-	public void commentUpdate(BoardVO vo) throws Exception;
+	public void commentUpdate(HashMap<String, String> params) throws Exception;
 	
 }

@@ -61,22 +61,18 @@ public class BoardDao extends FeedAbstract {
 	public List<HashMap<String, String>> getSubReply(String board_num) throws Exception {
 		return (List<HashMap<String, String>>) selectList(nameSpace + "getSubReply", board_num);
 	}
-	//댓글 삭제
-	public void Delete(int num) throws Exception{
-		delete(nameSpace, num);
-	}
 	
 	//피드 검색
 	public List<BoardVO> getSearchlist(BoardVO vo) {
 	    return ss.selectList("board.searchlist", vo);
 		}
 	//댓글 삭제
-		public void deleteComment(int num) throws Exception{
-			delete(nameSpace + "comment_delete", num);
-		}
-		//댓글 수정
-		public void updateComment(BoardVO vo) throws Exception{
-			update(nameSpace + "comment_update", vo);
-		}
+	public void deleteComment(int num) throws Exception{
+		delete(nameSpace + "comment_delete", num);
+	}
+	//댓글 수정
+	public void updateComment(HashMap<String, String> params) throws Exception{
+		update(nameSpace + "comment_update", params);
+	}
 	
 }

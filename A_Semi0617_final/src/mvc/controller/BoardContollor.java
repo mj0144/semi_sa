@@ -159,11 +159,14 @@ public class BoardContollor {
 			
 		}
 		
-		//댓글 수정
-//		@RequestMapping(value = "/commentUpdate")
-//		public String commentUpdate(BoardVO vo, ) throws Exception{
-//			S
-//		}
+	//댓글 수정
+		@RequestMapping(value = "/commentUpdate",  method = RequestMethod.POST)
+		@ResponseBody
+		public void commentUpdate(@RequestBody HashMap<String, String> params ) throws Exception{
+			System.out.println("야 나 남아있따 지금은 아홉시");
+			System.out.println(params);
+			boardService.commentUpdate(params);
+		}
 
 	// 게시글 검색
 	@RequestMapping(value = "/feedsearch", method = RequestMethod.POST)
