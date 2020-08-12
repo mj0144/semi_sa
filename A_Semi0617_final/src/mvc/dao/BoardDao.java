@@ -21,58 +21,69 @@ public class BoardDao extends FeedAbstract {
 	
 	private String nameSpace = "board.";
 	
-	//°Ô½Ã±ÛÀÛ¼º
+	//ï¿½Ô½Ã±ï¿½ï¿½Û¼ï¿½
 	public Object create(BoardVO vo) throws Exception {
 		return insert(nameSpace + "boardinsert", vo);
 	}
-	//°Ô½Ã±Û »ó¼¼º¸±â
+	//ï¿½Ô½Ã±ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> read(int board_num) throws Exception {
 		return (HashMap<String, Object>) selectOne(nameSpace + "boardview", board_num);
 	}
-	//°Ô½Ã±Û¼öÁ¤
+	//ï¿½Ô½Ã±Û¼ï¿½ï¿½ï¿½
 	public void boardUpdate(BoardVO vo) throws Exception {
 		update(nameSpace + "board_update", vo);
 	}
-	//°Ô½Ã±Û»èÁ¦
+	//ï¿½Ô½Ã±Û»ï¿½ï¿½ï¿½
 	public void boardDelete(int BOARD_NUM) throws Exception {
 		delete(nameSpace + "board_delete",BOARD_NUM);
 	}
-	//°Ô½Ã±Û ¸ñ·Ï 
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ 
 	@SuppressWarnings("unchecked")
 	public List<BoardVO> listAll() throws Exception {
 		return (List<BoardVO>) selectList(nameSpace + "boardList");
 	}
-	//´ñ±ÛÀÛ¼º
+	//ï¿½ï¿½ï¿½ï¿½Û¼ï¿½
 	public int insertReply(HashMap<String, Object> params) throws Exception {
 		return insert(nameSpace + "insertReply", params);
 	}
-	//´ñ±Û ¾Ë¶÷Ã³¸®
+	//ï¿½ï¿½ï¿½ ï¿½Ë¶ï¿½Ã³ï¿½ï¿½
 	public Object Notifyinsert(NotifyVO vo) throws Exception{
 		return insert("Notify.Notifyin", vo);
 	}
-	//´ñ±Û¸ñ·Ï
+	//ï¿½ï¿½Û¸ï¿½ï¿½
 	@SuppressWarnings("unchecked")
 	public List<HashMap<String, Object>> readReply(String board_num) throws Exception {
 		return (List<HashMap<String, Object>>) selectList(nameSpace + "readReply", board_num);
 	}
-	//´ë´ñ±Û¸ñ·Ï
+	//ï¿½ï¿½ï¿½Û¸ï¿½ï¿½
 	@SuppressWarnings("unchecked")
 	public List<HashMap<String, String>> getSubReply(String board_num) throws Exception {
 		return (List<HashMap<String, String>>) selectList(nameSpace + "getSubReply", board_num);
 	}
 	
-	//ÇÇµå °Ë»ö
+	//ï¿½Çµï¿½ ï¿½Ë»ï¿½
 	public List<BoardVO> getSearchlist(BoardVO vo) {
 	    return ss.selectList("board.searchlist", vo);
 		}
-	//´ñ±Û »èÁ¦
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void deleteComment(int num) throws Exception{
 		delete(nameSpace + "comment_delete", num);
 	}
-	//´ñ±Û ¼öÁ¤
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void updateComment(HashMap<String, String> params) throws Exception{
 		update(nameSpace + "comment_update", params);
 	}
+	
+	//ê²Œì‹œë¬¼ ì‹ ê³ 
+			public void reportBoard(HashMap<String, Object> params) throws Exception{
+				insert(nameSpace + "reportBoard", params);
+			}
+			
+		//ëŒ“ê¸€ ì‹ ê³ 
+			public void reportComment(HashMap<String, Object> params) throws Exception{
+				insert(nameSpace + "reportComment", params);
+			}
+	
 	
 }
