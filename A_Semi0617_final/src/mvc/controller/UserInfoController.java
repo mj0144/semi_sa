@@ -1,6 +1,7 @@
 package mvc.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mvc.dao.JoinDao;
 import mvc.dao.MemberDao;
@@ -38,57 +40,55 @@ public class UserInfoController {
 	private UserInfoService userInfoService;
 	
 	
+
+
+	
 	// 회원페이지 이동 및 원래 정보 출력.
-	@RequestMapping("/infochangepage")
-	public ModelAndView pageChange(HttpSession session) {
-		ModelAndView mav = new ModelAndView("userInfoChange");
+	@RequestMapping(value="/userInfoChange",method=RequestMethod.GET)
+	public void infoChangeGet(HttpSession session, Model model) {
+		HashMap<String, Object> map = userInfoDao.info((int) session.getAttribute("user_num"));
+		System.out.println(map);
+		model.addAttribute("vo", map);
 
-		MemberVO vo = new MemberVO();
-		vo = userInfoDao.info((int) session.getAttribute("user_num"));
-		mav.addObject("vo", vo);
-
-		return mav;
 	}
-
-	
-	
 	// 회원정보 수정.
-	@RequestMapping("/infochange")
+	@RequestMapping(value="/userInfoChange", method=RequestMethod.POST)
 	public ModelAndView infoChange(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
 		ModelAndView mav = new ModelAndView();
 
 		vo = userInfoService.userInfoSetting(session, vo, request,file); 	//바뀐 회원정보 세팅
 		mav = userInfoService.mypageSetting(session, vo, mav); //마이페이지로 다시 넘어가기 위한 값 세팅
-
-				
+			
 		return mav;
 	}
 	
+
+	
+	
+	
+	
+	
 	//비밀번호 페이지 이동
-	@RequestMapping("/pwdChange")
-	public String pwdChange(HttpSession session, MemberVO vo) {	
-		return "pwdChange";
+	@RequestMapping(value="/pwdChange", method=RequestMethod.GET)
+	public void pwdChange() {			
 	}
 	
 	// 비밀 번호 변경 후 로그인 페이지로
-	@RequestMapping("/gologin")
-	public String login(HttpSession session, MemberVO vo) {
-		System.out.println("?");
-		System.out.println(vo.getPwd());
-		MemberVO svo = new MemberVO();
-		
-		int user_num = (int) session.getAttribute("user_num");
-		svo.setUser_num(user_num);
-		svo.setPwd(vo.getPwd());
-		userInfoDao.pwdChange(svo);
-		return "login";
+	@RequestMapping(value="/pwdChange", method=RequestMethod.POST)
+	public String login(HttpSession session, MemberVO vo, RedirectAttributes ra) {
+		vo.setUser_num((int) session.getAttribute("user_num"));
+
+		try {
+			userInfoDao.pwdChange(vo);
+			session.invalidate(); //세션값 모두 삭제
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		ra.addAttribute("msg", "비밀번호 수정이 되었습니다");
+		return "redirect:/";
 	}
 	
-	//1. new_pwd2가 들어오는지 확인
-	//2. 들어왔으면 vo 생성해서 user_num,pwd 넣기 
-	//3. 세션 끊기
-	
-
 	//비밀번호 ajax처리 url
 	@RequestMapping("/pwdchangechk")
 	@ResponseBody

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import mvc.service.FeedAbstract;
 import mvc.vo.BoardVO;
 import mvc.vo.IljuVO;
+import mvc.vo.NotifyVO;
 import mvc.vo.PageVO;
 
 @Repository
@@ -43,8 +44,12 @@ public class BoardDao extends FeedAbstract {
 		return (List<BoardVO>) selectList(nameSpace + "boardList");
 	}
 	//´ñ±ÛÀÛ¼º
-	public int insertReply(HashMap<String, String> params) throws Exception {
+	public int insertReply(HashMap<String, Object> params) throws Exception {
 		return insert(nameSpace + "insertReply", params);
+	}
+	//´ñ±Û ¾Ë¶÷Ã³¸®
+	public Object Notifyinsert(NotifyVO vo) throws Exception{
+		return insert("Notify.Notifyin", vo);
 	}
 	//´ñ±Û¸ñ·Ï
 	@SuppressWarnings("unchecked")
@@ -56,14 +61,18 @@ public class BoardDao extends FeedAbstract {
 	public List<HashMap<String, String>> getSubReply(String board_num) throws Exception {
 		return (List<HashMap<String, String>>) selectList(nameSpace + "getSubReply", board_num);
 	}
-	//´ñ±Û »èÁ¦
-	public void Delete(int num) throws Exception{
-		delete(nameSpace, num);
-	}
 	
 	//ÇÇµå °Ë»ö
 	public List<BoardVO> getSearchlist(BoardVO vo) {
 	    return ss.selectList("board.searchlist", vo);
 		}
+	//´ñ±Û »èÁ¦
+	public void deleteComment(int num) throws Exception{
+		delete(nameSpace + "comment_delete", num);
+	}
+	//´ñ±Û ¼öÁ¤
+	public void updateComment(HashMap<String, String> params) throws Exception{
+		update(nameSpace + "comment_update", params);
+	}
 	
 }

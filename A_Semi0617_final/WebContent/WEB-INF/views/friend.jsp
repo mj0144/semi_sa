@@ -6,6 +6,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<!-- 좋아요 및 좋아요 취소  -->
 <script>
  	function toggleImage() {
 		var like = 'false';
@@ -46,7 +47,56 @@
 			});
 	}
 
+</script>
+
+<!-- 블락 및 블락 취소  -->
+<script>
+
+	function blockImage() {
+		
+		var block = 'false';
+		
+		var blockon = "images/blockon.png"; //블락한 상태(빨간색)
+		var blockoff = "images/blockoff.png"; //블락 안한 상태(까만색)
+		
+		console.log("글쓴이 : " + $('#friend_num').val());
+		
+		
+		var user_num = ${sessionScope.user_num};
+		
+		if ($('#img2').attr("src") === blockon) {
+				$('#img2').attr("src", "images/blockoff.png"); //블락취소
+				block='false';
+			//console.log(${param.op_num});
+		} else {
+				$('#img2').attr("src", "images/blockon.png"); //블락
+				block='true';
+		}
+		
+		var pm = {"block" : block, "blocked_user" : $('#friend_num').val()};
+		
+		blocked(pm);
+
+	}
 	
+	function blocked(pm){
+		
+		console.log("들어오니?");
+		
+		$.ajax({
+				url : "blockox",
+				type : "post",
+				data : pm,
+				success : function(data){
+					
+				},
+				error : function(){
+					
+				}
+			});
+	}
+
+
 </script>
 
 <div id="colorlib-main">
@@ -77,13 +127,6 @@
 							<p style="text-align: center; float: left;">
 								좋아요 &nbsp;
 								<!-- <img id="img1" src="images/heart1.png" onclick="toggleImage();"> -->
-								
-								
-								
-								
-								
-								
-								
 								<c:choose>
 									<c:when test="${heartchk == 1}">
 										<img id="img1" src="images/hearton.png" onclick="toggleImage()"/>
@@ -92,22 +135,24 @@
 										<img id="img1" src="images/heartoff.png" onclick="toggleImage()"/>
 									</c:otherwise>
 								</c:choose>
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-									
 								<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
 							</p>
 							<p style="text-align: center; margin-left: -300px;">
 							<!-- 	<a href="#">채팅하기<img src="images/chat.png" style="margin-left: 10px;"></a> -->
 							</p>
+							<!-- 블락 및 블락 취소 -->
+							<p style="text-align: center; float: right;">
+								차단 &nbsp;
+								<c:choose>
+									<c:when test="${blockchk == 1}">
+										<img id="img2" src="images/blockon.png" onclick="blockImage()" style="width: 50px;"/>
+									</c:when>
+									<c:otherwise>
+										<img id="img2" src="images/blockoff.png" onclick="blockImage()" style="width: 50px;"/>
+									</c:otherwise>
+								</c:choose>
+							</p>
+							<!-- 블락 끝 -->
 						</div>
 						<br>
 						<h1 class="mb-4">

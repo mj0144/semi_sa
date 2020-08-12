@@ -20,7 +20,9 @@ public class QnaService {
     /** 게시판 - 목록 조회 */
     public List<QnaVO> getQnaList(HttpSession session) throws Exception {
     	int num = (int) session.getAttribute("user_num");
-        return qnaDao.qnalist(num);
+    	List<QnaVO> list = qnaDao.qnalist(num);
+    	return list;
+//        return qnaDao.qnalist(num);
     }
     
     public List<QnaVO> getQnadetailList(HttpSession session, QnaVO vo) throws Exception {
@@ -36,75 +38,5 @@ public class QnaService {
     	//int num = (int) session.getAttribute("user_num");
     	return qnaDao.addQna(vo);
     }
-// 
-//    /** 게시판 - 상세 조회 */
-//    public BoardDto getBoardDetail(BoardForm boardForm) throws Exception {
-// 
-//        BoardDto boardDto = new BoardDto();
-// 
-//        String searchType = boardForm.getSearch_type();
-// 
-//        if("S".equals(searchType)){
-//            
-//            int updateCnt = boardDao.updateBoardHits(boardForm);
-//        
-//            if (updateCnt > 0) {
-//                boardDto = boardDao.getBoardDetail(boardForm);
-//            }
-//            
-//        } else {
-//            
-//            boardDto = boardDao.getBoardDetail(boardForm);
-//        }
-// 
-//        return boardDto;
-//    }
-// 
-//    /** 게시판 - 등록 */
-//    public BoardDto insertBoard(BoardForm boardForm) throws Exception {
-// 
-//        BoardDto boardDto = new BoardDto();
-// 
-//        int insertCnt = boardDao.insertBoard(boardForm);
-// 
-//        if (insertCnt > 0) {
-//            boardDto.setResult("SUCCESS");
-//        } else {
-//            boardDto.setResult("FAIL");
-//        }
-// 
-//        return boardDto;
-//    }
-// 
-//    /** 게시판 - 삭제 */
-//    public BoardDto deleteBoard(BoardForm boardForm) throws Exception {
-// 
-//        BoardDto boardDto = new BoardDto();
-// 
-//        int deleteCnt = boardDao.deleteBoard(boardForm);
-// 
-//        if (deleteCnt > 0) {
-//            boardDto.setResult("SUCCESS");
-//        } else {
-//            boardDto.setResult("FAIL");
-//        }
-// 
-//        return boardDto;
-//    }
-// 
-//    /** 게시판 - 수정 */
-//    public BoardDto updateBoard(BoardForm boardForm) throws Exception {
-// 
-//        BoardDto boardDto = new BoardDto();
-// 
-//        int deleteCnt = boardDao.updateBoard(boardForm);
-// 
-//        if (deleteCnt > 0) {
-//            boardDto.setResult("SUCCESS");
-//        } else {
-//            boardDto.setResult("FAIL");
-//        }
-// 
-//        return boardDto;
-//    }
+
 }

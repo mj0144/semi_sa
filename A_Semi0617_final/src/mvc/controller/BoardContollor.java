@@ -23,7 +23,7 @@ import mvc.service.FeedService;
 import mvc.utils.CommonUtils;
 import mvc.utils.FeedImgUpload;
 import mvc.vo.BoardVO;
-import mvc.vo.MemberVO;
+import mvc.vo.NotifyVO;
 
 @Controller
 public class BoardContollor {
@@ -96,24 +96,28 @@ public class BoardContollor {
 
 	@RequestMapping(value = "/reply", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> insertReply(@RequestBody HashMap<String, String> params, HttpSession session) {
+	public Map<String, Object> insertReply(@RequestBody HashMap<String, Object> params, HttpSession session,NotifyVO vo) throws Exception {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		System.out.println("public Map<String, Object> ");
 		String result = "fail";
-		String user_num = ""; // 회원번호
+		int user_num; // 회원번호
 		String rcmtNum = ""; // 대댓글번호
-
-		if (commonUtils.isEmptyCstm(params.get("boardNum")) || commonUtils.isEmptyCstm(params.get("content"))) {
+		//유효성 체크
+		if (commonUtils.isEmptyCstm((String) params.get("boardNum")) || commonUtils.isEmptyCstm((String) params.get("content"))) {
 			resultMap.put("result", result);
 			return resultMap;
 		}
-		if (!commonUtils.isEmptyCstm(params.get("recommentNum"))) {
-			rcmtNum = params.get("recommentNum");
+		if (!commonUtils.isEmptyCstm((String) params.get("recommentNum"))) {
+			rcmtNum = (String) params.get("recommentNum");
 		}
-		user_num = String.valueOf(session.getAttribute("user_num"));
+		user_num = (int) session.getAttribute("user_num");
 		params.put("userNum", user_num);
 		params.put("recommentNum", rcmtNum);
 		System.out.println("전송 직전의 param : " + params.toString());
+		vo.setNotifyusernum(user_num);
+		vo.setNotifylink((String) params.get("notifyLink"));
+		vo.setNotifycontent((String) params.get("notifycontent"));
+		vo.setNotifyuser(Integer.parseInt((String) params.get("usernum")));
+		boardService.notifyReply(vo);
 		int aflt = boardService.insertReply(params);
 		if (aflt == 1) {
 			result = "success";
@@ -147,6 +151,22 @@ public class BoardContollor {
 		boardService.boardUpdate(vo);
 		return "redirect:feed";
 	}
+	
+	//댓글 삭제
+		@RequestMapping(value = "/commentDel", method = RequestMethod.GET)
+		public void commentDel(@RequestParam int cm_num) throws Exception{
+			boardService.commentDelete(cm_num);
+			
+		}
+		
+	//댓글 수정
+		@RequestMapping(value = "/commentUpdate",  method = RequestMethod.POST)
+		@ResponseBody
+		public void commentUpdate(@RequestBody HashMap<String, String> params ) throws Exception{
+			System.out.println("야 나 남아있따 지금은 아홉시");
+			System.out.println(params);
+			boardService.commentUpdate(params);
+		}
 
 	// 게시글 검색
 	@RequestMapping(value = "/feedsearch", method = RequestMethod.POST)
