@@ -73,13 +73,11 @@ button:hover {
 					<c:out value="${vo.qdate}" />
 				</div>
 				<br>
-				<br>
 				<div class="form-group">
 					<label for="writer" class="col-sm-2 control-label">작성자</label> <input
 						type="text" id="user_id" name="user_id" class="form-control"
 						value="${vo.user_id}" readonly="readonly" />
 				</div>
-				<br>
 				<br>
 				<div class="form-group">
 					<label for="title" class="col-sm-2 control-label">제목</label> <input
@@ -87,11 +85,16 @@ button:hover {
 						value="${vo.qtitle}" readonly="readonly" />
 				</div>
 				<br>
-				<br>
 				<div class="form-group">
-					<label for="content" class="col-sm-2 control-label">내용</label>
+					<label for="content" class="col-sm-2 control-label">질문내용</label>
 					<textarea id="askcontent" name="askcontent" class="form-control"
 						readonly="readonly"><c:out value="${vo.askcontent}" /></textarea>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="content" class="col-sm-2 control-label">답변내용</label>
+					<textarea id="askcontent" name="recontent" class="form-control"
+						readonly="readonly"><c:out value="${vo.recontent}" /></textarea>
 				</div>
 			</c:forEach>
 
