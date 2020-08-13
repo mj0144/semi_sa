@@ -15,9 +15,14 @@ public class PayDao {
 	SqlSession ss;
 	
 	@Transactional
-	public void payListInsert(PaymentVO vo) {
+	public void paySingleListInsert(PaymentVO vo) {
 		ss.insert("pay.paylistInsert", vo); //paylist에 결제정보 저장.
 		ss.insert("pay.singleInsert", vo); //상품에 따른 단/세트 제품 현황테이블에 정보 저장
+	}
+	@Transactional
+	public void paySetListInsert(PaymentVO vo) {
+		ss.insert("pay.paylistInsert", vo); //paylist에 결제정보 저장.
+		ss.insert("pay.setInsert", vo); //상품에 따른 단/세트 제품 현황테이블에 정보 저장
 	}
 	
 	

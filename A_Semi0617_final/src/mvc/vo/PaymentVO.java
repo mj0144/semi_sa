@@ -3,12 +3,21 @@ package mvc.vo;
 public class PaymentVO {
 	private String imp_uid;
 	private int product_num;
-	private String paid_amount;
+	private String paid_amount; //구매 총 금액
 	private int buyer_num; // 구매자 번호
 	private int paid_count; // 구매 갯수
 	private String merchant_uid; // 거래id
-	private String paid_date;
+	private String paid_date; //구매날짜
+	private String expiry_date; //종료날짜
 	
+
+	public String getExpiry_date() {
+		return expiry_date;
+	}
+
+	public void setExpiry_date(String expiry_date) {
+		this.expiry_date = expiry_date;
+	}
 
 	public String getPaid_date() {
 		return paid_date;

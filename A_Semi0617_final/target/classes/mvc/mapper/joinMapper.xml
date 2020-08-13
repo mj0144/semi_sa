@@ -13,6 +13,10 @@
 	<insert id="idaelinsert" parameterType="ideal">
 		insert into ideal_type values(#{user_num}, #{ideal_height}, #{ideal_age}, #{ideal_body})
 	</insert>
+	<insert id= "gradeInit" parameterType="hashMap">
+		insert into mapping_grade_user values(#{user_num}, #{grade})
+	</insert>
+	
 	<select id="selc_user_num" parameterType="String" resultType="int">
 		select user_num from user_info where user_id=#{user_id}
 	</select>

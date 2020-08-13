@@ -1,5 +1,6 @@
 package mvc.pay.controller;
 
+import org.aspectj.lang.annotation.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,7 @@ public class PayController {
 	public ModelAndView pay_productcart(int product_num) {
 		ModelAndView mv = new ModelAndView("payment/pay_productcart");
 		
+		//제품 정보 데이터 select
 		ProductVO vo = payDao.selectProduct_Info(product_num);
 		
 		mv.addObject("vo", vo);
@@ -38,10 +40,14 @@ public class PayController {
 		return mv;
 	}
 	
+	
+	 
 	@RequestMapping("/pay_compelte")
 	@ResponseBody
 	public boolean pay_compelte(PaymentVO vo) {
 		
+		
+		//결제 완료 정보 insert
 		payService.payListInsert(vo);
 
 		return true;

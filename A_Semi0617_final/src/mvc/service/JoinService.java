@@ -103,6 +103,9 @@ public class JoinService {
 		}
 
 	}
+	public void gradeInit(MemberVO vo) {
+		joinDao.gradeInit(vo);		
+	}
 	
 	
 

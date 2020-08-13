@@ -1,5 +1,8 @@
 package mvc.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,6 +35,21 @@ public class JoinDao {
 		return ss.selectOne("join.selc_user_num", user_id);
 
 	}
+	
+	public void gradeInit(MemberVO vo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_num", vo.getUser_num());
+		map.put("grade", "bronze");
+		try {
+			ss.insert("join.gradeInit", map);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	
 	// 아이디 체크
 	public int idChk(String id) {

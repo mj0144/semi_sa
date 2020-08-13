@@ -6,16 +6,28 @@
   
  <mapper namespace="pay">
  
+ 
+ <!--  -->
  <insert id="paylistInsert" parameterType="payvo">
  	insert into paylist values(#{merchant_uid}, #{product_num}, #{buyer_num}, #{imp_uid}, #{paid_amount}, #{paid_date}, #{paid_count})
  </insert>
+ 
+ <!-- 단품 상품  -->
  <insert id="singleInsert" parameterType="payvo">
  insert into single_productlist values
  (#{merchant_uid}, #{product_num}, #{buyer_num}, #{paid_date}, 
  (select charge_count from product_info where product_num=#{product_num}))
- 
  </insert>
  
+<!-- 세트 상품  -->
+ <insert id="setInsert" parameterType="payvo">
+ insert into set_productlist values
+ (#{merchant_uid}, #{product_num}, #{buyer_num}, #{paid_date}, #{expiry_date})
+ </insert> 
+ 
+
+ 
+
  <select id="selectproduct_info" parameterType="int" resultType="productvo">
  	select * from product_info where product_num=#{product_num}
  </select>
