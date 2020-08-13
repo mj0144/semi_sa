@@ -4,224 +4,8 @@
 <aside id="colorlib-aside" role="complementary"
    class="js-fullheight text-center">
    	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<!-- ¾Ë¶÷ ½ºÅ©¸³Æ® -->
-<!-- 	<script>
-	$(function() {
-			var notifyuser = $("#sessionNum").val();
-			var param = new Object();
-			param.notifyuser = notifyuser;
-			var paramJson = JSON.stringify(param);
-			$.ajax({
-				url : "notifycations",
-				contentType: "application/json; charset=utf-8",
-				type : "POST",
-				data : paramJson,
-				dataType: "json",
-				success: function (res) {
-					if(res.result == "success"){
-						var count = res.cnt;
-						var lastCount = 0;
-						var list = res.list;
-						// ¾Ë¶÷³»¿ë
-						var notifications = new Array();
-						for(var i=0; i<list.length; i++){
-							var map = list[i];
-							notifications.push({
-								href : map["NOTIFYLINK"],
-								image : map["USER_IMG"],
-								texte : map["NOTIFYCONTENT"] + makeBadge("17-0253"),
-								date : map["NOTIFYDATE"]
-							});
-						}
-						function makeBadge(texte) {
-							return "<span class=\"badge badge-default\">" + texte + "</span>";
-						}
-	
-						appNotifications = {
-	
-							// ÃÊ±âÈ­
-							init : function() {
-								$("#notificationsBadge").hide();
-								$("#notificationAucune").hide();
-	
-								// Å¬¸¯ ¾Ë¸²À» ¹ÙÀÎµù
-								$("#notifications-dropdown").on('click', function() {
-									var open = $("#notifications-dropdown").attr("aria-expanded");
-									if (open === "false") {
-										appNotifications.loadAll();
-									}
-	
-								});
-	
-								// ¾Ë¶÷ºÒ·¯¿À±â
-								appNotifications.loadAll();
-	
-								// ¹öÆ°¼Ó ¾Ë¶÷¼ıÀÚ
-								setInterval(function() {
-									appNotifications.loadNumber();
-								}, 30000);
-	
-								// ¾Ë¶÷³»¿ª ¶ç¿ì±â
-								$('.notification-read-desktop').on('click', function(event) {
-									appNotifications.markAsReadDesktop(event, $(this));
-								});
-	
-							},
-	
-							loadAll : function() {
-	
-								// ¾Ë¶÷ÀÌ ¾ø´Â °æ¿ì
-								if (count !== lastCount || count === 0) {
-									appNotifications.load();
-								}
-								appNotifications.loadNumber();
-	
-							},
-	
-							badgeLoadingMask : function(show) {
-								if (show === true) {
-									$("#notificationsBadge").html(appNotifications.badgeSpinner);
-									$("#notificationsBadge").show();
-									// ¸ğ¹ÙÀÏ
-									$("#notificationsBadgeMobile").html(count);
-									$("#notificationsBadgeMobile").show();
-								} else {
-									$("#notificationsBadge").html(count);
-									if (count > 0) {
-										$("#notificationsIcon").removeClass("fa-bell-o");
-										$("#notificationsIcon").addClass("fa-bell");
-										$("#notificationsBadge").show();
-										// ¸ğ¹ÙÀÏ
-										$("#notificationsIconMobile").removeClass("fa-bell-o");
-										$("#notificationsIconMobile").addClass("fa-bell");
-										$("#notificationsBadgeMobile").show();
-									} else {
-										$("#notificationsIcon").addClass("fa-bell-o");
-										$("#notificationsBadge").hide();
-										// ¸ğ¹ÙÀÏ
-										$("#notificationsIconMobile").addClass("fa-bell-o");
-										$("#notificationsBadgeMobile").hide();
-									}
-	
-								}
-							},
-	
-							// ¾Ë¶÷ÀÌ ÄÑÁö´ÂÁö È®ÀÎ
-							loadingMask : function(show) {
-	
-								if (show === true) {
-									$("#notificationAucune").hide();
-									$("#notificationsLoader").show();
-								} else {
-									$("#notificationsLoader").hide();
-									if (count > 0) {
-										$("#notificationAucune").hide();
-									} else {
-										$("#notificationAucune").show();
-									}
-								}
-	
-							},
-	
-							loadNumber : function() {
-								appNotifications.badgeLoadingMask(true);
-	
-								setTimeout(function() {
-									$("#notificationsBadge").html(count);
-									appNotifications.badgeLoadingMask(false);
-								}, 1000);
-							},
-	
-							// ¾Ë¶÷ ·Îµå
-							load : function() {
-								appNotifications.loadingMask(true);
-	
-								$('#notificationsContainer').html("");
-	
-								// ¾Ë¶÷°¹¼ö
-								lastCount = count;
-	
-								setTimeout(function() {
-	
-									for (i = 0; i < count; i++) {
-	
-										var template = $('#notificationTemplate').html();
-										template = template.replace("{{href}}",
-												notifications[i].href);
-										template = template.replace("{{image}}",
-												notifications[i].image);
-										template = template.replace("{{texte}}",
-												notifications[i].texte);
-										template = template.replace("{{date}}",
-												notifications[i].date);
-	
-										$('#notificationsContainer').append(template);
-									}
-	
-									$('.notification-read').on('click', function(event) {
-										appNotifications.markAsRead(event, $(this));
-									});
-	
-									appNotifications.loadingMask(false);
-	
-									$("#notifications-dropdown").prop("disabled", false);
-								}, 1000);
-							},
-	
-							// ¾Ë¶÷À» ÀĞ´Â»óÅÂ·Î Ç¥½Ã
-							markAsRead : function(event, elem) {
-								// ¸ñ·Ï¿­±â
-								event.preventDefault();
-								event.stopPropagation();
-	
-								// ¾Ë¶÷»èÁ¦
-								elem.parent('.dropdown-notification').remove();
-	
-								// TEMP : pour le template
-								count--;
-	
-								appNotifications.loadAll();
-							},
-	
-							// Marquer une notification comme lue version bureau
-							markAsReadDesktop : function(event, elem) {
-								// Permet de ne pas change de page
-								event.preventDefault();
-								event.stopPropagation();
-	
-								// Suppression de la notification
-								elem.parent('.dropdown-notification').removeClass(
-										"notification-unread");
-								elem.remove();
-	
-								// On supprime le focus
-								if (document.activeElement) {
-									document.activeElement.blur();
-								}
-								// TEMP : pour le template
-								count--;
-	
-								appNotifications.loadAll();
-							},
-							add : function() {
-								lastCount = count;
-								count++;
-							},
-							// Template du badge
-							badgeSpinner : '<i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i>'
-						};
-						appNotifications.init();
-	
-					}else {
-						alert("¼­¹ö¿Í Åë½Å ¹®Á¦");
-					}
-				},
-				error: function (request,status,error) {
-					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-				}
-			});
-	});
-	</script> -->
+	<!-- ì•ŒëŒ ìŠ¤í¬ë¦½íŠ¸ -->
+
 <%@include file="notications.jsp"%>
 	<a href="setting" style="float:right; margin-top:-10%"><img src="images/setting.png"></a>
    <h1 id="colorlib-logo">
@@ -231,20 +15,20 @@
    <nav id="colorlib-main-menu" role="navigation">
       <ul style="line-height: 2;">
          <li class="colorlib-active"><a href="index">Home</a></li>
-         <li><a href="viewsaju">»çÁÖº¸±â</a></li>
-         <li><a href="feed">ÇÇµå</a></li>
-         <li><a href="chat.do">Ã¤ÆÃ</a></li>
-         <li><a href="listWhole">ÀÎ¿¬Ã£±â</a></li>
-         <li><a href="findlove">ÀÌ»óÇüÃ£±â</a></li>
-         <li><a href="mypage">¸¶ÀÌÆäÀÌÁö</a></li>
-         <li><a href="pay">°áÁ¦»óÇ°</a></li>
+         <li><a href="viewsaju">ì‚¬ì£¼ë³´ê¸°</a></li>
+         <li><a href="feed">í”¼ë“œ</a></li>
+         <li><a href="chat.do">ì±„íŒ…</a></li>
+         <li><a href="listWhole">ì¸ì—°ì°¾ê¸°</a></li>
+         <li><a href="findlove">ì´ìƒí˜•ì°¾ê¸°</a></li>
+         <li><a href="mypage">ë§ˆì´í˜ì´ì§€</a></li>
+         <li><a href="pay">ê²°ì œìƒí’ˆ</a></li>
          <li><a href="qnapage">Q&A</a></li>
          <br>
          <br>
          <br>
          <br>
          
-         <li><a href="logoutdo">·Î±×¾Æ¿ô</a></li>
+         <li><a href="logoutdo">ë¡œê·¸ì•„ì›ƒ</a></li>
       </ul>
       <h3>
          <img src="images/heart.png">
