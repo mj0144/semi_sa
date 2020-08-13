@@ -37,8 +37,8 @@
                 <tr class="content" style="font-size: 12px;">
                     <td class="text-left">
                     <a style="cursor: pointer;" id="mvprofile">
-                    ${e.NICKNAME }
-						<form action="friend2" method="post" id="send_num">
+                    	${e.NICKNAME }
+						<form action="friend" method="post" id="send_num">
 							<input type="hidden" name="user_num" id="user_num"
 							value="${e.USER_NUM }">
 						</form>

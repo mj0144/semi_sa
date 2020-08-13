@@ -212,3 +212,16 @@
 		  $('[data-toggle="tooltip"]').tooltip();   
 		});
 	</script>
+	
+	<script>
+// 		function friend() {
+// 			alert($("#user_num").val());
+// 			//$("#send_num").submit();
+			
+// 		}
+		
+		$(document).on('click', '.mvprofile', function(event) {
+			$(this).children("#send_num").submit();
+
+		});
+	</script>
