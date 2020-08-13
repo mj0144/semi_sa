@@ -3,16 +3,18 @@
 <%@include file="header.jsp"%>
 <%@include file="side.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <!-- 좋아요 및 좋아요 취소  -->
 <script>
  	function toggleImage() {
 		var like = 'false';
 		
-		var hearton = "images/hearton.png"; //차있는 하트
-		var heartoff = "images/heartoff.png"; //비어있는 하트
+		var hearton = "resources/img/btn/hearton.png"; //차있는 하트
+		var heartoff = "resources/img/btn/heartoff.png"; //비어있는 하트
 		
 		console.log("글쓴이 : " + $('#friend_num').val());
 		
@@ -20,11 +22,13 @@
 		var user_num = ${sessionScope.user_num};
 		
 		if ($('#img1').attr("src") === hearton) {
-				$('#img1').attr("src", "images/heartoff.png"); //하트 버림
+				$('#img1').attr("src", "resources/img/btn/heartoff.png"); //하트 버림
+				$("img1").attr('data-original-title', '좋아요').tooltip('show');
 				like='false';
 			//console.log(${param.op_num});
 		} else {
-				$('#img1').attr("src", "images/hearton.png"); //하트 채움
+				$('#img1').attr("src", "resources/img/btn/hearton.png"); //하트 채움
+				$('#img1').attr('data-original-title', '좋아요 취소').tooltip('show')
 				like='true';
 		}
 		
@@ -56,8 +60,8 @@
 		
 		var block = 'false';
 		
-		var blockon = "images/blockon.png"; //블락한 상태(빨간색)
-		var blockoff = "images/blockoff.png"; //블락 안한 상태(까만색)
+		var blockon = "resources/img/btn/dislike.png"; //블락한 상태(빨간색)
+		var blockoff = "resources/img/btn/like.png"; //블락 안한 상태(까만색)
 		
 		console.log("글쓴이 : " + $('#friend_num').val());
 		
@@ -65,12 +69,13 @@
 		var user_num = ${sessionScope.user_num};
 		
 		if ($('#img2').attr("src") === blockon) {
-				$('#img2').attr("src", "images/blockoff.png"); //블락취소
-				block='false';
-			//console.log(${param.op_num});
-		} else {
-				$('#img2').attr("src", "images/blockon.png"); //블락
+				$('#img2').attr("src", "resources/img/btn/like.png"); //블락취소
+				$('#img2').attr('data-original-title', '추천 제외 취소').tooltip('show')
 				block='true';
+		} else {
+				$('#img2').attr("src", "resources/img/btn/dislike.png"); //블락
+				$('#img2').attr('data-original-title', '추천에서 제외').tooltip('show')
+				block='false';
 		}
 		
 		var pm = {"block" : block, "blocked_user" : $('#friend_num').val()};
@@ -125,14 +130,14 @@
 					<div class="desc">
 						<div style="margin-top: -100px; margin-bottom: 40px;">
 							<p style="text-align: center; float: left;">
-								좋아요 &nbsp;
-								<!-- <img id="img1" src="images/heart1.png" onclick="toggleImage();"> -->
 								<c:choose>
 									<c:when test="${heartchk == 1}">
-										<img id="img1" src="images/hearton.png" onclick="toggleImage()"/>
+										<img id="img1" src="resources/img/btn/hearton.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="좋아요 취소"/>
 									</c:when>
 									<c:otherwise>
-										<img id="img1" src="images/heartoff.png" onclick="toggleImage()"/>
+										<img id="img1" src="resources/img/btn/heartoff.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="좋아요"/>
 									</c:otherwise>
 								</c:choose>
 								<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
@@ -142,13 +147,14 @@
 							</p>
 							<!-- 블락 및 블락 취소 -->
 							<p style="text-align: center; float: right;">
-								차단 &nbsp;
 								<c:choose>
 									<c:when test="${blockchk == 1}">
-										<img id="img2" src="images/blockon.png" onclick="blockImage()" style="width: 50px;"/>
+										<img id="img2" src="resources/img/btn/like.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="추천 제외 취소"/>
 									</c:when>
 									<c:otherwise>
-										<img id="img2" src="images/blockoff.png" onclick="blockImage()" style="width: 50px;"/>
+										<img id="img2" src="resources/img/btn/dislike.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="추천에서 제외"/>
 									</c:otherwise>
 								</c:choose>
 							</p>
@@ -161,6 +167,7 @@
 						<p class="mb-4">${membervo.user_intro}</p>
 						<h3 class="signature h1">Eric</h3>
 					</div>
+					<div id="boardBtn_group" ><button type="button" id="modal_open_btn" style="float: right;">신고하기</button></div>
 				</div>
 			</div>
 		</div>
@@ -227,4 +234,44 @@
 			</div>
 		</div>
 	</section>
+	
+	<!-- Modal -->
+				    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				        <div class="modal-dialog  modal-dialog-centered" role="document">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <b><h2 class="modal-title" id="myModalLabel">불량유저 신고하기</h2></b>
+				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right;">
+				                        <span aria-hidden="true">&times;</span>
+				                    </button>
+				                </div>
+				                <div class="modal-body" >
+										<hr style="color: gray;"><br><br>
+										<form method="post" id="checked" action="reportUser">
+										<input type="radio" name="report_comment" value="의심스럽거나 스팸입니다." checked/> 의심스럽거나 스팸입니다. <br/><br/>
+										<input type="radio" name="report_comment" value="계정 해킹이 의심됩니다."/> 계정 해킹이 의심됩니다.<br/><br/>
+										<input type="radio" name="report_comment" value="신고자 본인,또는 타인을 사칭하고 있습니다."/> 신고자 본인,또는 타인을 사칭하고 있습니다.<br/><br/>
+										<input type="radio" name="report_comment" value="부적합한 게시물을 게시했습니다."/> 부적합한 게시물을 게시했습니다.<br/><br/>
+										<input type="radio" name="report_comment" value="기타"/> 기타<br/><br/>
+										<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
+								</div>
+				                <div class="modal-footer">
+				                    <button type="submit" class="btn btn-primary" id="report_btn">제출</button>
+				                     </form>
+				                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="report_cancel">취소</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
 	<%@include file="footer.jsp"%>
+	<script>
+	$(document).ready(function() {
+		$('#modal_open_btn').click(function() {
+			$('#myModal').modal('show');
+		});
+		
+		$('#report_btn').click(function() {
+ 			alert('신고가 접수되었습니다.')
+		})
+	})
+	</script>
