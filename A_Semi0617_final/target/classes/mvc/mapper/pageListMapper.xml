@@ -4,27 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
    <mapper namespace="pagelist">
-   
-  <!-- 사용자 성별 출력 -->
-  <select id="usersex" parameterType="int" resultType="String">
-  select sex from user_info where user_num = #{user_num}
-  </select>
   
-  
-  <!-- 페이징 처리를 위한 총 리스트 갯수 출력 -->
-  <select id="totalListCount" resultType="int" parameterType="pvo">
-  
-  select count(*) cnt from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
+ 
+  <!-- 새로운 랜덤 추천인 출력 -->
+  <select id="recProfile" resultType="hashMap" parameterType="hashMap">
+  select * from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
   
   <choose>
   <when test="samb == 'saju'">
-  , (s.sky_score + d.land_score) f_score, s.sky, s.sky_score, d.land, d.land_score
+  , (s.sky_score + d.land_score)*10 f_score
   </when>
   <when test="samb == 'mbti'">
-  , m.score f_score, m.youmbti, m.score mbti_score 
+  , m.score*20 f_score
   </when>
   <otherwise>
-  , (s.sky_score + d.land_score + m.score) f_score, m.youmbti, m.score mbti_score, s.sky, s.sky_score, d.land, d.land_score
+  , (s.sky_score + d.land_score + m.score*2)*5 f_score
   </otherwise>
   </choose>
   
@@ -43,6 +37,7 @@
   and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
   </otherwise>
   </choose>
+  
   ) s, 
   
   (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
@@ -87,92 +82,94 @@
    and u.user_num != ${e}
   </foreach>
   </if>
+   
+  order by DBMS_RANDOM.VALUE) WHERE ROWNUM = 1
+  
+  </select>
+   
+   
+  <!-- 이전에 추천받았던 인물 출력 -->
+  <select id="reProfile" resultType="hashMap" parameterType="hashMap">
+  select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
+  
+  <choose>
+  <when test="samb == 'saju'">
+  , (s.sky_score + d.land_score)*10 f_score
+  </when>
+  <when test="samb == 'mbti'">
+  , m.score*20 f_score
+  </when>
+  <otherwise>
+  , (s.sky_score + d.land_score + m.score*2)*5 f_score
+  </otherwise>
+  </choose>
+  
+  from user_info u 
+  
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
+  </choose>
+  
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
+  </if>
+  
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
 
-  )
+   and u.user_num = (select rec_num from recprofile where user_num = #{user_num} and num = #{num})
   
   </select>
-  
-  
-  <!-- 리스트 출력 -->
-  <select id="totalList" resultType="hashMap" parameterType="pvo">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
-  
-  <choose>
-  <when test="samb == 'saju'">
-  , (s.sky_score + d.land_score) f_score, s.sky, s.sky_score, d.land, d.land_score
-  </when>
-  <when test="samb == 'mbti'">
-  , m.score f_score, m.youmbti, m.score mbti_score 
-  </when>
-  <otherwise>
-  , (s.sky_score + d.land_score + m.score) f_score, m.youmbti, m.score mbti_score, s.sky, s.sky_score, d.land, d.land_score
-  </otherwise>
-  </choose>
-  
-  from user_info u 
-  
-  <if test="samb != 'mbti'">
-  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
-  
-  <choose>
-  <when test='sex2 == "f"'>
-  where substr(u.ilju,1,1) = ds.msky 
-  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
-  </when>
-  <otherwise>
-  where substr(u.ilju,1,1) = ds.wsky 
-  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
-  </otherwise>
-  </choose>
-  
-  ) s, 
-  
-  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
-  
-  <choose>
-  <when test='sex2 == "f"'>
-  where substr(u.ilju,2,1) = dl.mland  
-  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
-  </when>
-  <otherwise>
-  where substr(u.ilju,2,1) = dl.wland  
-  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
-  </otherwise>
-  </choose>
-  
-  ) d
-  </if>
-  
-  <if test="samb != 'saju'">
-  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
-  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
-  </if>
-  
-  <choose>
-  <when test="samb == 'mbti'">
-  where u.user_num = m.user_num
-  </when>
-  <when test="samb == 'saju'">
-  where u.user_num=d.user_num and u.user_num=s.user_num 
-  </when>
-  <otherwise>
-  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
-  </otherwise>
-  </choose>
-  
-  <if test="sex != null">
-  and sex = #{sex}
-  </if>
-  
-  <if test="blist != null">
-  <foreach collection="blist" item="e">
-   and u.user_num != ${e}
-  </foreach>
-  </if>
    
-  ) a) where r_num between #{start} and #{end}
+  <!-- 추천인 일주 뽑기 -->
+  <select id="profileilju" parameterType="int" resultType="hashMap">
+  select * from sajuilju where ilju = (select ilju from user_info where user_num=${user_num})
+  </select> 
   
-   </select>
+  
+  <!-- 추천인 MBTI 뽑기 -->
+  <select id="profilembti" parameterType="int" resultType="hashMap">
+  select * from mbtiinfo where mbti = (select user_mbti from user_info where user_num=${user_num})
+  </select>
+  
    
   <!-- 차트 뽑기 위한 점수별 카운트 출력 -->
   <select id="ChartCount" resultType="int" parameterType="hashMap">
@@ -267,5 +264,106 @@
   </choose>
    
   </select>
+  
+  
+  <!-- 90점 이상인 사람 percent 뽑기 -->
+  <select id="over90" parameterType="hashMap" resultType="int">
+  
+  select distinct round(count(*) over() * 100/total) percnt from 
+  (select count(*) over() as total, u.user_num,  
+  
+  <!-- f_score 종류 -->
+  <choose>
+  <when test="samb == 'saju'">
+  (s.sky_score + d.land_score)*10 f_score
+  </when>
+  <when test="samb == 'mbti'">
+  m.score*20 f_score 
+  </when>
+  <otherwise>
+  (s.sky_score + d.land_score + m.score*2)*5 f_score
+  </otherwise>
+  </choose>
+  
+  from user_info u 
+  
+  <!-- 사주 -->
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
+  </choose>
+  
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
+  </if>
+  
+  <!-- mbti -->
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <!-- 같은거 다른거 -->
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
+  
+  <if test="sex != null">
+  and sex = #{sex}
+  </if>
+  
+  <if test="blist != null">
+  <foreach collection="blist" item="e">
+   and u.user_num != ${e}
+  </foreach>
+  </if>
+  
+  ) where f_score >= 90
+
+  </select>
+  
+  <!-- 추천인 DB 안에 넣기 -->
+  <insert id="recinsert" parameterType="hashMap">
+  	insert into RECPROFILE values(${num},sysdate,${user_num},${rec_num})
+  </insert>
+  
+  <!-- 추천인 몇 명 DB에 저장되어있는지 출력 -->
+  <select id="maxnum" parameterType="int" resultType="int">
+  	select max(num) from recprofile where user_num = ${user_num}
+  </select>
+  
+  
+   
    
   </mapper>

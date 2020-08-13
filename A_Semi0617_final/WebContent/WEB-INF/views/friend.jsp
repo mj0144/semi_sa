@@ -13,8 +13,8 @@
  	function toggleImage() {
 		var like = 'false';
 		
-		var hearton = "images/hearton.png"; //차있는 하트
-		var heartoff = "images/heartoff.png"; //비어있는 하트
+		var hearton = "resources/img/btn/hearton.png"; //차있는 하트
+		var heartoff = "resources/img/btn/heartoff.png"; //비어있는 하트
 		
 		console.log("글쓴이 : " + $('#friend_num').val());
 		
@@ -22,11 +22,13 @@
 		var user_num = ${sessionScope.user_num};
 		
 		if ($('#img1').attr("src") === hearton) {
-				$('#img1').attr("src", "images/heartoff.png"); //하트 버림
+				$('#img1').attr("src", "resources/img/btn/heartoff.png"); //하트 버림
+				$("img1").attr('data-original-title', '좋아요').tooltip('show');
 				like='false';
 			//console.log(${param.op_num});
 		} else {
-				$('#img1').attr("src", "images/hearton.png"); //하트 채움
+				$('#img1').attr("src", "resources/img/btn/hearton.png"); //하트 채움
+				$('#img1').attr('data-original-title', '좋아요 취소').tooltip('show')
 				like='true';
 		}
 		
@@ -58,8 +60,8 @@
 		
 		var block = 'false';
 		
-		var blockon = "images/blockon.png"; //블락한 상태(빨간색)
-		var blockoff = "images/blockoff.png"; //블락 안한 상태(까만색)
+		var blockon = "resources/img/btn/dislike.png"; //블락한 상태(빨간색)
+		var blockoff = "resources/img/btn/like.png"; //블락 안한 상태(까만색)
 		
 		console.log("글쓴이 : " + $('#friend_num').val());
 		
@@ -67,12 +69,13 @@
 		var user_num = ${sessionScope.user_num};
 		
 		if ($('#img2').attr("src") === blockon) {
-				$('#img2').attr("src", "images/blockoff.png"); //블락취소
-				block='false';
-			//console.log(${param.op_num});
-		} else {
-				$('#img2').attr("src", "images/blockon.png"); //블락
+				$('#img2').attr("src", "resources/img/btn/like.png"); //블락취소
+				$('#img2').attr('data-original-title', '추천 제외 취소').tooltip('show')
 				block='true';
+		} else {
+				$('#img2').attr("src", "resources/img/btn/dislike.png"); //블락
+				$('#img2').attr('data-original-title', '추천에서 제외').tooltip('show')
+				block='false';
 		}
 		
 		var pm = {"block" : block, "blocked_user" : $('#friend_num').val()};
@@ -127,14 +130,14 @@
 					<div class="desc">
 						<div style="margin-top: -100px; margin-bottom: 40px;">
 							<p style="text-align: center; float: left;">
-								좋아요 &nbsp;
-								<!-- <img id="img1" src="images/heart1.png" onclick="toggleImage();"> -->
 								<c:choose>
 									<c:when test="${heartchk == 1}">
-										<img id="img1" src="images/hearton.png" onclick="toggleImage()"/>
+										<img id="img1" src="resources/img/btn/hearton.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="좋아요 취소"/>
 									</c:when>
 									<c:otherwise>
-										<img id="img1" src="images/heartoff.png" onclick="toggleImage()"/>
+										<img id="img1" src="resources/img/btn/heartoff.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="좋아요"/>
 									</c:otherwise>
 								</c:choose>
 								<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
@@ -144,13 +147,14 @@
 							</p>
 							<!-- 블락 및 블락 취소 -->
 							<p style="text-align: center; float: right;">
-								차단 &nbsp;
 								<c:choose>
 									<c:when test="${blockchk == 1}">
-										<img id="img2" src="images/blockon.png" onclick="blockImage()" style="width: 50px;"/>
+										<img id="img2" src="resources/img/btn/like.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="추천 제외 취소"/>
 									</c:when>
 									<c:otherwise>
-										<img id="img2" src="images/blockoff.png" onclick="blockImage()" style="width: 50px;"/>
+										<img id="img2" src="resources/img/btn/dislike.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
+										data-toggle="tooltip" data-placement="top" title="추천에서 제외"/>
 									</c:otherwise>
 								</c:choose>
 							</p>
