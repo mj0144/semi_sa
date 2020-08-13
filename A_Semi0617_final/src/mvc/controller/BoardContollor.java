@@ -115,7 +115,7 @@ public class BoardContollor {
 	 */
 //		resultMap.put("result", result);
 //		return resultMap;
-//	}
+//	 }
 
 	// 게시글 삭제
 	@RequestMapping(value = "/boardDel")

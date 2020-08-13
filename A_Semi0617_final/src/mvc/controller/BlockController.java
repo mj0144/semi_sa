@@ -42,7 +42,7 @@ public class BlockController {
 	@RequestMapping("/blockox")
 	public void blockox(String block, int blocked_user, HttpSession session) {
 		
-		System.out.println("ì»¨íŠ¸ë¡¤ëŸ¬ ì‹¤í–‰");
+		System.out.println("ÄÁÆ®·Ñ·¯ ½ÇÇà");
 		System.out.println(block);
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -51,13 +51,12 @@ public class BlockController {
 		
 		if (block.equals("true") ) {
 			blockdao.blockPush(map);
-			System.out.println("ë¸”ë½ ì¶”ê°€");
+			System.out.println("ºí¶ô Ãß°¡");
 		}else {
 			blockdao.blockDel(map);
-			System.out.println("ë¸”ë½ í•´ì œ");
+			System.out.println("ºí¶ô ÇØÁ¦");
 		}				
 		
 	}
 
 }
-
