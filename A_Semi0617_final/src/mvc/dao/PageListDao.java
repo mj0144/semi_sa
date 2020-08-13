@@ -63,4 +63,9 @@ public class PageListDao {
 		}		
 	}
 	
+	// 매일 0시가 되면 추천인 저장한 DB 삭제
+	public void delRprofile() {
+		ss.delete("pagelist.delRprofile");
+	}		
+	
 }

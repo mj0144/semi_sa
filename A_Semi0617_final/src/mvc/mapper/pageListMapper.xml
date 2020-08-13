@@ -363,6 +363,10 @@
   	select max(num) from recprofile where user_num = ${user_num}
   </select>
   
+  <!-- 매일 0시에 추천인 저장된 내용 삭제 -->
+  <delete id="delRprofile">
+  	DELETE FROM recprofile
+  </delete>
   
    
    
