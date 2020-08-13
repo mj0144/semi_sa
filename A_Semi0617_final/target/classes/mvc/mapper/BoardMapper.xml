@@ -137,17 +137,23 @@
  	<delete id="comment_delete" parameterType="java.util.Map">
  	delete from comment_info where cm_num=#{cm_num}
  	</delete>
-
-
-
-<!-- 피드 검색 -->
+	
+	<!-- 피드 검색 -->
 	<select id="searchlist" resultType="board" parameterType="board">
 		select * from board_info
 		
 		<include refid="search"></include> 
 	</select>
 
-
+<!-- 게시물신고  -->
+	<insert id="reportBoard" parameterType="java.util.Map">
+	INSERT INTO report_board VALUES (REPORT_BOARD_NUM_SEQ.nextval,#{user_num},#{user_id},#{board_num},#{reason})
+	</insert>
+	
+<!-- 댓글 신고 -->
+	<insert id="reportComment" parameterType="java.util.Map">
+	INSERT INTO report_comment VALUES (REPORT_BOARD_NUM_SEQ.nextval,#{user_num},#{user_id},#{board_num},#{comment_num},#{reason})
+	</insert>
 
  	<sql id="search"> 
 		<if test="keyword != null">

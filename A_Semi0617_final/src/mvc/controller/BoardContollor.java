@@ -37,7 +37,7 @@ public class BoardContollor {
 	@Autowired
 	private BoardDao boarddao;
 
-	// ÀüÃ¼°Ô½Ã±Û
+	// ï¿½ï¿½Ã¼ï¿½Ô½Ã±ï¿½
 	@RequestMapping(value = "/feed")
 	public ModelAndView list(ModelAndView mav) throws Exception {
 		List<BoardVO> list = boardService.listAll();
@@ -46,7 +46,7 @@ public class BoardContollor {
 		return mav;
 	}
 
-	// °Ô½Ã±ÛÁ¶È¸
+	// ï¿½Ô½Ã±ï¿½ï¿½ï¿½È¸
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
 	public ModelAndView boardView(@RequestParam HashMap<String, String> params, HttpSession session, ModelAndView mav)
 			throws Exception {
@@ -68,12 +68,12 @@ public class BoardContollor {
 		return mav;
 	}
 
-	// °Ô½Ã±Û ÀÛ¼ºÈ­¸é
+	// ï¿½Ô½Ã±ï¿½ ï¿½Û¼ï¿½È­ï¿½ï¿½
 	@RequestMapping(value = "boardwrite", method = RequestMethod.GET)
 	public void write() {
 	}
 
-	// °Ô½Ã±Û ÀÛ¼ºÃ³¸®
+	// ï¿½Ô½Ã±ï¿½ ï¿½Û¼ï¿½Ã³ï¿½ï¿½
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(BoardVO vo, HttpSession session, HttpServletRequest request, MultipartFile[] files)
 			throws Exception {
@@ -92,16 +92,16 @@ public class BoardContollor {
 		return "redirect:feed";
 	}
 
-	// ´ñ±Û´Ş±â
+	// ï¿½ï¿½Û´Ş±ï¿½
 
 	@RequestMapping(value = "/reply", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> insertReply(@RequestBody HashMap<String, Object> params, HttpSession session,NotifyVO vo) throws Exception {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		String result = "fail";
-		int user_num; // È¸¿ø¹øÈ£
-		String rcmtNum = ""; // ´ë´ñ±Û¹øÈ£
-		//À¯È¿¼º Ã¼Å©
+		int user_num; // È¸ï¿½ï¿½ï¿½ï¿½È£
+		String rcmtNum = ""; // ï¿½ï¿½ï¿½Û¹ï¿½È£
+		//ï¿½ï¿½È¿ï¿½ï¿½ Ã¼Å©
 		if (commonUtils.isEmptyCstm((String) params.get("boardNum")) || commonUtils.isEmptyCstm((String) params.get("content"))) {
 			resultMap.put("result", result);
 			return resultMap;
@@ -112,7 +112,7 @@ public class BoardContollor {
 		user_num = (int) session.getAttribute("user_num");
 		params.put("userNum", user_num);
 		params.put("recommentNum", rcmtNum);
-		System.out.println("Àü¼Û Á÷ÀüÀÇ param : " + params.toString());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ param : " + params.toString());
 		vo.setNotifyusernum(user_num);
 		vo.setNotifylink((String) params.get("notifyLink"));
 		vo.setNotifycontent((String) params.get("notifycontent"));
@@ -126,22 +126,22 @@ public class BoardContollor {
 		return resultMap;
 	}
 
-	// °Ô½Ã±Û »èÁ¦
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/boardDel")
 	public String boardDel(@RequestParam int board_num) throws Exception {
 		boardService.boardDelete(board_num);
 		return "redirect:feed";
 	}
 
-	// °Ô½Ã±Û ¼öÁ¤È­¸é
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½
 	@RequestMapping(value = "upboard", method = RequestMethod.GET)
 	public String boardupdate(BoardVO vo, Model model) throws Exception {
 		model.addAttribute("updateB", boardService.read(vo.getBoard_num()));
-		System.out.println("¼öÁ¤Ã¢" + vo.getBoard_num());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½Ã¢" + vo.getBoard_num());
 		return "boardupdate";
 	}
 
-	// °Ô½Ã±Û ¼öÁ¤
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/updatefeed", method = RequestMethod.POST)
 	public String BoardUpdate(BoardVO vo, int BOARD_NUM, HttpServletRequest request, MultipartFile[] files)
 			throws Exception {
@@ -152,23 +152,23 @@ public class BoardContollor {
 		return "redirect:feed";
 	}
 	
-	//´ñ±Û »èÁ¦
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/commentDel", method = RequestMethod.GET)
 		public void commentDel(@RequestParam int cm_num) throws Exception{
 			boardService.commentDelete(cm_num);
 			
 		}
 		
-	//´ñ±Û ¼öÁ¤
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/commentUpdate",  method = RequestMethod.POST)
 		@ResponseBody
 		public void commentUpdate(@RequestBody HashMap<String, String> params ) throws Exception{
-			System.out.println("¾ß ³ª ³²¾ÆÀÖµû Áö±İÀº ¾ÆÈ©½Ã");
+			System.out.println("ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È©ï¿½ï¿½");
 			System.out.println(params);
 			boardService.commentUpdate(params);
 		}
 
-	// °Ô½Ã±Û °Ë»ö
+	// ï¿½Ô½Ã±ï¿½ ï¿½Ë»ï¿½
 	@RequestMapping(value = "/feedsearch", method = RequestMethod.POST)
 	public ModelAndView search(BoardVO vo) throws Exception {
 
@@ -179,9 +179,52 @@ public class BoardContollor {
 		List<BoardVO> list =boarddao.getSearchlist(vo);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", list); // modelandview¿¡ map¸¦ ÀúÀå
+		mav.addObject("list", list); // modelandviewï¿½ï¿½ mapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 		mav.setViewName("feedsearch");
 		return mav;
 	}
+	
+	//ê²Œì‹œë¬¼ ì‹ ê³ 
+			@RequestMapping(value = "/reportBoard", method = RequestMethod.POST)
+			public String reportBoard(HttpSession session, String board_num, String report_board, HttpServletRequest request) throws Exception{
+				System.out.println("------------");
+				int user_num = (int) session.getAttribute("user_num");
+				String user_id = (String) session.getAttribute("user_id");
+				int board_num1 = Integer.parseInt(board_num);
+				System.out.println("íŒŒëŒ ì™“ë‹ˆ"+board_num+"/+"+report_board+"/+"+user_num+"/+"+user_id);
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("user_num", user_num);
+				map.put("board_num", board_num1);
+				map.put("reason", report_board);
+				map.put("user_id", user_id);
+				boarddao.reportBoard(map);
+				String referer = request.getHeader("Referer");
+			    return "redirect:"+ referer;
+			}
+			
+			//ëŒ“ê¸€ì‹ ê³ 
+			
+			 @RequestMapping(value = "/reportComment", method = RequestMethod.POST) 
+			 public String reportComment(HttpSession session, String comment_num, String board_num, String report_comment, HttpServletRequest request) throws Exception { 
+				 System.out.println("ëŒ“ê¸€ì‹ ê³ ì»¨íŠ¸ë¡¤ëŸ¬ì¸ë°..ì™“ë‹ˆ?");
+				 int user_num = (int) session.getAttribute("user_num");
+				 System.out.println(user_num);
+				 String user_id = (String) session.getAttribute("user_id");
+				 System.out.println(user_id);
+				 int board_num1 = Integer.parseInt(board_num);
+				 System.out.println(board_num);
+				 int comment_num1 = Integer.parseInt(comment_num);
+				 System.out.println(comment_num);
+				 System.out.println("íŒŒëŒ ì™“ë‹ˆ"+user_num+"/+"+user_id+"/+"+board_num1+"/+"+report_comment+"/"+comment_num1);
+				 HashMap<String, Object> map = new HashMap<String, Object>();
+				 map.put("user_num", user_num);
+				 map.put("board_num", board_num1);
+				 map.put("reason", report_comment);
+				 map.put("user_id", user_id);
+				 map.put("comment_num", comment_num1);
+				 boarddao.reportComment(map);
+				 String referer = request.getHeader("Referer");
+				 return "redirect:"+ referer;
+			}
 }
