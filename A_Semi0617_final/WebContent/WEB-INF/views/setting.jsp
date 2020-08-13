@@ -158,7 +158,7 @@
 							<span>회원님께서 다른 회원을 차단하거나 차단해제를 할 수 있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a onclick="blocklist()" data-target="#modalall" data-toggle="modal" style="cursor: pointer;">Learn More</a>
 
 					</div>
 				</div>
@@ -186,9 +186,29 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="modalall" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-dialog-scrollable modal-sm" role="document" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+	    <div class="modal-content">
+	    </div>
+	  </div>
+	</div>
 
 	<!--  여기까지 -->
 	<%@ include file="footer.jsp"%>
+	
 	<script>
+	function blocklist() {
+		var url = 'blockmodal';
 		
+ 		$('#modalall .modal-content').load(url);			
+  		$('#modalall').modal('show');
+	}
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+		  $('[data-toggle="tooltip"]').tooltip();   
+		});
 	</script>
