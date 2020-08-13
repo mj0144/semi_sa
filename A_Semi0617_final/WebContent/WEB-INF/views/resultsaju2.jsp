@@ -62,41 +62,37 @@
  			</div>
  			
 		 		<div class="col-md-4 col-md-offset-4 text-center">
-		 			<h3><strong><a href="listSome?code=1">${ilju.result_animal} 유저리스트</a></strong></h3> 
+		 			<h3><strong><a href="listSome?code=1">다른 테스트</a></strong></h3> 
 		 			 <div class="single-team">
 	               		 <div class="team-photo">
 		               		 <div class="explain">
-								<h5>어떤 분이 당신의 운명일까요?</h5>
-								<p class="card-text">대화를 걸어보세요</p>
+								<h5>당신의 인연은 어디있을까요?</h5>
+								<p class="card-text">인연 찾으러 가기</p>
 							</div>
 					 	 </div>
 					 </div>		
 				 
 				 	 <div class="single-team">
-							<c:forEach var="e" items="${list.mem }" begin="0" end="2">
-							<div class="col-md-12">
-								<div class="blog-entry ftco-animate d-md-flex">
-									<a id="person" class="img img-2"
-										style="background-image: url(resources/upload/${e.user_img}); cursor: pointer;">
-										<form action="friend" method="post" id="send_num">
-											<input   type="hidden" name="user_num" id="user_num"
-												value="${e.user_num }">
-										</form>
-									</a>
-									<div class="text text-2 p-4">
-										<h3 class="mb-2">${e.name}</h3>
-										<div class="meta-wrap">
-											<p class="meta">
-												<span>${e.birth}</span>
-											</p>
-										</div>
-										<p class="mb-4">${e.user_intro}</p>
-										<br>
-									</div>
+							
+			    			<div class="col-md-12">
+			    				<div class="blog-entry ftco-animate d-md-flex">
+								<img id="sajutwo" src="resources/img/sajutest2.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
 								</div>
-							</div>
-						</c:forEach>
-			    		<a href="listSome?code=1">더 보러가기</a>
+								<div class="blog-entry ftco-animate d-md-flex">
+								<img id="sajuthree" src="resources/img/sajutest3.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
+								</div>
+								<div>
+				              		<p class="mb-2"></p>
+				           	 			<div class="meta-wrap">
+											<p class="meta"></p>
+			              				</div>
+				            		<p class="mb-4"> </p>
+				            		<br>
+								</div>
+								
+			    			</div>
+			    		
+			    		<a href="viewsaju">더 보러가기</a>
  					</div>	
  				</div>
         </div>
