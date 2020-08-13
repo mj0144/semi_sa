@@ -4,9 +4,7 @@
 <%@include file="header.jsp"%>
 <%@include file="side.jsp"%>
 <div id="colorlib-main">
-   <div style="position: absolute; right: 20px; top: 10;">
-      <a href="logout">·Î±×¾Æ¿ô</a>
-   </div>
+   
    <section class="ftco-section-no-padding bg-light">
       <div class="hero-wrap">
          <div class="overlay"></div>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">  
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">  
+    <!-- 콘솔 로그 -->  
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">  
+        <!-- 패턴 레이아웃 설정.. -->  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="%t%gt; [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L] [%p] %m %n"/>  
+        </layout>  
+    </appender>  
+ 
+    <!--  날짜별 로그 -->  
+    <appender name="dailyout" class="org.apache.log4j.DailyRollingFileAppender">  
+        <!-- 이것은 날짜별로  로그를 남김. 파일명.확장자.DatePattern으로 정의 함-->  
+        <param name="file" value="dailyout.log"/>  
+        <param name="Append" value="true"/>  
+        <param name="DatePattern" value="'.'yyMMdd"/>  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L] [%p] %m %n"/>  
+        </layout>  
+    </appender>  
+ 
+    <!-- xml 로그-->  
+    <!-- xml형식으로 로그를 남김 -->  
+    <appender name="fileLogger" class="org.apache.log4j.FileAppender">  
+        <param name="file" value="c:/logs/log.log"/>  
+        <param name="Append" value="true"/>  
+        <!-- 로그 파일 하나당 사이즈 5m -->
+		<param name="MaxFileSize" value="5000kb" />
+		<!-- 최대 생성 파일수 ( 50개가 넘으면 순차적으로 파일이 삭제됨 -->
+		<param name="MaxBackupIndex" value="100" />
+        <layout class="org.apache.log4j.PatternLayout"/>  
+        <param name="ConversionPattern" 
+        value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p %C{1}.%M(%F:%L) - %m%n" />
+    </appender>  
+ 
+    <!-- 특정 로거 설정 -->
+    <logger name="org.springframework" additivity="false">
+        <level value="WARN" />
+        <appender-ref ref="dailyout" />
+        <appender-ref ref="stdout" />
+    </logger> 
+ 
+    <!-- root 로거 기본 설정 -->
+    <root>  
+        <level value="DEBUG"/>  
+        <appender-ref ref="dailyout"/>  
+        <appender-ref ref="fileLogger"/>  
+    </root>  
+</log4j:configuration>  

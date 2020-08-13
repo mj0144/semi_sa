@@ -47,6 +47,10 @@
 	 select count(*) from blockuser where blocked_user = #{board_writer} and user_num = #{user_num}
 	</select>
 	
+	<!-- 유저 신고 -->
+	<insert id="reportUser" parameterType="java.util.Map">
+	INSERT INTO report_user VALUES (report_num_seq.nextval,#{user_num},#{user_id},#{report_user_num},#{reason})
+	</insert>
 	
 </mapper>  
 

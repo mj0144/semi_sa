@@ -8184,8 +8184,7 @@ textarea.form-control {
   height: inherit !important; }
 
 .ftco-animate {
-  opacity: 0;
-  visibility: hidden; }
+  opacity: 0;}
 
 .about-author img {
   -webkit-border-radius: 50%;
@@ -8596,9 +8595,9 @@ textarea.form-control {
     .subscribe-form .form-group input:-moz-placeholder {
       /* Firefox 18- */
       color: rgba(255, 255, 255, 0.7) !important; }
-  .subscribe-form .form-group .form-control {
+/*   .subscribe-form .form-group .form-control {
     bordeR: 1px solid rgba(255, 255, 255, 0.2);
-    font-weight: 500; }
+    font-weight: 500; } */
   .subscribe-form .form-group .submit {
     color: #000000 !important;
     display: block;
@@ -8621,6 +8620,75 @@ textarea.form-control {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   color: rgba(255, 255, 255, 0.8); }
+
+
+
+#boardBtn_group button{
+	border:1px solid white;
+	background-color: #FDF5E6;
+	color: black;
+	padding: 5px;
+	font-size: 13px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#boardBtn_group button:hover {
+	color: white;
+	background-color: black;
+}
+
+
+#cntUpdateBtn {
+	
+	margin-right: -4px;
+}
+
+#cntDeleteBtn {
+	margin-left: -3px;
+}
+
+#cmBtn_group button{
+	width:50px;
+	height: 40px;
+	border:0px solid white;
+	background-color: white;
+	color: black;
+	padding: 5px;
+	font-size: 10px;
+}
+
+#cmBtn_group button:hover {
+	color: white;
+	background-color: black;
+}
+
+#cntUpdateBtn2 {
+	
+	margin-right: -4px;
+}
+
+#cntDeleteBtn2 {
+	margin-left: -3px;
+}
+
+#cmBtn_group2 button{
+	width:50px;
+	height: 40px;
+	border:0px solid white;
+	background-color: white;
+	color: black;
+	padding: 5px;
+	font-size: 10px;
+}
+
+#cmBtn_group2 button:hover {
+	color: white;
+	background-color: black;
+}
+
 
 .sidebar-box {
   margin-bottom: 30px;
@@ -8751,3 +8819,10 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+    
+    
+    
+  .titless{
+  	font-size: 10px;
+  }

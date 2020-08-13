@@ -6,11 +6,13 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 
 
@@ -71,6 +73,15 @@
 	         </props>
 	      </property>
 	   </bean>
+  	<!-- 웹소켓 API설정 -->
+	<websocket:handlers  allowed-origins="*">
+	    <websocket:mapping handler="echoHandler" path="/echo" />
+	    <websocket:handshake-interceptors>
+  		 	<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+   		</websocket:handshake-interceptors>
+   		<websocket:sockjs websocket-enabled="true" />
+	</websocket:handlers>
+	<bean id="echoHandler" class="mvc.handler.EchoHandler" />
 
 	<bean id="email" class="mvc.email.Email">
 	</bean>
