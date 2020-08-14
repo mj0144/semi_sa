@@ -16,6 +16,8 @@ import mvc.utils.ImgUtils;
 import mvc.vo.IdealVO;
 import mvc.vo.MemberVO;
 
+
+//πŒ¡§
 @Controller
 public class JoinController {
 	

@@ -14,7 +14,7 @@
 		insert into ideal_type values(#{user_num}, #{ideal_height}, #{ideal_age}, #{ideal_body})
 	</insert>
 	<insert id= "gradeInit" parameterType="hashMap">
-		insert into mapping_grade_user values(#{user_num}, #{grade})
+		insert into mapping_grade_user values('${user_id}', '${grade}')
 	</insert>
 	
 	<select id="selc_user_num" parameterType="String" resultType="int">

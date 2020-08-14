@@ -110,4 +110,14 @@
 		<task:scheduler id="Scheduler"/>
 		<task:annotation-driven scheduler="Scheduler"/>
 		
+		
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/chatting/**"/>
+			<bean class="mvc.interceptor.GradeInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+		
+		
+		
 </beans>

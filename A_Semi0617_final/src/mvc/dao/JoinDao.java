@@ -33,13 +33,9 @@ public class JoinDao {
 	//이상형쪽에서 user_num이 필요
 	public int user_num(String user_id) {
 		return ss.selectOne("join.selc_user_num", user_id);
-
 	}
 	
-	public void gradeInit(MemberVO vo) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("user_num", vo.getUser_num());
-		map.put("grade", "bronze");
+	public void gradeInit(Map<String, Object> map) {
 		try {
 			ss.insert("join.gradeInit", map);
 		} catch (Exception e) {

@@ -156,7 +156,7 @@
                 				            data-toggle="tooltip" data-placement="top" title="상세 프로필 보기">
 											<!-- 프로필 이동 끝 -->
                 				            
-                				            <img src="resources/img/btn/chat.png" style="width:15%; cursor: pointer;"
+                				            <img src="resources/img/btn/chat.png" style="width:15%; cursor: pointer;" onclick="chatting()"
                 				            data-toggle="tooltip" data-placement="top" title="채팅하기">
 
 			        						<!-- 좋아요 버튼 구현 -->
@@ -341,6 +341,11 @@
 		function profile() {
 			$("#profile").submit();
 		};
+		function chatting(){
+			$('#profile').attr("action", "chatting");
+			$('#profile').submit();
+		}
+		
 	</script>
 	
 	<script>

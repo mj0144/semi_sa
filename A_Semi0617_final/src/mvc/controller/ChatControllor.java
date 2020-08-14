@@ -28,4 +28,8 @@ public class ChatControllor {
 		mav.setViewName("chat");
 		return mav;
 	}
+	
+	
+	
+	
 }

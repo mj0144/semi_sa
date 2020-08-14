@@ -30,6 +30,7 @@ import mvc.utils.ImgUtils;
 import mvc.vo.BoardVO;
 import mvc.vo.MemberVO;
 
+//민정
 @Controller
 public class UserInfoController {
 
@@ -49,7 +50,6 @@ public class UserInfoController {
 		HashMap<String, Object> map = userInfoDao.info((int) session.getAttribute("user_num"));
 		System.out.println(map);
 		model.addAttribute("vo", map);
-
 	}
 	// 회원정보 수정.
 	@RequestMapping(value="/userInfoChange", method=RequestMethod.POST)
