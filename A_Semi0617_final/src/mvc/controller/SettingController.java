@@ -15,4 +15,5 @@ public class SettingController {
 		mav.setViewName("setting");
 		return mav;
 	}
+
 }
