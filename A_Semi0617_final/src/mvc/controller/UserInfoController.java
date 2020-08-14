@@ -55,8 +55,9 @@ public class UserInfoController {
 	@RequestMapping(value="/userInfoChange", method=RequestMethod.POST)
 	public ModelAndView infoChange(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
 		ModelAndView mav = new ModelAndView();
-
+		
 		vo = userInfoService.userInfoSetting(session, vo, request,file); 	//바뀐 회원정보 세팅
+		
 		mav = userInfoService.mypageSetting(session, vo, mav); //마이페이지로 다시 넘어가기 위한 값 세팅
 			
 		return mav;

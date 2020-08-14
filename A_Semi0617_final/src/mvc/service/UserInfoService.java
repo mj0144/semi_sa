@@ -33,6 +33,9 @@ public class UserInfoService {
 	private LikeService likeService;
 	
 	@Autowired
+	private LookLikeService lookLikeService;
+	
+	@Autowired
 	private BoardService boardService;
 	//바뀐 회원정보 세팅
 	public MemberVO userInfoSetting(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
@@ -41,6 +44,10 @@ public class UserInfoService {
 		
 		String img = (String) session.getAttribute("user_img");
 		vo.setUser_img(imgUtils.imgSave(request, file, "change", img)); // 파일 저장.
+
+		String new_img = imgUtils.root_path(request, vo.getUser_img());
+		lookLikeService.updateLooklike(session,new_img, vo);
+		
 		vo.setUser_num((int) session.getAttribute("user_num"));
 		
 		

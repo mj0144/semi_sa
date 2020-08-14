@@ -72,7 +72,7 @@ public class ImgUtils {
 			if (ImgUtils.ImgFileBoolean(reName)) {
 				try {
 					file.transferTo(new File(savePath + File.separator + reName)); // 스프링의 transferTo를 호출해서 이미지를 저장장소에
-																					// 복사
+					// 복사
 					System.out.println("파일저장 완료");
 					savelocal(savePath, reName, file);
 				} catch (IllegalStateException e) {
@@ -118,9 +118,17 @@ public class ImgUtils {
 			// 해당경로에 이미지를 저장함.
 			image = ImageIO.read(new File(savePath + "/" + reName));// 이미지를 읽어와서 BufferedImage에 넣는다.
 			System.out.println("이미지 image : " + image);
+			File localfile = new File("C:\\ikosmo64\\imgs\\" + reName);
+			if (!localfile.exists()) {
+				try {
+					localfile.mkdirs();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
+			}
 			for (String type : types) {
-				ImageIO.write(image, type, new File("C:\\ikosmo64\\img\\" + reName));
+				ImageIO.write(image, type, localfile);
 				System.out.println("로컬 저장 완료");
 			}
 		} catch (IOException e) {
@@ -131,7 +139,12 @@ public class ImgUtils {
 			e.printStackTrace();
 		}
 
-// 출처: https://jp1020.tistory.com/entry/java-image-저장 [메모하는 습관]
 	}
 
+	public String root_path(HttpServletRequest request, String file_name) {
+		String root_path = request.getSession().getServletContext().getRealPath("/");
+		String attach_path = "/resources/upload/";
+		String result = root_path + attach_path + file_name;
+		return result;
+	}
 }

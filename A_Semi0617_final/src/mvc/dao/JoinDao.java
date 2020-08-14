@@ -1,5 +1,7 @@
 package mvc.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,27 +14,28 @@ import mvc.vo.MemberVO;
 public class JoinDao {
 	@Autowired
 	private SqlSessionTemplate ss;
-	
-	
+
 	// 일주뽑기
 	public String ilju(MemberVO vo) {
 		return ss.selectOne("join.ilju", vo);
 	}
+
 	// 회원가입
 	public void join(MemberVO vo) {
 		ss.insert("join.join", vo);
 	}
-	
-	//이상형 데이터 저장.
+
+	// 이상형 데이터 저장.
 	public void idealjoing(IdealVO ivo) {
 		ss.insert("join.idaelinsert", ivo);
 	}
-	//이상형쪽에서 user_num이 필요
+
+	// 이상형쪽에서 user_num이 필요
 	public int user_num(String user_id) {
 		return ss.selectOne("join.selc_user_num", user_id);
 
 	}
-	
+
 	// 아이디 체크
 	public int idChk(String id) {
 		return ss.selectOne("join.idchk", id);
@@ -49,11 +52,17 @@ public class JoinDao {
 		return ss.selectOne("join.emailchk", email);
 
 	}
-	
-	//가입시 프로필 입력
+
+	// 가입시 프로필 입력
 //		public void joinprofile(MemberVO vo) {
 //			ss.update("member.joinprofile", vo);
 //		}
+
 	
 	
+	//닮은연예인 추가 (수연)
+	   public void looklike(Map<String, Object> params) {
+	      ss.insert("join.looklike", params);
+	   }
+
 }

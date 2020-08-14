@@ -16,7 +16,10 @@
 	<select id="selc_user_num" parameterType="String" resultType="int">
 		select user_num from user_info where user_id=#{user_id}
 	</select>
-	
+	<!-- 닮은연예인 추가 -->
+   <insert id="looklike" parameterType="java.util.Map">
+   INSERT INTO lovetype VALUES (#{user_num},#{looklike},#{percent})
+   </insert>
 	
 	
 		<!-- 회원가입 시 프로필 입력 -->

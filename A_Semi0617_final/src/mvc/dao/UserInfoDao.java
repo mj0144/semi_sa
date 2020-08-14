@@ -2,6 +2,7 @@ package mvc.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,10 @@ public class UserInfoDao {
 	
 	public String pwdchk(int user_num) {
 		return ss.selectOne("userinfo.pwdchk", user_num);
+	}
+	
+	
+	public void looklike(Map<String, Object> params) {
+		ss.update("userinfo.looklike", params);
 	}
 }
