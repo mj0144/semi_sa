@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import mvc.dao.PageListDao;
 
+//ÀÌµ¿Çö
 @Component
 public class Scheduler {
 	

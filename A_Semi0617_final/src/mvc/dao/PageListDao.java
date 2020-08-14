@@ -6,8 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-
+//이동현
 @Repository
 public class PageListDao {
 	
@@ -33,11 +32,6 @@ public class PageListDao {
 	//추천인 mbti 
 	public HashMap<String, Object> getmbti(int user_num) {
 		return ss.selectOne("pagelist.profilembti", user_num);
-	}
-	
-	//차트 출력 
-	public int getChartCount(HashMap<String, Object> map) {
-		return ss.selectOne("pagelist.ChartCount", map);
 	}
 	
 	//90점 이상이 몇 퍼센트인지 출력

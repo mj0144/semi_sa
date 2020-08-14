@@ -2,7 +2,6 @@ package mvc.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,11 +25,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import mvc.dao.BlockDao;
 import mvc.dao.LikeDao;
 import mvc.dao.PageListDao;
-import mvc.vo.IljuVO;
 import mvc.vo.LikeVO;
-import mvc.vo.PageVO;
 
 
+//이동현
 @Controller
 public class PageListController {
 	
@@ -43,19 +41,12 @@ public class PageListController {
 	@Autowired
 	private BlockDao blockDao;
 
-
+	//리스트 뽑기
 	@RequestMapping(value= "/listWhole")
 	public String listWhole3(Model model, HttpSession session, 
 			@RequestParam(value = "sex", required = false, defaultValue = "m,f,a") String sex,
 			@RequestParam(value = "samb", required = false, defaultValue = "all") String samb,
 			@RequestParam(value = "num", required = false, defaultValue = "1") int num) {
-		
-		
-		System.out.println("num: "+num);
-		System.out.println("sex: "+sex);
-		System.out.println("samb: "+samb);
-		
-		//case 1,2
 		
 		//사용자 번호 세션으로 받아옴
 		int user_num=(int)session.getAttribute("user_num");	
@@ -94,6 +85,7 @@ public class PageListController {
 		//추천인 번호를 넣을 int 변수 생성
 		int user_num2=0;
 		
+		// 새로운 랜덤 추천을 할 경우
 		if (num > maxNum) {
 			
 			System.out.println("랜덤 추천인 뽑기");
@@ -111,7 +103,7 @@ public class PageListController {
 			map2.put("rec_num", user_num2);
 			pagelistDao.setRecInsert(map2);
 			
-		}else if (num <= maxNum) {
+		}else if (num <= maxNum) { // 이전 추천 목록을 가져올 경우
 			
 			System.out.println("이전 추천인 가져오기");
 			
@@ -145,6 +137,7 @@ public class PageListController {
 		
 	}
 	
+	//체크박스로 조건을 변경할 경우
 	@RequestMapping(value = "/listchk")
 	public String listChk(RedirectAttributes rd, HttpSession session, String sex, String samb) {
 		
@@ -160,78 +153,8 @@ public class PageListController {
 		return "redirect:listWhole";		
 	}
 	
-		
-	@ResponseBody
-	@RequestMapping(value= "/listChart", produces = "application/json; charset=euc-kr")
-	public String listChart(HttpSession session, 
-			@RequestParam(value = "sex", required = false, defaultValue = "m,f,a") String sex,
-			@RequestParam(value = "samb", required = false, defaultValue = "all") String samb) {
-		
-		// 성별 값이 male, female 이 동시에 들어올 때 null값으로 처리
-		if (sex.length() > 1) {
-			sex = null;
-		}
-		
-		// 유저 번호 세션으로 받아옴
-		int user_num=(int)session.getAttribute("user_num");	
-		
-		// 유저 성별 가져오기
-		char sex2 = (char) session.getAttribute("gender");
-		String sex3 = String.valueOf(sex2);
-		
-		// 유저가 차단한 사람 목록 가져오기
-		List<Integer> blist = blockDao.blockList(user_num);
-		
-		// 차트 뽑기
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		map.put("user_num", user_num);
-		map.put("sex2", sex3);
-		map.put("blist", blist);
-		map.put("sex", sex);
-		map.put("samb", samb);
-		map.put("score", 90);
-		
-		int num90 = pagelistDao.getChartCount(map);
-		
-		map.put("score", 80);
-		
-		int num80 = pagelistDao.getChartCount(map);
-		
-		map.put("score", 70);
-		
-		int num70 = pagelistDao.getChartCount(map);
-		
-		map.put("score", 60);
-		
-		int num60 = pagelistDao.getChartCount(map);
-		
-		Map<String, Integer> map2 = new HashMap<>();
-		map2.put("90점대", num90);
-		map2.put("80점대", num80);
-		map2.put("70점대", num70);
-		map2.put("그 이하", num60);
-		
-		String result = null;
-		ObjectMapper mapper = new ObjectMapper();
-
-		try {
-			result = mapper.writeValueAsString(map2);
-		} catch (JsonMappingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (JsonGenerationException e2) {
-			// TODO: handle exception
-			e2.printStackTrace();
-		} catch (IOException e3) {
-			e3.printStackTrace();
-		}
-
-		System.out.println(result);
-		return result;	
-		
-	}
 	
+	//사주 모달 뽑기
 	@RequestMapping(value = "/sajumodal", method = RequestMethod.GET)
 	public ModelAndView sajumodal(int user_num) {
 		
@@ -246,6 +169,7 @@ public class PageListController {
 		
 	}
 	
+	//mbti모달 가져오기
 	@RequestMapping(value = "/mbtimodal", method = RequestMethod.GET)
 	public ModelAndView mbtimodal(int user_num) {
 		
