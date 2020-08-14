@@ -266,6 +266,7 @@ body {
 												<label class="col-md-4 control-label" for="textinput">MBTI
 													º±≈√</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
+													
 													<select id="selectbasic" name="selectbasic"
 														class="form-control">
 														<option value="ISTJ">ISTJ</option>

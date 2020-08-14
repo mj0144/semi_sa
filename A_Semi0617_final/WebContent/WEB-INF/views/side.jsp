@@ -237,7 +237,7 @@
          <li><a href="listWhole">인연찾기</a></li>
          <li><a href="findlove">이상형찾기</a></li>
          <li><a href="mypage">마이페이지</a></li>
-         <li><a href="pay">결제상품</a></li>
+         <li><a href="pay">Shop</a></li>
          <li><a href="qnapage">Q&A</a></li>
          <li><a href="setting"><img src="images/setting.png"></a></li>
          <li><a href="logoutdo">로그아웃</a></li>

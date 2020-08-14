@@ -52,19 +52,15 @@ button:hover {
 }
 </style>
 <div id="colorlib-main">
-   <section class="ftco-section ftco-bread">
-      <div class="container">
-         <div
-            class="row no-gutters slider-text justify-content-center align-items-center">
-            <div class="col-md-8 ftco-animate">
-               <p class="breadcrumbs">
-                  <span class="mr-2"><a href="index">Home</a></span> <span>Q&A</span>
-               </p>
-               <h1 class="bread">Q&A</h1>
-            </div>
-         </div>
-      </div>
-   </section>
+  <section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
+		<div class="container">
+			<div class="row no-gutters slider-text justify-content-center align-items-center">
+				<div class="col-md-12 ftco-animate text-center">
+					<h1 class="bread" style="color:white;"><b>Q & A</b></h1>
+				</div>
+			</div>
+		</div>
+	</section>
    <!-- 여기부터-->
    <div class="container">
       <hr />
