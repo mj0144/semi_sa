@@ -2,6 +2,9 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
+<!-- 이동현 -->
+
 <html>
 <head>
 <meta charset="EUC-KR">
