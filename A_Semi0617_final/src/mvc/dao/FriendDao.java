@@ -15,49 +15,44 @@ import mvc.vo.MemberVO;
 
 @Repository
 public class FriendDao {
-	
+
 	@Autowired
 	private SqlSessionTemplate ss;
-	
-	
+
 	public IljuVO friendprofile(int num) {
 		return ss.selectOne("friend.sajuBasic", num);
 	}
-	
-	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
+
 	public int friendlike(int num) {
-		return ss.selectOne("friend.like",num );
+		return ss.selectOne("friend.like", num);
 	}
-	
-	
-	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
+
 	public int friendliked(int num) {
-		return ss.selectOne("friend.liked",num );
+		return ss.selectOne("friend.liked", num);
 	}
-	
+
 	public BoardVO boardlike(int num) {
 		BoardVO vo = new BoardVO();
-		vo=ss.selectOne("profile.boardmaxnum", num);
+		vo = ss.selectOne("profile.boardmaxnum", num);
 		return vo;
 	}
-	
-	//ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
-	public int heartChk(Map<String,Integer> map) {
+
+	public int heartChk(Map<String, Integer> map) {
 		return ss.selectOne("friend.heartchk", map);
 	}
-	
-	public List<BoardVO> board_info(int user_num){
+
+	public List<BoardVO> board_info(int user_num) {
 		return ss.selectList("friend.board_info", user_num);
 	}
+
 	
-	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
-	public int blockChk(Map<String,Integer> map) {
+	public int blockChk(Map<String, Integer> map) {
 		return ss.selectOne("friend.blockchk", map);
 	}
-	
-	//ìœ ì € ì‹ ê³ 
-		public void reportUser(HashMap<String, Object> params) throws Exception{
-			ss.insert("friend.reportUser", params);
-		}
-	
+
+	//À¯Àú½Å°í(¼ö¿¬)
+	public void reportUser(HashMap<String, Object> params) throws Exception {
+		ss.insert("friend.reportUser", params);
+	}
+
 }

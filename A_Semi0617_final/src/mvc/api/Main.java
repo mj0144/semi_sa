@@ -1,11 +1,8 @@
 package mvc.api;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import mvc.api.APIExamFace;
-;
-
+//네이버 얼굴인식 API 예제 ( 성현, 수연 )
 public class Main {
 public static void main(String[] args) {
    
