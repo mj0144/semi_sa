@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import mvc.vo.LikeVO;
 
-
+//  좋아요 (성현)
 @Repository
 public class LikeDao {
 
@@ -16,7 +16,6 @@ public class LikeDao {
    
    //좋아요 눌렀을 때
    public void likePush(LikeVO vo) {
-	   System.out.println("dao");
       ss.insert("like.follow", vo);
    }
    

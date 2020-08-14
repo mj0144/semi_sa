@@ -1,7 +1,11 @@
 package mvc.controller;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import mvc.dao.BlockDao;
 import mvc.dao.LikeDao;
 import mvc.dao.PageListDao;
 import mvc.vo.IljuVO;
@@ -27,570 +40,226 @@ public class PageListController {
 	@Autowired
 	private LikeDao likeDao;
 	
-	@RequestMapping(value= "/listSome", params = "code=1")
-	public String listSome1(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
-			
+	@Autowired
+	private BlockDao blockDao;
+
+
+	@RequestMapping(value= "/listWhole")
+	public String listWhole3(Model model, HttpSession session, 
+			@RequestParam(value = "sex", required = false, defaultValue = "m,f,a") String sex,
+			@RequestParam(value = "samb", required = false, defaultValue = "all") String samb,
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num) {
+		
+		
+		System.out.println("num: "+num);
+		System.out.println("sex: "+sex);
+		System.out.println("samb: "+samb);
+		
+		//case 1,2
+		
+		//사용자 번호 세션으로 받아옴
 		int user_num=(int)session.getAttribute("user_num");	
 		
-		//유저 천간, 지지 받기
-		int sky = pagelistDao.sajuilju(user_num).getIlju_sky_num();
-		int land = pagelistDao.sajuilju(user_num).getIlju_land_num();
-		
-		//유저와 어울리는 상대의 천간, 지지 계산
-		
-	    
-		
-		int ilju_sky_num = (sky+5)%10;
-		if(ilju_sky_num == 0) {
-			ilju_sky_num = 10;
+		// 성별 값이 male, female 이 동시에 들어올 때 null값으로 처리
+		if (sex.length() > 1) {
+			sex = null;
 		}
 		
-		int ilju_land_num = 0;
-		      
-		if (land==1) {ilju_land_num =land+1;}
-		else if(land==2) {ilju_land_num =land-1;}
-		else if(land==3) {ilju_land_num =land+9;}
-		else if(land==4) {ilju_land_num =land+7;}
-		else if(land==5) {ilju_land_num =land+5;}
-		else if(land==6) {ilju_land_num =land+3;}
-		else if(land==7) {ilju_land_num =land+1;}
-		else if(land==8) {ilju_land_num =land-1;}
-		else if(land==9) {ilju_land_num =land-3;}
-		else if(land==10) {ilju_land_num =land-5;}
-		else if(land==11) {ilju_land_num =land-7;}
-		else if(land==12) {ilju_land_num =land-9;}
-		else {ilju_land_num =land;}
+		// 유저가 차단한 사람 목록 가져오기
+		List<Integer> blist = blockDao.blockList(user_num);
 		
-		IljuVO list = null;	
-		String sex = pagelistDao.sexdt(user_num).trim();
-		System.out.println(sex.equals("m"));
-		if (sex.equals("m")) {
-			sex="f";
-		}else {
-			sex="m";
-		}
+		// 유저가 좋아요 누른 사람 리스트 가져오기
+		List<LikeVO> listheart = likeDao.likeornot(user_num);
 		
-		PageVO svo = new PageVO();
-		svo.setIlju_sky_num(ilju_sky_num);
-		svo.setIlju_land_num(ilju_land_num);
-		svo.setSex(sex.charAt(0));
-
-		int total = pagelistDao.getTotalCount1(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		System.out.println(vo.toString());
-		vo.setSex(sex.charAt(0));
-		vo.setIlju_sky_num(ilju_sky_num);
-		vo.setIlju_land_num(ilju_land_num);
+		//현재 db에 저장된 값 중 가장 큰 값을 가져옴.
+		int maxNum = pagelistDao.getaMaxnum(user_num);
 		
-		list = pagelistDao.getListResult1(vo);
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
+		// 유저 성별 가져오기
+		char sex2 = (char) session.getAttribute("gender");
+		String sex3 = String.valueOf(sex2);
 		
-		System.out.println("list.getilfu" + list.getMem().get(0).getNickname());
+		//추천인 뽑기 위한 파라미터 hashmap
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listSome");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
+		map.put("user_num", user_num);
+		map.put("sex2", sex3);
+		map.put("blist", blist);
+		map.put("sex", sex);
+		map.put("samb", samb);
+		map.put("num", num);
 		
-		return "listTypeA";
-
-	}
-	
-	@RequestMapping(value= "/listSome", params = "code=2")
-	public String listSome2(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+		//추천인 정보 넣을 HashMap 생성
+		HashMap<String, Object> profile = null;;
 		
-		int user_num=(int)session.getAttribute("user_num");	
+		//추천인 번호를 넣을 int 변수 생성
+		int user_num2=0;
 		
-		//유저 천간 받기
-		int sky = pagelistDao.sajuilju(user_num).getIlju_sky_num();
-		
-		//유저와 어울리는 상대의 천간, 지지 계산
-	    int ilju_sky_num = 0;
-		int ilju_land_num = 0;
-		int ilju_sky_num2 = 0;
-		int ilju_land_num2 = 0;
-		
-        if (sky==1) {ilju_sky_num=10; ilju_land_num =2; ilju_sky_num2=10; ilju_land_num2 =8;}
-        else if(sky==2) {ilju_sky_num =9; ilju_land_num =9; ilju_sky_num2 =9; ilju_land_num2 =1;}
-        else if(sky==3) {ilju_sky_num =2; ilju_land_num =12; ilju_sky_num2 =2; ilju_land_num2 =10;}
-        else if(sky==4) {ilju_sky_num =2; ilju_land_num =10; ilju_sky_num2 =2; ilju_land_num2 =12;}
-        else if(sky==5) {ilju_sky_num =4; ilju_land_num =8; ilju_sky_num2 =4; ilju_land_num2 =2;}
-        else if(sky==6) {ilju_sky_num =3; ilju_land_num =1; ilju_sky_num2 =3; ilju_land_num2 =9;}
-        else if(sky==7) {ilju_sky_num =6; ilju_land_num =8; ilju_sky_num2 =6; ilju_land_num2 =2;}
-        else if(sky==8) {ilju_sky_num =5; ilju_land_num =7; ilju_sky_num2 =5; ilju_land_num2 =3;}
-        else if(sky==9) {ilju_sky_num =8; ilju_land_num =4; ilju_sky_num2 =7; ilju_land_num2 =5;}
-        else if(sky==10) {ilju_sky_num =7; ilju_land_num =5; ilju_sky_num2 =8; ilju_land_num2 =4;}
-        
-        System.out.println("1-1: "+ilju_sky_num);
-        System.out.println("1-2: "+ilju_land_num);
-        System.out.println("2-1: "+ilju_sky_num2);
-        System.out.println("2-2: "+ilju_land_num2);
-        
-		List<IljuVO> list = null;	
-		String sex = pagelistDao.sexdt(user_num).trim();
-		
-		if (sex.equals("m")) {
-			sex="f";
-		}else {
-			sex="m";
-		}
-		
-		PageVO svo = new PageVO();
-		svo.setSex(sex.charAt(0));
-		svo.setIlju_sky_num(ilju_sky_num);
-		svo.setIlju_land_num(ilju_land_num);
-		svo.setIlju_sky_num2(ilju_sky_num2);
-		svo.setIlju_land_num2(ilju_land_num2);
-
-		int total = pagelistDao.getTotalCount2(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		System.out.println(vo.toString());
-		vo.setSex(sex.charAt(0));
-		vo.setIlju_sky_num(ilju_sky_num);
-		vo.setIlju_land_num(ilju_land_num);
-		vo.setIlju_sky_num2(ilju_sky_num2);
-		vo.setIlju_land_num2(ilju_land_num2);
-		
-		list = pagelistDao.getListResult2(vo);
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listSome");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
-		
-		return "listTypeB";
-
-	}
-
-	@RequestMapping(value= "/listSome", params = "code=3")
-	public String listSome3(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+		if (num > maxNum) {
 			
-		int user_num=(int)session.getAttribute("user_num");	
-		
-		//이성의 성별로 변환
-		String sex = pagelistDao.sexdt(user_num).trim();
-		System.out.println(sex.length());
-		if (sex.equals("m")) {
-			sex="f";
-		}else {
-			sex="m";
-		}
-		
-		PageVO svo = new PageVO();
-		svo.setSex(sex.charAt(0));
-		svo.setUser_num(user_num);
-		
-		//리스트 갯수 구하고 페이징 처리.
-		int total = pagelistDao.getTotalCount3(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		vo.setSex(sex.charAt(0));
-		vo.setUser_num(user_num);
-		
-		//결과 값 넣기
-		List<IljuVO> list = null;	
-		list = pagelistDao.getListResult3(vo);
-		
-		//System.out.println(list.get(0).getMem().get(0).getUser_img());
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listSome");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
-		
-		return "listTypeC";
-
-	}
-	
-	@RequestMapping(value= "/listFriend", params = "code=1")
-	public String listFriend1(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			System.out.println("랜덤 추천인 뽑기");
 			
-		int user_num=(int)session.getAttribute("user_num");	
-		
-		//유저 천간, 지지 받기
-		int sky = pagelistDao.sajuilju(user_num).getIlju_sky_num();
-		int land = pagelistDao.sajuilju(user_num).getIlju_land_num();
-		
-		//유저와 어울리는 상대의 천간, 지지 계산
-	    int ilju_sky_num = (sky+5)%10;
-		int ilju_land_num = 0;
-		      
-		if (land==1) {ilju_land_num =land+1;}
-		else if(land==2) {ilju_land_num =land-1;}
-		else if(land==3) {ilju_land_num =land+9;}
-		else if(land==4) {ilju_land_num =land+7;}
-		else if(land==5) {ilju_land_num =land+5;}
-		else if(land==6) {ilju_land_num =land+3;}
-		else if(land==7) {ilju_land_num =land+1;}
-		else if(land==8) {ilju_land_num =land-1;}
-		else if(land==9) {ilju_land_num =land-3;}
-		else if(land==10) {ilju_land_num =land-5;}
-		else if(land==11) {ilju_land_num =land-7;}
-		else if(land==12) {ilju_land_num =land-9;}
-		else {ilju_land_num =land;}
-		
-		IljuVO list = null;	
-		String sex = pagelistDao.sexdt(user_num).trim();
-		
-		PageVO svo = new PageVO();
-		svo.setIlju_sky_num(ilju_sky_num);
-		svo.setIlju_land_num(ilju_land_num);
-		svo.setSex(sex.charAt(0));
-
-		int total = pagelistDao.getTotalCount1(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		System.out.println(vo.toString());
-		vo.setSex(sex.charAt(0));
-		vo.setIlju_sky_num(ilju_sky_num);
-		vo.setIlju_land_num(ilju_land_num);
-		
-		list = pagelistDao.getListResult1(vo);
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listFriend");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
-		
-		return "listTypeA";
-
-	}
-	
-	
-	@RequestMapping(value= "/listFriend", params = "code=2")
-	public String listFriend2(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
-		
-		int user_num=(int)session.getAttribute("user_num");	
-		
-		//유저 천간 받기
-		int sky = pagelistDao.sajuilju(user_num).getIlju_sky_num();
-		
-		//유저와 어울리는 상대의 천간, 지지 계산
-	    int ilju_sky_num = 0;
-		int ilju_land_num = 0;
-		int ilju_sky_num2 = 0;
-		int ilju_land_num2 = 0;
-		
-        if (sky==1) {ilju_sky_num=10; ilju_land_num =2; ilju_sky_num2=10; ilju_land_num2 =8;}
-        else if(sky==2) {ilju_sky_num =9; ilju_land_num =9; ilju_sky_num2 =9; ilju_land_num2 =1;}
-        else if(sky==3) {ilju_sky_num =2; ilju_land_num =12; ilju_sky_num2 =2; ilju_land_num2 =10;}
-        else if(sky==4) {ilju_sky_num =2; ilju_land_num =10; ilju_sky_num2 =2; ilju_land_num2 =12;}
-        else if(sky==5) {ilju_sky_num =4; ilju_land_num =8; ilju_sky_num2 =4; ilju_land_num2 =2;}
-        else if(sky==6) {ilju_sky_num =3; ilju_land_num =1; ilju_sky_num2 =3; ilju_land_num2 =9;}
-        else if(sky==7) {ilju_sky_num =6; ilju_land_num =8; ilju_sky_num2 =6; ilju_land_num2 =2;}
-        else if(sky==8) {ilju_sky_num =5; ilju_land_num =7; ilju_sky_num2 =5; ilju_land_num2 =3;}
-        else if(sky==9) {ilju_sky_num =8; ilju_land_num =4; ilju_sky_num2 =7; ilju_land_num2 =5;}
-        else if(sky==10) {ilju_sky_num =7; ilju_land_num =5; ilju_sky_num2 =8; ilju_land_num2 =4;}
-        
-        System.out.println("1-1: "+ilju_sky_num);
-        System.out.println("1-2: "+ilju_land_num);
-        System.out.println("2-1: "+ilju_sky_num2);
-        System.out.println("2-2: "+ilju_land_num2);
-        
-		List<IljuVO> list = null;	
-		String sex = pagelistDao.sexdt(user_num).trim();
-
-		PageVO svo = new PageVO();
-		svo.setSex(sex.charAt(0));
-		svo.setIlju_sky_num(ilju_sky_num);
-		svo.setIlju_land_num(ilju_land_num);
-		svo.setIlju_sky_num2(ilju_sky_num2);
-		svo.setIlju_land_num2(ilju_land_num2);
-
-		int total = pagelistDao.getTotalCount2(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		System.out.println(vo.toString());
-		vo.setSex(sex.charAt(0));
-		vo.setIlju_sky_num(ilju_sky_num);
-		vo.setIlju_land_num(ilju_land_num);
-		vo.setIlju_sky_num2(ilju_sky_num2);
-		vo.setIlju_land_num2(ilju_land_num2);
-		
-		list = pagelistDao.getListResult2(vo);
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listFriend");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
-		
-		return "listTypeB";
-
-	}
-	
-	@RequestMapping(value= "/listFriend", params = "code=3")
-	public String listFriend3(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
-
-		int user_num=(int)session.getAttribute("user_num");	
-
-		List<IljuVO> list = null;
-		
-		String sex = pagelistDao.sexdt(user_num).trim();
-		
-		PageVO svo = new PageVO();
-		svo.setSex(sex.charAt(0));
-		svo.setUser_num(user_num);
-		
-		int total = pagelistDao.getTotalCount3(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		vo.setSex(sex.charAt(0));
-		vo.setUser_num(user_num);
-
-		list = pagelistDao.getListResult3(vo);
-		
-		//System.out.println(list.get(0).getResult_img());
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listFriend");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
-		
-		return "listTypeC";
-		
-	}
-	
-	@RequestMapping(value= "/listWhole", params = "code=1")
-	public String listWhole1(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+			// 추천인 랜덤으로 뽑기
+			profile = pagelistDao.getRProfile(map);
 			
-		int user_num=(int)session.getAttribute("user_num");	
-		
-		//유저 천간, 지지 받기
-		int sky = pagelistDao.sajuilju(user_num).getIlju_sky_num();
-		int land = pagelistDao.sajuilju(user_num).getIlju_land_num();
-		
-		//유저와 어울리는 상대의 천간, 지지 계산
-	    int ilju_sky_num = (sky+5)%10;
-		int ilju_land_num = 0;
-		      
-		if (land==1) {ilju_land_num =land+1;}
-		else if(land==2) {ilju_land_num =land-1;}
-		else if(land==3) {ilju_land_num =land+9;}
-		else if(land==4) {ilju_land_num =land+7;}
-		else if(land==5) {ilju_land_num =land+5;}
-		else if(land==6) {ilju_land_num =land+3;}
-		else if(land==7) {ilju_land_num =land+1;}
-		else if(land==8) {ilju_land_num =land-1;}
-		else if(land==9) {ilju_land_num =land-3;}
-		else if(land==10) {ilju_land_num =land-5;}
-		else if(land==11) {ilju_land_num =land-7;}
-		else if(land==12) {ilju_land_num =land-9;}
-		else {ilju_land_num =land;}
-		
-		IljuVO list = null;	
-		
-		PageVO svo = new PageVO();
-		svo.setIlju_sky_num(ilju_sky_num);
-		svo.setIlju_land_num(ilju_land_num);
-
-		int total = pagelistDao.getTotalCountWhole1(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		System.out.println(vo.toString());
-		vo.setIlju_sky_num(ilju_sky_num);
-		vo.setIlju_land_num(ilju_land_num);
-		
-		list = pagelistDao.getListWhole1(vo);
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		for(LikeVO e : list2) {
-			System.out.println("likedyuser : "+ e.getLiked_user());
-			System.out.println("user : "+ e.getUser_num());
-		
+			// 랜덤으로 출력된 추천인 DB에 저장
+			HashMap<String, Object> map2 = new HashMap<String, Object>();
 			
+			user_num2 = ((BigDecimal)profile.get("USER_NUM")).intValue();
+			
+			map2.put("num", num);
+			map2.put("user_num", user_num);
+			map2.put("rec_num", user_num2);
+			pagelistDao.setRecInsert(map2);
+			
+		}else if (num <= maxNum) {
+			
+			System.out.println("이전 추천인 가져오기");
+			
+			//이전 추천인 가져오기
+			profile = pagelistDao.getReProfile(map);
+			System.out.println(profile);
+			
+			user_num2 = ((BigDecimal)profile.get("USER_NUM")).intValue();
+		
 		}
 		
 		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listWhole");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
+		// 추천인 사주 가져오기
+		HashMap<String, Object> ilju = pagelistDao.getilju(user_num2);
 		
-		return "listTypeA";
+		// 추천인 MBTI 가져오기
+		HashMap<String, Object> mbti = pagelistDao.getmbti(user_num2);
 
+		// 90점 이상인 사람이 전체에서 몇 퍼센트인지 가져오기
+		int over90 = pagelistDao.getover90(map);
+		
+		model.addAttribute("heart", listheart);
+		model.addAttribute("profile", profile);
+		model.addAttribute("ilju", ilju);
+		model.addAttribute("mbti", mbti); 
+		model.addAttribute("over90", over90);
+		model.addAttribute("set", map);
+		model.addAttribute("num", num);
+		
+		return "dailyRecommand";
+		
 	}
 	
-	@RequestMapping(value= "/listWhole", params = "code=2")
-	public String listWhole2(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
+	@RequestMapping(value = "/listchk")
+	public String listChk(RedirectAttributes rd, HttpSession session, String sex, String samb) {
 		
+		int user_num = (int) session.getAttribute("user_num");
+		int num = pagelistDao.getaMaxnum(user_num)+1;
+		
+		System.out.println(num);
+		
+		rd.addAttribute("sex", sex);
+		rd.addAttribute("samb", samb);
+		rd.addAttribute("num", num);
+		
+		return "redirect:listWhole";		
+	}
+	
+		
+	@ResponseBody
+	@RequestMapping(value= "/listChart", produces = "application/json; charset=euc-kr")
+	public String listChart(HttpSession session, 
+			@RequestParam(value = "sex", required = false, defaultValue = "m,f,a") String sex,
+			@RequestParam(value = "samb", required = false, defaultValue = "all") String samb) {
+		
+		// 성별 값이 male, female 이 동시에 들어올 때 null값으로 처리
+		if (sex.length() > 1) {
+			sex = null;
+		}
+		
+		// 유저 번호 세션으로 받아옴
 		int user_num=(int)session.getAttribute("user_num");	
 		
-		//유저 천간 받기
-		int sky = pagelistDao.sajuilju(user_num).getIlju_sky_num();
+		// 유저 성별 가져오기
+		char sex2 = (char) session.getAttribute("gender");
+		String sex3 = String.valueOf(sex2);
 		
-		//유저와 어울리는 상대의 천간, 지지 계산
-	    int ilju_sky_num = 0;
-		int ilju_land_num = 0;
-		int ilju_sky_num2 = 0;
-		int ilju_land_num2 = 0;
+		// 유저가 차단한 사람 목록 가져오기
+		List<Integer> blist = blockDao.blockList(user_num);
 		
-        if (sky==1) {ilju_sky_num=10; ilju_land_num =2; ilju_sky_num2=10; ilju_land_num2 =8;}
-        else if(sky==2) {ilju_sky_num =9; ilju_land_num =9; ilju_sky_num2 =9; ilju_land_num2 =1;}
-        else if(sky==3) {ilju_sky_num =2; ilju_land_num =12; ilju_sky_num2 =2; ilju_land_num2 =10;}
-        else if(sky==4) {ilju_sky_num =2; ilju_land_num =10; ilju_sky_num2 =2; ilju_land_num2 =12;}
-        else if(sky==5) {ilju_sky_num =4; ilju_land_num =8; ilju_sky_num2 =4; ilju_land_num2 =2;}
-        else if(sky==6) {ilju_sky_num =3; ilju_land_num =1; ilju_sky_num2 =3; ilju_land_num2 =9;}
-        else if(sky==7) {ilju_sky_num =6; ilju_land_num =8; ilju_sky_num2 =6; ilju_land_num2 =2;}
-        else if(sky==8) {ilju_sky_num =5; ilju_land_num =7; ilju_sky_num2 =5; ilju_land_num2 =3;}
-        else if(sky==9) {ilju_sky_num =8; ilju_land_num =4; ilju_sky_num2 =7; ilju_land_num2 =5;}
-        else if(sky==10) {ilju_sky_num =7; ilju_land_num =5; ilju_sky_num2 =8; ilju_land_num2 =4;}
-        
-        System.out.println("1-1: "+ilju_sky_num);
-        System.out.println("1-2: "+ilju_land_num);
-        System.out.println("2-1: "+ilju_sky_num2);
-        System.out.println("2-2: "+ilju_land_num2);
-        
-		List<IljuVO> list = null;	
+		// 차트 뽑기
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("user_num", user_num);
+		map.put("sex2", sex3);
+		map.put("blist", blist);
+		map.put("sex", sex);
+		map.put("samb", samb);
+		map.put("score", 90);
+		
+		int num90 = pagelistDao.getChartCount(map);
+		
+		map.put("score", 80);
+		
+		int num80 = pagelistDao.getChartCount(map);
+		
+		map.put("score", 70);
+		
+		int num70 = pagelistDao.getChartCount(map);
+		
+		map.put("score", 60);
+		
+		int num60 = pagelistDao.getChartCount(map);
+		
+		Map<String, Integer> map2 = new HashMap<>();
+		map2.put("90점대", num90);
+		map2.put("80점대", num80);
+		map2.put("70점대", num70);
+		map2.put("그 이하", num60);
+		
+		String result = null;
+		ObjectMapper mapper = new ObjectMapper();
 
-		PageVO svo = new PageVO();
-		svo.setIlju_sky_num(ilju_sky_num);
-		svo.setIlju_land_num(ilju_land_num);
-		svo.setIlju_sky_num2(ilju_sky_num2);
-		svo.setIlju_land_num2(ilju_land_num2);
+		try {
+			result = mapper.writeValueAsString(map2);
+		} catch (JsonMappingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (JsonGenerationException e2) {
+			// TODO: handle exception
+			e2.printStackTrace();
+		} catch (IOException e3) {
+			e3.printStackTrace();
+		}
 
-		int total = pagelistDao.getTotalCountWhole2(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		System.out.println(vo.toString());
-		vo.setIlju_sky_num(ilju_sky_num);
-		vo.setIlju_land_num(ilju_land_num);
-		vo.setIlju_sky_num2(ilju_sky_num2);
-		vo.setIlju_land_num2(ilju_land_num2);
-		
-		list = pagelistDao.getListWhole2(vo);
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listWhole");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
-		
-		return "listTypeB";
-
-	}
-	
-	@RequestMapping(value= "/listWhole", params = "code=3")
-	public String listWhole3(PageVO vo, Model model, HttpSession session, String code, 
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
-
-		int user_num=(int)session.getAttribute("user_num");	
-
-		List<IljuVO> list = null;
-		
-		PageVO svo = new PageVO();
-		svo.setUser_num(user_num);
-		
-		int total = pagelistDao.getTotalCountWhole3(svo);
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		vo.setUser_num(user_num);
-
-		System.out.println("user_num: "+ user_num);
-		
-		list = pagelistDao.getListWhole3(vo);
-
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-		
-
-		model.addAttribute("heart", list2);
-		model.addAttribute("pm", "listWhole");
-		model.addAttribute("code", code);
-		model.addAttribute("paging", vo);			
-		model.addAttribute("list", list);
-		
-		return "listTypeC";
+		System.out.println(result);
+		return result;	
 		
 	}
 	
-	
-	@RequestMapping(value= "/listSearch", params = "code=1")
-	public String listSearch(PageVO vo, Model model, HttpSession session, String code,
-			@RequestParam(value = "nowPage", required = false, defaultValue = "1") String nowPage,
-			@RequestParam(value = "cntPerPage", required = false, defaultValue = "5") String cntPerPage) {
-	 
-		System.out.println("오긴 하니?");
-	 
-		String searchType = vo.getSearchType(); String searchValue = vo.getSearchValue();
-		System.out.println(searchType); 
-		System.out.println(searchValue);
-	 
-		int user_num=(int)session.getAttribute("user_num");
+	@RequestMapping(value = "/sajumodal", method = RequestMethod.GET)
+	public ModelAndView sajumodal(int user_num) {
+		
 		System.out.println(user_num);
-	 
-		String sex = pagelistDao.sexdt(user_num).trim(); 
-		System.out.println(sex);
-	 
-		List<IljuVO> list = null;
-	 
-		PageVO svo = new PageVO(); svo.setUser_num(user_num);
-	 
-		if (searchType.equals("2")) { 
-			System.out.println("2일때");
-			sex = pagelistDao.sexdt(user_num).trim(); 
-			}
-		else if (searchType.equals("1")) { 
-			if (sex.equals("m")) { 
-				System.out.println("1의 f");
-				sex = "f"; 
-				} else { 
-					System.out.println("1의 m");
-				sex = "m"; 
-				}
-		}else {
-			System.out.println("안들어가니");
-		}
-		System.out.println(sex);
-	 
-		svo.setSex(sex.charAt(0)); svo.setSearchType(vo.getSearchType());
-		svo.setSearchValue(vo.getSearchValue());
-	  
-		int total = pagelistDao.getTotalCountSearch(svo); System.out.println(total);
-	 
-		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		vo.setUser_num(user_num);
-		vo.setSex(sex.charAt(0)); vo.setSearchType(searchType);
-		vo.setSearchValue(searchValue);
-	 
-		System.out.println("user_num: "+ user_num);
-		System.out.println(vo.toString()); System.out.println("searchType: "+ vo.getSearchType()); 
-		System.out.println("searchValue: "+ vo.getSearchValue());
-		list = pagelistDao.getSearchlist(vo);
-	  
-		List<LikeVO> list2 = likeDao.likeornot(user_num);
-	  
-		model.addAttribute("heart", list2); 
-		model.addAttribute("pm", "listSearch");
-		model.addAttribute("code", code); 
-		model.addAttribute("paging", vo);
-		model.addAttribute("list", list);
-		model.addAttribute("searchType", searchType);
-		model.addAttribute("searchValue", searchValue);
-	  
-		return "listSearch";
-	  
-	  }
+		ModelAndView mav = new ModelAndView("sajumodal");
+		
+		HashMap<String,Object> map = pagelistDao.getilju(user_num);
+		
+		mav.addObject("result", map);
+		
+		return mav;
+		
+	}
+	
+	@RequestMapping(value = "/mbtimodal", method = RequestMethod.GET)
+	public ModelAndView mbtimodal(int user_num) {
+		
+		System.out.println("mbti"+user_num);
+		ModelAndView mav = new ModelAndView("mbtimodal");
+		
+		HashMap<String,Object> map = pagelistDao.getmbti(user_num);
+		
+		mav.addObject("result", map);
+		
+		return mav;
+		
+	}
+	
 
 	
 

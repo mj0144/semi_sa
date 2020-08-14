@@ -1,0 +1,47 @@
+@charset "EUC-KR";
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+.alert-minimalist {
+	border : 1px;
+	border-style : groove;
+    background-color: rgb(253, 247, 247, 1);
+    border-color: rgba(149, 149, 149, 0.3);
+    border-radius: 3px;
+    padding: 11px;
+}
+.alert-minimalist > [data-notify="icon"] {
+    height: 40px;
+    margin-right: 12px;
+}
+.alert-minimalist > [data-notify="title"] {
+	padding-bottom : 5px;
+    color: rgb(51, 51, 51);
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.alert-minimalist > [data-notify="message"] {
+	margin: 2px;
+	width: 200px;
+}
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0;
+    border: 0;
+}
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+}

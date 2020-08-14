@@ -4,132 +4,370 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
    <mapper namespace="pagelist">
-
-  <select id="iljuselect" parameterType="int" resultType="iljuvo">
-  select ilju_sky_num, ilju_land_num from sajuilju where ilju=(select ilju from user_info where user_num=#{user_num})
-  </select>
   
-  <select id="sexdt" parameterType="int" resultType="String">
-  select sex from user_info where user_num = #{user_num}
-  </select>
-  
-  
-  <resultMap type="iljuvo" id="simemResult">
-  <result property="result_img" column="result_img"/>
-  <collection property="mem" javaType="java.util.List" resultMap="memberResult" ofType="mem"/>
-  </resultMap>
-  
-  <resultMap type="mem" id="memberResult">
-  <result property="user_num" column="user_num" />
-  <result property="name" column="name" />
-  <result property="nickname" column="nickname" />
-  <result property="sex" column="sex" />
-  <result property="birth" column="birth" />
-  <result property="user_img" column="user_img" />
-  <result property="user_intro" column="user_intro" />
-  </resultMap>
-  
-  
-  <select id="listResult1" parameterType="pvo" resultMap="simemResult">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num} 
-  ) a) where r_num between #{start} and #{end}
-  </select>
-  
-  <select id="totalCount1" resultType="int" parameterType="pvo">
-  select count(*) cnt FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})
-  </select>
-  
-  <select id="listResult2" parameterType="pvo" resultMap="simemResult">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
-  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2}))) a) where r_num between #{start} and #{end}
-  </select>
  
-  <select id="totalCount2" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and u.sex=#{sex} and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
-  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})))
-  </select>
-
-  <select id="listResult3" resultMap="simemResult" parameterType="pvo">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num}) a) 
-  where r_num between #{start} and #{end}
-  </select>
-
-  <select id="totalCount3" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.sex=#{sex} and u.user_num != #{user_num})
-  </select>
+  <!-- 새로운 랜덤 추천인 출력 -->
+  <select id="recProfile" resultType="hashMap" parameterType="hashMap">
+  select * from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
   
-  <select id="listWhole1" parameterType="pvo" resultMap="simemResult">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num}) a) 
-  where r_num between #{start} and #{end}
-  </select>
-  
-  <select id="totalCountWhoel1" resultType="int" parameterType="pvo">
-  select count(*) cnt FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, u.user_img, s.result_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and s.ilju_sky_num = #{ilju_sky_num} and s.ilju_land_num = #{ilju_land_num})  
-  </select>
-  
-  <select id="listWhole2" parameterType="pvo" resultMap="simemResult">
-  select * from (select rownum r_num, a.* from (SELECT * FROM (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
-  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})) ORDER BY dbms_random.value)) a) where r_num between #{start} and #{end}
-  </select>
-  
-  <select id="totalCountWhole2" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju=s.ilju and ((s.ilju_sky_num=#{ilju_sky_num} and s.ilju_land_num=#{ilju_land_num}) 
-  or (s.ilju_sky_num=#{ilju_sky_num2} and s.ilju_land_num=#{ilju_land_num2})))
-  </select>
-  
-  <select id="listWhole3" resultMap="simemResult" parameterType="pvo">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num}) a) 
-  where r_num between #{start} and #{end}
-  </select>
-  
-  <select id="totalCountWhole3" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num})
-  </select>
-  
-  <select id="searchlist" resultMap="simemResult" parameterType="pvo">
-  select * from (select rownum r_num, a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num}
-  <if test="searchValue != null">
   <choose>
-  <when test="searchType == 1">
-  and sex=#{sex}
+  <when test="samb == 'saju'">
+  , (s.sky_score + d.land_score)*10 f_score
   </when>
-  <when test="searchType == 2">
-  and sex = #{sex}
+  <when test="samb == 'mbti'">
+  , m.score*20 f_score
   </when>
+  <otherwise>
+  , (s.sky_score + d.land_score + m.score*2)*5 f_score
+  </otherwise>
   </choose>
-  </if>
-  ) a where nickname like '%'||#{searchValue}||'%' or ilju like '%'||#{searchValue}||'%') 
-  where r_num between #{start} and #{end}
-  </select>
   
-  <select id="totalCountSearch" resultType="int" parameterType="pvo">
-  select count(*) cnt from (select a.* from (select u.user_num, u.name, u.nickname, u.sex, u.birth, u.user_intro, s.result_img, u.user_img, u.ilju 
-  from user_info u, sajuilju s where u.ilju = s.ilju and u.user_num != #{user_num} 
-  <if test="searchValue != null">
+  from user_info u 
+  
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
+  
   <choose>
-  <when test="searchType == '1'">
-  and sex=#{sex}
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
   </when>
-  <when test="searchType == '2'">
-  and sex = #{sex}
-  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
   </choose>
+  
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
   </if>
-  ) a 
-  where nickname like '%'||#{searchValue}||'%' or ilju like '%'||#{searchValue}||'%')
+  
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
+  
+  <if test="sex != null">
+  and sex = #{sex}
+  </if>
+  
+  <if test="blist != null">
+  <foreach collection="blist" item="e">
+   and u.user_num != ${e}
+  </foreach>
+  </if>
+   
+  order by DBMS_RANDOM.VALUE) WHERE ROWNUM = 1
+  
+  </select>
+   
+   
+  <!-- 이전에 추천받았던 인물 출력 -->
+  <select id="reProfile" resultType="hashMap" parameterType="hashMap">
+  select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
+  
+  <choose>
+  <when test="samb == 'saju'">
+  , (s.sky_score + d.land_score)*10 f_score
+  </when>
+  <when test="samb == 'mbti'">
+  , m.score*20 f_score
+  </when>
+  <otherwise>
+  , (s.sky_score + d.land_score + m.score*2)*5 f_score
+  </otherwise>
+  </choose>
+  
+  from user_info u 
+  
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
+  </choose>
+  
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
+  </if>
+  
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
+
+   and u.user_num = (select rec_num from recprofile where user_num = #{user_num} and num = #{num})
+  
+  </select>
+   
+  <!-- 추천인 일주 뽑기 -->
+  <select id="profileilju" parameterType="int" resultType="hashMap">
+  select * from sajuilju where ilju = (select ilju from user_info where user_num=${user_num})
+  </select> 
+  
+  
+  <!-- 추천인 MBTI 뽑기 -->
+  <select id="profilembti" parameterType="int" resultType="hashMap">
+  select * from mbtiinfo where mbti = (select user_mbti from user_info where user_num=${user_num})
   </select>
   
+   
+  <!-- 차트 뽑기 위한 점수별 카운트 출력 -->
+  <select id="ChartCount" resultType="int" parameterType="hashMap">
+  select count(*) from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro
+  
+  <choose>
+  <when test="samb == 'saju'">
+  , round((s.sky_score + d.land_score)*10) f_score, s.sky, s.sky_score, d.land, d.land_score
+  </when>
+  <when test="samb == 'mbti'">
+  , round(m.score*20) f_score, m.youmbti, m.score mbti_score 
+  </when>
+  <otherwise>
+  , round((s.sky_score + d.land_score + m.score)/3*20) f_score, m.youmbti, m.score mbti_score, s.sky, s.sky_score, d.land, d.land_score
+  </otherwise>
+  </choose>
+  
+  from user_info u 
+  
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
+  </choose>
+  
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
+  </if>
+  
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
+  
+  <if test="sex != null">
+  and sex = #{sex}
+  </if>
+  
+  <if test="blist != null">
+  <foreach collection="blist" item="e">
+   and u.user_num != ${e}
+  </foreach>
+  </if>
+  ) 
+  <choose>
+  <when test="score == 90">
+  where f_score <![CDATA[>=]]>90
+  </when>
+  <when test="score == 80">
+  where f_score <![CDATA[>=]]>80 and f_score <![CDATA[<]]>90
+  </when>
+  <when test="score == 70">
+  where f_score <![CDATA[>=]]>70 and f_score <![CDATA[<]]>80
+  </when>
+  <otherwise>
+  where f_score <![CDATA[<]]>70
+  </otherwise>
+  </choose>
+   
+  </select>
+  
+  
+  <!-- 90점 이상인 사람 percent 뽑기 -->
+  <select id="over90" parameterType="hashMap" resultType="int">
+  
+  select distinct round(count(*) over() * 100/total) percnt from 
+  (select count(*) over() as total, u.user_num,  
+  
+  <!-- f_score 종류 -->
+  <choose>
+  <when test="samb == 'saju'">
+  (s.sky_score + d.land_score)*10 f_score
+  </when>
+  <when test="samb == 'mbti'">
+  m.score*20 f_score 
+  </when>
+  <otherwise>
+  (s.sky_score + d.land_score + m.score*2)*5 f_score
+  </otherwise>
+  </choose>
+  
+  from user_info u 
+  
+  <!-- 사주 -->
+  <if test="samb != 'mbti'">
+  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,1,1) = ds.msky 
+  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,1,1) = ds.wsky 
+  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
+  </otherwise>
+  </choose>
+  
+  ) s, 
+  
+  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
+  
+  <choose>
+  <when test='sex2 == "f"'>
+  where substr(u.ilju,2,1) = dl.mland  
+  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </when>
+  <otherwise>
+  where substr(u.ilju,2,1) = dl.wland  
+  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
+  </otherwise>
+  </choose>
+  
+  ) d
+  </if>
+  
+  <!-- mbti -->
+  <if test="samb != 'saju'">
+  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
+  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
+  </if>
+  
+  <!-- 같은거 다른거 -->
+  <choose>
+  <when test="samb == 'mbti'">
+  where u.user_num = m.user_num
+  </when>
+  <when test="samb == 'saju'">
+  where u.user_num=d.user_num and u.user_num=s.user_num 
+  </when>
+  <otherwise>
+  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num
+  </otherwise>
+  </choose>
+  
+  <if test="sex != null">
+  and sex = #{sex}
+  </if>
+  
+  <if test="blist != null">
+  <foreach collection="blist" item="e">
+   and u.user_num != ${e}
+  </foreach>
+  </if>
+  
+  ) where f_score >= 90
+
+  </select>
+  
+  <!-- 추천인 DB 안에 넣기 -->
+  <insert id="recinsert" parameterType="hashMap">
+  	insert into RECPROFILE values(${num},sysdate,${user_num},${rec_num})
+  </insert>
+  
+  <!-- 추천인 몇 명 DB에 저장되어있는지 출력 -->
+  <select id="maxnum" parameterType="int" resultType="int">
+  	select max(num) from recprofile where user_num = ${user_num}
+  </select>
+  
+  <!-- 매일 0시에 추천인 저장된 내용 삭제 -->
+  <delete id="delRprofile">
+  	DELETE FROM recprofile
+  </delete>
+  
+   
+   
   </mapper>

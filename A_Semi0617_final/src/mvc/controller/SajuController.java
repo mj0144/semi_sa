@@ -39,10 +39,10 @@ public class SajuController {
          return "error";
       }
 	
-	@RequestMapping(value = "/login")
-	public String login() {
-		return "login";
-	}
+//	@RequestMapping(value = "/login")
+//	public String login() {
+//		return "login";
+//	}
 
 	@RequestMapping(value="/signin")
 	public String viewsignin() {
@@ -61,11 +61,6 @@ public class SajuController {
 	public String profile() {
 		return "profile";
 	}
-	@RequestMapping(value="/pwdChange")
-	public String pwdChange() {
-		return "pwdChange";
-	}
-
 	@RequestMapping(value="/chat")
 	public String chat() {
 		return "chat";
@@ -338,6 +333,11 @@ public class SajuController {
 	        }
 	 
 	 }
+	
+	@RequestMapping(value="/dailyRecommand")
+	public String dailyRecommand() {
+		return "dailyRecommand";
+	}
 
 
 

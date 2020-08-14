@@ -1,13 +1,11 @@
 package mvc.dao;
 
-import java.util.List;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import mvc.vo.IljuVO;
-import mvc.vo.PageVO;
 
 
 @Repository
@@ -15,71 +13,59 @@ public class PageListDao {
 	
 	@Autowired
 	private SqlSessionTemplate ss;
+
 	
-	//skynum, landnum 받기
-	public IljuVO sajuilju(int user_num) {
-		return ss.selectOne("pagelist.iljuselect", user_num);
+	// 랜덤추천인 뽑기 
+	public HashMap<String, Object> getRProfile(HashMap<String, Object> map) {
+		return ss.selectOne("pagelist.recProfile", map);
 	}
 	
-	//사용자 성별
-	public String sexdt(int user_num) {
-		return ss.selectOne("pagelist.sexdt", user_num);
+	//이전에 추천받았던 인물 출력 
+	public HashMap<String, Object> getReProfile(HashMap<String, Object> map){
+		return ss.selectOne("pagelist.reProfile", map);
 	}
 	
-	public IljuVO getListResult1(PageVO vo) {
-		return ss.selectOne("pagelist.listResult1", vo);
+	//추천인 사주 
+	public HashMap<String, Object> getilju(int user_num) {
+		return ss.selectOne("pagelist.profileilju", user_num);
+	}
+	
+	//추천인 mbti 
+	public HashMap<String, Object> getmbti(int user_num) {
+		return ss.selectOne("pagelist.profilembti", user_num);
+	}
+	
+	//차트 출력 
+	public int getChartCount(HashMap<String, Object> map) {
+		return ss.selectOne("pagelist.ChartCount", map);
+	}
+	
+	//90점 이상이 몇 퍼센트인지 출력
+	public int getover90(HashMap<String, Object> map) {
+		if (ss.selectOne("pagelist.over90", map) == null) {
+			return 0;
+		}else {
+			return ss.selectOne("pagelist.over90", map);			
+		}
 	}
 
-	public List<IljuVO> getListResult2(PageVO vo) {
-		return ss.selectList("pagelist.listResult2", vo);
+	//추천인 리스트에 넣기 
+	public void setRecInsert(HashMap<String, Object> map) {
+		ss.insert("pagelist.recinsert", map);
 	}
 	
-	public List<IljuVO> getListResult3(PageVO vo) {
-		return ss.selectList("pagelist.listResult3", vo);
+	//저장된 추천인이 몇 명인지 출력
+	public int getaMaxnum(int user_num) {
+		if (ss.selectOne("pagelist.maxnum", user_num) == null) {
+			return 0;
+		}else {
+			return ss.selectOne("pagelist.maxnum", user_num);
+		}		
 	}
 	
-	public IljuVO getListWhole1(PageVO vo) {
-		return ss.selectOne("pagelist.listWhole1", vo);
-	}
+	// 매일 0시가 되면 추천인 저장한 DB 삭제
+	public void delRprofile() {
+		ss.delete("pagelist.delRprofile");
+	}		
 	
-	public List<IljuVO> getListWhole2(PageVO vo) {
-		return ss.selectList("pagelist.listWhole2", vo);
-	}
-	
-	public List<IljuVO> getListWhole3(PageVO vo) {
-		return ss.selectList("pagelist.listWhole3", vo);
-	}
-	
-	public List<IljuVO> getSearchlist(PageVO vo) {
-		return ss.selectList("pagelist.searchlist", vo);
-	}
-	
-	public int getTotalCount1(PageVO vo) {
-		return ss.selectOne("pagelist.totalCount1",vo);
-		
-	}
-	
-	public int getTotalCount2(PageVO vo) {
-		return ss.selectOne("pagelist.totalCount2",vo);
-	}
-
-	public int getTotalCount3(PageVO vo) {
-		return ss.selectOne("pagelist.totalCount3",vo);
-	}
-	
-	public int getTotalCountWhole1(PageVO vo) {
-		return ss.selectOne("pagelist.totalCountWhoel1",vo);
-	}
-	
-	public int getTotalCountWhole2(PageVO vo) {
-		return ss.selectOne("pagelist.totalCountWhole2",vo);
-	}
-	
-	public int getTotalCountWhole3(PageVO vo) {
-		return ss.selectOne("pagelist.totalCountWhole3",vo);
-	}
-	
-	public int getTotalCountSearch(PageVO vo) {
-		return ss.selectOne("pagelist.totalCountSearch", vo);
-	}
 }

@@ -1,6 +1,5 @@
 package mvc.dao;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -9,8 +8,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import mvc.vo.IljuVO;
 import mvc.vo.MemberVO;
+
+//(수연)
+
 
 @Repository
 public class MemberDao {
@@ -39,12 +40,13 @@ public class MemberDao {
 		return ss.selectOne("email.find_id", email);
 	}
 
-	// 비밀번호 변경
+	// 비밀번호 변경 이메일 입력
 
 	public int idEmail(MemberVO vo) throws Exception {
 		return ss.selectOne("email.login", vo);
 	}
 
+	// 비밀번호변경
 	public void updatePw(Map<String, Object> map, MemberVO vo) throws Exception {
 		map.get("pwd");
 		map.get("email");
@@ -57,47 +59,14 @@ public class MemberDao {
 
 	}
 
-	// 회원가입
-	public int join(MemberVO vo) {
-		return ss.insert("member.join", vo);
-	}
-
-	// 일주뽑기
-	public String ilju(MemberVO vo) {
-		return ss.selectOne("member.ilju", vo);
-	}
-
-	// 아이디 체크
-	public int idChk(String id) {
-		return ss.selectOne("member.idchk", id);
-	}
-
-	// 별명체크
-	public int nickChk(String nickname) {
-		return ss.selectOne("member.nickchk", nickname);
-
-	}
-
-	// 이메일체크
-	public int emailChk(String email) {
-		System.out.println(" dlapdd");
-		return ss.selectOne("member.emailchk", email);
-
-	}
-
 	// 이메일 인증
 	public int approval_member(MemberVO vo) throws Exception {
 		return ss.update("email.approval_member", vo);
 	}
-	
-	//가입시 프로필 입력
-		public void joinprofile(MemberVO vo) {
-			ss.update("member.joinprofile", vo);
-		}
-		
-		//유저넘버 출력
-		public int userNumber(MemberVO vo) {
-			return ss.selectOne("member.usernumber", vo);
-		}
+
+	// 유저넘버 출력
+	public int userNumber(MemberVO vo) {
+		return ss.selectOne("member.usernumber", vo);
+	}
 
 }

@@ -15,40 +15,44 @@ import mvc.vo.MemberVO;
 
 @Repository
 public class FriendDao {
-	
+
 	@Autowired
 	private SqlSessionTemplate ss;
-	
-	
+
 	public IljuVO friendprofile(int num) {
 		return ss.selectOne("friend.sajuBasic", num);
 	}
-	
-	//내가 좋아요를 누른 유저 카운트
+
 	public int friendlike(int num) {
-		return ss.selectOne("friend.like",num );
+		return ss.selectOne("friend.like", num);
 	}
-	
-	
-	//나를 좋아요 눌러준 유저 카운트
+
 	public int friendliked(int num) {
-		return ss.selectOne("friend.liked",num );
+		return ss.selectOne("friend.liked", num);
 	}
-	
+
 	public BoardVO boardlike(int num) {
 		BoardVO vo = new BoardVO();
-		vo=ss.selectOne("profile.boardmaxnum", num);
+		vo = ss.selectOne("profile.boardmaxnum", num);
 		return vo;
 	}
-	
-	public int heartChk(Map<String,Integer> map) {
+
+	public int heartChk(Map<String, Integer> map) {
 		return ss.selectOne("friend.heartchk", map);
 	}
-	
-	public List<BoardVO> board_info(int user_num){
+
+	public List<BoardVO> board_info(int user_num) {
 		return ss.selectList("friend.board_info", user_num);
 	}
+
 	
-	
-	
+	public int blockChk(Map<String, Integer> map) {
+		return ss.selectOne("friend.blockchk", map);
+	}
+
+	//유저신고(수연)
+	public void reportUser(HashMap<String, Object> params) throws Exception {
+		ss.insert("friend.reportUser", params);
+	}
+
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="block">
+
+<!-- 블락리스트 추가 -->
+<insert id="addblock" parameterType="hashMap">
+	insert into blockuser VALUES (#{user_num}, #{blocked_user},'true')
+</insert>
+
+<!-- 블락리스트 제거 -->
+<delete id="delblock" parameterType="hashMap">
+	delete from blockuser where user_num=#{user_num} and blocked_user=#{blocked_user}
+</delete>
+
+<!-- 블락리스트 출력1 -->
+<select id="blocklist" parameterType="int" resultType="int">
+	select blocked_user from blockuser where user_num = #{user_num}
+</select>
+
+<!-- 블락리스트 출력2 -->
+<select id="blocklistprofile" parameterType="int" resultType="hashMap">
+	select b.blocked_user, u.nickname, u.USER_IMG from user_info u, 
+	(select blocked_user from blockuser where user_num = #{user_num}) b 
+	where b.blocked_user =  u.user_num
+</select>
+
+</mapper>

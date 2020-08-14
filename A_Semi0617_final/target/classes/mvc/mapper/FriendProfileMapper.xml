@@ -35,13 +35,22 @@
 	</select>
 	 -->
 	<select id="heartchk" parameterType="map" resultType="int">
-		 select count(*) from likeuser where liked_user=#{board_writer} and user_num=#{user_num}		
+	 select count(*) from likeuser where liked_user=#{board_writer} and user_num=#{user_num}		
 	</select>
 	
 	<select id="board_info" parameterType="int" resultType="board">
 	 select board_num, board_img from board_info where board_writer_num = #{user_num} order by board_num desc
 	</select>
 	
+	<!-- 블락 유무 확인 -->
+	<select id="blockchk" parameterType="map" resultType="int">
+	 select count(*) from blockuser where blocked_user = #{board_writer} and user_num = #{user_num}
+	</select>
+	
+	<!-- 유저 신고 -->
+	<insert id="reportUser" parameterType="java.util.Map">
+	INSERT INTO report_user VALUES (report_num_seq.nextval,#{user_num},#{user_id},#{report_user_num},#{reason})
+	</insert>
 	
 </mapper>  
 
