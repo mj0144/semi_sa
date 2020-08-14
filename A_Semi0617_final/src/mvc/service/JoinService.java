@@ -110,8 +110,11 @@ public class JoinService {
 		Map<String, Object> map = new HashMap<String, Object>();	
 		map.put("user_id", vo.getUser_id());
 		map.put("grade", "bronze");
-		joinDao.gradeInit(map);		
+		map.put("left_count", 5);
+		joinDao.gradeInit(map);
 	}
+	
+
 	
 	
 

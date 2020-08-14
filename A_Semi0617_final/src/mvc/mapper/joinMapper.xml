@@ -16,6 +16,9 @@
 	<insert id= "gradeInit" parameterType="hashMap">
 		insert into mapping_grade_user values('${user_id}', '${grade}')
 	</insert>
+	<insert id= "chatTicket" parameterType="hashMap">
+		insert into basic_chat_count values('${user_id}', '${left_count}')
+	</insert>
 	
 	<select id="selc_user_num" parameterType="String" resultType="int">
 		select user_num from user_info where user_id=#{user_id}

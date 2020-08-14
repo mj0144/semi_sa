@@ -35,15 +35,20 @@ public class JoinDao {
 		return ss.selectOne("join.selc_user_num", user_id);
 	}
 	
+	//등급초기화 && 채팅 기본권 부여
+	@Transactional
 	public void gradeInit(Map<String, Object> map) {
 		try {
 			ss.insert("join.gradeInit", map);
+			ss.insert("join.chatTicket", map);//채팅 기본권 부여
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 		
 	}
+	
+
 	
 	
 	

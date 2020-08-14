@@ -10,7 +10,15 @@ public class GradeDao {
 	@Autowired
 	private SqlSession ss;
 	
-	public void chatGradeChk() {
+	
+	//등급체크
+	public String GradeChk(String user_id) {
+		return ss.selectOne(user_id);
+	}
+	
+	//채팅 횟수 체크
+	public void chatChk() {
 		
 	}
+	
 }
