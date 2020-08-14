@@ -1,51 +1,23 @@
 package mvc.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
-import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import mvc.dao.JoinDao;
-import mvc.dao.MemberDao;
-import mvc.resources.SNSLogin;
-import mvc.resources.SnsValue;
-import mvc.service.JoinService;
-import mvc.service.MailService;
 import mvc.service.MainSerivce;
 import mvc.service.MemberService;
-import mvc.utils.ImgUtils;
-import mvc.vo.IdealVO;
 import mvc.vo.MemberVO;
 
 @Controller
 public class MemberController {
 
-	@Autowired
-	private MemberDao memberDao;
 
 	@Autowired
 	private MemberService memberService;
-
-	@Autowired
-	private MailService mailService;
-
-	@Autowired
-	private JavaMailSender mailSender;
 
 	@Autowired
 	MainSerivce mainservice;

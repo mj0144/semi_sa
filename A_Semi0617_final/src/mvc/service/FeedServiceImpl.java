@@ -18,39 +18,30 @@ public class FeedServiceImpl implements FeedService{
 	@Autowired
 	BoardDao boardDao;
 	
-	@Autowired
-	private HttpSession session;
-
-	//�Խñ� �ۼ�
 	@Override
 	public Object create(BoardVO vo) throws Exception {
 		return boardDao.create(vo);
 	}
 	
-	//�Խñ� �󼼺���
 	@Override
 	public HashMap<String, Object> read(int board_num) throws Exception {
 		return boardDao.read(board_num);
 	}
 	
-	//�Խñ� ����
 	@Override
 	public void boardUpdate(BoardVO vo) throws Exception {
 		boardDao.boardUpdate(vo);
 	}
 	
-	//�Խñ� ����
 	@Override
 	public void boardDelete(int BOARD_NUM) throws Exception {
 		boardDao.boardDelete(BOARD_NUM);
 	}
 	
-	//�Խñ� ��ü���
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return boardDao.listAll();
 	}
-	//��� �ۼ�
 	@Override
 	public int insertReply(HashMap<String, Object> params) {
 		int result = 0;
@@ -61,7 +52,6 @@ public class FeedServiceImpl implements FeedService{
 		}
 		return result;
 	}
-	//��� ���
 	@Override
 	public List<HashMap<String, Object>> readReply(String board_num) {
 		List<HashMap<String, Object>> resultLsit = new ArrayList<HashMap<String,Object>>();
@@ -82,29 +72,23 @@ public class FeedServiceImpl implements FeedService{
 				reply.put("subList", tempList);
 				replyList.set(i, reply);
 			}
-			System.out.println("��� : "+replyList);
-			System.out.println("���� : " +subList);
 			resultLsit = replyList;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return resultLsit;
 	}
-	//��۾˶�Notify����
 	@Override
 	public Object notifyReply(NotifyVO vo) throws Exception {
 		return boardDao.Notifyinsert(vo);
 	}
 	
-	//��� ����
 	@Override
 	public void commentDelete(int cm_num) throws Exception {
 			boardDao.deleteComment(cm_num);
 	}
 			
-	//��� ����
 	@Override
-
 	public void commentUpdate(HashMap<String, String> params) throws Exception {
 		boardDao.updateComment(params);
 

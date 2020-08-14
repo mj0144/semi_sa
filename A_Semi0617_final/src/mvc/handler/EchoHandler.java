@@ -43,6 +43,7 @@ public class EchoHandler extends TextWebSocketHandler{
 			sess.sendMessage(new TextMessage(userid + "|" + message.getPayload()));
 		}
 	}
+	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		sessionList.remove(session);

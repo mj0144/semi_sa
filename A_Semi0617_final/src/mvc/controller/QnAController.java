@@ -14,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import mvc.service.QnaService;
 import mvc.vo.QnaVO;
 
+//QNA페이지 목록, 작성 , 수정, 삭제(성현)
+
+
 @Controller
 public class QnAController {
 
@@ -21,7 +24,7 @@ public class QnAController {
 		@Autowired
 	    private QnaService qnaService;
 		
-		//QNA페이지
+		
 	    /** QnA - 목록 페이지 이동 */
 	    @RequestMapping( value = "/qnapage")
 	    public ModelAndView qnapage(HttpSession session) throws Exception{

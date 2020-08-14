@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import mvc.dao.ProfileDao;
 import mvc.vo.MemberVO;
 
+// (¼ºÇö)
+
 @Service
 public class ProfileService {
 

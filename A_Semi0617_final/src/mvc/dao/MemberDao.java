@@ -1,6 +1,5 @@
 package mvc.dao;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -9,8 +8,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import mvc.vo.IljuVO;
 import mvc.vo.MemberVO;
+
+//(수연)
+
 
 @Repository
 public class MemberDao {
@@ -39,12 +40,13 @@ public class MemberDao {
 		return ss.selectOne("email.find_id", email);
 	}
 
-	// 비밀번호 변경
+	// 비밀번호 변경 이메일 입력
 
 	public int idEmail(MemberVO vo) throws Exception {
 		return ss.selectOne("email.login", vo);
 	}
 
+	// 비밀번호변경
 	public void updatePw(Map<String, Object> map, MemberVO vo) throws Exception {
 		map.get("pwd");
 		map.get("email");

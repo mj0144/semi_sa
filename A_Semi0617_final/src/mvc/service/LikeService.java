@@ -2,13 +2,13 @@ package mvc.service;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.ProfileDao;
-import mvc.vo.LikeVO;
-import mvc.vo.MemberVO;
 
+ 	//(¼ºÇö)
 @Service
 public class LikeService {
 

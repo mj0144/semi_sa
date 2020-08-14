@@ -30,31 +30,28 @@ public class FriendController {
 	@Autowired
 	private FriendDao friendDao;
 
-//	@Autowired
-//	private FriendService friendservice;
-
 	@RequestMapping(value = "/friend")
 	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { // user_num : �۾���.
 		
 		ModelAndView mav = new ModelAndView("friend");
 		
-		IljuVO ilvo = friendDao.friendprofile(user_num); // �۾����� ����.
+		IljuVO ilvo = friendDao.friendprofile(user_num); 
 		MemberVO vo = ilvo.getMem().get(0);
 
 		
 		
-		int like_cnt = friendDao.friendlike(user_num); //// ���� ���ƿ並 ���� ���� ī��Ʈ
-		int liked_cnt = friendDao.friendliked(user_num);// ���� ���ƿ� ������ ���� ī��Ʈ
+		int like_cnt = friendDao.friendlike(user_num); 
+		int liked_cnt = friendDao.friendliked(user_num);
 
-		List<BoardVO> blist= friendDao.board_info(user_num); //�۾����� �Խñ� ����.
-		int board_cnt = blist.size(); //�Խñ� ����.
+		List<BoardVO> blist= friendDao.board_info(user_num); 
+		int board_cnt = blist.size(); 
 		
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("board_writer", user_num);
 		map.put("user_num", (int) session.getAttribute("user_num"));
 
-		int heartchk = friendDao.heartChk(map); //���� �α����� ������ �۾��̸� ���ƿ��ߴ��� ����.
+		int heartchk = friendDao.heartChk(map); 
 		if (heartchk > 0) {
 			heartchk = 1;
 		} else {
@@ -68,25 +65,20 @@ public class FriendController {
 		mav.addObject("board_cnt", board_cnt);
 		mav.addObject("like_cnt", like_cnt);
 		mav.addObject("liked_cnt", liked_cnt);
-		mav.addObject("board_writer", user_num); // �۾���
+		mav.addObject("board_writer", user_num); 
 		mav.addObject("heartchk", heartchk);
 		mav.addObject("blockchk", blockchk);
 
 		return mav;
 	}
 	
-	//유저 신고
 	
+		// ���� �Ű� ( ���� )
 		 @RequestMapping(value = "/reportUser", method = RequestMethod.POST) 
 		 public String reportComment(HttpSession session, String friend_num, String report_comment, HttpServletRequest request) throws Exception { 
-			 System.out.println("유저신고컨트롤러인데..왓니?");
 			 int user_num = (int) session.getAttribute("user_num");
-			 System.out.println(user_num);
 			 String user_id = (String) session.getAttribute("user_id");
-			 System.out.println(user_id);
 			 int report_user_num = Integer.parseInt(friend_num);
-			 System.out.println(report_user_num);
-			 System.out.println("파람 왓니"+user_num+"/+"+user_id+"/+"+report_user_num+"/+"+report_comment);
 			 HashMap<String, Object> map = new HashMap<String, Object>();
 			 map.put("user_num", user_num);
 			 map.put("report_user_num", report_user_num);
