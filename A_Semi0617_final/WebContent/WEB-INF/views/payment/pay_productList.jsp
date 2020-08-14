@@ -151,7 +151,7 @@ background: #1AA85C;
               <li>이성추천기능<b>무제한</b></li>
               <li><b>연에인 닮은꼴</b>인연도 찾아보세요</li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block  btn-custom ">Buy</button>
+            <button type="button" class="btn btn-lg btn-block  btn-custom" onclick="location.href='pay_productcart?product_num=2'">Buy</button>
           </div>
         </div>
                
@@ -183,114 +183,11 @@ background: #1AA85C;
               <li><b>Free</b> Email support</li>
               <li><b>Help center access</b></li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block  btn-custom ">Buy</button>
+            <button type="button" class="btn btn-lg btn-block  btn-custom" onclick="location.href='pay_productcart?product_num=3'">Buy</button>
           </div>
         </div>
-               
-         
-        
-        
-        
-        
       </div>
     </div>
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div class="row">
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white">  </div>
-                            <!--Image-->
-                            <figure> <img alt="" src="resources/img/payment/product1.png"> </figure>
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="pay_productcart?product_num=1" tabindex="0">
-                                <h5>인연보기 5회권</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><strong>설명 준비중입니다</strong></p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-								<p>가격  : 1,000</p>
-                            </div>
-                            <div class="mt"> <a href="pay_productcart?product_num=1" tabindex="0" class="btn bg-blue-ui white read">구매하기</a> </div>
-                            <br><br><br><br><br><br><br><br><br>
-                            
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white"> </div>
-                            <!--Image-->
-                            <figure> <img alt="" src="resources/img/payment/product2.png"> </figure>
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="pay_productcart?product_num=2" tabindex="0">
-                                <h5>채팅 3회권</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i><i class="fa fa-comments-o"></i><strong>설명 준비중입니다</strong> </p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-								<p>가격  : 2,000</p>
-                            </div>
-                            <div class="mt"> <a href="pay_productcart?product_num=2" tabindex="0" class="btn bg-blue-ui white read">구매하기</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <div class="item-box-blog-date bg-blue-ui white">  </div>
-                            <!--Image-->
-                            <figure> <img alt="" src="resources/img/payment/product3.png"> </figure>
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="pay_productcart?product_num=3" tabindex="0">
-                                <h5>패키지</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><strong>설명 준비중입니다</strong></p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-								<p> 가격  : 10,000</p>
-                            </div>
-                            <div class="mt"> <a href="pay_productcart?product_num=3" tabindex="0" class="btn bg-blue-ui white read">구매하기</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--.row-->
-                  </div>
-                  
-                <!--.carousel-inner-->
-              </div>
-              <!--.Carousel-->
             </div>
           </div>
         </div>

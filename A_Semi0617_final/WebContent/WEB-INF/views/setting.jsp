@@ -43,15 +43,11 @@
 
 </script>
 <div id="colorlib-main">
-	<section class="ftco-section ftco-bread">
+<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
 		<div class="container">
-			<div
-				class="row no-gutters slider-text justify-content-center align-items-center">
-				<div class="col-md-8 ftco-animate">
-					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index">Home</a></span> <span>Setting</span>
-					</p>
-					<h1 class="bread">Setting</h1>
+			<div class="row no-gutters slider-text justify-content-center align-items-center">
+				<div class="col-md-12 ftco-animate text-center">
+					<h1 class="bread" style="color:white;"><b>Setting</b></h1>
 				</div>
 			</div>
 		</div>
