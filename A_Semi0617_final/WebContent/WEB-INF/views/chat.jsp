@@ -6,15 +6,11 @@
 <%@ include file="header.jsp" %>
 <%@ include file="side.jsp" %>
 <div id="colorlib-main">
-	<section class="ftco-section ftco-bread">
+	<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
 		<div class="container">
-			<div
-				class="row no-gutters slider-text justify-content-center align-items-center">
-				<div class="col-md-8 ftco-animate">
-					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index">Home</a></span> <span>채팅</span>
-					</p>
-					<h1 class="bread" style=" font-weight:700; line-height:1.5; font-size: 2.5rem;">채팅</h1>
+			<div class="row no-gutters slider-text justify-content-center align-items-center">
+				<div class="col-md-12 ftco-animate text-center">
+					<h1 class="bread" style="color:white;"><b>Chat</b></h1>
 				</div>
 			</div>
 		</div>

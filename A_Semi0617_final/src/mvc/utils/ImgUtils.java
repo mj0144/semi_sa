@@ -139,7 +139,6 @@ public class ImgUtils {
 			e.printStackTrace();
 		}
 
-// 출처: https://jp1020.tistory.com/entry/java-image-저장 [메모하는 습관]
-	}
+   }
 
 }

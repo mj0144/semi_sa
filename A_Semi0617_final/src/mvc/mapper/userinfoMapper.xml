@@ -9,10 +9,6 @@
 		select * from user_info u, ideal_type i where u.user_num=#{user_num} and u.user_num=i.user_num
 	</select>
 
-	
-	
-	
-	
 	<update id="infoUpdate" parameterType="mem">
 		update user_info set 
 			user_img=#{user_img}, name=#{name}, nickname=#{nickname}, sex=#{sex}, 
@@ -21,6 +17,7 @@
 			user_mbti=#{user_mbti}, user_height=#{user_height}, user_body=#{user_body}, user_intro=#{user_intro}
 		where user_num=#{user_num}		
 	</update>
+	
 	<update id="idealInfoUpdate" parameterType="ideal">		  
         update ideal_type set ideal_height=#{ideal_height}, ideal_age=#{ideal_age}, ideal_body=#{ideal_body} 
         where user_num=#{user_num}	
@@ -34,6 +31,10 @@
 	<select id="pwdchk" parameterType="int" resultType="String">
 		select pwd from user_info where user_num= #{user_num}
 	</select>
+	
+	<update id="looklike" parameterType="java.util.Map">
+		update lovetype set looklike=#{looklike}, percent=#{percent} where user_num= #{user_num}
+	</update>
 	
 	
 	

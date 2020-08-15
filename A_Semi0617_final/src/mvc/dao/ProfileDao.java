@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import mvc.vo.BoardVO;
-import mvc.vo.LikeVO;
 import mvc.vo.MemberVO;
+
+//(¼ºÇö)
 
 @Repository
 public class ProfileDao {

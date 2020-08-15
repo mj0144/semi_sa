@@ -7,14 +7,16 @@ import org.springframework.stereotype.Service;
 
 import mvc.dao.MemberDao;
 import mvc.dao.UserInfoDao;
-import mvc.vo.IljuVO;
 import mvc.vo.MemberVO;
 
+// (수연 )
+	
 @Service
 public class MemberService {
 
 	@Autowired
 	MemberDao memberDao;
+
 
 	public boolean loginCheck(MemberVO vo, HttpSession session) {
 		boolean result = memberDao.loginCheck(vo); // 여기서 로그인 체크하고,

@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
+<!-- 이동현 -->
 
 <div id="colorlib-main">
 	<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
@@ -202,6 +203,7 @@
   		</div>			
 	</section>
 	
+
 	<form action="friend" method="post" id="profile">
 		<input type="hidden" name="user_num" id="user_num" value="${profile.USER_NUM }">
 	</form>
@@ -296,44 +298,44 @@
 	</script>
 	
 	<script>
-	$(document).on('click', '.blockox', function(event) {
-		
-		var block = 'false';
-		
-		var blockon = "resources/img/btn/dislike.png"; //블락 하기
-		var blockoff = "resources/img/btn/like.png"; //블락 해제
-		
-		var user_num = ${sessionScope.user_num};
-		
-		if ($(this).attr("src") === blockon) {
-				$(this).attr("src", "resources/img/btn/like.png"); //블락취소
-				$(this).attr('data-original-title', '추천 제외 취소').tooltip('show')
-				block='true';
-		} else if($(this).attr("src") === blockoff){
-				$(this).attr("src", "resources/img/btn/dislike.png"); //블락
-				$(this).attr('data-original-title', '추천에서 제외').tooltip('show')
-				block='false';
-		}
-		
-		var pm = {"block" : block, "blocked_user" : $('#user_num').val()};
-		
-		blocked(pm);
-
-	});
+		$(document).on('click', '.blockox', function(event) {
+			
+			var block = 'false';
+			
+			var blockon = "resources/img/btn/dislike.png"; //블락 하기
+			var blockoff = "resources/img/btn/like.png"; //블락 해제
+			
+			var user_num = ${sessionScope.user_num};
+			
+			if ($(this).attr("src") === blockon) {
+					$(this).attr("src", "resources/img/btn/like.png"); //블락취소
+					$(this).attr('data-original-title', '추천 제외 취소').tooltip('show')
+					block='true';
+			} else if($(this).attr("src") === blockoff){
+					$(this).attr("src", "resources/img/btn/dislike.png"); //블락
+					$(this).attr('data-original-title', '추천에서 제외').tooltip('show')
+					block='false';
+			}
+			
+			var pm = {"block" : block, "blocked_user" : $('#user_num').val()};
+			
+			blocked(pm);
 	
-	function blocked(pm){
-				
-		$.ajax({
-				url : "blockox",
-				type : "post",
-				data : pm,
-				success : function(data){
-				},
-				error : function(request, error){
-					console.log("code:"+request.status+"\n"+"message:"+request.responsetext+"\n"+"error:"+error);
-				}
-			});
-	}
+		});
+		
+		function blocked(pm){
+					
+			$.ajax({
+					url : "blockox",
+					type : "post",
+					data : pm,
+					success : function(data){
+					},
+					error : function(request, error){
+						console.log("code:"+request.status+"\n"+"message:"+request.responsetext+"\n"+"error:"+error);
+					}
+				});
+		}
 	</script>
 	
 	<script>
@@ -418,10 +420,12 @@
 	</script>
 	
 	<script>
+		//이전페이지 이동
 		function prevProfile() {
 			$("#prevProfile").submit();
 		}
 		
+		//다음페이지 이동
 		function nextProfile() {
 			//alert($("#num").val());
 			if ($("#num").val() > 10) {
@@ -434,6 +438,7 @@
 	</script>
 	
 	<script>
+		//tooltip 기능 구현
 		$(document).ready(function(){
 		  $('[data-toggle="tooltip"]').tooltip();   
 		});

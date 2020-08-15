@@ -5,9 +5,13 @@
    class="js-fullheight text-center">
    	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<!-- 알람 스크립트 -->
+
 	<script>
 	$(function() {
 		setInterval(function notifycations() {
+<!--
+ 	<script>
+	$(function() {
 			var notifyuser = $("#sessionNum").val();
 			var param = new Object();
 			param.notifyuser = notifyuser;
@@ -221,11 +225,17 @@
 					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 				}
 			});
+
 		}, 1000);
 	});
 	</script>
 <%@include file="notications.jsp"%>
 	<a href="setting" style="float:right; margin-top:-10%"><img src="images/setting.png"></a>
+
+	});
+	</script> -->
+
+	
    <h1 id="colorlib-logo">
       <a href="mypage"><span class="img"
          style="background-image: url(resources/upload/${sessionScope.user_img});"></span>${sessionScope.name }</a>
@@ -237,14 +247,18 @@
          <li><a href="feed">피드</a></li>
          <li><a href="chat.do">채팅</a></li>
          <li><a href="listWhole">인연찾기</a></li>
+         <li><a href="findlove">이상형찾기</a></li>
          <li><a href="mypage">마이페이지</a></li>
-         <li><a href="pay">결제상품</a></li>
+         <li><a href="pay">Shop</a></li>
          <li><a href="qnapage">Q&A</a></li>
+
          <br>
          <br>
          <br>
          <br>
          
+
+         <li><a href="setting"><img src="images/setting.png"></a></li>
          <li><a href="logoutdo">로그아웃</a></li>
       </ul>
       <h3>

@@ -20,10 +20,9 @@ import mvc.vo.BoardVO;
 import mvc.vo.LikeVO;
 import mvc.vo.MemberVO;
 
+//마이페이지에서 리스트추천 팔로우 팔로워 게시글 숫자표시하기,  회원탈퇴하기 페이지(성현)
 @Controller
 public class ProfileController {
-	@Autowired
-	private ProfileDao profileDao;
 
 	@Autowired
 	private ProfileService profileservice;

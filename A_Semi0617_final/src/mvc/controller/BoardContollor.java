@@ -94,28 +94,6 @@ public class BoardContollor {
 
 	// 댓글달기
 
-	/*
-	 * @RequestMapping(value = "/reply", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public Map<String, Object> insertReply(@RequestBody
-	 * HashMap<String, String> params, HttpSession session) { Map<String, Object>
-	 * resultMap = new HashMap<String, Object>();
-	 * System.out.println("public Map<String, Object> "); String result = "fail";
-	 * String user_num = ""; // 회원번호 String rcmtNum = ""; // 대댓글번호
-	 * 
-	 * if (commonUtils.isEmptyCstm(params.get("boardNum")) ||
-	 * commonUtils.isEmptyCstm(params.get("content"))) { resultMap.put("result",
-	 * result); return resultMap; } if
-	 * (!commonUtils.isEmptyCstm(params.get("recommentNum"))) { rcmtNum =
-	 * params.get("recommentNum"); } user_num =
-	 * String.valueOf(session.getAttribute("user_num")); params.put("userNum",
-	 * user_num); params.put("recommentNum", rcmtNum);
-	 * System.out.println("전송 직전의 param : " + params.toString()); //int aflt =
-	 * boardService.insertReply(params); //if (aflt == 1) { result = "success"; }
-	 */
-//		resultMap.put("result", result);
-//		return resultMap;
-//	 }
 
 	// 게시글 삭제
 	@RequestMapping(value = "/boardDel")
@@ -132,7 +110,7 @@ public class BoardContollor {
 		return "boardupdate";
 	}
 
-	// 게시글 수정
+	// 게시글 수정 
 	@RequestMapping(value = "/updatefeed", method = RequestMethod.POST)
 	public String BoardUpdate(BoardVO vo, int BOARD_NUM, HttpServletRequest request, MultipartFile[] files)
 			throws Exception {
@@ -143,13 +121,11 @@ public class BoardContollor {
 		return "redirect:feed";
 	}
 
-	// 게시글 검색
+	// 게시글 검색 (성현)
 	@RequestMapping(value = "/feedsearch", method = RequestMethod.POST)
 	public ModelAndView search(BoardVO vo) throws Exception {
 
 		String getSearch_option = vo.getSearch_option(); String getKeyword = vo.getKeyword();
-		System.out.println(getSearch_option); 
-		System.out.println(getKeyword);
 		
 		List<BoardVO> list =boarddao.getSearchlist(vo);
 		

@@ -2,16 +2,15 @@ package mvc.service;
 
 import java.io.PrintWriter;
 import java.util.Map;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.MemberDao;
 import mvc.vo.MemberVO;
 
+//(¼ö¿¬)
 @Service
 public class MailService  {
 	
