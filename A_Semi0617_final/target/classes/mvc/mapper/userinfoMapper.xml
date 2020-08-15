@@ -23,9 +23,9 @@
 	</update>
 	<update id="idealInfoUpdate" parameterType="ideal">		  
         update ideal_type set ideal_height=#{ideal_height}, ideal_age=#{ideal_age}, ideal_body=#{ideal_body} 
-        where user_num=#{user_num}
-	
+        where user_num=#{user_num}	
 	</update>
+	
 	
 	<update id="pwdChange" parameterType="mem">
 		update user_info set pwd = #{pwd} where user_num = #{user_num}

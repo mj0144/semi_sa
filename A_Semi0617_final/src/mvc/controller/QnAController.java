@@ -26,7 +26,6 @@ public class QnAController {
 	    @RequestMapping( value = "/qnapage")
 	    public ModelAndView qnapage(HttpSession session) throws Exception{
 	    	String user_id = (String) session.getAttribute("user_id");
-	    	System.out.println("dwdawdaw"+user_id);
 	    	List<QnaVO> qnalist = qnaService.getQnaList(session);
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("qnapage");

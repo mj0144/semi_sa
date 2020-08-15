@@ -24,8 +24,6 @@ public class UserInfoDao {
 	@Transactional
 	public void infoUpdate(MemberVO vo) {
 		ss.update("userinfo.infoUpdate", vo); //회원정보 업데이트
-		IdealVO idealvo = vo.getIdealvo();
-		System.out.println(idealvo.getIdeal_height());
 		ss.update("userinfo.idealInfoUpdate", vo.getIdealvo()); //이상형 업데이트
 	}
 	

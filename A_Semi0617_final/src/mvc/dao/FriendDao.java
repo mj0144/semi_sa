@@ -24,13 +24,13 @@ public class FriendDao {
 		return ss.selectOne("friend.sajuBasic", num);
 	}
 	
-	//³»°¡ ÁÁ¾Æ¿ä¸¦ ´©¸¥ À¯Àú Ä«¿îÆ®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
 	public int friendlike(int num) {
 		return ss.selectOne("friend.like",num );
 	}
 	
 	
-	//³ª¸¦ ÁÁ¾Æ¿ä ´­·¯ÁØ À¯Àú Ä«¿îÆ®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
 	public int friendliked(int num) {
 		return ss.selectOne("friend.liked",num );
 	}
@@ -41,7 +41,7 @@ public class FriendDao {
 		return vo;
 	}
 	
-	//ÁÁ¾Æ¿ä À¯¹« È®ÀÎ
+	//ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public int heartChk(Map<String,Integer> map) {
 		return ss.selectOne("friend.heartchk", map);
 	}
@@ -50,11 +50,14 @@ public class FriendDao {
 		return ss.selectList("friend.board_info", user_num);
 	}
 	
-	//ºí¶ô À¯¹« È®ÀÎ
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public int blockChk(Map<String,Integer> map) {
 		return ss.selectOne("friend.blockchk", map);
 	}
 	
-	
+	//ìœ ì € ì‹ ê³ 
+		public void reportUser(HashMap<String, Object> params) throws Exception{
+			ss.insert("friend.reportUser", params);
+		}
 	
 }

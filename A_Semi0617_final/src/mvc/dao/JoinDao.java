@@ -1,5 +1,8 @@
 package mvc.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,8 +33,24 @@ public class JoinDao {
 	//이상형쪽에서 user_num이 필요
 	public int user_num(String user_id) {
 		return ss.selectOne("join.selc_user_num", user_id);
-
 	}
+	
+	//등급초기화 && 채팅 기본권 부여
+	@Transactional
+	public void gradeInit(Map<String, Object> map) {
+		try {
+			ss.insert("join.gradeInit", map);
+			ss.insert("join.chatTicket", map);//채팅 기본권 부여
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+	}
+	
+
+	
+	
 	
 	// 아이디 체크
 	public int idChk(String id) {

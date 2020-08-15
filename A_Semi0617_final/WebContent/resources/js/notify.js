@@ -1,4 +1,4 @@
-	var message;
+/*	var message;
 	function notifyon(evt) {
 		var a = evt.split('|');
 		var data = a[0];
@@ -6,14 +6,14 @@
 		var nickname = a[2];
 		console.log(nickname);
 		if(data == '' || data == null){
-			alert('¹®Á¦°¡ ¹ß»ýÇß½À´Ï´Ù. ´Ù½Ã ½Ãµµ ÇØÁÖ¼¼¿ä.');
+			alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.');
 			return false
 		}
-		if(data == '´ñ±Û'){
-			message = nickname+'´ÔÀÌ È¸¿ø´ÔÀÇ °Ô½Ã±Û¿¡ ´ñ±ÛÀ» ´Þ¾Ò½À´Ï´Ù.';
+		if(data == 'ï¿½ï¿½ï¿½'){
+			message = nickname+'ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Ò½ï¿½ï¿½Ï´ï¿½.';
 		}
-		if(data == '´ë´ñ±Û'){
-			message = nickname+'´ÔÀÌ È¸¿ø´ÔÀÇ ´ñ±Û¿¡ ´ä±ÛÀ» ´Þ¾Ò½À´Ï´Ù.';
+		if(data == 'ï¿½ï¿½ï¿½ï¿½'){
+			message = nickname+'ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Ò½ï¿½ï¿½Ï´ï¿½.';
 		}
 		var result = message+"|"+link+"|"+nickname;
 		console.log(result);
@@ -31,7 +31,7 @@
 		if(sessionid != sender){
 			$.notify({
 			    icon: 'resources/img/bell.png',
-			    title: '»õ ¾Ë¸²',
+			    title: 'ï¿½ï¿½ ï¿½Ë¸ï¿½',
 			    message: message,
 			    url: link,
 			    target: '_blank'
@@ -76,9 +76,9 @@
 	}
 
 	sock.onclose = function onClose() {
-		alert("¾Ë¶÷Ã¢ ¼­¹ö ¿À·ù ´Ù½Ã Á¢¼ÓÇØÁÖ¼¼¿ä");
-		console.log("notify¼­¹ö ¿¬°á²÷±è");
+		alert("ï¿½Ë¶ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½");
+		console.log("notifyï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 	}
 	sock.onopen = function(){
-		console.log("notify ¼ÒÄÏ ¿¬°á ¼º°ø");
-	}
+		console.log("notify ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+	}*/

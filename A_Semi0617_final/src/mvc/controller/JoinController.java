@@ -16,6 +16,8 @@ import mvc.utils.ImgUtils;
 import mvc.vo.IdealVO;
 import mvc.vo.MemberVO;
 
+
+//민정
 @Controller
 public class JoinController {
 	
@@ -43,7 +45,8 @@ public class JoinController {
 			}
 
 			try {
-				joinService.join(vo, ivo); // 회원정보,이상형정보 저장.
+				joinService.join(vo, ivo); // 회원정보, 이상형정보 저장.
+				joinService.gradeInit(vo); //등급 초기화.
 			} catch (Exception e) {
 				e.printStackTrace();
 			}		

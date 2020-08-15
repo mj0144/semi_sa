@@ -208,6 +208,9 @@ input[type="checkbox"]:checked + label:before {
 					</form>
 				</div>
 				<!-- 체크박스 끝 -->
+				<!-- 차트 뽑기 -->
+				<div id="piechart"></div>
+				
 				<div class="col-md-11">
 					<div class="row">
 						<!-- 리스트 시작 -->
@@ -263,7 +266,7 @@ input[type="checkbox"]:checked + label:before {
 												<img id="${e.USER_NUM}" class="img2" style="width: 40px; position:absolute;right:10px; bottom:0; cursor:pointer;" src="images/blockon.png" />
 												<form action="block" method="post" id="send_num">
 												<input type="hidden" name="user_num" id="user_num" value="${e.USER_NUM }">
-												<input type="hidden" name="pm" id="pm" value="${pm}">
+												<input type="hidden" name="samb" id="samb" value="${paging.samb}">
 												<input type="hidden" name="sex" id="sex" value="${paging.sex}">
 												<input type="hidden" name="nowPage" value="${paging.nowPage }">
 												<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
@@ -336,7 +339,45 @@ input[type="checkbox"]:checked + label:before {
 			</div>
 		</div>
 	</section>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script>
+		window.onload = function() {
+			console.log($('#samb').val());
+			console.log($("#sex").val());
+			
+			$.ajax({
+				url : 'listChart',
+		        type : "post",
+		        data : {"samb": $('#samb').val(),
+		        	"sex": $("#sex").val()},
+				
+				success : function(data) {
+					
+					alert('성공');	
+					var chartDonut = c3.generate({
+						bindto : "#piechart",
+						data : {
+							json : [ data ],
+							keys : {
+								value : Object.keys(data),
+							},
+							type : "donut",
+						},
+						donut : {
+							title : "나와 잘 맞는 사람",
+						},
+	
+					});
+				},
+				error: function(request, error) {
+					alert("실패");
+					console.log("code:"+request.status+"\n"+"message:"+request.responsetext+"\n"+"error:"+error);
+				}
+	
+			});
+		};
 	</script>
 
 <%@ include file="footer.jsp"%>

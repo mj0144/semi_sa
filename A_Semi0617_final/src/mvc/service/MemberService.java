@@ -27,6 +27,7 @@ public class MemberService {
 			session.setAttribute("gender", vo.getSex());
 			session.setAttribute("user_img", vo.getUser_img());
 			session.setAttribute("user_id", vo.getUser_id());
+			
 
 		}
 		return result;

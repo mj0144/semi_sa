@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="grade">
+
+	<!-- 권한 코드 체크 -->
+	<select id="gradeChk" parameterType="int" resultType="String">
+		select a.code 
+		from access_code a, mapping_grade_user m 
+		where m.grade_name=a.grade_name and m.user_num=#{user_num}
+	</select>
+	
+	<!-- 채팅권 사용 -> 업데이트 -->
+	<update id="leftCountUpdate" parameterType="int">
+		update single_productlist 
+		set left_count=((select left_count from single_productlist where buyer_num=#{user_num})-1) 
+		where buyer_num=#{user_num}		
+	</update>
+	
+	
+	
+	
+	
+	<select id="basicChatChk" parameterType="String">
+		select left_count from basic_chat_count where id=#{user_id};
+	</select>
+	<select id="payChatChk" parameterType="String">
+	 
+	</select>
+
+</mapper>

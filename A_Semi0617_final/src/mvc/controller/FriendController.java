@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,27 +34,27 @@ public class FriendController {
 //	private FriendService friendservice;
 
 	@RequestMapping(value = "/friend")
-	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { // user_num : ±Û¾´ÀÌ.
+	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { // user_num : ï¿½Û¾ï¿½ï¿½ï¿½.
 		
 		ModelAndView mav = new ModelAndView("friend");
 		
-		IljuVO ilvo = friendDao.friendprofile(user_num); // ±Û¾´ÀÌÀÇ Á¤º¸.
+		IljuVO ilvo = friendDao.friendprofile(user_num); // ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		MemberVO vo = ilvo.getMem().get(0);
 
 		
 		
-		int like_cnt = friendDao.friendlike(user_num); //// ³»°¡ ÁÁ¾Æ¿ä¸¦ ´©¸¥ À¯Àú Ä«¿îÆ®
-		int liked_cnt = friendDao.friendliked(user_num);// ³ª¸¦ ÁÁ¾Æ¿ä ´­·¯ÁØ À¯Àú Ä«¿îÆ®
+		int like_cnt = friendDao.friendlike(user_num); //// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
+		int liked_cnt = friendDao.friendliked(user_num);// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
 
-		List<BoardVO> blist= friendDao.board_info(user_num); //±Û¾´ÀÌÀÇ °Ô½Ã±Û Á¤º¸.
-		int board_cnt = blist.size(); //°Ô½Ã±Û °¹¼ö.
+		List<BoardVO> blist= friendDao.board_info(user_num); //ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½.
+		int board_cnt = blist.size(); //ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("board_writer", user_num);
 		map.put("user_num", (int) session.getAttribute("user_num"));
 
-		int heartchk = friendDao.heartChk(map); //ÇöÀç ·Î±×ÀÎÇÑ À¯Àú°¡ ±Û¾´ÀÌ¸¦ ÁÁ¾Æ¿äÇß´ÂÁö ¿©ºÎ.
+		int heartchk = friendDao.heartChk(map); //ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ß´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		if (heartchk > 0) {
 			heartchk = 1;
 		} else {
@@ -67,12 +68,35 @@ public class FriendController {
 		mav.addObject("board_cnt", board_cnt);
 		mav.addObject("like_cnt", like_cnt);
 		mav.addObject("liked_cnt", liked_cnt);
-		mav.addObject("board_writer", user_num); // ±Û¾´ÀÌ
+		mav.addObject("board_writer", user_num); // ï¿½Û¾ï¿½ï¿½ï¿½
 		mav.addObject("heartchk", heartchk);
 		mav.addObject("blockchk", blockchk);
 
 		return mav;
 	}
+	
+	//ìœ ì € ì‹ ê³ 
+	
+		 @RequestMapping(value = "/reportUser", method = RequestMethod.POST) 
+		 public String reportComment(HttpSession session, String friend_num, String report_comment, HttpServletRequest request) throws Exception { 
+			 System.out.println("ìœ ì €ì‹ ê³ ì»¨íŠ¸ë¡¤ëŸ¬ì¸ë°..ì™“ë‹ˆ?");
+			 int user_num = (int) session.getAttribute("user_num");
+			 System.out.println(user_num);
+			 String user_id = (String) session.getAttribute("user_id");
+			 System.out.println(user_id);
+			 int report_user_num = Integer.parseInt(friend_num);
+			 System.out.println(report_user_num);
+			 System.out.println("íŒŒëŒ ì™“ë‹ˆ"+user_num+"/+"+user_id+"/+"+report_user_num+"/+"+report_comment);
+			 HashMap<String, Object> map = new HashMap<String, Object>();
+			 map.put("user_num", user_num);
+			 map.put("report_user_num", report_user_num);
+			 map.put("reason", report_comment);
+			 map.put("user_id", user_id);
+			 friendDao.reportUser(map);
+			 String referer = request.getHeader("Referer");
+			 return "redirect:"+ referer;
+		}
+		
 
 	
 

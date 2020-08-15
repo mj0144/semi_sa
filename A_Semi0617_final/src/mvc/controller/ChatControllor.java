@@ -28,4 +28,13 @@ public class ChatControllor {
 		mav.setViewName("chat");
 		return mav;
 	}
+	
+	//채팅 임시
+	@RequestMapping("/chatting")
+	public void chatting() {
+		
+	}
+	
+	
+	
 }
