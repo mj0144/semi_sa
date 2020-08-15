@@ -31,4 +31,8 @@ public class PayDao {
 		return vo;
 	}
 	
+	public String selectUserId(int user_num) {
+		return ss.selectOne("pay.selectUserId", user_num);
+	}
+	
 }

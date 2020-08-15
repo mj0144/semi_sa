@@ -47,8 +47,8 @@ public class UserInfoController {
 	// 회원페이지 이동 및 원래 정보 출력.
 	@RequestMapping(value="/userInfoChange",method=RequestMethod.GET)
 	public void infoChangeGet(HttpSession session, Model model) {
+		//변경 전 회원 정보 및 이상형 정보
 		HashMap<String, Object> map = userInfoDao.info((int) session.getAttribute("user_num"));
-		System.out.println(map);
 		model.addAttribute("vo", map);
 	}
 	// 회원정보 수정.
@@ -61,6 +61,7 @@ public class UserInfoController {
 			
 		return mav;
 	}
+	
 	
 
 	

@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
@@ -37,6 +39,9 @@ public class PayService {
 	
 	public void payListInsert(PaymentVO vo) {
 		vo.setPaid_date(TimestampToDate(vo.getPaid_date())); //UNIX Timestame을 변환 date형식으로 변환
+		//아이디값 가져오기.
+		String user_id = payDao.selectUserId(vo.getBuyer_num());
+		vo.setUser_id(user_id);
 		//단품 상품
 		if(vo.getProduct_num() == 1) {			
 			payDao.paySingleListInsert(vo); //paylist테이블에 정보저장.			

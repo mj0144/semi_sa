@@ -9,7 +9,16 @@ public class PaymentVO {
 	private String merchant_uid; // 거래id
 	private String paid_date; //구매날짜
 	private String expiry_date; //종료날짜
+	private String user_id;
 	
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 
 	public String getExpiry_date() {
 		return expiry_date;

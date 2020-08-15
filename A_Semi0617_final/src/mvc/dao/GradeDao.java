@@ -1,5 +1,8 @@
 package mvc.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,13 +15,31 @@ public class GradeDao {
 	
 	
 	//등급체크
-	public String GradeChk(String user_id) {
-		return ss.selectOne(user_id);
+	public List<String> gradeChk(int user_num) {
+
+		return ss.selectList("grade.gradeChk", user_num);
 	}
 	
-	//채팅 횟수 체크
-	public void chatChk() {
+	//채팅권 사용 -> 업데이트
+	public void leftCountUpdate(int user_num) {
+		ss.update("grade.leftCountUpdate", user_num);			
+	}
+	
+	
 		
-	}
-	
+		
+		
+		
+		
+		
+		//채팅 횟수 체크
+		public int basicChatChk(String user_id) {
+			return ss.selectOne("grade.basicChatChk", user_id);
+		}
+		
+		//채팅 횟수 체크
+			public int payChatChk(String user_id) {
+				return ss.selectOne("grade.basicChatChk", user_id);
+			}
+
 }

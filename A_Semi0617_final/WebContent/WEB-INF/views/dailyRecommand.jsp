@@ -341,6 +341,8 @@
 		function profile() {
 			$("#profile").submit();
 		};
+		
+		//Ã¤ÆÃ.
 		function chatting(){
 			$('#profile').attr("action", "chatting");
 			$('#profile').submit();
