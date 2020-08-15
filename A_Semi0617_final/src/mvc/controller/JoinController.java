@@ -30,7 +30,7 @@ public class JoinController {
 	@Autowired
 	private ImgUtils imgUtils;
 	
-	// 회원가입
+		// 회원가입
 		@RequestMapping(value="/joinaction", method = RequestMethod.POST)
 		public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
 

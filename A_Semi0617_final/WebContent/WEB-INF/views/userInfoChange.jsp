@@ -326,8 +326,8 @@
 		
 		
 		<!-- Button -->
-		<div class="form-group">
-		  <div class="col-md-4">
+		<div class="form-group" >
+		  <div class="col-md-4" style="text-align: right;">
 		    <button class="btn btn-primary" type="button" id="send" style="text-align: center">¼öÁ¤</button>
 
 		    <button class="btn btn-primary" onclick="location.href='mypage'" style="text-align: center">Cancel</button>
