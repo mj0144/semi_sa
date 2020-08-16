@@ -1,5 +1,5 @@
 package mvc.utils;
-//ì—…ë¡œë“œí•œ íŒŒì¼ì¤‘ ì´ë¯¸ì§€ íŒŒì¼ë§Œ ê±°ìŠ¤ë¦¬ëŠ” í´ë˜ìŠ¤
+//¾÷·ÎµåÇÑ ÆÄÀÏÁß ÀÌ¹ÌÁö ÆÄÀÏ¸¸ °Å½º¸®´Â Å¬·¡½º
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -19,7 +19,7 @@ public class ImgUtils {
 	public static boolean ImgFileBoolean(String reName) {
 		String filename = reName;
 		String ext = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
-		System.out.println("í™•ì¥ìëª… : " + ext);
+		System.out.println("È®ÀåÀÚ¸í : " + ext);
 		final String[] file_Boolean = { "png", "jpg", "gif", "jpeg", "PNG" };
 
 		int len = file_Boolean.length;
@@ -37,49 +37,43 @@ public class ImgUtils {
 	public static String savePath;
 	public static String forDate;
 
-	// ì´ë¯¸ì§€ ì €ì¥.
+	// ÀÌ¹ÌÁö ÀúÀå.
 	public String imgSave(HttpServletRequest request, MultipartFile file, String status, String img) {
 		SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd");
 		forDate = date.format(System.currentTimeMillis());
-		String path = "resources\\upload\\" + forDate; // íŒŒì¼ ì €ì¥ ìœ„ì¹˜.
-		// íŒŒì¼ëª… ëœë¤ê°’ ìƒì„±
+		String path = "resources\\upload\\" + forDate; // ÆÄÀÏ ÀúÀå À§Ä¡.
+		// ÆÄÀÏ¸í ·£´ı°ª »ı¼º
 		String uid = UUID.randomUUID().toString().replaceAll("-", "");
 		uid = uid.substring(0, 10);
 
-		// ì´ë¯¸ì§€ê°€ ì—…ë¡œë“œë  ê²½ë¡œ
+		// ÀÌ¹ÌÁö°¡ ¾÷·ÎµåµÉ °æ·Î
 		savePath = request.getServletContext().getRealPath(path);
 		FeedUtils.makeDir(savePath);
 
 		System.out.println(savePath);
 
-		// íŒŒì¼ì—…ë¡œë“œ
-		System.out.println("íŒŒì¼ì €ì¥ì‹œì‘");
+		// ÆÄÀÏ¾÷·Îµå
+		System.out.println("ÆÄÀÏÀúÀå½ÃÀÛ");
 
 		if (!file.isEmpty()) {
-			// íŒŒì¼ì´ë¦„ ë°›ê³  í™•ì¥ì ì €ì¥
+			// ÆÄÀÏÀÌ¸§ ¹Ş°í È®ÀåÀÚ ÀúÀå
 			String oriFileName = file.getOriginalFilename();
 			System.out.println("file.getOriginalFilename(); : " + file.getOriginalFilename());
 			String ext = oriFileName.substring(oriFileName.lastIndexOf("."));
-			// ì´ë¦„ ë³€ê²½
+			// ÀÌ¸§ º¯°æ
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-			// íŒŒì¼ì´ë¦„ ë³€ê²½
+			// ÆÄÀÏÀÌ¸§ º¯°æ
 			reName = sdf.format(new Date()) + "_" + uid + ext;
-			// ì €ì¥
+			// ÀúÀå
 			System.out.println("reName:  " + reName);
 
-			// vo.setUser_img(reName); // ì´ë¯¸ì§€ íŒŒì¼ ì´ë¦„ ì €ì¥
+			// vo.setUser_img(reName); // ÀÌ¹ÌÁö ÆÄÀÏ ÀÌ¸§ ÀúÀå
 
 			if (ImgUtils.ImgFileBoolean(reName)) {
 				try {
-<<<<<<< HEAD
 					file.transferTo(new File(savePath + File.separator + reName)); // ½ºÇÁ¸µÀÇ transferTo¸¦ È£ÃâÇØ¼­ ÀÌ¹ÌÁö¸¦ ÀúÀåÀå¼Ò¿¡
 					// º¹»ç
 					System.out.println("ÆÄÀÏÀúÀå ¿Ï·á");
-=======
-					file.transferTo(new File(savePath + File.separator + reName)); // ìŠ¤í”„ë§ì˜ transferToë¥¼ í˜¸ì¶œí•´ì„œ ì´ë¯¸ì§€ë¥¼ ì €ì¥ì¥ì†Œì—
-					// ë³µì‚¬
-					System.out.println("íŒŒì¼ì €ì¥ ì™„ë£Œ");
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 					savelocal(savePath, reName, file);
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
@@ -87,7 +81,7 @@ public class ImgUtils {
 					e.printStackTrace();
 				}
 			} else {
-				System.out.println("í•´ë‹¹ íŒŒì¼ì€ ì´ë¯¸ì§€ê°€ì•„ë‹™ë‹ˆë‹¤.");
+				System.out.println("ÇØ´ç ÆÄÀÏÀº ÀÌ¹ÌÁö°¡¾Æ´Õ´Ï´Ù.");
 			}
 		} else {
 			if (status.equals("change")) {
@@ -115,21 +109,15 @@ public class ImgUtils {
 	public void savelocal(String savePath, String reName, MultipartFile file) {
 
 		String imagePath = savePath + "\\" + reName;
-		System.out.println("ì´ë¯¸ì§€ ê²½ë¡œ : " + imagePath);
+		System.out.println("ÀÌ¹ÌÁö °æ·Î : " + imagePath);
 		BufferedImage image = null;
 		String[] types = { "png", "jpg", "gif", "jpeg", "PNG" };
 		System.out.println("local reName : " + reName);
 
 		try {
-<<<<<<< HEAD
 			// ÇØ´ç°æ·Î¿¡ ÀÌ¹ÌÁö¸¦ ÀúÀåÇÔ.
 			image = ImageIO.read(new File(savePath + "/" + reName));// ÀÌ¹ÌÁö¸¦ ÀĞ¾î¿Í¼­ BufferedImage¿¡ ³Ö´Â´Ù.
 			System.out.println("ÀÌ¹ÌÁö image : " + image);
-=======
-			// í•´ë‹¹ê²½ë¡œì— ì´ë¯¸ì§€ë¥¼ ì €ì¥í•¨.
-			image = ImageIO.read(new File(savePath + "/" + reName));// ì´ë¯¸ì§€ë¥¼ ì½ì–´ì™€ì„œ BufferedImageì— ë„£ëŠ”ë‹¤.
-			System.out.println("ì´ë¯¸ì§€ image : " + image);
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 			File localfile = new File("C:\\ikosmo64\\imgs\\" + reName);
 			if (!localfile.exists()) {
 				try {
@@ -141,11 +129,7 @@ public class ImgUtils {
 			}
 			for (String type : types) {
 				ImageIO.write(image, type, localfile);
-<<<<<<< HEAD
 				System.out.println("·ÎÄÃ ÀúÀå ¿Ï·á");
-=======
-				System.out.println("ë¡œì»¬ ì €ì¥ ì™„ë£Œ");
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 			}
 		} catch (IOException e) {
 			System.out.println("file not found");
@@ -163,8 +147,4 @@ public class ImgUtils {
 		String result = root_path + attach_path + file_name;
 		return result;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
