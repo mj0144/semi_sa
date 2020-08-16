@@ -17,30 +17,30 @@ public class JoinDao {
 	private SqlSessionTemplate ss;
 	
 	
-	// ÀÏÁÖ»Ì±â
+	// ì¼ì£¼ë½‘ê¸°
 	public String ilju(MemberVO vo) {
 		return ss.selectOne("join.ilju", vo);
 	}
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	public void join(MemberVO vo) {
 		ss.insert("join.join", vo);
 	}
 	
-	//ÀÌ»óÇü µ¥ÀÌÅÍ ÀúÀå.
+	//ì´ìƒí˜• ë°ì´í„° ì €ì¥.
 	public void idealjoing(IdealVO ivo) {
 		ss.insert("join.idaelinsert", ivo);
 	}
-	//ÀÌ»óÇüÂÊ¿¡¼­ user_numÀÌ ÇÊ¿ä
+	//ì´ìƒí˜•ìª½ì—ì„œ user_numì´ í•„ìš”
 	public int user_num(String user_id) {
 		return ss.selectOne("join.selc_user_num", user_id);
 	}
 	
-	//µî±ŞÃÊ±âÈ­ && Ã¤ÆÃ ±âº»±Ç ºÎ¿©
+	//ë“±ê¸‰ì´ˆê¸°í™” && ì±„íŒ… ê¸°ë³¸ê¶Œ ë¶€ì—¬
 	@Transactional
 	public void gradeInit(Map<String, Object> map) {
 		try {
 			ss.insert("join.gradeInit", map);
-			ss.insert("join.chatTicket", map);//Ã¤ÆÃ ±âº»±Ç ºÎ¿©
+			ss.insert("join.chatTicket", map);//ì±„íŒ… ê¸°ë³¸ê¶Œ ë¶€ì—¬
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -52,27 +52,31 @@ public class JoinDao {
 	
 	
 	
-	// ¾ÆÀÌµğ Ã¼Å©
+	// ì•„ì´ë”” ì²´í¬
 	public int idChk(String id) {
 		return ss.selectOne("join.idchk", id);
 	}
 
-	// º°¸íÃ¼Å©
+	// ë³„ëª…ì²´í¬
 	public int nickChk(String nickname) {
 		return ss.selectOne("join.nickchk", nickname);
 
 	}
 
-	// ÀÌ¸ŞÀÏÃ¼Å©
+	// ì´ë©”ì¼ì²´í¬
 	public int emailChk(String email) {
 		return ss.selectOne("join.emailchk", email);
 
 	}
 	
-	//°¡ÀÔ½Ã ÇÁ·ÎÇÊ ÀÔ·Â
+	//ê°€ì…ì‹œ í”„ë¡œí•„ ì…ë ¥
 //		public void joinprofile(MemberVO vo) {
 //			ss.update("member.joinprofile", vo);
 //		}
 	
+	//ë‹®ì€ì—°ì˜ˆì¸ ì¶”ê°€ (ìˆ˜ì—°)
+	   public void looklike(Map<String, Object> params) {
+	      ss.insert("join.looklike", params);
+	   }
 	
 }
