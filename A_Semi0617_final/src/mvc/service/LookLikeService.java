@@ -13,7 +13,7 @@ import mvc.dao.UserInfoDao;
 import mvc.vo.IdealVO;
 import mvc.vo.MemberVO;
 
-//ë„¤ì´ë²„ ì–¼êµ´ì¸ì‹ API ì˜ˆì œ ( ì„±í˜„, ìˆ˜ì—° )
+//³×ÀÌ¹ö ¾ó±¼ÀÎ½Ä API ¿¹Á¦ ( ¼ºÇö, ¼ö¿¬ )
 @Service
 public class LookLikeService {
 
@@ -29,11 +29,11 @@ public class LookLikeService {
    public void insertLooklike(String images, MemberVO vo,IdealVO ivo) {
 	      
 	      Map<String, Object> map = apiExamFace.face(images);
-	      System.out.println("ëë‹ˆ?");
+	      System.out.println("µÆ´Ï?");
 	      System.out.println(vo.getUser_id());
 	      int user_num = joinDao.user_num(vo.getUser_id());
 	      map.put("user_num", user_num);
-	      System.out.println("ìµœì¢…MAP:" + map);
+	      System.out.println("ÃÖÁ¾MAP:" + map);
 	      //System.out.println(vo.getUser_img());
 
 	      joinDao.looklike(map);
@@ -45,7 +45,7 @@ public class LookLikeService {
 	    map.put("user_num", user_num);
 	    userinfodao.looklike(map);
 	    
-	    System.out.println("ìµœì¢…MAP:" + map);
+	    System.out.println("ÃÖÁ¾MAP:" + map);
 	      System.out.println(vo.getUser_img());
 
    }

@@ -12,7 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Repository;
 
-// ë„¤ì´ë²„ ì–¼êµ´ì¸ì‹ API ì˜ˆì œ ( ì„±í˜„, ìˆ˜ì—° )
+// ³×ÀÌ¹ö ¾ó±¼ÀÎ½Ä API ¿¹Á¦ ( ¼ºÇö, ¼ö¿¬ )
 @Repository
 public class APIExamFace {
 	static String img;
@@ -24,16 +24,16 @@ public class APIExamFace {
 		img = image;
 
 		StringBuffer reqStr = new StringBuffer();
-		String clientId = "GHq3KxFLF79bat89HETI";// ì• í”Œë¦¬ì¼€ì´ì…˜ í´ë¼ì´ì–¸íŠ¸ ì•„ì´ë””ê°’";
-		String clientSecret = "aTkQgAa1sB";// ì• í”Œë¦¬ì¼€ì´ì…˜ í´ë¼ì´ì–¸íŠ¸ ì‹œí¬ë¦¿ê°’";
+		String clientId = "GHq3KxFLF79bat89HETI";// ¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ğÆ® ¾ÆÀÌµğ°ª";
+		String clientSecret = "aTkQgAa1sB";// ¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ğÆ® ½ÃÅ©¸´°ª";
 
 		try {
 
-			String paramName = "image"; // íŒŒë¼ë¯¸í„°ëª…ì€ imageë¡œ ì§€ì •
+			String paramName = "image"; // ÆÄ¶ó¹ÌÅÍ¸íÀº image·Î ÁöÁ¤
 			String imgFile = img;
 			File uploadFile = new File(imgFile);
-			String apiURL = "https://openapi.naver.com/v1/vision/celebrity"; // ìœ ëª…ì¸ ì–¼êµ´ ì¸ì‹
-			// String apiURL = "https://openapi.naver.com/v1/vision/face"; // ì–¼êµ´ ê°ì§€
+			String apiURL = "https://openapi.naver.com/v1/vision/celebrity"; // À¯¸íÀÎ ¾ó±¼ ÀÎ½Ä
+			// String apiURL = "https://openapi.naver.com/v1/vision/face"; // ¾ó±¼ °¨Áö
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setUseCaches(false);
@@ -47,7 +47,7 @@ public class APIExamFace {
 			OutputStream outputStream = con.getOutputStream();
 			PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, "UTF-8"), true);
 			String LINE_FEED = "\r\n";
-			// file ì¶”ê°€
+			// file Ãß°¡
 			String fileName = uploadFile.getName();
 			writer.append("--" + boundary).append(LINE_FEED);
 			writer.append("Content-Disposition: form-data; name=\"" + paramName + "\"; filename=\"" + fileName + "\"")
@@ -69,9 +69,9 @@ public class APIExamFace {
 			writer.close();
 			BufferedReader br = null;
 			int responseCode = con.getResponseCode();
-			if (responseCode == 200) { // ì •ìƒ í˜¸ì¶œ
+			if (responseCode == 200) { // Á¤»ó È£Ãâ
 				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
-			} else { // ì—ëŸ¬ ë°œìƒ
+			} else { // ¿¡·¯ ¹ß»ı
 				System.out.println("error!!!!!!! responseCode= " + responseCode);
 				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
 			}

@@ -1,3 +1,15 @@
+package mvc.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
 import mvc.dao.JoinDao;
 import mvc.service.JoinService;
 import mvc.service.LookLikeService;
@@ -7,75 +19,35 @@ import mvc.vo.MemberVO;
 
 @Controller
 public class JoinController {
-
 	@Autowired
 	private LookLikeService lookLikeService;
 	@Autowired
 	private JoinDao joinDao;
 
 	@Autowired
+	private JoinService joinService;
+
+	@Autowired
 	private ImgUtils imgUtils;
 
-	// íšŒì›ê°€ì…
-		@RequestMapping(value="/joinaction", method = RequestMethod.POST)
-		public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
-
-			vo = joinService.yunYeon(vo); // ìƒë…„ì›”ì¼ ê°€ê³µ.
-			String ilju = joinDao.ilju(vo);
-			vo.setIlju(ilju); // ì¼ì£¼ ì„¸íŒ….
-
-			vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // íŒŒì¼ ì €ì¥.
-
-			if (vo.getUser_intro().equals("")) { // ìê¸°ì†Œê°œë¥¼ ì…ë ¥í•˜ì§€ ì•Šì•˜ìœ¼ë©´, ê¸°ë³¸ê°’ ë„£ì–´ì£¼ê¸°.
-				vo.setUser_intro("ìê¸°ì†Œê°œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
-			}
-
-			try {
-				joinService.join(vo, ivo); // íšŒì›ì •ë³´,ì´ìƒí˜•ì •ë³´ ì €ì¥.
-			} catch (Exception e) {
-				e.printStackTrace();
-			}		
-			return "login";
-		}
-
-
-		// ì•„ì´ë”” ì¤‘ë³µí™•ì¸
-		@RequestMapping("/idchk")
-		@ResponseBody
-		public int idChk(String id) {
-			int res = joinDao.idChk(id);
-			return res;
-	// íšŒì›ê°€ì…
+	// È¸¿ø°¡ÀÔ
 	@RequestMapping(value = "/joinaction", method = RequestMethod.POST)
 	public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
 
-		}
-		vo = joinService.yunYeon(vo); // ìƒë…„ì›”ì¼ ê°€ê³µ.
+		vo = joinService.yunYeon(vo); // »ı³â¿ùÀÏ °¡°ø.
 		String ilju = joinDao.ilju(vo);
-		vo.setIlju(ilju); // ì¼ì£¼ ì„¸íŒ….
+		vo.setIlju(ilju); // ÀÏÁÖ ¼¼ÆÃ.
 
-		// ë³„ëª… ì¤‘ë³µí™•ì¸.
-		@RequestMapping("/nickchk")
-		@ResponseBody
-		public int nickChk(String nickname) {
-			int res = joinDao.nickChk(nickname);
-			return res;
-		vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // íŒŒì¼ ì €ì¥.
+		vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // ÆÄÀÏ ÀúÀå.
 
-		if (vo.getUser_intro().equals("")) { // ìê¸°ì†Œê°œë¥¼ ì…ë ¥í•˜ì§€ ì•Šì•˜ìœ¼ë©´, ê¸°ë³¸ê°’ ë„£ì–´ì£¼ê¸°.
-			vo.setUser_intro("ìê¸°ì†Œê°œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
+		if (vo.getUser_intro().equals("")) { // ÀÚ±â¼Ò°³¸¦ ÀÔ·ÂÇÏÁö ¾Ê¾ÒÀ¸¸é, ±âº»°ª ³Ö¾îÁÖ±â.
+			vo.setUser_intro("ÀÚ±â¼Ò°³¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
 		}
 
-	//ì´ë©”ì¼ ì¤‘ë³µí™•ì¸.
-		@RequestMapping("/emailchk")
-		@ResponseBody
-		public int emailchk(String email) {
-			int res = joinDao.emailChk(email);
-			return res;
 		try {
 			String images = imgUtils.root_path(request, vo.getUser_img());
-			System.out.println("ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ ì´ë¯¸ì§€ê²½ë¡œ" + images);
-			joinService.join(vo, ivo); // íšŒì›ì •ë³´,ì´ìƒí˜•ì •ë³´ ì €ì¥.
+			System.out.println("ÄÁÆ®·Ñ·¯¿¡¼­ ÀÌ¹ÌÁö°æ·Î" + images);
+			joinService.join(vo, ivo); // È¸¿øÁ¤º¸,ÀÌ»óÇüÁ¤º¸ ÀúÀå.
 			lookLikeService.insertLooklike(images, vo ,ivo);
 
 		} catch (Exception e) {
@@ -84,7 +56,7 @@ public class JoinController {
 		return "login";
 	}
 
-	// ì•„ì´ë”” ì¤‘ë³µí™•ì¸
+	// ¾ÆÀÌµğ Áßº¹È®ÀÎ
 	@RequestMapping("/idchk")
 	@ResponseBody
 	public int idChk(String id) {
@@ -93,7 +65,7 @@ public class JoinController {
 
 	}
 
-	// ë³„ëª… ì¤‘ë³µí™•ì¸.
+	// º°¸í Áßº¹È®ÀÎ.
 	@RequestMapping("/nickchk")
 	@ResponseBody
 	public int nickChk(String nickname) {
@@ -102,7 +74,7 @@ public class JoinController {
 
 	}
 
-	// ì´ë©”ì¼ ì¤‘ë³µí™•ì¸.
+	// ÀÌ¸ŞÀÏ Áßº¹È®ÀÎ.
 	@RequestMapping("/emailchk")
 	@ResponseBody
 	public int emailchk(String email) {

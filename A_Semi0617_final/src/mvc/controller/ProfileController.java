@@ -39,16 +39,18 @@ public class ProfileController {
 	//마이페이지
 	@RequestMapping(value = "/mypage")
 	public ModelAndView mypage(HttpSession session) throws Exception {
-		
 		MemberVO vo= profileservice.result_basic(session);
 		
-		//side _user_img
 		session.setAttribute("user_img", vo.getUser_img());
 
-		//
+		//팔로우 팔로워 수 띄우기
 		int cnt1 =likeService.like1(session);
 		int cnt2 =likeService.like2(session);
+		
+		//내 게시물 띄우기
 		List<BoardVO> list = boardService.Board(session);
+		
+		//내가 쓴 게시물 숫자 띄우기
 		int vo1=boardService.Boardmax(session);
 		ModelAndView mav = new ModelAndView();
 		
@@ -69,15 +71,11 @@ public class ProfileController {
 	public ModelAndView userdelete(HttpSession session) throws Exception {
 		
 		MemberVO vo= deleteservice.delete(session);
-		
 		session.setAttribute("user_img", vo.getUser_img());
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("delete");
 		mav.addObject("vo", vo);
-		
 		return mav;
-		
-		
 		
 	}
 	
