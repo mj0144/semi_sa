@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mvc.vo.IdealVO;
 import mvc.vo.MemberVO;
+import java.util.Map;
 
 @Repository
 public class UserInfoDao {
@@ -23,8 +24,8 @@ public class UserInfoDao {
 	
 	@Transactional
 	public void infoUpdate(MemberVO vo) {
-		ss.update("userinfo.infoUpdate", vo); //È¸¿øÁ¤º¸ ¾÷µ¥ÀÌÆ®
-		ss.update("userinfo.idealInfoUpdate", vo.getIdealvo()); //ÀÌ»óÇü ¾÷µ¥ÀÌÆ®
+		ss.update("userinfo.infoUpdate", vo); //íšŒì›ì •ë³´ ì—…ë°ì´íŠ¸
+		ss.update("userinfo.idealInfoUpdate", vo.getIdealvo()); //ì´ìƒí˜• ì—…ë°ì´íŠ¸
 	}
 	
 	public void pwdChange(MemberVO vo) {
@@ -33,5 +34,9 @@ public class UserInfoDao {
 	
 	public String pwdchk(int user_num) {
 		return ss.selectOne("userinfo.pwdchk", user_num);
+	}
+	
+	public void looklike(Map<String, Object> params) {
+		ss.update("userinfo.looklike", params);
 	}
 }
