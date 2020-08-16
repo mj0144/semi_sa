@@ -30,7 +30,7 @@ import mvc.utils.ImgUtils;
 import mvc.vo.BoardVO;
 import mvc.vo.MemberVO;
 
-//¹ÎÁ¤
+//ë¯¼ì •
 @Controller
 public class UserInfoController {
 
@@ -40,24 +40,25 @@ public class UserInfoController {
 	@Autowired
 	private UserInfoService userInfoService;
 	
+	@Autowired
+	private JoinService joinService;
 	
 
-
 	
-	// È¸¿øÆäÀÌÁö ÀÌµ¿ ¹× ¿ø·¡ Á¤º¸ Ãâ·Â.
+	// íšŒì›í˜ì´ì§€ ì´ë™ ë° ì›ë˜ ì •ë³´ ì¶œë ¥.
 	@RequestMapping(value="/userInfoChange",method=RequestMethod.GET)
 	public void infoChangeGet(HttpSession session, Model model) {
-		//º¯°æ Àü È¸¿ø Á¤º¸ ¹× ÀÌ»óÇü Á¤º¸
+		//ë³€ê²½ ì „ íšŒì› ì •ë³´ ë° ì´ìƒí˜• ì •ë³´
 		HashMap<String, Object> map = userInfoDao.info((int) session.getAttribute("user_num"));
 		model.addAttribute("vo", map);
 	}
-	// È¸¿øÁ¤º¸ ¼öÁ¤.
+	// íšŒì›ì •ë³´ ìˆ˜ì •.
 	@RequestMapping(value="/userInfoChange", method=RequestMethod.POST)
 	public ModelAndView infoChange(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
 		ModelAndView mav = new ModelAndView();
 
-		vo = userInfoService.userInfoSetting(session, vo, request,file); 	//¹Ù²ï È¸¿øÁ¤º¸ ¼¼ÆÃ
-		mav = userInfoService.mypageSetting(session, vo, mav); //¸¶ÀÌÆäÀÌÁö·Î ´Ù½Ã ³Ñ¾î°¡±â À§ÇÑ °ª ¼¼ÆÃ
+		vo = userInfoService.userInfoSetting(session, vo, request,file); 	//ë°”ë€ íšŒì›ì •ë³´ ì„¸íŒ…
+		mav = userInfoService.mypageSetting(session, vo, mav); //ë§ˆì´í˜ì´ì§€ë¡œ ë‹¤ì‹œ ë„˜ì–´ê°€ê¸° ìœ„í•œ ê°’ ì„¸íŒ…
 			
 		return mav;
 	}
@@ -69,28 +70,28 @@ public class UserInfoController {
 	
 	
 	
-	//ºñ¹Ğ¹øÈ£ ÆäÀÌÁö ÀÌµ¿
+	//ë¹„ë°€ë²ˆí˜¸ í˜ì´ì§€ ì´ë™
 	@RequestMapping(value="/pwdChange", method=RequestMethod.GET)
 	public void pwdChange() {			
 	}
 	
-	// ºñ¹Ğ ¹øÈ£ º¯°æ ÈÄ ·Î±×ÀÎ ÆäÀÌÁö·Î
+	// ë¹„ë°€ ë²ˆí˜¸ ë³€ê²½ í›„ ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ
 	@RequestMapping(value="/pwdChange", method=RequestMethod.POST)
 	public String login(HttpSession session, MemberVO vo, RedirectAttributes ra) {
 		vo.setUser_num((int) session.getAttribute("user_num"));
 
 		try {
 			userInfoDao.pwdChange(vo);
-			session.invalidate(); //¼¼¼Ç°ª ¸ğµÎ »èÁ¦
+			session.invalidate(); //ì„¸ì…˜ê°’ ëª¨ë‘ ì‚­ì œ
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		ra.addAttribute("msg", "ºñ¹Ğ¹øÈ£ ¼öÁ¤ÀÌ µÇ¾ú½À´Ï´Ù");
+		ra.addAttribute("msg", "ë¹„ë°€ë²ˆí˜¸ ìˆ˜ì •ì´ ë˜ì—ˆìŠµë‹ˆë‹¤");
 		return "redirect:/";
 	}
 	
-	//ºñ¹Ğ¹øÈ£ ajaxÃ³¸® url
+	//ë¹„ë°€ë²ˆí˜¸ ajaxì²˜ë¦¬ url
 	@RequestMapping("/pwdchangechk")
 	@ResponseBody
 	public int pwdChangeChk(HttpSession session,String pwd) {
