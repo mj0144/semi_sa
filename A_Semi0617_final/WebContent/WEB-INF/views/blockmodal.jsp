@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- 이동현 -->
+
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <meta name="viewport" content="width-device-width, inital-scale=1">
@@ -36,17 +39,14 @@
             <c:forEach items="${list}" var="e">
                 <tr class="content" style="font-size: 12px;">
                     <td class="text-left">
-                    <a style="cursor: pointer;" id="mvprofile">
+                    <a href="javascript:sendChildValue('${e.BLOCKED_USER}')">
                     	${e.NICKNAME }
-						<form action="friend" method="post" id="send_num">
-							<input type="hidden" name="user_num" id="user_num"
-							value="${e.USER_NUM }">
-						</form>
                     </a>
                     </td>
                     <td class="text-center">
                     <img src="resources/img/btn/like.png" style="width: 50px; cursor: pointer;"
-                     data-toggle="tooltip" data-placement="top" title="추천 제외 취소">
+                     class="blockox">
+                     <input type="hidden" id="user_num" value="${e.BLOCKED_USER}">
                     </td>
                 </tr>
             </c:forEach>
@@ -57,9 +57,52 @@
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>
-<script>
 
-</script>
+	<script>
+		$(document).on('click', '.blockox', function(event) {
+			
+			var block = 'false';
+			
+			var blockon = "resources/img/btn/dislike.png"; //블락 하기
+			var blockoff = "resources/img/btn/like.png"; //블락 해제
+			
+			var user_num = ${sessionScope.user_num};
+			
+			if ($(this).attr("src") === blockon) {
+					$(this).attr("src", "resources/img/btn/like.png"); //블락취소
+					block='true';
+			} else if($(this).attr("src") === blockoff){
+					$(this).attr("src", "resources/img/btn/dislike.png"); //블락
+					block='false';
+			}
+			
+			var pm = {"block" : block, "blocked_user" : $('#user_num').val()};
+			
+			blocked(pm);
+	
+		});
+		
+		function blocked(pm){
+					
+			$.ajax({
+					url : "blockox",
+					type : "post",
+					data : pm,
+					success : function(data){
+					},
+					error : function(request, error){
+						console.log("code:"+request.status+"\n"+"message:"+request.responsetext+"\n"+"error:"+error);
+					}
+				});
+		}
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+		  $('[data-toggle="tooltip"]').tooltip();   
+		});
+	</script>
+
 
 </body>
 </html>

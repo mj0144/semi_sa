@@ -87,6 +87,7 @@
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 borderrr">
 				<span class="login100-form-title p-b-49"> 회원정보 수정 </span>
 
+<<<<<<< HEAD
 				<div class="profile_base" style="width: 200px; margin: 0 auto;">
 
 					<img class="profile_base" style="width: 90px; margin: 0 auto;"
@@ -94,12 +95,21 @@
 						src="resources/upload/${sessionScope.user_img }">
 
 				</div>
+=======
+				 <div class="profile_base" style="width: 400px; text-align: center;">
+					
+						<img class="profile_base" style="width: 120px;"
+							id="profileimg" name="profileimg" src="resources/upload/${sessionScope.user_img }">
+				 	
+				</div> 
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 				<br>
 				<script
 					src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 				<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 				<!------ Include the above in your HEAD tag ---------->
 
+<<<<<<< HEAD
 				<form class="form-horizontal" method="post"
 					enctype="multipart/form-data" action="userInfoChange" id="form"
 					style="width: 450px">
@@ -158,6 +168,63 @@
 									<c:when test="${vo.SEX eq 'm'}">
 										<input type="radio" name="sex" value="m" checked>
 										<label>남자</label>
+=======
+	<form class="form-horizontal" method="post"
+					enctype="multipart/form-data" action="userInfoChange" id="form" style="width:480px">
+		<fieldset>
+		
+		
+		<!-- Form Name -->
+		<div class="form-group" style="text-align: center; width:400px;">
+			<input type="file" id="file" name="file" style="display:none;" accept=".jpg,.jpeg,.png,.gif,.PNG">
+			<div id="file_upload" style=""class="btn btn-outline-dark " 
+				onclick="document.getElementById('file').click()">사진추가</div>		
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4" for="selectbasic">이름</label>
+		  <div class="col-md-4">
+		    <input placeholder="이름" type="text"
+				required="required" name="name" id="name" onchange="namechange()"
+				value=${vo.NAME }><label id="namelabel"></label>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4" for="selectbasic">*별명</label>
+		  <div class="col-md-4">
+		    <input placeholder="별명" type="text"
+				name="nickname" id="nickname" value="${vo.NICKNAME }"
+				onchange="nickchange()"> <p id="nicklabel" style='color:white'>중복확인을 해주세요</p>
+		  </div>
+		  <div class="col-md-4">
+		  	<button type="button" class="btn btn-primary" id="nickchk">중복확인</button>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">*이메일</label>
+		  <div class="col-md-4">
+		    <input placeholder="이메일" type="email"
+													name="email" id="email" value="${vo.EMAIL }"
+													onchange="emailchange()"> <p id="emaillabel" style='color:white'>중복확인을 해주세요</p>
+		  </div>
+		  <div class="col-md-4">
+		  <button type="button" class="btn btn-primary" id="emailchk">중복확인</button>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 " for="selectbasic">*성별</label>
+		  <div class="col-md-4">
+		    <c:choose>
+				<c:when test="${vo.SEX eq 'm'}">
+					<input  type="radio" name="sex" value="m" checked>
+						<label>남자</label>
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 							&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="sex" value="f">
 										<label>여자</label>

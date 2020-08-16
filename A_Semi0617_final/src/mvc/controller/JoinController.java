@@ -1,15 +1,3 @@
-package mvc.controller;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
 import mvc.dao.JoinDao;
 import mvc.service.JoinService;
 import mvc.service.LookLikeService;
@@ -19,29 +7,59 @@ import mvc.vo.MemberVO;
 
 @Controller
 public class JoinController {
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 	@Autowired
 	private LookLikeService lookLikeService;
 	@Autowired
 	private JoinDao joinDao;
 
 	@Autowired
-	private JoinService joinService;
-
-	@Autowired
 	private ImgUtils imgUtils;
 
+<<<<<<< HEAD
 	// »∏ø¯∞°¿‘
 	@RequestMapping(value = "/joinaction", method = RequestMethod.POST)
 	public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
+=======
+	// ÌöåÏõêÍ∞ÄÏûÖ
+		@RequestMapping(value="/joinaction", method = RequestMethod.POST)
+		public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 
+<<<<<<< HEAD
 		vo = joinService.yunYeon(vo); // ª˝≥‚ø˘¿œ ∞°∞¯.
 		String ilju = joinDao.ilju(vo);
 		vo.setIlju(ilju); // ¿œ¡÷ ºº∆√.
+=======
+			vo = joinService.yunYeon(vo); // ÏÉùÎÖÑÏõîÏùº Í∞ÄÍ≥µ.
+			String ilju = joinDao.ilju(vo);
+			vo.setIlju(ilju); // ÏùºÏ£º ÏÑ∏ÌåÖ.
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 
+<<<<<<< HEAD
 		vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // ∆ƒ¿œ ¿˙¿Â.
+=======
+			vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // ÌååÏùº Ï†ÄÏû•.
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 
+<<<<<<< HEAD
 		if (vo.getUser_intro().equals("")) { // ¿⁄±‚º“∞≥∏¶ ¿‘∑¬«œ¡ˆ æ æ“¿∏∏È, ±‚∫ª∞™ ≥÷æÓ¡÷±‚.
 			vo.setUser_intro("¿⁄±‚º“∞≥∏¶ ¿‘∑¬«ÿ¡÷ººø‰");
+=======
+			if (vo.getUser_intro().equals("")) { // ÏûêÍ∏∞ÏÜåÍ∞úÎ•º ÏûÖÎ†•ÌïòÏßÄ ÏïäÏïòÏúºÎ©¥, Í∏∞Î≥∏Í∞í ÎÑ£Ïñ¥Ï£ºÍ∏∞.
+				vo.setUser_intro("ÏûêÍ∏∞ÏÜåÍ∞úÎ•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî");
+			}
+
+			try {
+				joinService.join(vo, ivo); // ÌöåÏõêÏ†ïÎ≥¥,Ïù¥ÏÉÅÌòïÏ†ïÎ≥¥ Ï†ÄÏû•.
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
+			return "login";
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 		}
 
 		try {
@@ -50,13 +68,89 @@ public class JoinController {
 			joinService.join(vo, ivo); // »∏ø¯¡§∫∏,¿ÃªÛ«¸¡§∫∏ ¿˙¿Â.
 			lookLikeService.insertLooklike(images, vo ,ivo);
 
+<<<<<<< HEAD
+		} catch (Exception e) {
+			e.printStackTrace();
+=======
+		// ÏïÑÏù¥Îîî Ï§ëÎ≥µÌôïÏù∏
+		@RequestMapping("/idchk")
+		@ResponseBody
+		public int idChk(String id) {
+			int res = joinDao.idChk(id);
+			return res;
+	// ÌöåÏõêÍ∞ÄÏûÖ
+	@RequestMapping(value = "/joinaction", method = RequestMethod.POST)
+	public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
+
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
+		}
+<<<<<<< HEAD
+		return "login";
+	}
+=======
+		vo = joinService.yunYeon(vo); // ÏÉùÎÖÑÏõîÏùº Í∞ÄÍ≥µ.
+		String ilju = joinDao.ilju(vo);
+		vo.setIlju(ilju); // ÏùºÏ£º ÏÑ∏ÌåÖ.
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
+
+<<<<<<< HEAD
+	// æ∆¿Ãµ ¡ﬂ∫π»Æ¿Œ
+	@RequestMapping("/idchk")
+	@ResponseBody
+	public int idChk(String id) {
+		int res = joinDao.idChk(id);
+		return res;
+=======
+		// Î≥ÑÎ™Ö Ï§ëÎ≥µÌôïÏù∏.
+		@RequestMapping("/nickchk")
+		@ResponseBody
+		public int nickChk(String nickname) {
+			int res = joinDao.nickChk(nickname);
+			return res;
+		vo.setUser_img(imgUtils.imgSave(request, file, "in", null)); // ÌååÏùº Ï†ÄÏû•.
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
+
+<<<<<<< HEAD
+	}
+=======
+		if (vo.getUser_intro().equals("")) { // ÏûêÍ∏∞ÏÜåÍ∞úÎ•º ÏûÖÎ†•ÌïòÏßÄ ÏïäÏïòÏúºÎ©¥, Í∏∞Î≥∏Í∞í ÎÑ£Ïñ¥Ï£ºÍ∏∞.
+			vo.setUser_intro("ÏûêÍ∏∞ÏÜåÍ∞úÎ•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî");
+		}
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
+
+<<<<<<< HEAD
+	// ∫∞∏Ì ¡ﬂ∫π»Æ¿Œ.
+	@RequestMapping("/nickchk")
+	@ResponseBody
+	public int nickChk(String nickname) {
+		int res = joinDao.nickChk(nickname);
+		return res;
+=======
+	//Ïù¥Î©îÏùº Ï§ëÎ≥µÌôïÏù∏.
+		@RequestMapping("/emailchk")
+		@ResponseBody
+		public int emailchk(String email) {
+			int res = joinDao.emailChk(email);
+			return res;
+		try {
+			String images = imgUtils.root_path(request, vo.getUser_img());
+			System.out.println("Ïª®Ìä∏Î°§Îü¨ÏóêÏÑú Ïù¥ÎØ∏ÏßÄÍ≤ΩÎ°ú" + images);
+			joinService.join(vo, ivo); // ÌöåÏõêÏ†ïÎ≥¥,Ïù¥ÏÉÅÌòïÏ†ïÎ≥¥ Ï†ÄÏû•.
+			lookLikeService.insertLooklike(images, vo ,ivo);
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
+
+<<<<<<< HEAD
+	}
+
+	// ¿Ã∏ﬁ¿œ ¡ﬂ∫π»Æ¿Œ.
+=======
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "login";
 	}
 
-	// æ∆¿Ãµ ¡ﬂ∫π»Æ¿Œ
+	// ÏïÑÏù¥Îîî Ï§ëÎ≥µÌôïÏù∏
 	@RequestMapping("/idchk")
 	@ResponseBody
 	public int idChk(String id) {
@@ -65,7 +159,7 @@ public class JoinController {
 
 	}
 
-	// ∫∞∏Ì ¡ﬂ∫π»Æ¿Œ.
+	// Î≥ÑÎ™Ö Ï§ëÎ≥µÌôïÏù∏.
 	@RequestMapping("/nickchk")
 	@ResponseBody
 	public int nickChk(String nickname) {
@@ -74,7 +168,8 @@ public class JoinController {
 
 	}
 
-	// ¿Ã∏ﬁ¿œ ¡ﬂ∫π»Æ¿Œ.
+	// Ïù¥Î©îÏùº Ï§ëÎ≥µÌôïÏù∏.
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 	@RequestMapping("/emailchk")
 	@ResponseBody
 	public int emailchk(String email) {

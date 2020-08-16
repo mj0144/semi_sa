@@ -43,15 +43,11 @@
 
 </script>
 <div id="colorlib-main">
-	<section class="ftco-section ftco-bread">
+<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
 		<div class="container">
-			<div
-				class="row no-gutters slider-text justify-content-center align-items-center">
-				<div class="col-md-8 ftco-animate">
-					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index">Home</a></span> <span>Setting</span>
-					</p>
-					<h1 class="bread">Setting</h1>
+			<div class="row no-gutters slider-text justify-content-center align-items-center">
+				<div class="col-md-12 ftco-animate text-center">
+					<h1 class="bread" style="color:white;"><b>Setting</b></h1>
 				</div>
 			</div>
 		</div>
@@ -187,6 +183,8 @@
 		</div>
 	</div>
 	
+	<!-- 이동현 block 모달 구현-->
+	
 	<!-- Modal -->
 	<div class="modal fade" id="modalall" tabindex="-1" role="dialog">
 	  <div class="modal-dialog modal-dialog-scrollable modal-sm" role="document" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -195,9 +193,14 @@
 	  </div>
 	</div>
 
+	<form action="friend" method="post" id="blfriend">
+		<input type="hidden" value="0" id="user_num" name="user_num">
+	</form>
+
 	<!--  여기까지 -->
 	<%@ include file="footer.jsp"%>
 	
+	<!-- 이동현 block 모달 구현-->
 	<script>
 	function blocklist() {
 		var url = 'blockmodal';
@@ -212,16 +215,13 @@
 		  $('[data-toggle="tooltip"]').tooltip();   
 		});
 	</script>
-	
 	<script>
-// 		function friend() {
-// 			alert($("#user_num").val());
-// 			//$("#send_num").submit();
-			
-// 		}
-		
-		$(document).on('click', '.mvprofile', function(event) {
-			$(this).children("#send_num").submit();
+		function sendChildValue(name){
+ 			$("#user_num").attr('value',name);
+			alert($("#user_num").attr('value'));
+			$("#blfriend").submit();
+		}
 
-		});
 	</script>
+	<!-- block 모달 구현 끝 -->
+	

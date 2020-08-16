@@ -18,12 +18,15 @@ import mvc.dao.BlockDao;
 import mvc.vo.LikeVO;
 
 
+//이동현
+
 @Controller
 public class BlockController {
 	
 	@Autowired
 	private BlockDao blockdao; 
 	
+	//블락 리스트 모달 
 	@RequestMapping(value = "/blockmodal")
 	public ModelAndView blockmodal(HttpSession session) {
 		
@@ -38,6 +41,7 @@ public class BlockController {
 		return mav;
 	}
 	
+	//블락 추가, 블락 해제
 	@ResponseBody   
 	@RequestMapping("/blockox")
 	public void blockox(String block, int blocked_user, HttpSession session) {

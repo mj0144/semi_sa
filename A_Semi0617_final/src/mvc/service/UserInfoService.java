@@ -21,6 +21,9 @@ import mvc.vo.MemberVO;
 public class UserInfoService {
 	
 	@Autowired
+	private LookLikeService lookLikeService;
+	
+	@Autowired
 	private UserInfoDao userInfoDao;
 
 	@Autowired
@@ -37,34 +40,40 @@ public class UserInfoService {
 	
 	@Autowired
 	private BoardService boardService;
-	//¹Ù²ï È¸¿øÁ¤º¸ ¼¼ÆÃ
+	//ë°”ë€ íšŒì›ì •ë³´ ì„¸íŒ…
 	public MemberVO userInfoSetting(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
 		JoinService iljusetting = new JoinService();
 
 		
 		String img = (String) session.getAttribute("user_img");
+<<<<<<< HEAD
 		vo.setUser_img(imgUtils.imgSave(request, file, "change", img)); // ÆÄÀÏ ÀúÀå.
 
 		String new_img = imgUtils.root_path(request, vo.getUser_img());
 		lookLikeService.updateLooklike(session,new_img, vo);
 		
+=======
+		vo.setUser_img(imgUtils.imgSave(request, file, "change", img)); // íŒŒì¼ ì €ì¥.
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 		vo.setUser_num((int) session.getAttribute("user_num"));
 		
+		String new_img = imgUtils.root_path(request, vo.getUser_img()); //ë‹®ì€ê¼´ ìƒˆë¡œ 
+		lookLikeService.updateLooklike(session,new_img, vo);
 		
-		// ÀÏÁÖ ¼¼ÆÃ.
+		// ì¼ì£¼ ì„¸íŒ….
 		iljusetting.yunYeon(vo);
 		vo.setIlju(joinDao.ilju(vo));
 
 		try {
-			userInfoDao.infoUpdate(vo); //È¸¿øÁ¤º¸ ¾÷µ¥ÀÌÆ®
+			userInfoDao.infoUpdate(vo); //íšŒì›ì •ë³´ ì—…ë°ì´íŠ¸
 
 		} catch (Exception e) {
-			System.out.println("db¿À·ù"); // db¿À·ù ½Ã, ¾÷·ÎµåÇÑ ÆÄÀÏ »èÁ¦.
+			System.out.println("dbì˜¤ë¥˜"); // dbì˜¤ë¥˜ ì‹œ, ì—…ë¡œë“œí•œ íŒŒì¼ ì‚­ì œ.
 			e.printStackTrace();
 			imgUtils.deleteimg();
 		}
 
-		// ¹Ù²ï°ªÀ¸·Î ¼¼¼Ç ¾÷µ¥ÀÌÆ®.
+		// ë°”ë€ê°’ìœ¼ë¡œ ì„¸ì…˜ ì—…ë°ì´íŠ¸.
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("ilju", vo.getIlju());
 		session.setAttribute("gender", vo.getSex());
@@ -76,17 +85,17 @@ public class UserInfoService {
 	}
 	
 	
-	//¸¶ÀÌÆäÀÌÁö·Î ´Ù½Ã ³Ñ¾î°¡±â À§ÇÑ °ª ¼¼ÆÃ
+	//ë§ˆì´í˜ì´ì§€ë¡œ ë‹¤ì‹œ ë„˜ì–´ê°€ê¸° ìœ„í•œ ê°’ ì„¸íŒ…
 	public ModelAndView mypageSetting(HttpSession session, MemberVO vo, ModelAndView mav) {
 		
-		int boadcount=0; //¿Ã¸° °Ô½Ã¹° ¼ö
-		int cnt1 =likeService.like1(session); //ÆÈ·Î¿ì ¼ö
-		int cnt2 =likeService.like2(session); //ÆÈ·Î¿ö ¼ö
+		int boadcount=0; //ì˜¬ë¦° ê²Œì‹œë¬¼ ìˆ˜
+		int cnt1 =likeService.like1(session); //íŒ”ë¡œìš° ìˆ˜
+		int cnt2 =likeService.like2(session); //íŒ”ë¡œì›Œ ìˆ˜
 		
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		try {
-			list = boardService.Board(session); //¿Ã¸° °Ô½Ã¹° ¸ñ·Ï
-			boadcount=boardService.Boardmax(session);//¿Ã¸° °Ô½Ã¹° ¼ö
+			list = boardService.Board(session); //ì˜¬ë¦° ê²Œì‹œë¬¼ ëª©ë¡
+			boadcount=boardService.Boardmax(session);//ì˜¬ë¦° ê²Œì‹œë¬¼ ìˆ˜
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -5,16 +5,15 @@
 <%@include file="header.jsp" %>
 <%@include file="side.jsp" %>
 		<div id="colorlib-main">
-			<section class="ftco-section ftco-bread">
-				<div class="container">
-					<div class="row no-gutters slider-text justify-content-center align-items-center">
-	          <div class="col-md-8 ftco-animate">
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>이상형찾기</span></p>
-	            <h1 class="bread">이상형찾기</h1>
-	          </div>
-	        </div>
+			<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
+		<div class="container">
+			<div class="row no-gutters slider-text justify-content-center align-items-center">
+				<div class="col-md-12 ftco-animate text-center">
+					<h1 class="bread" style="color:white;"><b>연예인 닮은 꼴 찾기</b></h1>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 			<br>
 			<p style="color: orange; text-align: center;">*이상형 인 연예인의 이름을 적어주세요*</p>
 			<div class="col-sm-12 pull-center well" style="margin-left: 400px;">
