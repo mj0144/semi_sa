@@ -317,6 +317,7 @@
         <label class="col-md-4 " for="selectbasic">자기소개</label>
         <div class="col-md-4">
 
+
             <textarea name="user_intro" id="user_intro" cols="50"
             rows="10" class="form-control" placeholder="자기소개를 입력해주세요"></textarea>
          </div>

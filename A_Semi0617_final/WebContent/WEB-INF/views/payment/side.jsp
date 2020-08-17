@@ -5,12 +5,7 @@
    class="js-fullheight text-center">
    	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<!-- 알람 스크립트 -->
-
-	<script>
-	$(function() {
-		setInterval(function notifycations() {
-<!--
- 	<script>
+<!-- 	<script>
 	$(function() {
 			var notifyuser = $("#sessionNum").val();
 			var param = new Object();
@@ -225,16 +220,9 @@
 					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 				}
 			});
-
-		}, 1000);
-	});
-	</script>
-<%@include file="notications.jsp"%>
-	<a href="setting" style="float:right; margin-top:-10%"><img src="images/setting.png"></a>
-
 	});
 	</script> -->
-
+<%@include file="notications.jsp"%>
 	
    <h1 id="colorlib-logo">
       <a href="mypage"><span class="img"
@@ -251,13 +239,6 @@
          <li><a href="mypage">마이페이지</a></li>
          <li><a href="pay">Shop</a></li>
          <li><a href="qnapage">Q&A</a></li>
-
-         <br>
-         <br>
-         <br>
-         <br>
-         
-
          <li><a href="setting"><img src="images/setting.png"></a></li>
          <li><a href="logoutdo">로그아웃</a></li>
       </ul>

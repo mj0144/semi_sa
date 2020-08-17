@@ -135,4 +135,49 @@ public class BoardContollor {
 		mav.setViewName("feedsearch");
 		return mav;
 	}
+	
+	//게시물 신고
+    @RequestMapping(value = "/reportBoard", method = RequestMethod.POST)
+    public String reportBoard(HttpSession session, String board_num, String report_board, HttpServletRequest request) throws Exception{
+       System.out.println("------------");
+       int user_num = (int) session.getAttribute("user_num");
+       String user_id = (String) session.getAttribute("user_id");
+       int board_num1 = Integer.parseInt(board_num);
+       System.out.println("파람 왓니"+board_num+"/+"+report_board+"/+"+user_num+"/+"+user_id);
+       HashMap<String, Object> map = new HashMap<String, Object>();
+       map.put("user_num", user_num);
+       map.put("board_num", board_num1);
+       map.put("reason", report_board);
+       map.put("user_id", user_id);
+       boarddao.reportBoard(map);
+       String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+    }
+    
+    //댓글신고
+    
+     @RequestMapping(value = "/reportComment", method = RequestMethod.POST) 
+     public String reportComment(HttpSession session, String comment_num, String board_num, String report_comment, HttpServletRequest request) throws Exception { 
+        System.out.println("댓글신고컨트롤러인데..왓니?");
+        int user_num = (int) session.getAttribute("user_num");
+        System.out.println(user_num);
+        String user_id = (String) session.getAttribute("user_id");
+        System.out.println(user_id);
+        int board_num1 = Integer.parseInt(board_num);
+        System.out.println(board_num);
+        int comment_num1 = Integer.parseInt(comment_num);
+        System.out.println(comment_num);
+        System.out.println("파람 왓니"+user_num+"/+"+user_id+"/+"+board_num1+"/+"+report_comment+"/"+comment_num1);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("user_num", user_num);
+        map.put("board_num", board_num1);
+        map.put("reason", report_comment);
+        map.put("user_id", user_id);
+        map.put("comment_num", comment_num1);
+        boarddao.reportComment(map);
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+    }
+	
+	
 }
