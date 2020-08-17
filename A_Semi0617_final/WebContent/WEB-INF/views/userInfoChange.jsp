@@ -317,20 +317,7 @@
         <label class="col-md-4 " for="selectbasic">자기소개</label>
         <div class="col-md-4">
 
-<<<<<<< HEAD
-				<textarea name="user_intro" id="user_intro" cols="50"
-				rows="10" class="form-control" placeholder="자기소개를 입력해주세요"></textarea>
-			</div>
-		</div>
-		
-		
-		
-		
-		<!-- Button -->
-		<div class="form-group" >
-		  <div class="col-md-4" style="text-align: right;">
-		    <button class="btn btn-primary" type="button" id="send" style="text-align: center">수정</button>
-=======
+
             <textarea name="user_intro" id="user_intro" cols="50"
             rows="10" class="form-control" placeholder="자기소개를 입력해주세요"></textarea>
          </div>
@@ -343,7 +330,6 @@
       <div class="form-group">
         <div class="col-md-4">
           <button class="btn btn-primary" type="button" id="send" style="text-align: center">수정</button>
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
 
           <button class="btn btn-primary" onclick="location.href='mypage'" style="text-align: center">Cancel</button>
         </div>

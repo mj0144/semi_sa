@@ -19,7 +19,7 @@ MERGE INTO single_productlist A
     USING (select distinct * from paylist where buyer_num=#{buyer_num} and merchant_uid=#{merchant_uid}) B
     ON (B.buyer_num=A.buyer_num)
 WHEN MATCHED THEN 
-        UPDATE SET left_count = (select left_count from basic_chat_count where user_id=#{user_id}) 
+        UPDATE SET left_count = (select left_count from basic_chat_count where user_num=#{buyer_num}) 
         + (select left_count from single_productlist where product_num=#{product_num} and buyer_num=#{buyer_num})
         + (#{paid_count}*5)
         , paid_date=#{paid_date}
@@ -33,12 +33,12 @@ WHEN NOT MATCHED THEN
 <!-- update때는 원래의 만료일에서 구매한 갯수*30일 만큼 더한 값으로 업데이트. -->
  <insert id="setInsert" parameterType="payvo">
  MERGE INTO set_productlist A
-    USING (select distinct * from paylist where buyer_num=#{buyer_num} and merchant_uid=#{merchant_uid}) B
-    ON (B.buyer_num=A.buyer_num and B.product_num=A.product_num)
+    USING (select buyer_num from paylist where buyer_num=#{buyer_num} and merchant_uid=#{merchant_uid}) B
+    ON (B.buyer_num=A.buyer_num and A.product_num=#{product_num})
 WHEN MATCHED THEN 
         UPDATE SET expiry_date = (select to_char(to_date(a.expiry_date, 'YYYY-MM-DD HH24:MI:SS')+#{paid_count}*30
         ,'YYYY-MM-DD HH24:MI:SS') sdate 
-        from (select expiry_date from set_productlist where buyer_num=#{buyer_num}) a)
+        from (select expiry_date from set_productlist where buyer_num=#{buyer_num} and product_num=#{product_num}) a)
 WHEN NOT MATCHED THEN
         INSERT (product_num, buyer_num, paid_date, expiry_date) 
         VALUES (#{product_num}, #{buyer_num}, #{paid_date}, #{expiry_date})
@@ -54,6 +54,6 @@ WHEN NOT MATCHED THEN
  <select id="selectUserId" parameterType="int" resultType="String">
  	select user_id from user_info where user_num=#{user_num}
  </select>
- 
+ 	
  
  </mapper>
