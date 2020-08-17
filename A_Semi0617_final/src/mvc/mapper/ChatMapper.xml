@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chat">
+	<insert id="chatIn" parameterType="HashMap">
+	insert into chat values(CHAT_SEQ.nextval,#{chatroom},#{chatuser},#{chatcontent},sysdate)
+	</insert>
+	<insert id="roomIn">
+	insert into chatroom values(CHAT_ROOM_SEQ.nextval)
+	</insert>
+	<select id="meList" parameterType="int" resultType="hashMap">
+select
+	a.chatnum, 
+	a.chatroom, 
+	a.chatuser, 
+	a.chatcontent, 
+	a.chatdate,b.user_num,
+	b.nickname,b.user_img 
+from 
+	chat a,
+	user_info b, 
+	chatroom c
+where
+	(b.user_num = a.chatuser 
+	and
+	a.chatroom = c.chatroom 
+	and 
+	(a.chatuser=c.user1 or a.chatuser=c.user2))
+and 
+	a.chatroom=#{roomNum}
+order by 1 desc
+	</select>
+</mapper>	

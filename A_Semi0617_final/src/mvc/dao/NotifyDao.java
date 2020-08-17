@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import mvc.service.FeedAbstract;
+import mvc.vo.NotifyVO;
 
 @Repository //송성근 제작
 public class NotifyDao extends FeedAbstract{
@@ -21,5 +22,9 @@ public class NotifyDao extends FeedAbstract{
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> buttonNotify(HashMap<String,Object> params) throws Exception{
 		return (HashMap<String, Object>) selectOne(nameSpace+"ButtonNotify", params);
+	}
+	//알람 내용 insert
+	public int Notifyinsert(NotifyVO vo) throws Exception{
+		return insert("Notify.Notifyin", vo);
 	}
 }

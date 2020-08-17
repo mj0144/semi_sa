@@ -114,7 +114,8 @@
 						<span class="mr-2"><a href="index">Home</a></span> <span
 							class="mr-2"><a href="listSome">친구찾기</a></span> <span>프로필</span>
 					</p>
-					<h1 class="bread">${membervo.name} </h1>
+					<h1 class="bread">${membervo.name} </h1><input type="hidden" id="nickname" value="${membervo.name }">
+					<input type="hidden" id="userNum" value="${board_writer}">
 				</div>
 			</div>
 		</div>
@@ -166,6 +167,7 @@
 						</h1>
 						<p class="mb-4">${membervo.user_intro}</p>
 						<h3 class="signature h1">Eric</h3>
+						<button type="button" id="chatrequest" onclick="chatrequest()">채팅신청</button>
 					</div>
 					<div id="boardBtn_group" ><button type="button" id="modal_open_btn" style="float: right;">신고하기</button></div>
 				</div>
@@ -274,4 +276,36 @@
  			alert('신고가 접수되었습니다.')
 		})
 	})
+	function chatrequest() {
+		var responeUser = $("#userNum").val(); //받는자
+		var link = "chatRequest"
+		var param = new Object();
+		var requestUser = ${sessionScope.user_num}; //보내는자
+		var nickname = $("#nickname").val();
+		console.log("nickname"+nickname);
+		param.notifyLink = link;
+		param.notifycontent = nickname+"님이 회원님에게 채팅을 요청하였습니다.";
+		param.notifyuser  = responeUser; //받는자
+		param.notifyusernum = requestUser; //보내는자
+		var paramJson = JSON.stringify(param);
+		$.ajax({
+			type : "POST",
+			url : "notifyin",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			data : paramJson,
+			success :  function(res){
+				console.log("알람보내기 성공!!!");
+				if(res.result == "success"){
+					var notifyparam = '채팅|'+link+"|"+nickname;
+					notifyon(notifyparam);
+				}else{
+					alert("알람을 보내는도중 ajax 문제가 발생하였습니다.");
+				}
+			},
+			error:function(request,status,error){
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			}
+		});
+	}
 	</script>
