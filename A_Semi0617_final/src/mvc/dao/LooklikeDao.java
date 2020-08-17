@@ -17,7 +17,10 @@ public class LooklikeDao {
 	private SqlSessionTemplate ss;
 	
 	//최신게시글
-	public List<MemberVO> lovelist(LoveTypeVO vo) throws Exception {
-		 return ss.selectList("lovetype.list", vo);
+	public MemberVO lovelist(LoveTypeVO vo) throws Exception {
+		 return ss.selectOne("lovetype.list", vo);
+	}
+	public String percent(int num) throws Exception {
+		 return ss.selectOne("lovetype.percent", num);
 	}	
 }

@@ -6,6 +6,8 @@
 <%@include file="header.jsp"%>
 <%@include file="side.jsp"%>
 <c:set var="tf" value="true" />
+	<script src="https://d3js.org/d3.v3.min.js"></script>     
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
@@ -71,10 +73,13 @@
 								style="text-align: center; float: left">
 								<div class="single-team">
 									<div style="height: 430px">
-										<br> <br> <br>
-										<h6>나와 닮은 연예인은 ( )입니다.</h6>
-										<br> <br> <br>
-										<h4>% 닮은꼴</h4>
+									<br>
+									<br>
+									<br>
+									<br>
+										<div id="chart1" style="height: 180px;"></div>
+										<br>
+										<h5> 얼마나 닮았을까요?</h5>
 									</div>
 								</div>
 							</div>
@@ -84,7 +89,7 @@
 								<div class="single-team">
 									<div style="height: 430px">
 										<img class="center-block"
-											src="resources/upload/${profile.USER_IMG }"
+											src="resources/upload/${lovelist.user_img }"
 											alt="profile_photo" style="height: 100%; width: 100%">
 									</div>
 								</div>
@@ -95,19 +100,19 @@
 								style="text-align: center; float: left">
 								<div class="single-team">
 									<div style="height: 430px; padding-top: 10%;">
-										<h3>${profile.NICKNAME }</h3>
-										<p>${profile.BIRTH }</p>
+										<h3>${lovelist.nickname }</h3>
+										<p>${lovelist.birth }</p>
 										<br>
-										<h5>${profile.USER_INTRO }</h5>
+										<h5>${lovelist.user_intro}</h5>
 
 										<!-- 버튼 구현 -->
 										<div style="position: fixed; bottom: 25px;">
 
 											<!-- 블락 추가 구현 -->
 											<c:set var="blockox" value="false" />
-											<c:forEach var="g" items="${set.blist }">
+											<c:forEach var="g" items="${blist }">
 												<c:choose>
-													<c:when test="${g == profile.USER_NUM}">
+													<c:when test="${g == lovelist.user_num}">
 														<c:set var="blockox" value="true" />
 													</c:when>
 												</c:choose>
@@ -115,13 +120,13 @@
 
 											<c:choose>
 												<c:when test="${blockox == 'true'}">
-													<img id="${profile.USER_NUM}" class="blockox"
+													<img id="${lovelist.user_num}" class="blockox"
 														style="width: 15%; cursor: pointer;"
 														src="resources/img/btn/like.png" data-toggle="tooltip"
 														data-placement="top" title="추천 제외 취소" />
 												</c:when>
 												<c:otherwise>
-													<img id="${profile.USER_NUM}" class="blockox"
+													<img id="${lovelist.user_num}" class="blockox"
 														style="width: 15%; cursor: pointer;"
 														src="resources/img/btn/dislike.png" data-toggle="tooltip"
 														data-placement="top" title="추천에서 제외" />
@@ -143,20 +148,20 @@
 											<c:set var="hearton" value="false" />
 											<c:forEach var="g" items="${heart }">
 												<c:choose>
-													<c:when test="${g.liked_user == profile.USER_NUM}">
+													<c:when test="${g.liked_user == lovelist.user_num}">
 														<c:set var="hearton" value="true" />
 													</c:when>
 												</c:choose>
 											</c:forEach>
 											<c:choose>
 												<c:when test="${hearton == 'true'}">
-													<img id="${profile.USER_NUM}" class="heart"
+													<img id="${lovelist.user_num}" class="heart"
 														style="width: 15%; cursor: pointer;"
 														src="resources/img/btn/hearton.png" data-toggle="tooltip"
 														data-placement="top" title="좋아요 취소" />
 												</c:when>
 												<c:otherwise>
-													<img id="${profile.USER_NUM}" class="heart"
+													<img id="${lovelist.user_num}" class="heart"
 														style="width: 15%; cursor: pointer;"
 														src="resources/img/btn/heartoff.png" data-toggle="tooltip"
 														data-placement="top" title="좋아요" />
@@ -175,16 +180,16 @@
 					<br>
 				</div>
 				<!-- 이전 페이지 및 다음 페이지 -->
-				<div class="col-xs-4 col-sm-4 col-md-12" style="text-align: center;">
-					<c:if test="${num != 1 }">
-						<img src="resources/img/btn/back.png"
-							style="width: 5em; float: left; cursor: pointer;"
-							onclick="prevProfile()">
-					</c:if>
-					<img src="resources/img/btn/forword.png"
-						style="width: 5em; float: right; cursor: pointer;"
-						onclick="nextProfile()">
-				</div>
+<!-- 				<div class="col-xs-4 col-sm-4 col-md-12" style="text-align: center;"> -->
+<%-- 					<c:if test="${num != 1 }"> --%>
+<!-- 						<img src="resources/img/btn/back.png" -->
+<!-- 							style="width: 5em; float: left; cursor: pointer;" -->
+<!-- 							onclick="prevProfile()"> -->
+<%-- 					</c:if> --%>
+<!-- 					<img src="resources/img/btn/forword.png" -->
+<!-- 						style="width: 5em; float: right; cursor: pointer;" -->
+<!-- 						onclick="nextProfile()"> -->
+<!-- 				</div> -->
 				<!-- 이전 페이지 및 다음 페이지 끝 -->
 			</div>
 		</div>
@@ -193,32 +198,10 @@
 
 	<form action="friend" method="post" id="profile">
 		<input type="hidden" name="user_num" id="user_num"
-			value="${profile.USER_NUM }">
+			value="${lovelist.user_num}">
 	</form>
 
-	<form action="listWhole" method="post" id="prevProfile">
-		<input type="hidden" name="num" value="${num -1 }"> <input
-			type="hidden" name="sex" value="${set.sex }"> <input
-			type="hidden" name="samb" value="${set.samb }">
-	</form>
-
-	<form action="listWhole" method="post" id="nextProfile">
-		<input type="hidden" id="num" name="num" value="${num +1 }"> <input
-			type="hidden" name="sex" value="${set.sex }"> <input
-			type="hidden" name="samb" value="${set.samb }">
-	</form>
-
-	<!-- Modal -->
-	<div class="modal fade" id="modalall" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-dialog-scrollable" role="document"
-			aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-			<div class="modal-content"></div>
-		</div>
-	</div>
-
-
-
-
+	
 	<script>
 		//하트 눌렀을 때, 하트 on/off 모양 변화		
 		$(document)
@@ -226,12 +209,10 @@
 						'click',
 						'.heart',
 						function(event) {
+							
+							
 							var like = 'false';
-							var user_num = $
-							{
-								sessionScope.user_num
-							}
-							;
+							var user_num = ${sessionScope.user_num};
 
 							if ($(this).attr("src") === "resources/img/btn/hearton.png") {
 
@@ -277,17 +258,14 @@
 
 	<script>
 		$(document).on('click', '.blockox', function(event) {
+			
 
 			var block = 'false';
 
 			var blockon = "resources/img/btn/dislike.png"; //블락 하기
 			var blockoff = "resources/img/btn/like.png"; //블락 해제
 
-			var user_num = $
-			{
-				sessionScope.user_num
-			}
-			;
+			var user_num = ${sessionScope.user_num};
 
 			if ($(this).attr("src") === blockon) {
 				$(this).attr("src", "resources/img/btn/like.png"); //블락취소
@@ -337,28 +315,42 @@
 		}
 	</script>
 
-	
-
-	
-
-	
-
 	<script>
-		//이전페이지 이동
-		function prevProfile() {
-			$("#prevProfile").submit();
-		}
-
-		//다음페이지 이동
-		function nextProfile() {
-			//alert($("#num").val());
-			if ($("#num").val() > 10) {
-				alert("오늘 볼 수 있는 인원을 전부 소진했습니다.");
-			} else {
-				$("#nextProfile").submit();
-			}
-
-		}
+	var chart = c3.generate({
+		bindto: '#chart1',
+	    data: {
+	        columns: [
+	            ['data', ${percent}]
+	        ],
+	        type: 'gauge',
+	        onclick: function (d, i) { console.log("onclick", d, i); },
+	        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+	        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+	    },
+	    gauge: {
+//	        label: {
+//	            format: function(value, ratio) {
+//	                return value;
+//	            },
+//	            show: false // to turn off the min/max labels.
+//	        },
+//	    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+//	    max: 100, // 100 is default
+//	    units: ' %',
+//	    width: 39 // for adjusting arc thickness
+	    },
+	    color: {
+	        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+	        threshold: {
+//	            unit: 'value', // percentage is default
+//	            max: 200, // 100 is default
+	            values: [30, 60, 90, 100]
+	        }
+	    },
+	    size: {
+	        height: 160
+	    }
+	});
 	</script>
 
 	<script>
@@ -367,5 +359,6 @@
 			$('[data-toggle="tooltip"]').tooltip();
 		});
 	</script>
+	
 
 	<%@ include file="footer.jsp"%>
