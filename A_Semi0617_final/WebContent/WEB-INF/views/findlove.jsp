@@ -22,15 +22,16 @@
 	<p style="color: orange; text-align: center;">*이상형 인 연예인의 이름을
 		적어주세요*</p>
 	<div class="col-sm-12 pull-center well" style="margin-left: 400px;">
-		<form class="form-inline" action="lovesearch" method="post">
+		<form id="love" class="form-inline" action="lovesearch" method="post">
 
 			<div class="input-group custom-search-form">
 
-				<input type="text" name="looklike" class="form-control"
+				<input type="text" name="looklike" class="form-control" id="lookinsert"
 					placeholder="Search..."
 					style="width: 400px; border-radius: 10px 10px 10px 10px; border: 0.5px solid;">
 				&nbsp;&nbsp;&nbsp; <span class="input-group-btn">
-					<button class="btn btn-default" id="searchbtn" type="submit"
+				
+					<button class="btn btn-default" id="searchbtn" type="button"
 						style="height: 52px; width: 75px; border-radius: 10px 10px 10px 10px; background-color: black; color: white; border: 0.5px solid;">
 						search</button>
 				</span>
@@ -45,4 +46,29 @@
 		</div>
 	</section>	
 
+	<script>
+	function submitContents() {
+
+		var elClickedObj = $("#love");
+		var ir1 = $("#lookinsert").val();
+		
+		console.log('content : ' + ir1)
+		
+		if ((ir1.indexOf(" ") != -1) || ir1 == "" || ir1 == " " || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
+			alert("이상형 연예인을 입력하세요.");
+			return;
+		}
+
+		try {
+			elClickedObj.submit();
+		} catch (e) {
+		}
+	}
+
+	$('#searchbtn').click(function() {
+		submitContents();
+	});
+	
+
+	</script>
 	<%@ include file="footer.jsp"%>
