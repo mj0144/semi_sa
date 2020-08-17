@@ -105,20 +105,7 @@
 </script>
 
 <div id="colorlib-main">
-	<section class="ftco-section ftco-bread">
-		<div class="container">
-			<div
-				class="row no-gutters slider-text justify-content-center align-items-center">
-				<div class="col-md-8 ftco-animate">
-					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index">Home</a></span> <span
-							class="mr-2"><a href="listSome">친구찾기</a></span> <span>프로필</span>
-					</p>
-					<h1 class="bread">${membervo.name} </h1>
-				</div>
-			</div>
-		</div>
-	</section>
+	
 	<section class="ftco-section">
 		<div class="hero-wrap" style="margin-bottom: -75px; margin-left: -27px;">
 			<div class="overlay"></div>
