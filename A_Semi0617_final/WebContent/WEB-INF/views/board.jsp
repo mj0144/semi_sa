@@ -51,10 +51,14 @@
 					<div class="ftco-section2">
 					<input type="hidden" name="board_num" id="board_num" value="${view.BOARD_NUM }">
 					<br><br><br>
-					<div id="boardBtn_group" role="group" style="float:right;">
-						<button type="button" id="boardup">게시글수정</button>
-						<button type="button" id="boardDel">게시글삭제</button>
-					</div>
+									
+					<c:if test="${sessionScope.user_num == view.USER_NUM}">
+						<div id="boardBtn_group" role="group" style="float:right;">
+							<button type="button" id="boardup">게시글수정</button>
+							<button type="button" id="boardDel">게시글삭제</button>
+						</div>					
+					</c:if>
+					
 					</div>
 					</form>
 					<%-- </c:if> --%>

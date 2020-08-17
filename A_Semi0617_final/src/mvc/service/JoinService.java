@@ -3,6 +3,8 @@ package mvc.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -106,9 +108,11 @@ public class JoinService {
 		}
 
 	}
+	//등급초기화
 	public void gradeInit(MemberVO vo) {
-		Map<String, Object> map = new HashMap<String, Object>();	
-		map.put("user_id", vo.getUser_id());
+		Map<String, Object> map = new HashMap<String, Object>();;
+		vo.setUser_num(joinDao.user_num(vo.getUser_id()));
+		map.put("user_num", vo.getUser_num());
 		map.put("grade", "bronze");
 		map.put("left_count", 5);
 		joinDao.gradeInit(map);
