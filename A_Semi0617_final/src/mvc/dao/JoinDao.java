@@ -69,10 +69,11 @@ public class JoinDao {
 
 	}
 	
-	//가입시 프로필 입력
-//		public void joinprofile(MemberVO vo) {
-//			ss.update("member.joinprofile", vo);
-//		}
+
 	
-	
+	//닮은연예인 추가 (수연)
+	   public void looklike(Map<String, Object> params) {
+	      ss.insert("join.looklike", params);
+	   }
+
 }
