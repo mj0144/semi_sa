@@ -23,7 +23,7 @@
 		console.log(result);
 		sock.send(result);
 	}
-	var sock = new SockJS('/echo');
+	var sock = new SockJS('http://localhost/AFinal/echo');
 	sock.onmessage = function onMessage(evt) {
 		var data = evt.data;
 		var notifyss = data.split('|');
