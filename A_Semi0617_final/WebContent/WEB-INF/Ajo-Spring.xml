@@ -58,23 +58,23 @@
 	<tx:annotation-driven transaction-manager="tm"/>
 
 <!-- 메일 보내기  -->
-	   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-	      <property name="host" value="smtp.naver.com" />
-	      <property name="port" value="587" />
-	      <property name="defaultEncoding" value="utf-8"/>
-	      <property name="username" value="sajusns" />
-	      <property name="password" value="Sajusns1234!!" />
+      <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+         <property name="host" value="smtp.gmail.com" />
+         <property name="port" value="587" />
+         <property name="defaultEncoding" value="utf-8"/>
+         <property name="username" value="soulmatch64@gmail.com"/>
+         <property name="password" value="ikosmo64" />
 
-	      <!-- email 요청시는 SMTP -->
-	      <property name="javaMailProperties">
-	         <props>
-	            <prop key="mail.transport.protocol">smtp</prop>
-	            <prop key="mail.smtp.auth">true</prop>
-	            <prop key="mail.smtp.starttls.enable">true</prop>
-	            <prop key="mail.debug">true</prop>
-	         </props>
-	      </property>
-	   </bean>
+         <!-- email 요청시는 SMTP -->
+         <property name="javaMailProperties">
+            <props>
+               <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+            </props>
+         </property>
+      </bean>
   	<!-- 웹소켓 API설정 -->
 	<websocket:handlers  allowed-origins="*">
 	    <websocket:mapping handler="echoHandler" path="/echo" />

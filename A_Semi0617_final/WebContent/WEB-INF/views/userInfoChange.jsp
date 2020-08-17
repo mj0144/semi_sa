@@ -319,17 +319,18 @@
 
 
             <textarea name="user_intro" id="user_intro" cols="50"
-            rows="10" class="form-control" placeholder="자기소개를 입력해주세요"></textarea>
+            rows="10" class="form-control" placeholder="자기소개를 입력해주세요">${vo.USER_INFO }</textarea>
          </div>
       </div>
-      
+      <input type="hidden" name="idealvo.user_num" value="${sessionScope.user_num }"/>
       
       
       
       <!-- Button -->
       <div class="form-group">
         <div class="col-md-4">
-          <button class="btn btn-primary" type="button" id="send" style="text-align: center">수정</button>
+          <button class="btn btn-primary" type
+          ="button" id="send" style="text-align: center">수정</button>
 
           <button class="btn btn-primary" onclick="location.href='mypage'" style="text-align: center">Cancel</button>
         </div>
