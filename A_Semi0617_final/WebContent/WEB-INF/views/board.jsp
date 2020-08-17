@@ -5,8 +5,6 @@
 <%@include file="side.jsp"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <div id="colorlib-main">
 	<section class="ftco-section ftco-bread">
 		<div class="container">
