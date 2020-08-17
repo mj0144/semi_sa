@@ -2,6 +2,7 @@ package mvc.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class UserInfoDao {
 	@Transactional
 	public void infoUpdate(MemberVO vo) {
 		ss.update("userinfo.infoUpdate", vo); //회원정보 업데이트
+		IdealVO idealvo = vo.getIdealvo();
+		System.out.println(idealvo.getIdeal_height());
 		ss.update("userinfo.idealInfoUpdate", vo.getIdealvo()); //이상형 업데이트
 	}
 	
@@ -33,5 +36,10 @@ public class UserInfoDao {
 	
 	public String pwdchk(int user_num) {
 		return ss.selectOne("userinfo.pwdchk", user_num);
+	}
+	
+	
+	public void looklike(Map<String, Object> params) {
+		ss.update("userinfo.looklike", params);
 	}
 }

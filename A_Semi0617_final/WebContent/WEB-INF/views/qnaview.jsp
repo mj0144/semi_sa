@@ -117,7 +117,7 @@ button:hover {
 		$(document).ready(function() {
 
 			$(document).on('click', '#delete_btn', function() {
-				alert('wdwd');
+				alert('삭제되었습니다.');
 
 				console.log($(this).children('#deleteqnapage'))
 

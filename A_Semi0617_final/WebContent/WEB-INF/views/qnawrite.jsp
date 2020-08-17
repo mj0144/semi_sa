@@ -75,10 +75,10 @@ button:hover {
 					</div>
 
 					<div class="form-group">
-						<input type="submit" value="작성하기" id="clickbtn"
-							class="btn py-3 px-4 btn-primary">
 							<button type="button" onclick="location.href='qnapage'"
-							class="list_btn btn btn-primary" style="float: right;">목록</button>
+							class="list_btn btn btn-primary" style="float: left; width:100px; height: 41px;">목록</button>
+						<input type="submit" value="작성하기" id="clickbtn"
+							class="btn py-3 px-4 btn-primary" style="float: right;">
 					</div>
 				</form>
 						
