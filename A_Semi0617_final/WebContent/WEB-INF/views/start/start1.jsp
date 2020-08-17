@@ -325,7 +325,7 @@ body {
 
 									<div class="panel panel-primary setup-content" id="step-3">
 										<div class="panel-heading">
-											<span class="login100-form-title p-b-49">당신의 이상형은? </span>
+											<span class="login100-form-title p-b-49">이상형은 어떤사람? </span>
 										</div>
 										<div class="panel-body">
 											<!-- Select Basic -->

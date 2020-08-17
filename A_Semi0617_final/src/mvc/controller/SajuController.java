@@ -98,10 +98,9 @@ public class SajuController {
       String name = (String) session.getAttribute("name");
       vo.setIlju(ilju);
       vo = iljudao.setIlju(vo);
+      //sky_num = 10일 경우 예외적용
       int sky_num = (vo.getIlju_sky_num()+5)%10;
-      if(sky_num== 0) {
-         sky_num = 10;
-      }
+      if(sky_num== 0) {sky_num = 10;}
       int land_num = 1;
       int aa = vo.getIlju_land_num();
       //천생연분 계산
