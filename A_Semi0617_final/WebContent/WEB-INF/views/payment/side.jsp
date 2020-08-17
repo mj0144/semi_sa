@@ -222,7 +222,7 @@
 			});
 	});
 	</script> -->
-
+<%@include file="notications.jsp"%>
 	
    <h1 id="colorlib-logo">
       <a href="mypage"><span class="img"

@@ -148,7 +148,7 @@ background: #1AA85C;
           <div class="card-body bg-white mt-0 shadow">
             <ul class="list-unstyled mb-5 position-relative">
               <li><b>1달</b>동안</li>
-              <li>이성추천기능<b>무제한</b></li>
+              <li>채팅<b>무제한</b></li>
               <li><b>연에인 닮은꼴</b>인연도 찾아보세요</li>
             </ul>
             <button type="button" class="btn btn-lg btn-block  btn-custom" onclick="location.href='pay_productcart?product_num=2'">Buy</button>
@@ -178,10 +178,10 @@ background: #1AA85C;
 
           <div class="card-body bg-white mt-0 shadow">
             <ul class="list-unstyled mb-5 position-relative">
-              <li><b>300</b> users included</li>
-              <li><b>20 GB</b> of storage</li>
-              <li><b>Free</b> Email support</li>
-              <li><b>Help center access</b></li>
+               <li><b>1달</b>동안</li>
+             <li>채팅<b>무제한</b></li>
+              <li>이성추천기능<b>무제한</b></li>
+              <li><b>연에인 닮은꼴</b>인연도 찾아보세요</li>
             </ul>
             <button type="button" class="btn btn-lg btn-block  btn-custom" onclick="location.href='pay_productcart?product_num=3'">Buy</button>
           </div>

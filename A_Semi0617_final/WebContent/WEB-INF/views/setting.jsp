@@ -131,7 +131,7 @@
 						</div>
 
 						<div class="text">
-							<span>회원님의 좋아요 및 채팅 알림기능을 on, off 할 수 있습니다.</span>
+							<span>결제내역</span>
 						</div>
 
 						<a href="#">Learn More</a>

@@ -8,27 +8,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-<!-- ÁÁ¾Æ¿ä ¹× ÁÁ¾Æ¿ä Ãë¼Ò  -->
+<!-- ì¢‹ì•„ìš” ë° ì¢‹ì•„ìš” ì·¨ì†Œ  -->
 <script>
  	function toggleImage() {
 		var like = 'false';
 		
-		var hearton = "resources/img/btn/hearton.png"; //Â÷ÀÖ´Â ÇÏÆ®
-		var heartoff = "resources/img/btn/heartoff.png"; //ºñ¾îÀÖ´Â ÇÏÆ®
+		var hearton = "resources/img/btn/hearton.png"; //ì°¨ìˆëŠ” í•˜íŠ¸
+		var heartoff = "resources/img/btn/heartoff.png"; //ë¹„ì–´ìˆëŠ” í•˜íŠ¸
 		
-		console.log("±Û¾´ÀÌ : " + $('#friend_num').val());
+		console.log("ê¸€ì“´ì´ : " + $('#friend_num').val());
 		
 		
 		var user_num = ${sessionScope.user_num};
 		
 		if ($('#img1').attr("src") === hearton) {
-				$('#img1').attr("src", "resources/img/btn/heartoff.png"); //ÇÏÆ® ¹ö¸²
-				$("img1").attr('data-original-title', 'ÁÁ¾Æ¿ä').tooltip('show');
+				$('#img1').attr("src", "resources/img/btn/heartoff.png"); //í•˜íŠ¸ ë²„ë¦¼
+				$("img1").attr('data-original-title', 'ì¢‹ì•„ìš”').tooltip('show');
 				like='false';
 			//console.log(${param.op_num});
 		} else {
-				$('#img1').attr("src", "resources/img/btn/hearton.png"); //ÇÏÆ® Ã¤¿ò
-				$('#img1').attr('data-original-title', 'ÁÁ¾Æ¿ä Ãë¼Ò').tooltip('show')
+				$('#img1').attr("src", "resources/img/btn/hearton.png"); //í•˜íŠ¸ ì±„ì›€
+				$('#img1').attr('data-original-title', 'ì¢‹ì•„ìš” ì·¨ì†Œ').tooltip('show')
 				like='true';
 		}
 		
@@ -53,28 +53,28 @@
 
 </script>
 
-<!-- ºí¶ô ¹× ºí¶ô Ãë¼Ò  -->
+<!-- ë¸”ë½ ë° ë¸”ë½ ì·¨ì†Œ  -->
 <script>
 
 	function blockImage() {
 		
 		var block = 'false';
 		
-		var blockon = "resources/img/btn/dislike.png"; //ºí¶ôÇÑ »óÅÂ(»¡°£»ö)
-		var blockoff = "resources/img/btn/like.png"; //ºí¶ô ¾ÈÇÑ »óÅÂ(±î¸¸»ö)
+		var blockon = "resources/img/btn/dislike.png"; //ë¸”ë½í•œ ìƒíƒœ(ë¹¨ê°„ìƒ‰)
+		var blockoff = "resources/img/btn/like.png"; //ë¸”ë½ ì•ˆí•œ ìƒíƒœ(ê¹Œë§Œìƒ‰)
 		
-		console.log("±Û¾´ÀÌ : " + $('#friend_num').val());
+		console.log("ê¸€ì“´ì´ : " + $('#friend_num').val());
 		
 		
 		var user_num = ${sessionScope.user_num};
 		
 		if ($('#img2').attr("src") === blockon) {
-				$('#img2').attr("src", "resources/img/btn/like.png"); //ºí¶ôÃë¼Ò
-				$('#img2').attr('data-original-title', 'ÃßÃµ Á¦¿Ü Ãë¼Ò').tooltip('show')
+				$('#img2').attr("src", "resources/img/btn/like.png"); //ë¸”ë½ì·¨ì†Œ
+				$('#img2').attr('data-original-title', 'ì¶”ì²œ ì œì™¸ ì·¨ì†Œ').tooltip('show')
 				block='true';
 		} else {
-				$('#img2').attr("src", "resources/img/btn/dislike.png"); //ºí¶ô
-				$('#img2').attr('data-original-title', 'ÃßÃµ¿¡¼­ Á¦¿Ü').tooltip('show')
+				$('#img2').attr("src", "resources/img/btn/dislike.png"); //ë¸”ë½
+				$('#img2').attr('data-original-title', 'ì¶”ì²œì—ì„œ ì œì™¸').tooltip('show')
 				block='false';
 		}
 		
@@ -86,7 +86,7 @@
 	
 	function blocked(pm){
 		
-		console.log("µé¾î¿À´Ï?");
+		console.log("ë“¤ì–´ì˜¤ë‹ˆ?");
 		
 		$.ajax({
 				url : "blockox",
@@ -105,7 +105,7 @@
 </script>
 
 <div id="colorlib-main">
-	
+
 	<section class="ftco-section">
 		<div class="hero-wrap" style="margin-bottom: -75px; margin-left: -27px;">
 			<div class="overlay"></div>
@@ -120,41 +120,42 @@
 								<c:choose>
 									<c:when test="${heartchk == 1}">
 										<img id="img1" src="resources/img/btn/hearton.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ÁÁ¾Æ¿ä Ãë¼Ò"/>
+										data-toggle="tooltip" data-placement="top" title="ì¢‹ì•„ìš” ì·¨ì†Œ"/>
 									</c:when>
 									<c:otherwise>
 										<img id="img1" src="resources/img/btn/heartoff.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ÁÁ¾Æ¿ä"/>
+										data-toggle="tooltip" data-placement="top" title="ì¢‹ì•„ìš”"/>
 									</c:otherwise>
 								</c:choose>
 								<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
 							</p>
 							<p style="text-align: center; margin-left: -300px;">
-							<!-- 	<a href="#">Ã¤ÆÃÇÏ±â<img src="images/chat.png" style="margin-left: 10px;"></a> -->
+							<!-- 	<a href="#">ì±„íŒ…í•˜ê¸°<img src="images/chat.png" style="margin-left: 10px;"></a> -->
 							</p>
-							<!-- ºí¶ô ¹× ºí¶ô Ãë¼Ò -->
+							<!-- ë¸”ë½ ë° ë¸”ë½ ì·¨ì†Œ -->
 							<p style="text-align: center; float: right;">
 								<c:choose>
 									<c:when test="${blockchk == 1}">
 										<img id="img2" src="resources/img/btn/like.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ÃßÃµ Á¦¿Ü Ãë¼Ò"/>
+										data-toggle="tooltip" data-placement="top" title="ì¶”ì²œ ì œì™¸ ì·¨ì†Œ"/>
 									</c:when>
 									<c:otherwise>
 										<img id="img2" src="resources/img/btn/dislike.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ÃßÃµ¿¡¼­ Á¦¿Ü"/>
+										data-toggle="tooltip" data-placement="top" title="ì¶”ì²œì—ì„œ ì œì™¸"/>
 									</c:otherwise>
 								</c:choose>
 							</p>
-							<!-- ºí¶ô ³¡ -->
+							<!-- ë¸”ë½ ë -->
 						</div>
 						<br>
 						<h1 class="mb-4">
-							<span>Àú´Â ${membervo.name}ÀÔ´Ï´Ù</span>
+							<span>ì €ëŠ” ${membervo.name}ì…ë‹ˆë‹¤</span>
 						</h1>
 						<p class="mb-4">${membervo.user_intro}</p>
 						<h3 class="signature h1">Eric</h3>
+						<button type="button" id="chatrequest" onclick="chatrequest()">ì±„íŒ…ì‹ ì²­</button>
 					</div>
-					<div id="boardBtn_group" ><button type="button" id="modal_open_btn" style="float: right;">½Å°íÇÏ±â</button></div>
+					<div id="boardBtn_group" ><button type="button" id="modal_open_btn" style="float: right;">ì‹ ê³ í•˜ê¸°</button></div>
 				</div>
 			</div>
 		</div>
@@ -179,7 +180,7 @@
 							class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18">
 								<div class="text d-flex align-items-center">
-									<span>¹ŞÀº ÁÁ¾Æ¿ä</span>
+									<span>ë°›ì€ ì¢‹ì•„ìš”</span>
 									<strong class="number" data-number="${liked_cnt}">0</strong> 
 								</div>
 							</div>
@@ -188,7 +189,7 @@
 							class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18">
 								<div class="text d-flex align-items-center">
-									<span>º¸³½ ÁÁ¾Æ¿ä</span>
+									<span>ë³´ë‚¸ ì¢‹ì•„ìš”</span>
 									<strong class="number" data-number="${like_cnt}">0</strong> 
 								</div>
 							</div>
@@ -197,7 +198,7 @@
 							class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18">
 								<div class="text d-flex align-items-center">
-									<span>°Ô½Ã±Û</span>
+									<span>ê²Œì‹œê¸€</span>
 									<strong class="number" data-number="${board_cnt}">0</strong> 
 								</div>
 							</div>
@@ -227,7 +228,7 @@
 				        <div class="modal-dialog  modal-dialog-centered" role="document">
 				            <div class="modal-content">
 				                <div class="modal-header">
-				                    <b><h2 class="modal-title" id="myModalLabel">ºÒ·®À¯Àú ½Å°íÇÏ±â</h2></b>
+				                    <b><h2 class="modal-title" id="myModalLabel">ë¶ˆëŸ‰ìœ ì € ì‹ ê³ í•˜ê¸°</h2></b>
 				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right;">
 				                        <span aria-hidden="true">&times;</span>
 				                    </button>
@@ -235,17 +236,17 @@
 				                <div class="modal-body" >
 										<hr style="color: gray;"><br><br>
 										<form method="post" id="checked" action="reportUser">
-										<input type="radio" name="report_comment" value="ÀÇ½É½º·´°Å³ª ½ºÆÔÀÔ´Ï´Ù." checked/> ÀÇ½É½º·´°Å³ª ½ºÆÔÀÔ´Ï´Ù. <br/><br/>
-										<input type="radio" name="report_comment" value="°èÁ¤ ÇØÅ·ÀÌ ÀÇ½ÉµË´Ï´Ù."/> °èÁ¤ ÇØÅ·ÀÌ ÀÇ½ÉµË´Ï´Ù.<br/><br/>
-										<input type="radio" name="report_comment" value="½Å°íÀÚ º»ÀÎ,¶Ç´Â Å¸ÀÎÀ» »çÄªÇÏ°í ÀÖ½À´Ï´Ù."/> ½Å°íÀÚ º»ÀÎ,¶Ç´Â Å¸ÀÎÀ» »çÄªÇÏ°í ÀÖ½À´Ï´Ù.<br/><br/>
-										<input type="radio" name="report_comment" value="ºÎÀûÇÕÇÑ °Ô½Ã¹°À» °Ô½ÃÇß½À´Ï´Ù."/> ºÎÀûÇÕÇÑ °Ô½Ã¹°À» °Ô½ÃÇß½À´Ï´Ù.<br/><br/>
-										<input type="radio" name="report_comment" value="±âÅ¸"/> ±âÅ¸<br/><br/>
+										<input type="radio" name="report_comment" value="ì˜ì‹¬ìŠ¤ëŸ½ê±°ë‚˜ ìŠ¤íŒ¸ì…ë‹ˆë‹¤." checked/> ì˜ì‹¬ìŠ¤ëŸ½ê±°ë‚˜ ìŠ¤íŒ¸ì…ë‹ˆë‹¤. <br/><br/>
+										<input type="radio" name="report_comment" value="ê³„ì • í•´í‚¹ì´ ì˜ì‹¬ë©ë‹ˆë‹¤."/> ê³„ì • í•´í‚¹ì´ ì˜ì‹¬ë©ë‹ˆë‹¤.<br/><br/>
+										<input type="radio" name="report_comment" value="ì‹ ê³ ì ë³¸ì¸,ë˜ëŠ” íƒ€ì¸ì„ ì‚¬ì¹­í•˜ê³  ìˆìŠµë‹ˆë‹¤."/> ì‹ ê³ ì ë³¸ì¸,ë˜ëŠ” íƒ€ì¸ì„ ì‚¬ì¹­í•˜ê³  ìˆìŠµë‹ˆë‹¤.<br/><br/>
+										<input type="radio" name="report_comment" value="ë¶€ì í•©í•œ ê²Œì‹œë¬¼ì„ ê²Œì‹œí–ˆìŠµë‹ˆë‹¤."/> ë¶€ì í•©í•œ ê²Œì‹œë¬¼ì„ ê²Œì‹œí–ˆìŠµë‹ˆë‹¤.<br/><br/>
+										<input type="radio" name="report_comment" value="ê¸°íƒ€"/> ê¸°íƒ€<br/><br/>
 										<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
 								</div>
 				                <div class="modal-footer">
-				                    <button type="submit" class="btn btn-primary" id="report_btn">Á¦Ãâ</button>
+				                    <button type="submit" class="btn btn-primary" id="report_btn">ì œì¶œ</button>
 				                     </form>
-				                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="report_cancel">Ãë¼Ò</button>
+				                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="report_cancel">ì·¨ì†Œ</button>
 				                </div>
 				            </div>
 				        </div>
@@ -258,7 +259,39 @@
 		});
 		
 		$('#report_btn').click(function() {
- 			alert('½Å°í°¡ Á¢¼öµÇ¾ú½À´Ï´Ù.')
+ 			alert('ì‹ ê³ ê°€ ì ‘ìˆ˜ë˜ì—ˆìŠµë‹ˆë‹¤.')
 		})
 	})
+	function chatrequest() {
+		var responeUser = $("#userNum").val(); //ë°›ëŠ”ì
+		var link = "chatRequest"
+		var param = new Object();
+		var requestUser = ${sessionScope.user_num}; //ë³´ë‚´ëŠ”ì
+		var nickname = $("#nickname").val();
+		console.log("nickname"+nickname);
+		param.notifyLink = link;
+		param.notifycontent = nickname+"ë‹˜ì´ íšŒì›ë‹˜ì—ê²Œ ì±„íŒ…ì„ ìš”ì²­í•˜ì˜€ìŠµë‹ˆë‹¤.";
+		param.notifyuser  = responeUser; //ë°›ëŠ”ì
+		param.notifyusernum = requestUser; //ë³´ë‚´ëŠ”ì
+		var paramJson = JSON.stringify(param);
+		$.ajax({
+			type : "POST",
+			url : "notifyin",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			data : paramJson,
+			success :  function(res){
+				console.log("ì•ŒëŒë³´ë‚´ê¸° ì„±ê³µ!!!");
+				if(res.result == "success"){
+					var notifyparam = 'ì±„íŒ…|'+link+"|"+nickname;
+					notifyon(notifyparam);
+				}else{
+					alert("ì•ŒëŒì„ ë³´ë‚´ëŠ”ë„ì¤‘ ajax ë¬¸ì œê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
+				}
+			},
+			error:function(request,status,error){
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			}
+		});
+	}
 	</script>

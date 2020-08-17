@@ -24,6 +24,7 @@ import mvc.utils.CommonUtils;
 import mvc.utils.FeedImgUpload;
 import mvc.vo.BoardVO;
 import mvc.vo.MemberVO;
+import mvc.vo.NotifyVO;
 
 @Controller
 public class BoardContollor {
@@ -93,6 +94,37 @@ public class BoardContollor {
 	}
 
 	// 댓글달기
+	@RequestMapping(value = "/reply", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> insertReply(@RequestBody HashMap<String, Object> params, HttpSession session,NotifyVO vo) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		String result = "fail";
+		int user_num; // 회원번호
+		String rcmtNum = ""; // 대댓글번호
+		//유효성 체크
+		if (commonUtils.isEmptyCstm((String) params.get("boardNum")) || commonUtils.isEmptyCstm((String) params.get("content"))) {
+			resultMap.put("result", result);
+			return resultMap;
+		}
+		if (!commonUtils.isEmptyCstm((String) params.get("recommentNum"))) {
+			rcmtNum = (String) params.get("recommentNum");
+		}
+		user_num = (int) session.getAttribute("user_num");
+		params.put("userNum", user_num);
+		params.put("recommentNum", rcmtNum);
+		System.out.println("전송 직전의 param : " + params.toString());
+		vo.setNotifyusernum(user_num);
+		vo.setNotifylink((String) params.get("notifyLink"));
+		vo.setNotifycontent((String) params.get("notifycontent"));
+		vo.setNotifyuser(Integer.parseInt((String) params.get("usernum")));
+		boardService.notifyReply(vo); // 알람내용 insert
+		int aflt = boardService.insertReply(params);
+		if (aflt == 1) {
+			result = "success";
+		}
+		resultMap.put("result", result);
+		return resultMap;
+	}
 
 
 	// 게시글 삭제
@@ -135,4 +167,49 @@ public class BoardContollor {
 		mav.setViewName("feedsearch");
 		return mav;
 	}
+	
+	//게시물 신고
+    @RequestMapping(value = "/reportBoard", method = RequestMethod.POST)
+    public String reportBoard(HttpSession session, String board_num, String report_board, HttpServletRequest request) throws Exception{
+       System.out.println("------------");
+       int user_num = (int) session.getAttribute("user_num");
+       String user_id = (String) session.getAttribute("user_id");
+       int board_num1 = Integer.parseInt(board_num);
+       System.out.println("파람 왓니"+board_num+"/+"+report_board+"/+"+user_num+"/+"+user_id);
+       HashMap<String, Object> map = new HashMap<String, Object>();
+       map.put("user_num", user_num);
+       map.put("board_num", board_num1);
+       map.put("reason", report_board);
+       map.put("user_id", user_id);
+       boarddao.reportBoard(map);
+       String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+    }
+    
+    //댓글신고
+    
+     @RequestMapping(value = "/reportComment", method = RequestMethod.POST) 
+     public String reportComment(HttpSession session, String comment_num, String board_num, String report_comment, HttpServletRequest request) throws Exception { 
+        System.out.println("댓글신고컨트롤러인데..왓니?");
+        int user_num = (int) session.getAttribute("user_num");
+        System.out.println(user_num);
+        String user_id = (String) session.getAttribute("user_id");
+        System.out.println(user_id);
+        int board_num1 = Integer.parseInt(board_num);
+        System.out.println(board_num);
+        int comment_num1 = Integer.parseInt(comment_num);
+        System.out.println(comment_num);
+        System.out.println("파람 왓니"+user_num+"/+"+user_id+"/+"+board_num1+"/+"+report_comment+"/"+comment_num1);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("user_num", user_num);
+        map.put("board_num", board_num1);
+        map.put("reason", report_comment);
+        map.put("user_id", user_id);
+        map.put("comment_num", comment_num1);
+        boarddao.reportComment(map);
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+    }
+	
+	
 }

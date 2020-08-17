@@ -54,10 +54,9 @@
 <script src="js/scrollax.min.js"></script>
 <script src="js/main.js"></script>
 <script src = " https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js "></script>
-<script src="resources/js/bootstrap-notify.js"></script>
+<script src="resources/js/bootstrap-notify.js" charset="EUC-KR"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 <script src="resources/js/notify.js"></script>
 <link href="css/notify.css" rel="stylesheet" type="text/css">
-
 </body>
 </html>

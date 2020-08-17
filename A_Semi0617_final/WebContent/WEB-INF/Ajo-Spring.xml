@@ -98,9 +98,27 @@
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 		
+
+		
+<aop:aspectj-autoproxy></aop:aspectj-autoproxy> 		
+	
+
+		
+
 	<!-- scheduler 설정 -->
 		<context:component-scan base-package="mvc.controller.scheduler"/>
 		<task:scheduler id="Scheduler"/>
 		<task:annotation-driven scheduler="Scheduler"/>
+		
+		
+	<bean id="GradeInterceptor" class="mvc.interceptor.GradeInterceptor"/>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/chatting/**"/>
+			<ref bean="GradeInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+		
+		
 		
 </beans>

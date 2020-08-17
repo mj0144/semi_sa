@@ -4,41 +4,42 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userinfo">
 
-   <!-- 원래 정보 뿌려주기. -->
-   <select id="info" parameterType="int" resultType="HashMap">
-      select * from user_info u, ideal_type i where u.user_num=#{user_num} and u.user_num=i.user_num
-   </select>
+	<!-- 원래 정보 뿌려주기. -->
+	<select id="info" parameterType="int" resultType="HashMap">
+		select * from user_info u, ideal_type i where u.user_num=#{user_num} and u.user_num=i.user_num
+	</select>
 
-   
-   
-   
-   
-   <update id="infoUpdate" parameterType="mem">
-      update user_info set 
-         user_img=#{user_img}, name=#{name}, nickname=#{nickname}, sex=#{sex}, 
-         birth_hh=#{birth_hh}, birth_mm=#{birth_mm}, birth=#{birth}, email=#{email}, 
-         saju_year=#{saju_year}, saju_mon=#{saju_mon}, saju_day=#{saju_day}, ilju=#{ilju}, 
-         user_mbti=#{user_mbti}, user_height=#{user_height}, user_body=#{user_body}, user_intro=#{user_intro}
-      where user_num=#{user_num}      
-   </update>
-   <update id="idealInfoUpdate" parameterType="ideal">        
+	<update id="infoUpdate" parameterType="mem">
+		update user_info set 
+			user_img=#{user_img}, name=#{name}, nickname=#{nickname}, sex=#{sex}, 
+			birth_hh=#{birth_hh}, birth_mm=#{birth_mm}, birth=#{birth}, email=#{email}, 
+			saju_year=#{saju_year}, saju_mon=#{saju_mon}, saju_day=#{saju_day}, ilju=#{ilju}, 
+			user_mbti=#{user_mbti}, user_height=#{user_height}, user_body=#{user_body}, user_intro=#{user_intro}
+		where user_num=#{user_num}		
+	</update>
+	
+	<update id="idealInfoUpdate" parameterType="ideal">		  
         update ideal_type set ideal_height=#{ideal_height}, ideal_age=#{ideal_age}, ideal_body=#{ideal_body} 
         where user_num=#{user_num}
-   
-   </update>
-   
-   <update id="pwdChange" parameterType="mem">
-      update user_info set pwd = #{pwd} where user_num = #{user_num}
-   </update>
-   
-   <select id="pwdchk" parameterType="int" resultType="String">
-      select pwd from user_info where user_num= #{user_num}
-   </select>
-   
-   
-   
-   
-   
-   
-   
+	
+	</update>
+	
+	<update id="pwdChange" parameterType="mem">
+		update user_info set pwd = #{pwd} where user_num = #{user_num}
+	</update>
+	
+	<select id="pwdchk" parameterType="int" resultType="String">
+		select pwd from user_info where user_num= #{user_num}
+	</select>
+	
+	<update id="looklike" parameterType="java.util.Map">
+		update lovetype set looklike=#{looklike}, percent=#{percent} where user_num= #{user_num}
+	</update>
+	
+	
+	
+	
+	
+	
+	
 </mapper>

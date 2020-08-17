@@ -12,11 +12,13 @@
 		<typeAlias type="mvc.vo.LikeVO" alias="like"/>
 		<typeAlias type="mvc.vo.BoardVO" alias="board"/>
 		<typeAlias type="mvc.vo.PageVO" alias="pvo"/>
+		<typeAlias type="mvc.vo.LoveTypeVO" alias="love"/>
 	
 		<typeAlias type="mvc.vo.PaymentVO" alias="payvo"/>
 		<typeAlias type="mvc.vo.ProductVO" alias="productvo"/>
 		<typeAlias type="mvc.vo.QnaVO" alias="qna"/>
 		<typeAlias type="mvc.vo.NotifyVO" alias="notify"/>
+		<typeAlias type="mvc.vo.ChatVO" alias="Chat"/>
 	
 	</typeAliases>
 </configuration>

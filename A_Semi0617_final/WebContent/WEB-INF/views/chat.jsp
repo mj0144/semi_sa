@@ -94,80 +94,78 @@
 <%@ include file="footer.jsp" %>
 
 <script>
-	$(document).ready(function() {
-		$("#chatsend").click(function() {
-			sendMessage();
+		$(document).ready(function() {
+			$("#chatsend").click(function() {
+				sendMessage();
+			});
 		});
-	});
-	var sock = new SockJS('<c:url value="/echo"/>');
-	//메세지가 나한테 전달됫을때 실행되는 함수
-	sock.onmessage = onMessage;
-	//연결을 해제할때 실행
-	sock.onclose = onClose;
-	//소켓 연결됫을때 실행됨
-	sock.onopen = function () {
-		console.log("소켓연결성공");
-	}
-
-	//메시지 전송
-	function sendMessage(){
-		sock.send($("#ChatText").val());
-		$('#ChatText').val('')
-	}
-	//서버로부터 메세지를 받음
-	function onMessage(evt) {
-		var data = evt.data;
-		var message = data.split('|');
-		var sender = message[0]; //보내는사람의 세션
-		var content = message[1]; //메세지내용
-		var sessionid = $('#sessionuserid').val();
-		if(sessionid == sender){
-			var printHTML = "<div class='outgoing_msg'>";
-			printHTML += "<div class='sent_msg'>";
-			printHTML += "<p>"+content+"</p>";
-			printHTML += "<span class='time_date_right'> 11:01 AM    |    June 9</span> </div>";
-			printHTML += "</div>";
-			$('#msg_history').append(printHTML);
-			if(content==="" || content === null){
-				console.log("테스트입니다.")
-				sender = "";
-				return sock.onclose;
-				if(sender === ""){
-					return false
+		var sock = new SockJS('<c:url value="/echo"/>');
+		//메세지가 나한테 전달됫을때 실행되는 함수
+		sock.onmessage = onMessage;
+		//연결을 해제할때 실행
+		sock.onclose = onClose;
+		//소켓 연결됫을때 실행됨
+		sock.onopen = function () {
+			console.log("소켓연결성공");
+		}
+		
+		//메시지 전송
+		function sendMessage(){
+			sock.send($("#ChatText").val());
+			$('#ChatText').val('')
+		}
+		//서버로부터 메세지를 받음
+		function onMessage(evt) {
+			var data = evt.data;
+			var message = data.split('|');
+			var sender = message[0]; //보내는사람의 세션
+			var content = message[1]; //메세지내용
+			var sessionid = $('#sessionuserid').val();
+			if(sessionid == sender){
+				var printHTML = "<div class='outgoing_msg'>";
+				printHTML += "<div class='sent_msg'>";
+				printHTML += "<p>"+content+"</p>";
+				printHTML += "<span class='time_date_right'> 11:01 AM    |    June 9</span> </div>";
+				printHTML += "</div>";
+				$('#msg_history').append(printHTML);
+				if(content==="" || content === null){
+					sender = "";
+					return sock.onclose;
+					if(sender === ""){
+						return false
+					}
 				}
-			}
-		}else{
-			var printHTML = '<div class="incoming_msg">';
-			printHTML += '<div class="incoming_msg_img">';
-			printHTML += '<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">';
-			printHTML += '</div>';
-			printHTML += '<div class="received_msg">';
-			printHTML += '<div class="received_withd_msg">';
-			printHTML += '<p>'+content+'</p>';
-			printHTML += '<span class="time_date_left">시간';
-			printHTML += '</span></div>';
-			printHTML += '</div>';
-			printHTML += '</div>';
-			$('#msg_history').append(printHTML);
-			if(content==="" || content === null){
-				console.log("테스트입니다.")
-				sender = "";
-				return sock.onclose;
-				if(sender === ""){
-					return false
+			}else{
+				var printHTML = '<div class="incoming_msg">';
+				printHTML += '<div class="incoming_msg_img">';
+				printHTML += '<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">';
+				printHTML += '</div>';
+				printHTML += '<div class="received_msg">';
+				printHTML += '<div class="received_withd_msg">';
+				printHTML += '<p>'+content+'</p>';
+				printHTML += '<span class="time_date_left">시간';
+				printHTML += '</span></div>';
+				printHTML += '</div>';
+				printHTML += '</div>';
+				$('#msg_history').append(printHTML);
+				if(content==="" || content === null){
+					sender = "";
+					return sock.onclose;
+					if(sender === ""){
+						return false
+					}
 				}
 			}
 		}
-	}
-	//서버로부터 연결이 끊음
-	function onClose(evt){
-		alert("채팅서버에 문제가 발생했습니다. 다시 접속해주세요.");
-		console.log("소켓끊김");
-	}
-	//엔터키로 인한 입력처리
-  	function enterkey() {
-        if (window.event.keyCode == 13) {
-        	sendMessage();
-        }
-    }
+		//서버로부터 연결이 끊음
+		function onClose(evt){
+			alert("채팅서버에 문제가 발생했습니다. 다시 접속해주세요.");
+			console.log("소켓끊김");
+		}
+		//엔터키로 인한 입력처리
+			function enterkey() {
+		    if (window.event.keyCode == 13) {
+		    	sendMessage();
+		    }
+		}
 </script>

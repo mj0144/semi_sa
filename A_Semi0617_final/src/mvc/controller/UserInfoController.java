@@ -51,15 +51,15 @@ public class UserInfoController {
 		model.addAttribute("vo", map);
 
 	}
+	
 	// 회원정보 수정.
 	@RequestMapping(value="/userInfoChange", method=RequestMethod.POST)
-	public ModelAndView infoChange(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
-		ModelAndView mav = new ModelAndView();
+	public String infoChange(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
+		//바뀐 회원정보 세팅
+		userInfoService.userInfoSetting(session, vo, request,file); 	
 
-		vo = userInfoService.userInfoSetting(session, vo, request,file); 	//바뀐 회원정보 세팅
-		mav = userInfoService.mypageSetting(session, vo, mav); //마이페이지로 다시 넘어가기 위한 값 세팅
-			
-		return mav;
+		return "redirect:/mypage";
+
 	}
 	
 

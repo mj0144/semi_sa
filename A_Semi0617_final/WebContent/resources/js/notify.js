@@ -1,26 +1,29 @@
-/*	var message;
+	var message;
 	function notifyon(evt) {
 		var a = evt.split('|');
-		var data = a[0];
-		var link = a[1];
-		var nickname = a[2];
+		console.log("notify·Î ³¯¶ó¿Â ¸Å°Ôº¯¼ö : "+a);
+		var data = a[0]; //³¯¶ó¿Â ¾Ë¸²ÀÌ ¹«¾ùÀÎÁö ±¸ºÐ
+		var link = a[1]; //¾Ë¸²ÀÇ ¸µÅ©
+		var nickname = a[2]; //´Ð³×ÀÓ
 		console.log(nickname);
 		if(data == '' || data == null){
-			alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.');
+			alert('¹®Á¦°¡ ¹ß»ýÇß½À´Ï´Ù. ´Ù½Ã ½Ãµµ ÇØÁÖ¼¼¿ä.');
 			return false
 		}
-		if(data == 'ï¿½ï¿½ï¿½'){
-			message = nickname+'ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Ò½ï¿½ï¿½Ï´ï¿½.';
+		if(data == '´ñ±Û'){
+			message = nickname+'´ÔÀÌ È¸¿ø´ÔÀÇ °Ô½Ã±Û¿¡ ´ñ±ÛÀ» ´Þ¾Ò½À´Ï´Ù.';
 		}
-		if(data == 'ï¿½ï¿½ï¿½ï¿½'){
-			message = nickname+'ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Ò½ï¿½ï¿½Ï´ï¿½.';
+		if(data == '´ë´ñ±Û'){
+			message = nickname+'´ÔÀÌ È¸¿ø´ÔÀÇ ´ñ±Û¿¡ ´ä±ÛÀ» ´Þ¾Ò½À´Ï´Ù.';
+		}
+		if(data == 'Ã¤ÆÃ'){
+			message = nickname+'´ÔÀÌ È¸¿ø´Ô¿¡°Ô Ã¤ÆÃÀ» ¿äÃ»ÇÏ¿´½À´Ï´Ù.';
 		}
 		var result = message+"|"+link+"|"+nickname;
 		console.log(result);
 		sock.send(result);
 	}
-	var sock = new SockJS('http://localhost:8080/AFinal/echo');
-	var notification;
+	var sock = new SockJS('http://localhost/AFinal/echo');
 	sock.onmessage = function onMessage(evt) {
 		var data = evt.data;
 		var notifyss = data.split('|');
@@ -31,7 +34,7 @@
 		if(sessionid != sender){
 			$.notify({
 			    icon: 'resources/img/bell.png',
-			    title: 'ï¿½ï¿½ ï¿½Ë¸ï¿½',
+			    title: '»õ ¾Ë¸²',
 			    message: message,
 			    url: link,
 			    target: '_blank'
@@ -72,13 +75,14 @@
 				'<a href="{3}" target="{4}" data-notify="url"></a>' +
 			    '</div>'
 			});
+			notifycations();
 		}
 	}
 
 	sock.onclose = function onClose() {
-		alert("ï¿½Ë¶ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½");
-		console.log("notifyï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		alert("¾Ë¶÷Ã¢ ¼­¹ö ¿À·ù ´Ù½Ã Á¢¼ÓÇØÁÖ¼¼¿ä");
+		console.log("notify¼­¹ö ¿¬°á²÷±è");
 	}
 	sock.onopen = function(){
-		console.log("notify ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
-	}*/
+		console.log("notify ¼ÒÄÏ ¿¬°á ¼º°ø");
+	}
