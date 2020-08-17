@@ -33,11 +33,11 @@
 	<p style="color: orange; text-align: center;">*이상형 인 연예인의 이름을
 		적어주세요*</p>
 	<div class="col-sm-12 pull-center well" style="margin-left: 400px;">
-		<form class="form-inline" action="feedsearch" method="post">
+		<form class="form-inline" action="lovesearch" method="post">
 
 			<div class="input-group custom-search-form">
 
-				<input type="text" name="keyword" class="form-control"
+				<input type="text" name="looklike" class="form-control"
 					placeholder="Search..."
 					style="width: 400px; border-radius: 10px 10px 10px 10px; border: 0.5px solid;">
 				&nbsp;&nbsp;&nbsp; <span class="input-group-btn">
@@ -55,53 +55,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-12"
 					style="text-align: center;">
 					<div class="single-team"></div>
-					<!-- 체크박스 -->
-					<div class="col-md-12" id="checkset"
-						style="border: 1px solid #240B3B; margin-bottom: 30px; padding: 30px; display: none;">
-						<form action="listchk" class="detailck" method="post">
-							<div class="boxes" style="padding-bottom: 30px;">
-								<!-- 성별 체크 박스 -->
-								<div style="float: left; margin-right: 100px;">성별</div>
-								<input type="checkbox" id="box-1" class="chk" name="sex"
-									value="m"
-									<c:if test="${set.sex =='m' ||set.sex == null }">checked</c:if>>
-								<label for="box-1">남자</label> <input type="checkbox" id="box-2"
-									class="chk" name="sex" value="f"
-									<c:if test="${set.sex =='f'||set.sex == null}">checked</c:if>>
-								<label for="box-2">여자</label> <input type="checkbox" id="box-3"
-									name="sex" value="a"
-									<c:if test="${set.sex == null}">checked</c:if>> <label
-									for="box-3">전체</label>
-
-							</div>
-							<hr>
-							<!-- 사주, MBTI 유무 체크박스 -->
-							<div class="boxes2" style="padding-bottom: 30px;">
-								<div style="float: left; margin-right: 100px;">선택</div>
-								<input type="checkbox" id="box2-1" class="chk2" name="samb"
-									value="saju" <c:if test="${set.samb != 'mbti'}">checked</c:if>>
-								<label for="box2-1">사주</label> <input type="checkbox"
-									id="box2-2" class="chk2" name="samb" value="mbti"
-									<c:if test="${set.samb != 'saju'}">checked</c:if>> <label
-									for="box2-2">MBTI</label> <input type="checkbox" id="box2-3"
-									name="samb" value="all"
-									<c:if test="${set.samb !='saju' && set.samb !='mbti'}">checked</c:if>>
-								<label for="box2-3">사주 + MBTI</label>
-							</div>
-							<div>
-								<c:choose>
-									<c:when test="${num >= 10 }">
-										<input type="button" value="실행" style="float: right;"
-											onclick="nextProfile()">
-									</c:when>
-									<c:otherwise>
-										<input type="submit" value="실행" style="float: right;">
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</form>
-					</div>
-					<!-- 체크박스 끝 -->
+					
 					<br>
 				</div>
 			</div>
@@ -263,31 +217,7 @@
 	</div>
 
 
-	<script>
-		// 	차트
-		new Chart(document.getElementById("radar-chart"), {
-			type : 'radar',
-			data : {
-				labels : [ "사주", "MBTI", "키", "지역" ],
-				datasets : [ {
-					label : "2050",
-					fill : true,
-					backgroundColor : "rgba(255,99,132,0.2)",
-					borderColor : "rgba(255,99,132,1)",
-					pointBorderColor : "#fff",
-					pointBackgroundColor : "rgba(255,99,132,1)",
-					pointBorderColor : "#fff",
-					data : [ 100, 100, 90, 0 ]
-				} ]
-			},
-			options : {
-				title : {
-					display : true,
-					text : '궁합 점수'
-				}
-			}
-		});
-	</script>
+
 
 	<script>
 		//하트 눌렀을 때, 하트 on/off 모양 변화		
@@ -407,68 +337,11 @@
 		}
 	</script>
 
-	<script>
-		// 체크박스 슬라이드 토글
-		$(document).on('click', '#set', function(event) {
-			$("#checkset").slideToggle();
-		});
-	</script>
+	
 
-	<script>
-		//체크박스 전체선택 및 전체해제(성별)
-		$(document).on('click', '#box-3', function(event) {
+	
 
-			if ($("#box-3").is(":checked")) {
-				$(".chk").prop("checked", true);
-			} else {
-				$(".chk").prop("checked", false);
-			}
-		});
-
-		// 체크박스 전체선택 및 전체 해제(선택) -->
-		$(document).on('click', '#box2-3', function(event) {
-
-			if ($("#box2-3").is(":checked")) {
-				$(".chk2").prop("checked", true);
-			} else {
-				$(".chk2").prop("checked", false);
-			}
-		});
-
-		// 한개의 체크박스 선택 해제시 전체선택 체크박스도 해제(성별)
-		$(document).on('click', '.chk', function(event) {
-			if ($("input[class='chk']:checked").length == 2) {
-				$("#box-3").prop("checked", true);
-			} else {
-				$("#box-3").prop("checked", false);
-			}
-		});
-
-		// 한개의 체크박스 선택 해제시 전체선택 체크박스도 해제(선택)
-		$(document).on('click', '.chk2', function(event) {
-			if ($("input[class='chk2']:checked").length == 2) {
-				$("#box2-3").prop("checked", true);
-			} else {
-				$("#box2-3").prop("checked", false);
-			}
-		});
-	</script>
-
-	<script>
-		//사주 & MBTI 모달구현
-		function saju() {
-			var url = 'sajumodal?user_num=' + $('#user_num').val();
-			//alert(url);
-			$('#modalall .modal-content').load(url);
-			$('#modalall').modal('show');
-		}
-
-		function mbti() {
-			var url = 'mbtimodal?user_num=' + $('#user_num').val();
-			$('#modalall .modal-content').load(url);
-			$('#modalall').modal('show');
-		}
-	</script>
+	
 
 	<script>
 		//이전페이지 이동

@@ -5,8 +5,8 @@
 
 <mapper namespace="lovetype">
 
-	<select id="list">
-		select * from lovetype
+	<select id="list" resultType="mem" parameterType="love">
+		select * from user_info where user_num in (select user_num from lovetype where looklike = #{looklike})
 	</select>
 
 </mapper>
