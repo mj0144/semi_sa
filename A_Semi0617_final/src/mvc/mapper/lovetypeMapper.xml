@@ -6,7 +6,12 @@
 <mapper namespace="lovetype">
 
 	<select id="list" resultType="mem" parameterType="love">
-		select * from user_info where user_num in (select user_num from lovetype where looklike = #{looklike})
+		select * from (select * from user_info where user_num in (select user_num from lovetype where looklike = #{looklike})
+order by DBMS_RANDOM.VALUE) WHERE ROWNUM = 1
+	</select>
+	
+	<select id="percent" resultType="String" parameterType="int">
+		select percent from lovetype where user_num = #{user_num}
 	</select>
 
 </mapper>
