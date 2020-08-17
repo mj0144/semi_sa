@@ -4,7 +4,6 @@
 <aside id="colorlib-aside" role="complementary"
    class="js-fullheight text-center">
    	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<!-- 알람 스크립트 -->
 	<script>
 		setTimeout(function notifycations(){
