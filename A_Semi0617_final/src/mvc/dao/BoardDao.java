@@ -58,8 +58,8 @@ public class BoardDao extends FeedAbstract {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<HashMap<String, String>> getSubReply(String board_num) throws Exception {
-		return (List<HashMap<String, String>>) selectList(nameSpace + "getSubReply", board_num);
+	public List<HashMap<String, Object>> getSubReply(String board_num) throws Exception {
+		return (List<HashMap<String, Object>>) selectList(nameSpace + "getSubReply", board_num);
 	}
 
 	// 전체 피드 검색 기능 (성현)

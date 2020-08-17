@@ -24,6 +24,7 @@ import mvc.utils.CommonUtils;
 import mvc.utils.FeedImgUpload;
 import mvc.vo.BoardVO;
 import mvc.vo.MemberVO;
+import mvc.vo.NotifyVO;
 
 @Controller
 public class BoardContollor {
@@ -93,6 +94,37 @@ public class BoardContollor {
 	}
 
 	// 댓글달기
+	@RequestMapping(value = "/reply", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> insertReply(@RequestBody HashMap<String, Object> params, HttpSession session,NotifyVO vo) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		String result = "fail";
+		int user_num; // 회원번호
+		String rcmtNum = ""; // 대댓글번호
+		//유효성 체크
+		if (commonUtils.isEmptyCstm((String) params.get("boardNum")) || commonUtils.isEmptyCstm((String) params.get("content"))) {
+			resultMap.put("result", result);
+			return resultMap;
+		}
+		if (!commonUtils.isEmptyCstm((String) params.get("recommentNum"))) {
+			rcmtNum = (String) params.get("recommentNum");
+		}
+		user_num = (int) session.getAttribute("user_num");
+		params.put("userNum", user_num);
+		params.put("recommentNum", rcmtNum);
+		System.out.println("전송 직전의 param : " + params.toString());
+		vo.setNotifyusernum(user_num);
+		vo.setNotifylink((String) params.get("notifyLink"));
+		vo.setNotifycontent((String) params.get("notifycontent"));
+		vo.setNotifyuser(Integer.parseInt((String) params.get("usernum")));
+		boardService.notifyReply(vo); // 알람내용 insert
+		int aflt = boardService.insertReply(params);
+		if (aflt == 1) {
+			result = "success";
+		}
+		resultMap.put("result", result);
+		return resultMap;
+	}
 
 
 	// 게시글 삭제
