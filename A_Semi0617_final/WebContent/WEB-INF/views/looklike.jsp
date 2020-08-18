@@ -23,24 +23,8 @@
                             <img id="profileimg" style="height:300px; width:200px;" src="resources/upload/${mylist.USER_IMG}">
                         </div>
                         <br>
-                        <div  style="text-align: center;">
-                        <%-- <h4>${mylist.NICKNAME} 님</h4>  --%>
-                        <!-- <input type="file" id="files" name="files" multiple="multiple"></div><br>
-                       <input style="margin: 0 auto;" width="250" type="button" id="changebtn" name="changebtn" value="value"
-                        onclick="changep()"> -->
-                <form method="post" id="form" action="changeP" name="changeP" enctype="multipart/form-data">
-                <div>
-         			<input type="file" id="file" name="file" style="display:none;" accept=".jpg,.jpeg,.png,.gif,.PNG">
-         			<div id="file_upload" style=""class="btn btn-outline-dark " 
-           			 onclick="document.getElementById('file').click()">사진변경</div>      
-    			  </div>
-                	
-                	<br>
-                
- 				<!--  <input type="file" id="file" name="file" accept=".jpg,.jpeg,.png,.gif,.PNG"/>
-  				<br><input type="submit" value="사진 변경하기" style="width: 200px;"> -->
-  				 <button class="btn btn-primary" type="button" id="send" style="text-align: center;" onclick="submitchange()">닮은 연예인 찾기!</button>
-				</form></div>
+                        <h4>나의 프로필 사진</h4>
+                        <h6 style="color: orange;">*프로필 수정시 결과는 바뀝니다.*</h6>
                 </div>
                
                 
