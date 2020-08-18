@@ -4,26 +4,25 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
-import javax.servlet.http.HttpSession;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Repository;
 
-@Controller
+@Repository
 public class ImageCrawling {
 	
-	@RequestMapping(value = "/image")
-	
-	   public void imgage(HttpSession session) throws Exception{
+	   public void imgage(HashMap<String, Object> mylist) throws Exception{
 		
-		String msg = "ÀÌ¿¤";
+		String msg = (String) mylist.get("LOOKLIKE");
+		
+		System.out.println("11111111111msg:"+msg);
         
-		String wtUrl = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=";
+		String wtUrl = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+msg;
 
         try {
             Document webtoonPage = Jsoup.connect(wtUrl).get();
@@ -42,7 +41,7 @@ public class ImageCrawling {
                 conn.setRequestProperty("Referer", src);
                 BufferedImage img = ImageIO.read(conn.getInputStream());
 
-                FileOutputStream out = new FileOutputStream("C:\\Users\\user\\Desktop\\img\\IMAG01_" + (i + 1) + ".jpg");
+                FileOutputStream out = new FileOutputStream("C:\\spring\\spworkspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\A_Semi0617_final\\resources\\upload\\IMAG01_" + (i + 1) + ".jpg");
                 ImageIO.write(img, "jpg", out);
             }
         } catch (IOException e) {

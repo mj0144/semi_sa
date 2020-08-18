@@ -16,12 +16,13 @@
       <h1 style="text-align: center;"><br><b>나랑 닮은 연예인은?</b></h1>
    </div>
    <section class="ftco-section contact-section">
-       <div class="container">
+       <div class="container" style="margin-left: 230px;">
          <div class="row">
                   <div class=".col-xs-6 .col-sm-4">
                         <div>
-                            <img id="profileimg" style="height:350px; width:250px;" src="resources/upload/${sessionScope.user_img}">
+                            <img id="profileimg" style="height:300px; width:200px;" src="resources/upload/${sessionScope.user_img}">
                         </div>
+                        <br>
                         <div  style="text-align: center;">
                         <%-- <h4>${mylist.NICKNAME} 님</h4>  --%>
                         <!-- <input type="file" id="files" name="files" multiple="multiple"></div><br>
@@ -33,7 +34,8 @@
          			<div id="file_upload" style=""class="btn btn-outline-dark " 
            			 onclick="document.getElementById('file').click()">사진변경</div>      
     			  </div>
-                
+                	
+                	<br>
                 
  				<!--  <input type="file" id="file" name="file" accept=".jpg,.jpeg,.png,.gif,.PNG"/>
   				<br><input type="submit" value="사진 변경하기" style="width: 200px;"> -->
@@ -54,7 +56,7 @@
                  <div class=".col-xs-6 .col-sm-4">
                     <div>
                         <div>
-                            <img style="height:400px; width:300px;" src="resources/img/default.png">
+                            <img style="height:300px; width:200px;" src="resources/upload/IMAG01_1.jpg">
                         </div>
                         <div>
                         <br>
