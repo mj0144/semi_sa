@@ -1,5 +1,6 @@
 package mvc.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -22,5 +23,10 @@ public class LooklikeDao {
 	}
 	public String percent(int num) throws Exception {
 		 return ss.selectOne("lovetype.percent", num);
-	}	
+	}
+	
+	//내 닮은꼴 정보들 불러오기
+	public HashMap<String, Object> mylook(int num) throws Exception{
+		return ss.selectOne("lovetype.mylook", num);
+	}
 }
