@@ -20,7 +20,7 @@
          <div class="row">
                   <div class=".col-xs-6 .col-sm-4">
                         <div>
-                            <img id="profileimg" style="height:300px; width:200px;" src="resources/upload/${sessionScope.user_img}">
+                            <img id="profileimg" style="height:300px; width:200px;" src="resources/upload/${mylist.USER_IMG}">
                         </div>
                         <br>
                         <div  style="text-align: center;">

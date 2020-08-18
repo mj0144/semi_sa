@@ -83,7 +83,7 @@ public class APIExamFace {
 					response = response + inputLine;
 				}
 				br.close();
-
+				
 				JSONParser jsonParser = new JSONParser();
 
 				JSONObject jsonObj = (JSONObject) jsonParser.parse(response);
@@ -96,11 +96,13 @@ public class APIExamFace {
 
 				String name = (String) celebrity.get("value");
 				String percent = String.valueOf(celebrity.get("confidence"));
-				percent = percent.substring(2, 4);
-				if (percent.equals("00")) {
+				
+				if (percent.equals("1.0")) {
 					percent = "100";
+				}else {
+					percent = percent.substring(2, 4);
 				}
-
+				
 				System.out.println(name + "/" + percent);
 
 				map.put("looklike", name);
