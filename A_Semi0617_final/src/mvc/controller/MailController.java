@@ -61,7 +61,7 @@ public class MailController {
 			Random r = new Random();
 			int dice = r.nextInt(157211) + 48271;
 
-			String setfrom = "sysoms@naver.com";
+			String setfrom = "soulmatch64@gmail.com";
 			String tomail = vo.getEmail(); // 받는 사람의 이메일
 			String title = "비밀번호 찾기 인증 이메일 입니다."; // 제목
 			String content =

@@ -46,8 +46,8 @@ public class JoinController {
 
 		try {
 			String images = imgUtils.root_path(request, vo.getUser_img());
-			System.out.println("컨트롤러에서 이미지경로" + images);
 			joinService.join(vo, ivo); // 회원정보,이상형정보 저장.
+			joinService.gradeInit(vo); //등급 초기화
 			lookLikeService.insertLooklike(images, vo, ivo);
 
 		} catch (Exception e) {
