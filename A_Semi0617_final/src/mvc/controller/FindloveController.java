@@ -49,12 +49,12 @@ public class FindloveController {
 	   }
 	   
 	   @RequestMapping(value = "/looklike")
-	      public ModelAndView looklike(HttpSession session) throws Exception{
+	      public ModelAndView looklike(HttpSession session,HttpServletRequest request) throws Exception{
 	         ModelAndView mav = new ModelAndView();
 	         int user_num = (int)session.getAttribute("user_num");
 	         HashMap<String, Object> mylist = looklikeDao.mylook(user_num);
 	         
-	         imagecrawling.imgage(mylist);
+	         imagecrawling.imgage(mylist ,request);
 	         
 	         System.out.println(mylist);
 	         mav.addObject("mylist", mylist);

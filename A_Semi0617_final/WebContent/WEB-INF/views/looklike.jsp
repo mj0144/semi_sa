@@ -46,7 +46,7 @@
                 
                    <div class=".col-xs-6 .col-sm-4">
                     <div>
-                        <img style="height:300px; width:400px;" src="resources/img/icon/here.png">
+                        <img style="height:150px; width:400px;" src="resources/img/icon/here.png">
                 </div>
                 <div>
                  <div><h1 style="text-align: center;"><b> ${mylist.PERCENT}%</b></h1>
