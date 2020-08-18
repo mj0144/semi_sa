@@ -6,16 +6,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpSession;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
 public class ImageCrawling {
-	public static void main(String[] args) {
+	
+	@RequestMapping(value = "/image")
+	
+	   public void imgage(HttpSession session) throws Exception{
 		
 		String msg = "ÀÌ¿¤";
         
-		String wtUrl = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+msg;
+		String wtUrl = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=";
 
         try {
             Document webtoonPage = Jsoup.connect(wtUrl).get();

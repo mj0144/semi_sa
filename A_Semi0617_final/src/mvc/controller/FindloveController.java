@@ -1,30 +1,18 @@
 package mvc.controller;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.dao.BlockDao;
 import mvc.dao.LikeDao;
 import mvc.dao.LooklikeDao;
-import mvc.service.LookLikeService;
-import mvc.utils.CommonUtils;
-import mvc.utils.FeedImgUpload;
-import mvc.utils.ImgUtils;
 import mvc.vo.LikeVO;
 import mvc.vo.LoveTypeVO;
 import mvc.vo.MemberVO;
@@ -39,32 +27,10 @@ public class FindloveController {
 
 	@Autowired
 	private LooklikeDao looklikeDao;
-	
-	@Autowired
-	private ImgUtils imgUtils;
 
-	@Autowired
-	private LookLikeService looklikeService;
-	
-	@RequestMapping(value = "/changeP", method = RequestMethod.POST)
-	public String changeP(MultipartFile file,HttpServletRequest request, HttpSession session, MemberVO vo) throws Exception {
-		System.out.println("ì»¨íŠ¸ë¡¤ëŸ¬ì™”ë‹ˆ?");
-		looklikeService.findface(session, request, file, vo);
-		String referer = request.getHeader("Referer");
-        return "redirect:"+ referer;
-		//String fileName = request.getParameter("file");
-        //System.out.println(file);
-        //String imgname = ImgUtils.imgSave(request, file, "in", null);
-		//System.out.println(imgname);
-	}
-	
 	@RequestMapping(value = "/looklike")
 	   public ModelAndView looklike(HttpSession session) throws Exception{
 	      ModelAndView mav = new ModelAndView();
-	      int user_num = (int)session.getAttribute("user_num");
-	      HashMap<String, Object> mylist = looklikeDao.mylook(user_num);
-	      System.out.println(mylist);
-	      mav.addObject("mylist", mylist);
 	      mav.setViewName("looklike");
 	      return mav;
 	   }
@@ -79,18 +45,18 @@ public class FindloveController {
 
 	}
 
-	// ë„¤ì´ë²„ ì–¼êµ´ì¸ì‹ APIê¸°ë°˜ ì´ìƒí˜• ì¶”ì²œ ( ì„±í˜„, ìˆ˜ì—° )
+	// ³×ÀÌ¹ö ¾ó±¼ÀÎ½Ä API±â¹İ ÀÌ»óÇü ÃßÃµ ( ¼ºÇö, ¼ö¿¬ )
 	@RequestMapping(value = "/lovesearch")
 	public String lovelist(LoveTypeVO vo, Model model, HttpSession session
 			) throws Exception {
 
-		// ì‚¬ìš©ì ë²ˆí˜¸ ì„¸ì…˜ìœ¼ë¡œ ë°›ì•„ì˜´
+		// »ç¿ëÀÚ ¹øÈ£ ¼¼¼ÇÀ¸·Î ¹Ş¾Æ¿È
 		int user_num = (int) session.getAttribute("user_num");
 
-		// ìœ ì €ê°€ ì°¨ë‹¨í•œ ì‚¬ëŒ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
+		// À¯Àú°¡ Â÷´ÜÇÑ »ç¶÷ ¸ñ·Ï °¡Á®¿À±â
 		List<Integer> blist = blockDao.blockList(user_num);
 
-		// ìœ ì €ê°€ ì¢‹ì•„ìš” ëˆ„ë¥¸ ì‚¬ëŒ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ê¸°
+		// À¯Àú°¡ ÁÁ¾Æ¿ä ´©¸¥ »ç¶÷ ¸®½ºÆ® °¡Á®¿À±â
 		List<LikeVO> listheart = likeDao.likeornot(user_num);
 		
 		MemberVO lovelist = looklikeDao.lovelist(vo);
