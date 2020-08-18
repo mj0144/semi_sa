@@ -87,7 +87,14 @@ public class APIExamFace {
 				JSONParser jsonParser = new JSONParser();
 
 				JSONObject jsonObj = (JSONObject) jsonParser.parse(response);
+				System.out.println("jsonµ•¿Ã≈∏"+jsonObj);
 				JSONArray facesArray = (JSONArray) jsonObj.get("faces");
+				//
+				JSONObject infoArray = (JSONObject) jsonObj.get("info");
+				System.out.println("infoArray:"+infoArray);
+				Long faceCount =  (Long) infoArray.get("faceCount");
+				System.out.println("faceCount:"+faceCount);
+				//
 				JSONObject celebrities = (JSONObject) facesArray.get(0);
 
 				JSONObject celebrity = (JSONObject) celebrities.get("celebrity");
