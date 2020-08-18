@@ -23,7 +23,7 @@
 		console.log(result);
 		sock.send(result);
 	}
-	var sock = new SockJS('/echo');
+	var sock = new SockJS('http://localhost/AFinal/echo');
 	sock.onmessage = function onMessage(evt) {
 		var data = evt.data;
 		var notifyss = data.split('|');
@@ -65,7 +65,6 @@
 				onClosed: null,
 			    template:
 			    '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
-			    '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">x</button>' +
 			    '<span data-notify="title">{1}</span>' +
 			    '<img data-notify="icon" class="img-circle pull-left">' +
 			    '<span data-notify="message">{2}</span>' +
