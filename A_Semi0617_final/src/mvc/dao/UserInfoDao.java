@@ -42,4 +42,6 @@ public class UserInfoDao {
 	public void looklike(Map<String, Object> params) {
 		ss.update("userinfo.looklike", params);
 	}
+	
+	
 }
