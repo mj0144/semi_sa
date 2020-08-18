@@ -210,6 +210,21 @@ public class BoardContollor {
         String referer = request.getHeader("Referer");
         return "redirect:"+ referer;
     }
+     
+   //´ñ±Û »èÁ¦
+   		@RequestMapping(value = "/commentDel", method = RequestMethod.GET)
+   		public void commentDel(@RequestParam int cm_num) throws Exception{
+   			boardService.commentDelete(cm_num);
+   			
+   		}
+   		
+   	//´ñ±Û ¼öÁ¤
+   		@RequestMapping(value = "/commentUpdate",  method = RequestMethod.POST)
+   		@ResponseBody
+   		public void commentUpdate(@RequestBody HashMap<String, String> params ) throws Exception{
+   			System.out.println(params);
+   			boardService.commentUpdate(params);
+   		}
 	
 	
 }
