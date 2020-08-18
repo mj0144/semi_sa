@@ -110,7 +110,7 @@ public class JoinService {
 			e.printStackTrace();
 		}
 	}
-	
+
 	//등급초기화
 	public void gradeInit(MemberVO vo) {
 		Map<String, Object> map = new HashMap<String, Object>();;

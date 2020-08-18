@@ -180,7 +180,7 @@ background: #1AA85C;
             <ul class="list-unstyled mb-5 position-relative">
                <li><b>1달</b>동안</li>
              <li>채팅<b>무제한</b></li>
-              <li>이성추천기능<b>무제한</b></li>
+              <li>이성추천기능<b>2배!</b></li>
               <li><b>연에인 닮은꼴</b>인연도 찾아보세요</li>
             </ul>
             <button type="button" class="btn btn-lg btn-block  btn-custom" onclick="location.href='pay_productcart?product_num=3'">Buy</button>

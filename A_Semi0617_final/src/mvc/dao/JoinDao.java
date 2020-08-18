@@ -68,7 +68,6 @@ public class JoinDao {
 		return ss.selectOne("join.emailchk", email);
 
 	}
-	
 
 	
 	//닮은연예인 추가 (수연)
