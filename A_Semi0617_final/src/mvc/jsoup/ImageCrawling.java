@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ImageCrawling {
 	
-	   public void imgage(HashMap<String, Object> mylist) throws Exception{
+	   public void imgage(HashMap<String, Object> mylist ,HttpServletRequest request) throws Exception{
 		
 		String msg = (String) mylist.get("LOOKLIKE");
 		
@@ -40,8 +41,12 @@ public class ImageCrawling {
 
                 conn.setRequestProperty("Referer", src);
                 BufferedImage img = ImageIO.read(conn.getInputStream());
-
-                FileOutputStream out = new FileOutputStream("C:\\spring\\spworkspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\A_Semi0617_final\\resources\\upload\\IMAG01_" + (i + 1) + ".jpg");
+                
+                String root_path = request.getSession().getServletContext().getRealPath("/");
+        		String attach_path = "/resources/upload/";
+        		String result = root_path + attach_path;
+        		
+                FileOutputStream out = new FileOutputStream(result+"\\IMAG01_" + (i + 1) + ".jpg");
                 ImageIO.write(img, "jpg", out);
             }
         } catch (IOException e) {
