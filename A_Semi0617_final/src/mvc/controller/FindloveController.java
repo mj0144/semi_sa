@@ -1,18 +1,24 @@
 package mvc.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.dao.BlockDao;
 import mvc.dao.LikeDao;
 import mvc.dao.LooklikeDao;
+import mvc.jsoup.ImageCrawling;
+import mvc.service.LookLikeService;
 import mvc.vo.LikeVO;
 import mvc.vo.LoveTypeVO;
 import mvc.vo.MemberVO;
@@ -28,12 +34,34 @@ public class FindloveController {
 	@Autowired
 	private LooklikeDao looklikeDao;
 
-	@RequestMapping(value = "/looklike")
-	   public ModelAndView looklike(HttpSession session) throws Exception{
-	      ModelAndView mav = new ModelAndView();
-	      mav.setViewName("looklike");
-	      return mav;
+	@Autowired
+	private LookLikeService looklikeService;
+
+	@Autowired
+	private ImageCrawling imagecrawling;
+	   
+	   
+	   @RequestMapping(value = "/changeP", method = RequestMethod.POST)
+	   public String changeP(MultipartFile file,HttpServletRequest request, HttpSession session, MemberVO vo) throws Exception {
+	      looklikeService.findface(session, request, file, vo);
+	      String referer = request.getHeader("Referer");
+	        return "redirect:"+ referer;
 	   }
+	   
+	   @RequestMapping(value = "/looklike")
+	      public ModelAndView looklike(HttpSession session) throws Exception{
+	         ModelAndView mav = new ModelAndView();
+	         int user_num = (int)session.getAttribute("user_num");
+	         HashMap<String, Object> mylist = looklikeDao.mylook(user_num);
+	         
+	         imagecrawling.imgage(mylist);
+	         
+	         System.out.println(mylist);
+	         mav.addObject("mylist", mylist);
+	         mav.setViewName("looklike");
+	         return mav;
+	      }
+	
 	
 	@RequestMapping(value = "/findlove")
 	public ModelAndView findlove(HttpSession session) throws Exception {
