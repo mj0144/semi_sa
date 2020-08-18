@@ -70,8 +70,19 @@
             
        </section>
    <script>
- //이미지 미리보기.
 
+  //이미지 미리보기.
+      $("#file").change(function() {
+         console.log("files[0] : " + this.files[0]);
+         console.log("files : " + this.files);
+         if (this.files && this.files[0]) {
+            var reader = new FileReader;
+            reader.onload = function(data) {
+               $("#profileimg").attr("src", data.target.result).width(250);
+            }
+            reader.readAsDataURL(this.files[0]);
+         }
+      });
  
  function submitchange() {
 			$('#form').submit();
