@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,16 +43,31 @@ public class PageListController {
 	@Autowired
 	private BlockDao blockDao;
 
+	@RequestMapping(value="/listWholeGet", method=RequestMethod.GET)
+	public String listWholeGet(String paymember, RedirectAttributes ar) {
+		System.out.println("listwolget");
+		ar.addAttribute("sex", "");
+		ar.addAttribute("samb", "");
+		ar.addAttribute("num", "");
+		ar.addAttribute("paymember", paymember);
+		return "redirect:/listWhole";
+	}
+	
+	
 	//리스트 뽑기
 	@RequestMapping(value= "/listWhole")
 	public String listWhole3(Model model, HttpSession session, 
 			@RequestParam(value = "sex", required = false, defaultValue = "m,f,a") String sex,
 			@RequestParam(value = "samb", required = false, defaultValue = "all") String samb,
-			@RequestParam(value = "num", required = false, defaultValue = "1") int num) {
+			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
+			HttpServletRequest request) {
 		
 		//사용자 번호 세션으로 받아옴
 		int user_num=(int)session.getAttribute("user_num");	
 		
+		//사용자의 결제여부/ 10:결제x 20:결제o
+		int paymember = (int) request.getAttribute("paymember");
+		System.out.println("paymember : " + paymember);
 		// 성별 값이 male, female 이 동시에 들어올 때 null값으로 처리
 		if (sex.length() > 1) {
 			sex = null;
@@ -125,6 +142,7 @@ public class PageListController {
 		// 90점 이상인 사람이 전체에서 몇 퍼센트인지 가져오기
 		int over90 = pagelistDao.getover90(map);
 		
+		model.addAttribute("paymember", paymember);
 		model.addAttribute("heart", listheart);
 		model.addAttribute("profile", profile);
 		model.addAttribute("ilju", ilju);

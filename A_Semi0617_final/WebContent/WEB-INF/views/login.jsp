@@ -364,7 +364,7 @@ body {
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_age" name="ideal_age"
 														class="form-control">
-														<c:forEach begin="0" step="1" end="15" var="i">
+														<c:forEach begin="20" step="1" end="60" var="i">
 															<option value="${i }">${i }</option>
 														</c:forEach>
 														

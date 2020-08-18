@@ -18,11 +18,13 @@ public class PayDao {
 	public void paySingleListInsert(PaymentVO vo) {
 		ss.insert("pay.paylistInsert", vo); //paylist에 결제정보 저장.
 		ss.insert("pay.singleInsert", vo); //상품에 따른 단/세트 제품 현황테이블에 정보 저장
+		ss.update("pay.singleGradeUpdate", vo); //단품 구매시, 등급업데이트.
 	}
 	@Transactional
 	public void paySetListInsert(PaymentVO vo) {
 		ss.insert("pay.paylistInsert", vo); //paylist에 결제정보 저장.
 		ss.insert("pay.setInsert", vo); //상품에 따른 단/세트 제품 현황테이블에 정보 저장
+		ss.update("pay.setGradeUpdate", vo); //세트구매시, 등급업데이트.
 	}
 	
 	

@@ -118,6 +118,12 @@
 			<ref bean="GradeInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/listWhole/**"/>
+			<ref bean="GradeInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 		
 		
 		

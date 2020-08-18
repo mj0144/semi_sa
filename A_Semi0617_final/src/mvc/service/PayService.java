@@ -42,6 +42,8 @@ public class PayService {
 		//아이디값 가져오기.
 		String user_id = payDao.selectUserId(vo.getBuyer_num());
 		vo.setUser_id(user_id);
+		
+		
 		//단품 상품
 		if(vo.getProduct_num() == 1) {			
 			payDao.paySingleListInsert(vo); //paylist테이블에 정보저장.			
