@@ -9,6 +9,7 @@
 	<insert id="roomIn">
 	insert into chatroom values(CHAT_ROOM_SEQ.nextval)
 	</insert>
+	
 	<select id="meList" parameterType="int" resultType="hashMap">
 select
 	a.chatnum, 
@@ -28,7 +29,70 @@ where
 	and 
 	(a.chatuser=c.user1 or a.chatuser=c.user2))
 and 
-	a.chatroom=#{roomNum}
-order by 1 desc
+	a.chatroom= #{roomNum}
+order by 1 asc
+	</select>
+	
+	<select id="roomSelect" parameterType="int" resultType="hashMap">
+select
+    a.user_num,
+	b.user_num,
+	b.nickname,
+	b.user_img,
+	
+	r.chatroom,
+	r.user1,
+	r.user2
+from
+	user_info a, chatroom r , user_info b
+where
+ a.user_num =  #{user_num}
+and
+	(a.user_num = r.user1 or a.user_num=r.user2)
+and
+    (b.user_num = r.user1 or b.user_num=r.user2) and a.user_num !=b.user_num
+	</select>
+	
+	<select id="inToSelect" parameterType="hashMap" resultType="hashMap">
+select
+	chatnum,
+	chatroom,
+	chatuser,
+	chatcontent,
+	chatdate,
+	
+	user_num,
+	nickname,
+	user_img
+from 
+	(select * from chat order by rownum desc) , user_info 
+where 
+	chatcontent = #{chatcontent} 
+and 
+	chatroom = #{chatroom} 
+and
+	chatuser = #{chatuser}
+and
+	rownum = 1
+	</select>
+	
+	<select id="responeSelect" parameterType="int" resultType="hashMap">
+select 
+	chatnum,
+	chatroom,
+	chatuser,
+	chatcontent,
+	chatdate,
+	
+	user_num,
+	nickname,
+	user_img
+from 
+	(select * from chat order by 1 desc) , user_info
+where 
+	chatroom = #{chatroom} 
+and 
+	rownum = 1
+	
 	</select>
 </mapper>	

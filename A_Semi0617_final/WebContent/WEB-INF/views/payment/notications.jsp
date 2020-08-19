@@ -2,15 +2,32 @@
     pageEncoding="EUC-KR"%>
 <link href="resources/css/notifycations.css" rel="stylesheet" id="bootstrap-css">
 <!-- <script src="resources/js/notifycations.js"></script> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-<nav class="navbar fixed-top navbar-light bg-faded" >
-	<a href="setting" style="margin-top:15px; float: left;"><img src="images/setting.png" style="width: 30px;"></a>
+<nav class="navbar fixed-top navbar-light bg-faded">
+	
+	<a href="setting" style="margin-top:20px; margin-left:30px; float: left; position: absolute; z-index: 11"><img src="images/setting.png" style="width: 30px;"></a>
 	<div class="chaticon" style="width:120px;  margin-top: 10px; float: left;" >
 	  		<div>
-	  		<img  src='resources/img/btn/chat.png' style="width:35px; margin-top:10px; margin-left:-350px; float: left;">
+	  		<img  src='resources/img/btn/chat1.png' style="width:40px; margin-left:280px; margin-top:10px; float: left; ">
 	  		</div>
-	  		<div style="margin-top:13px; margin-left: -710px;">
-	  		<h5 style="font: bold;">X${sessionScope.chatcount}</h5>
+	  		<div style="margin-top:20px; width:295px; margin-left: 90px;">
+		  		<div style="float: left; margin-left: 5px ">
+		  		<h6 style="font: bold;">X</h6>
+		  		</div>
+				<div>
+				<h6 style="font: bold;">
+		  		<c:choose>
+		  			<c:when test="${sessionScope.grade_name =='vip' ||sessionScope.grade_name =='vvip'}">
+		  				¹«Á¦ÇÑ</h6>
+		  			</c:when>
+		  			<c:otherwise>
+		  				${sessionScope.chatcount}</h6>
+		  			</c:otherwise>
+		  		</c:choose>
+				</div>
+
+	  		
 	  		</div>
 		</div>
 
