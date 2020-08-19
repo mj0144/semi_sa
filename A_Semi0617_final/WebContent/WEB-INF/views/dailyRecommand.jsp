@@ -231,20 +231,20 @@
 	
 	<script>
 		// 	차트
-		new Chart(document.getElementById("radar-chart"), {
-		    type: 'radar',
+		new Chart(document.getElementById("bar-chart"), {
+		    type: 'bar',
 		    data: {
-		      labels: ["사주", "MBTI", "키", "지역"],
+		      labels: ["사주", "MBTI","키"],
 		      datasets: [
 		        {
-		          label: "2050",
+		          label: "궁합점수",
 		          fill: true,
 		          backgroundColor: "rgba(255,99,132,0.2)",
 		          borderColor: "rgba(255,99,132,1)",
 		          pointBorderColor: "#fff",
 		          pointBackgroundColor: "rgba(255,99,132,1)",
 		          pointBorderColor: "#fff",
-		          data: [100,100,90,0]
+		          data: [100,90,50]
 		        }
 		      ]
 		    },
