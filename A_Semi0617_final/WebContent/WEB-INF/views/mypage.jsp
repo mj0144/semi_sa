@@ -22,8 +22,44 @@
                         <h1 class="mb-4"><span>${member.name }님의 마이페이지</span></h1>
                         <p class="mb-4">${member.user_intro }</p>
                         <h3 class="signature h1">${member.nickname }</h3>
-               </div>
-                  </div>
+                        <img src="resources/img/btn/chat.png" id="chat" style="cursor: pointer; width:40px;" data-toggle="tooltip" data-placement="top" title="chat">채팅확인
+                        
+<!--                         채팅확인 영역 시작-->
+                        <div class="col-md-12 col-md-offset-12 text-center" id="checkset" style="border: 1px solid #240B3B; margin-bottom: 30px; padding: 30px; display:none;">
+	                        <div class="widget-content-wrapper">
+                        		<div class="col-md-12 col-md-offset-12 text-center">
+								 	 <div class="single-team">
+							    			<div class="col-md-12">
+							    				<div class="blog-entry ftco-animate d-md-flex" style="float: left;">
+<!-- 							    				유저사진 -->
+												<img id="sajutwo" src="images/iu2.png" alt="iljuanimal" style="margin-top: 10px;" class="col-md-4">
+												<span class="col-md-6">
+												<h4>유저닉네임</h4>
+												<br>
+												나와의 점수
+												</span>
+												<button class="border-0 btn-transition btn btn-outline-success col-md-1"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger col-md-1"> <i class="fa fa-check"></i> </button> 
+												</div>
+												<div class="blog-entry ftco-animate d-md-flex">
+													
+												</div>
+												<div>
+								              		<p class="mb-2"></p>
+								           	 			<div class="meta-wrap">
+															<p class="meta"></p>
+							              				</div>
+								            		<p class="mb-4"> </p>
+								            		<br>
+												</div>
+												
+							    			</div>
+							    		
+							    		<a href="chat.do">채팅 보러가기</a>
+				 					</div>	
+	                     	   </div>
+                      	 	 </div>
+              			 </div>
+              	    </div>
                </div>
             </div>
          </section>
@@ -97,7 +133,12 @@
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 			stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 </div>
-
+	<script>
+		// 체크박스 슬라이드 토글
+		$(document).on('click', '#chat', function(event) {
+			$("#checkset").slideToggle(); 
+		});
+	</script>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>

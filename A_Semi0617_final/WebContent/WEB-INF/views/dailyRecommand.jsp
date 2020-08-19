@@ -65,7 +65,7 @@
 						  </div>
 						<div>
 						<c:choose>
-						<c:when test="${num >= paymember }">
+						<c:when test="${num >= 10 }">
 						<input type="button" value="실행" style="float: right;" onclick="nextProfile()">						
 						</c:when>
 						<c:otherwise>
@@ -228,44 +228,23 @@
 	  </div>
 	</div>
 	
-	<form action="chatting" id="chatting">
-		<div class="modal" tabindex="-1" role="dialog" id="modal">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title">결제확인</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-		        <p>채팅권이 소진됩니다. 채팅신청을 하시겠습니까?</p>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_pop()">취소</button>
-		        <button type="button" class="btn btn-primary" id="chatOn">확인</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</form>
-
+	
 	<script>
 		// 	차트
-		new Chart(document.getElementById("radar-chart"), {
-		    type: 'radar',
+		new Chart(document.getElementById("bar-chart"), {
+		    type: 'bar',
 		    data: {
-		      labels: ["사주", "MBTI", "키", "지역"],
+		      labels: ["사주", "MBTI","키"],
 		      datasets: [
 		        {
-		          label: "2050",
+		          label: "궁합점수",
 		          fill: true,
 		          backgroundColor: "rgba(255,99,132,0.2)",
 		          borderColor: "rgba(255,99,132,1)",
 		          pointBorderColor: "#fff",
 		          pointBackgroundColor: "rgba(255,99,132,1)",
 		          pointBorderColor: "#fff",
-		          data: [100,100,90,0]
+		          data: [100,90,50]
 		        }
 		      ]
 		    },
@@ -367,15 +346,9 @@
 		
 		//채팅.
 		function chatting(){
-			 $('#modal').show();
+			$('#profile').attr("action", "chatting");
+			$('#profile').submit();
 		}
-		function close_pop(flag) {
-            $('#modal').hide();
-       };
-       $('#chatOn').click(function(){
-    	   $('#chatting').submit();
-       })
-  
 		
 	</script>
 	
@@ -455,8 +428,7 @@
 		//다음페이지 이동
 		function nextProfile() {
 			//alert($("#num").val());
-			var paymember= ${paymember};
-			if ($("#num").val() > paymember) {
+			if ($("#num").val() > 10) {
 				alert("오늘 볼 수 있는 인원을 전부 소진했습니다.");
 			}else {
 				$("#nextProfile").submit();
