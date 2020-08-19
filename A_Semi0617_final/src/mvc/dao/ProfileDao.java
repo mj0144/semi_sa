@@ -1,5 +1,6 @@
 package mvc.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -61,4 +62,14 @@ public class ProfileDao {
 			ss.insert("profile.withdrawalInsert", vo);
 			ss.delete("profile.deletereason", vo.getUser_id());
 		}
+		
+	//follow List
+      public List<HashMap<String, Object>> followlist(int num) {
+         return ss.selectList("profile.followlist", num);
+      }
+	      
+	     //follower List
+	     public List<HashMap<String, Object>> followerlist(int num){
+	        return ss.selectList("profile.followerlist", num);
+	     }
 }
