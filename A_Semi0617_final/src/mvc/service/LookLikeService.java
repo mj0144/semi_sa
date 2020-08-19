@@ -40,11 +40,9 @@ public class LookLikeService {
    public boolean insertLooklike(String images, MemberVO vo,IdealVO ivo) {
        
        Map<String, Object> map = apiExamFace.face(images);
-       System.out.println("됐니?");
        System.out.println(vo.getUser_id());
        int user_num = joinDao.user_num(vo.getUser_id());
        map.put("user_num", user_num);
-       System.out.println("최종MAP:" + map);
        //System.out.println(vo.getUser_img());
        if (map.containsKey("looklike")) {
        joinDao.looklike(map);
@@ -55,15 +53,18 @@ public class LookLikeService {
        
     }
 
-   public void updateLooklike(HttpSession session,String image, MemberVO vo) {
+   public boolean updateLooklike(HttpSession session,String image, MemberVO vo) {
 	   int user_num =(int) session.getAttribute("user_num");
 	    Map<String, Object> map = apiExamFace.face(image);
 	    map.put("user_num", user_num);
-	    userinfodao.looklike(map);
+	    if (map.containsKey("looklike")) {
+	    	userinfodao.looklike(map);
+	        return true;
+	     }else {
+	        return false;
+	     }
 	    
-	    System.out.println("최종MAP:" + map);
-	      System.out.println(vo.getUser_img());
-
+	    
    }
    
    
