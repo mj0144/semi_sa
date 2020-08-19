@@ -106,6 +106,9 @@
          <input type="file" id="file" name="file" style="display:none;" accept=".jpg,.jpeg,.png,.gif,.PNG">
          <div id="file_upload" style=""class="btn btn-outline-dark " 
             onclick="document.getElementById('file').click()">사진추가</div>      
+            <button type="button" class="btn btn-outline-dark"
+                                                id="imgchk">사람확인</button>
+                                                <br><label id="imglabel"></label>
       </div>
       <!-- Select Basic -->
       <div class="form-group">
@@ -455,7 +458,53 @@ $(function(){
       });
       //https://kuzuro.blogspot.com/2018/10/11.html
    </script>
+   
+   <!-- 정보수정시 img 사람인지아닌지 체크 -->
+   
+   
    <script>
+   
+   
+   var imgchk = 'false';
+   //프로필사진 체크.
+   $('#imgchk').click(function() {
+      //console.log('imgimg클릭되었니?')
+      //var image = $("#file").val();
+      //console.log(image);
+      var formData = new FormData();
+      var inputFile = $("input[name='file']");
+      var files = inputFile[0].files;
+      console.log(files);
+            
+      for (var i = 0; i < files.length; i++) {
+         formData.append("uploadFile", files[i]);
+      }
+      
+       $.ajax({
+         url : "imgchk",
+         processData: false,
+         contentType: false,
+         data: formData,
+         type : "POST",
+         enctype: 'multipart/form-data',
+         success : function(data) {
+            if (data !== 1) {
+               imgchk = 'false';
+               document.getElementById("imglabel").innerHTML = "<p style='color:red'>얼굴사진을 넣어주세요</p>";
+               }else {
+                  imgchk = 'true';
+                  document.getElementById("imglabel").innerHTML = "<p style='color:green'>얼굴사진 입니다.</p>";
+               }   
+            },
+         error : function(request, status, error) {
+            alert("code = " + request.status + " message = "
+                  + request.responseText + " error = " + error); // 실패 시 처리
+            }
+         }) 
+
+      })
+   
+   
       /*
        처리해야할것.
        1. 중복체크를 했는지
@@ -595,7 +644,7 @@ $(function(){
                   })
 
       $('#send').on('click', function() {
-         if (nickchk==='true' && idchk==='true' && rexemail==='true' && namechk==='true') {   //모든 체크가 완료시 submit;         
+         if (nickchk==='true' && idchk==='true' && rexemail==='true' && namechk==='true' && imgchk === 'true') {   //모든 체크가 완료시 submit;         
             $('#form').submit();
          } else if (emailchk === 'false') {
             alert("이메일 중복체크를 해주세요");
@@ -612,6 +661,8 @@ $(function(){
             alert('이름을 입력해주세요');
             return;
             
+         }else if(imgchk === 'false'){
+             alert("프로필사진을 얼굴로 설정해주세요");
          }
          
       })

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -14,51 +14,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png"
-	href="resources/images/icons/favicon.ico" />
+   href="resources/images/icons/favicon.ico" />
 <link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
+   href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+   rel="stylesheet" id="bootstrap-css">
 <script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/vendor/bootstrap/css/bootstrap.min.css">
+   href="resources/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+   href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/fonts/iconic/css/material-design-iconic-font.min.css">
+   href="resources/fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/vendor/animate/animate.css">
+   href="resources/vendor/animate/animate.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/vendor/css-hamburgers/hamburgers.min.css">
+   href="resources/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/vendor/animsition/css/animsition.min.css">
+   href="resources/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/vendor/select2/select2.min.css">
+   href="resources/vendor/select2/select2.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="resources/vendor/daterangepicker/daterangepicker.css">
+   href="resources/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 <link rel="icon" href="images/person_1.png" type="images/water.png" />
 <link href="resources/css/util.css" rel="stylesheet">
 <link href="resources/css/main.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!--===============================================================================================-->
-<!-- À¥ÆùÆ® -->
+<!-- ì›¹í°íŠ¸ -->
 <link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&family=Noto+Serif+KR:wght@200;900&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&family=Noto+Serif+KR:wght@200;900&display=swap"
+   rel="stylesheet">
 <link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Serif+KR:wght@200;900&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Serif+KR:wght@200;900&display=swap"
+   rel="stylesheet">
 <!-- Date Picker -->
 <link rel="stylesheet" href="css/w3.css">
 <!--- This is the local w3css extended --->
@@ -66,87 +66,87 @@
 
 
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+   href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/jquery-ui.css">
 <style>
 .jumbotron {
-	color: #FBEFFB;
-	background-color: #F7F8E0;
+   color: #FBEFFB;
+   background-color: #F7F8E0;
 }
 
 body {
-	margin-top: 30px;
+   margin-top: 30px;
 }
 
 .stepwizard-step p {
-	margin-top: 0px;
-	color: #666;
+   margin-top: 0px;
+   color: #666;
 }
 
 .stepwizard-row {
-	display: table-row;
+   display: table-row;
 }
 
 .stepwizard {
-	display: table;
-	width: 100%;
-	position: relative;
+   display: table;
+   width: 100%;
+   position: relative;
 }
 
 .stepwizard-step button[disabled] {
-	/*opacity: 1 !important;
+   /*opacity: 1 !important;
     filter: alpha(opacity=100) !important;*/
-	
+   
 }
 
 .stepwizard .btn.disabled, .stepwizard .btn[disabled], .stepwizard fieldset[disabled] .btn
-	{
-	opacity: 1 !important;
-	color: #bbb;
+   {
+   opacity: 1 !important;
+   color: #bbb;
 }
 
 .stepwizard-row:before {
-	top: 14px;
-	bottom: 0;
-	position: absolute;
-	content: " ";
-	width: 100%;
-	height: 1px;
-	background-color: #ccc;
-	z-index: 0;
+   top: 14px;
+   bottom: 0;
+   position: absolute;
+   content: " ";
+   width: 100%;
+   height: 1px;
+   background-color: #ccc;
+   z-index: 0;
 }
 
 .stepwizard-step {
-	display: table-cell;
-	text-align: center;
-	position: relative;
+   display: table-cell;
+   text-align: center;
+   position: relative;
 }
 
 .btn-circle {
-	width: 30px;
-	height: 30px;
-	text-align: center;
-	padding: 6px 0;
-	font-size: 12px;
-	line-height: 1.428571429;
-	border-radius: 15px;
+   width: 30px;
+   height: 30px;
+   text-align: center;
+   padding: 6px 0;
+   font-size: 12px;
+   line-height: 1.428571429;
+   border-radius: 15px;
 }
 
-#mbtihover:hover { <---- 'menubar '¾È¿¡ ÀÖ´Â divµé¿¡°Ô ¸¶¿ì½º¸¦ ¿Ã¸®¸é background:#555;
-	color: #ff00ff;
-	<----
-	¹è°æ»öÀÌ
-	#555»ö»óÀ¸·Î
-	º¯ÇÏ°í
-	±ÛÀÚ»ö»óÀÌ
-	#fff»ö»óÀ¸·Î
-	º¯ÇØ¿ä!
+#mbtihover:hover { <---- 'menubar 'ì•ˆì— ìˆëŠ” divë“¤ì—ê²Œ ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ë©´ background:#555;
+   color: #ff00ff;
+   <----
+   ë°°ê²½ìƒ‰ì´
+   #555ìƒ‰ìƒìœ¼ë¡œ
+   ë³€í•˜ê³ 
+   ê¸€ììƒ‰ìƒì´
+   #fffìƒ‰ìƒìœ¼ë¡œ
+   ë³€í•´ìš”!
 }
 
 body {
-	margin: 0;
-	padding: 0;
+   margin: 0;
+   padding: 0;
 }
 </style>
 
@@ -154,6 +154,7 @@ body {
 
 
 <body>
+
 	<div
 		style="background-image: url('resources/img/start/couple2.gif'); background-size: 100% 100%; overflow: hidden; margin_top: 0%">
 		<div class="limiterw">
@@ -205,20 +206,20 @@ body {
 										id="step-1">
 										<div class="jumbotron well">
 											<h1 class="login100-form-title p-b-49 text-center"
-												style="color: black;">Ã³À½ ¹æ¹®ÇÏ¼Ì³ª¿ä?</h1>
+												style="color: black;">ì²˜ìŒ ë°©ë¬¸í•˜ì…¨ë‚˜ìš”?</h1>
 											<h4 class="text-center" style="color: black;">
-												MBTI¿Í »ıÀÏ µî °£´ÜÇÑ Á¤º¸¸¦ ÀÔ·ÂÇÏ½Ã¸é <br>ÀÎ¿¬À» ÃßÃµÇØµå·Á¿ä
+												MBTIì™€ ìƒì¼ ë“± ê°„ë‹¨í•œ ì •ë³´ë¥¼ ì…ë ¥í•˜ì‹œë©´ <br>ì¸ì—°ì„ ì¶”ì²œí•´ë“œë ¤ìš”
 											</h4>
 										</div>
 										<div class="panel-heading">
-											<span class="login100-form-title p-b-30"> ÅÂ¾î³­ ³¯À»
-												ÀÔ·ÂÇØº¸¼¼¿ä. </span> <label>ÅÂ¾î³­ ½Ã°£À» ¸ğ¸¦ °æ¿ì 00½Ã 00ºĞ Ã¼Å©</label>
+											<span class="login100-form-title p-b-30"> íƒœì–´ë‚œ ë‚ ì„
+												ì…ë ¥í•´ë³´ì„¸ìš”. </span> <label>íƒœì–´ë‚œ ì‹œê°„ì„ ëª¨ë¥¼ ê²½ìš° 00ì‹œ 00ë¶„ ì²´í¬</label>
 										</div>
 										<div class="panel-body text-center">
 											<table style="margin: auto; text-align: center;">
 												<tbody>
 													<tr>
-														<th><br>»ı³â¿ùÀÏ</th>
+														<th><br>ìƒë…„ì›”ì¼</th>
 														<c:set var="birth" value="${vo.getBirth()}" />
 														<td>&nbsp;<br> <input name="birth" type="text"
 															style="text-decoration: none; width: 100px" id=form_dt
@@ -228,12 +229,12 @@ body {
 														<td><br></td>
 													</tr>
 													<tr>
-														<th>ÅÂ¾î³­ ½Ã°£</th>
+														<th>íƒœì–´ë‚œ ì‹œê°„</th>
 														<td><div class="row">
 																<div class="col-4">
 																	<select name="info_hh" class="w3-select">
 																		<c:forEach begin="0" step="1" end="23" var="i">
-																			<option value="${i }">${i }½Ã</option>
+																			<option value="${i }">${i }ì‹œ</option>
 																		</c:forEach>
 
 																	</select>
@@ -241,7 +242,7 @@ body {
 																<div class="col-4">
 																	<select name="info_mm" class="w3-select">
 																		<c:forEach begin="0" step="1" end="59" var="i">
-																			<option value="${i }" style='width: 20px;'>${i }ºĞ</option>
+																			<option value="${i }" style='width: 20px;'>${i }ë¶„</option>
 																		</c:forEach>
 
 																	</select>
@@ -260,7 +261,7 @@ body {
 
 									<div class="panel panel-primary setup-content" id="step-2">
 										<div class="panel-heading">
-											<span class="login100-form-title p-b-49"> MBTI¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä
+											<span class="login100-form-title p-b-49"> MBTIë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”
 											</span>
 
 										</div>
@@ -268,7 +269,7 @@ body {
 											<!-- Text input-->
 											<div class="form-group">
 												<label class="col-md-4 control-label" for="textinput">MBTI
-													¼±ÅÃ</label>
+													ì„ íƒ</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="user_mbti" name="user_mbti"
 														class="form-control">
@@ -293,11 +294,11 @@ body {
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label" id="mbtihover">MBTI¸¦
-													¸ğ¸£½Ê´Ï±î?</label>
+												<label class="control-label" id="mbtihover">MBTIë¥¼
+													ëª¨ë¥´ì‹­ë‹ˆê¹Œ?</label>
 												<button type="button" class="btn btn-primary"
 													data-toggle="modal" data-target="#myModal">MBTI
-													°£´ÜÃ¼Å©ÇÏ±â</button>
+													ê°„ë‹¨ì²´í¬í•˜ê¸°</button>
 												<br>
 												<div class="modal fade" id="myModal" tabindex="-1"
 													role="dialog" aria-labelledby="myModalLabel">
@@ -306,7 +307,7 @@ body {
 															<div class="modal-header">
 
 																<h4 class="modal-title" id="myModalLabel">MBTI
-																	°£´ÜÃ¼Å©ÇÏ±â!</h4>
+																	ê°„ë‹¨ì²´í¬í•˜ê¸°!</h4>
 															</div>
 															<div class="modal-body">
 																<img src="resources/img/start/mbtiinfo.jpg"
@@ -314,7 +315,7 @@ body {
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn btn-default"
-																	data-dismiss="modal">´İ±â</button>
+																	data-dismiss="modal">ë‹«ê¸°</button>
 															</div>
 														</div>
 													</div>
@@ -328,12 +329,12 @@ body {
 
 									<div class="panel panel-primary setup-content" id="step-4">
 										<div class="panel-heading">
-											<span class="login100-form-title p-b-49">´ç½ÅÀÇ ÀÌ»óÇüÀº? </span>
+											<span class="login100-form-title p-b-49">ë‹¹ì‹ ì˜ ì´ìƒí˜•ì€? </span>
 										</div>
 										<div class="panel-body">
 											<!-- Select Basic -->
 											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">ÀÌ»óÇü ¸ö¹«°Ô</label>
+												<label class="col-md-4 control-label" for="selectbasic">ì´ìƒí˜• ëª¸ë¬´ê²Œ</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_body" name="ideal_body"
 														class="form-control">
@@ -346,7 +347,7 @@ body {
 
 											<!-- Select Basic -->
 											<div class="form-group">
-												<label class="col-md-4 control-label" for="Å°">ÀÌ»óÇü Å°</label>
+												<label class="col-md-4 control-label" for="í‚¤">ì´ìƒí˜• í‚¤</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_height" name="ideal_height"
 														class="form-control">
@@ -359,7 +360,7 @@ body {
 											</div>
 											<!-- Select Basic -->
 											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">ÀÌ»óÇü ³ªÀÌ</label>
+												<label class="col-md-4 control-label" for="selectbasic">ì´ìƒí˜• ë‚˜ì´</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_age" name="ideal_age"
 														class="form-control">
@@ -378,12 +379,12 @@ body {
 
 									<div class="panel panel-primary setup-content" id="step-3">
 										<div class="panel-heading">
-											<span class="login100-form-title p-b-49">³ªÀÇ Á¤º¸ </span>
+											<span class="login100-form-title p-b-49">ë‚˜ì˜ ì •ë³´ </span>
 										</div>
 										<div class="panel-body">
 											<!-- Select Basic -->
 											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">³ªÀÇ ¸ö¹«°Ô</label>
+												<label class="col-md-4 control-label" for="selectbasic">ë‚˜ì˜ ëª¸ë¬´ê²Œ</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="user_body" name="user_body"
 														class="form-control">
@@ -396,7 +397,7 @@ body {
 
 											<!-- Select Basic -->
 											<div class="form-group">
-												<label class="col-md-4 control-label" for="Å°">Å°</label>
+												<label class="col-md-4 control-label" for="í‚¤">í‚¤</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="user_height" name="user_height"
 														class="form-control">
@@ -409,21 +410,21 @@ body {
 											</div>
 											<!-- Select Basic -->
 											<div class="form-group">
-												<label class="col-md-4 control-label" for="selectbasic">»ç´Â
-													Áö¿ª</label>
+												<label class="col-md-4 control-label" for="selectbasic">ì‚¬ëŠ”
+													ì§€ì—­</label>
 												<div class="col-md-3" style="float: none; margin: 0 auto;">
 													<select id="user_loc" name="user_loc" class="form-control">
-														<option value="¼­¿ïÆ¯º°½Ã">¼­¿ïÆ¯º°½Ã</option>
-														<option value="°æ±âµµ">°æ±âµµ</option>
-														<option value="°­¿øµµ">°­¿øµµ</option>
-														<option value="°æ»ó³²µµ">°æ»ó³²µµ</option>
-														<option value="°æ»óºÏµµ">°æ»óºÏµµ</option>
-														<option value="ÃæÃ»³²µµ">ÃæÃ»³²µµ</option>
-														<option value="ÃæÃ»ºÏµµ">ÃæÃ»ºÏµµ</option>
-														<option value="Àü¶ó³²µµ">Àü¶ó³²µµ</option>
-														<option value="Àü¶óºÏµµ">Àü¶óºÏµµ</option>
-														<option value="Á¦ÁÖµµ">Á¦ÁÖµµ</option>
-														<option value="±âÅ¸">±âÅ¸</option>
+														<option value="ì„œìš¸íŠ¹ë³„ì‹œ">ì„œìš¸íŠ¹ë³„ì‹œ</option>
+														<option value="ê²½ê¸°ë„">ê²½ê¸°ë„</option>
+														<option value="ê°•ì›ë„">ê°•ì›ë„</option>
+														<option value="ê²½ìƒë‚¨ë„">ê²½ìƒë‚¨ë„</option>
+														<option value="ê²½ìƒë¶ë„">ê²½ìƒë¶ë„</option>
+														<option value="ì¶©ì²­ë‚¨ë„">ì¶©ì²­ë‚¨ë„</option>
+														<option value="ì¶©ì²­ë¶ë„">ì¶©ì²­ë¶ë„</option>
+														<option value="ì „ë¼ë‚¨ë„">ì „ë¼ë‚¨ë„</option>
+														<option value="ì „ë¼ë¶ë„">ì „ë¼ë¶ë„</option>
+														<option value="ì œì£¼ë„">ì œì£¼ë„</option>
+														<option value="ê¸°íƒ€">ê¸°íƒ€</option>
 													</select>
 												</div>
 											</div>
@@ -437,77 +438,77 @@ body {
 
 									<div class="panel panel-primary setup-content" id="step-5">
 										<div class="panel-heading">
-											<span class="login100-form-title p-b-49">»ó¼¼Á¤º¸ </span>
+											<span class="login100-form-title p-b-49">ìƒì„¸ì •ë³´ </span>
 
 										</div>
 										<div class="panel-body ">
 											<table style="margin: auto; text-align: center;">
 												<tbody>
 													<tr>
-														<th>¾ÆÀÌµğ</th>
+														<th>ì•„ì´ë””</th>
 														<td><p>
-																<input class="w3-input" placeholder="¾ÆÀÌµğ" type="text"
+																<input class="w3-input" placeholder="ì•„ì´ë””" type="text"
 																	required="required" name="user_id" id="join_user_id"><label
 																	id="idlabel"></label>
 															</p></td>
 														<td><button type="button" class="btn btn-warning"
-																id="idchk">Áßº¹È®ÀÎ</button></td>
+																id="idchk">ì¤‘ë³µí™•ì¸</button></td>
 													</tr>
 													<tr>
-														<th>ºñ¹Ğ¹øÈ£</th>
+														<th>ë¹„ë°€ë²ˆí˜¸</th>
 														<td><p>
-																<input class="w3-input" placeholder="ºñ¹Ğ¹øÈ£"
+																<input class="w3-input" placeholder="ë¹„ë°€ë²ˆí˜¸"
 																	type="password" required="required" name="pwd" id="join_pwd">
 															</p></td>
 													</tr>
 
 													<tr>
 														
-														<th>ºñ¹Ğ¹øÈ£ È®ÀÎ</th>
+														<th>ë¹„ë°€ë²ˆí˜¸ í™•ì¸</th>
 														<td><p>
-																<br> <input class="w3-input" placeholder="ºñ¹Ğ¹øÈ£È®ÀÎ"
+																<br> <input class="w3-input" placeholder="ë¹„ë°€ë²ˆí˜¸í™•ì¸"
 																	type="password" required="required" id="pwdchk">
 																<label id="pwdlabel"></label>
 															</p></td>
 													</tr>
 
 													<tr>
-														<th>ÀÌ¸§</th>
+														<th>ì´ë¦„</th>
 														<td><p>
-																<input class="w3-input" placeholder="ÀÌ¸§" type="text"
+																<input class="w3-input" placeholder="ì´ë¦„" type="text"
 																	required="required" name="name" id="name">
 															</p></td>
 													</tr>
 
 													<tr>
-														<th>º°¸í</th>
+														<th>ë³„ëª…</th>
 														<td><p>
-																<input class="w3-input" placeholder="º°¸í" type="text"
+																<input class="w3-input" placeholder="ë³„ëª…" type="text"
 																	name="nickname" id="nickname"><label
 																	id="nicknamelabel"></label>
 															</p></td>
 														<td><button type="button" class="btn btn-warning"
-																id="nickchk">Áßº¹È®ÀÎ</button></td>
+																id="nickchk">ì¤‘ë³µí™•ì¸</button></td>
 													</tr>
 													<tr>
-														<th>ÀÌ¸ŞÀÏ</th>
+														<th>ì´ë©”ì¼</th>
 														<td><p>
-																<input class="w3-input" placeholder="ÀÌ¸ŞÀÏ" type="email"
+																<input class="w3-input" placeholder="ì´ë©”ì¼" type="email"
 																	name="email" id="email" onchange="rexEmail()"
 																	value=${vo.getEmail() }> <label id="emaillabel"></label>
 
 															</p></td>
 														<td><button type="button" class="btn btn-warning"
-																id="emailchk">Áßº¹È®ÀÎ</button></td>
+																id="emailchk">ì¤‘ë³µí™•ì¸</button></td>
 													</tr>
 
 													<tr>
-														<th>¼ºº°</th>
+														<th>ì„±ë³„</th>
 														<td><p>
 																<br> <input class="w3-radio" type="radio"
-																	name="sex" value="m" checked> <label>³²ÀÚ</label>
+																	name="sex" value="m" checked> <label>ë‚¨ì</label>
 																<input class="w3-radio" type="radio" name="sex"
-																	value="f"> <label>¿©ÀÚ</label>
+																	value="f"> <label>ì—¬ì</label>
 															</p></td>
 													</tr>
 												</tbody>
@@ -522,7 +523,7 @@ body {
 
 									<div class="panel panel-primary setup-content" id="step-6">
 							<div class="panel-heading">
-								<span class="login100-form-title p-b-49">ÇÁ·ÎÇÊ ÀÛ¼º</span>
+								<span class="login100-form-title p-b-49">í”„ë¡œí•„ ì‘ì„±</span>
 							</div>
 							<div class="panel-body">
 
@@ -540,7 +541,7 @@ body {
 								<div class="text-center">
 									<input type="file" id="file" name="file" style="display: none">
 									<div class="btn btn-outline-dark"
-										onclick="onclick=document.all.file.click()">»çÁøÃß°¡</div>
+										onclick="onclick=document.all.file.click()">ì‚¬ì§„ì¶”ê°€</div>
 								</div>
 								<br>
 								<table style="margin: auto; text-align: center;">
@@ -549,9 +550,9 @@ body {
 										<tr>
 											<td>
 												<div class="form-group text-center">
-													<label for="message">ÀÚ±â¼Ò°³</label><br>
+													<label for="message">ìê¸°ì†Œê°œ</label><br>
 													<textarea name="user_intro" id="user_intro" cols="40"
-														rows="5" class="form-control" placeholder="ÀÚ±â¼Ò°³¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"></textarea>
+														rows="5" class="form-control" placeholder="ìê¸°ì†Œê°œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”"></textarea>
 												</div>
 
 											</td>
@@ -560,13 +561,13 @@ body {
 									</tbody>
 								</table>
 								<br>
-								<!-- <p style="text-align: right; color: red;">*´Â ÇÊ¼öÇ×¸ñÀÔ´Ï´Ù.</p> -->
+								<!-- <p style="text-align: right; color: red;">*ëŠ” í•„ìˆ˜í•­ëª©ì…ë‹ˆë‹¤.</p> -->
 								<br> <br>
 								<div class="container-login100-form-btn text-center">
 									<div class="wrap-login100-form-btn">
 										<div class="login100-form-bgbtn"></div>
 										<button class="btn btn-outline-info" onclick="memberjoin()" id="joinsucess">
-											È¸¿ø°¡ÀÔ¿Ï·á</button>
+											íšŒì›ê°€ì…ì™„ë£Œ</button>
 									</div>
 								</div>
 								<br>
@@ -584,52 +585,53 @@ body {
 
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 ml-4"
 			style="background-color: rgba(255, 255, 255, 0.95);">
+
      <form method="post" action="logindo" class="login100-form validate-form" id="logindo">
 
-			<span class="login100-form-title p-b-49"> Login </span>
+         <span class="login100-form-title p-b-49"> Login </span>
 
-			<div class="wrap-input100 validate-input m-b-23"
-				data-validate="Username is reauired">
-				<span class="label-input100">¾ÆÀÌµğ</span> <input class="input100"
-					type="text" id="user_id" name="user_id"
-					placeholder="Type your username"> <span
-					class="focus-input100" data-symbol="&#xf206;"></span>
-			</div>
+         <div class="wrap-input100 validate-input m-b-23"
+            data-validate="Username is reauired">
+            <span class="label-input100">ì•„ì´ë””</span> <input class="input100"
+               type="text" id="user_id" name="user_id"
+               placeholder="Type your username"> <span
+               class="focus-input100" data-symbol="&#xf206;"></span>
+         </div>
 
-			<div class="wrap-input100 validate-input"
-				data-validate="Password is required">
-				<span class="label-input100">ºñ¹Ğ¹øÈ£</span> <input class="input100"
-					type="password" id="pwd" name="pwd"
-					placeholder="Type your password"> <span
-					class="focus-input100" data-symbol="&#xf190;"></span>
-			</div>
-			<br>
-			<c:if test="${msg == 'failure' }">
-				<div style="color: red;">¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.</div>
-			</c:if>
-			<c:if test="${msg == 'logout' }">
-				<div style="color: red;">·Î±×¾Æ¿ôµÇ¾ú½À´Ï´Ù.</div>
-			</c:if>
+         <div class="wrap-input100 validate-input"
+            data-validate="Password is required">
+            <span class="label-input100">ë¹„ë°€ë²ˆí˜¸</span> <input class="input100"
+               type="password" id="pwd" name="pwd"
+               placeholder="Type your password"> <span
+               class="focus-input100" data-symbol="&#xf190;"></span>
+         </div>
+         <br>
+         <c:if test="${msg == 'failure' }">
+            <div style="color: red;">ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</div>
+         </c:if>
+         <c:if test="${msg == 'logout' }">
+            <div style="color: red;">ë¡œê·¸ì•„ì›ƒë˜ì—ˆìŠµë‹ˆë‹¤.</div>
+         </c:if>
 
-			<div class="container-login100-form-btn text-center">
-				<div class="wrap-login100-form-btn">
-					<div class="login100-form-bgbtn"></div>
-					<button id="login_submit" class="btn btn-outline-info">
-						·Î±×ÀÎ</button>
-				</div>
-			</div>
-	</form>
-			<br>
-
-
-			<div class="text-right p-t-8 p-b-31">
-				<a href="findidform"> Forgot ID? </a> <br> <a
-					href="findpwdform"> Forgot password? </a>
-			</div>
+         <div class="container-login100-form-btn text-center">
+            <div class="wrap-login100-form-btn">
+               <div class="login100-form-bgbtn"></div>
+               <button id="login_submit" class="btn btn-outline-info">
+                  ë¡œê·¸ì¸</button>
+            </div>
+         </div>
+   </form>
+         <br>
 
 
+         <div class="text-right p-t-8 p-b-31">
+            <a href="findidform"> Forgot ID? </a> <br> <a
+               href="findpwdform"> Forgot password? </a>
+         </div>
 
-			<%-- 
+
+
+         <%-- 
                <div class="txt1 text-center p-t-54 p-b-20">
                   <span>
                      Or Sign Up Using
@@ -650,465 +652,505 @@ body {
                   </a>
                </div>  --%>
 
-		</div>
-	</div>
-	</div>
-	</div>
-
-
-	<div id="dropDownSelect1"></div>
-	
-	<script>
-		$(function(){
-			var msg = '${msg}'
-			if(msg !== '' && msg !== 'failure'){
-				alert(msg);
-			}
-			
-		})
-	</script>
-	
-	
-	<script>
-		$(document)
-				.ready(
-						function() {
-
-							var navListItems = $('div.setup-panel div a'), allWells = $('.setup-content'), allNextBtn = $('.nextBtn');
-
-							allWells.hide();
-
-							navListItems
-									.click(function(e) {
-										e.preventDefault();
-										var $target = $($(this).attr('href')), $item = $(this);
-
-										if (!$item.hasClass('disabled')) {
-											navListItems.removeClass(
-													'btn-success').addClass(
-													'btn-default');
-											$item.addClass('btn-success');
-											allWells.hide();
-											$target.show();
-											$target.find('input:eq(0)').focus();
-										}
-									});
-
-							allNextBtn
-									.click(function() {
-										var curStep = $(this).closest(
-												".setup-content"), curStepBtn = curStep
-												.attr("id"), nextStepWizard = $(
-												'div.setup-panel div a[href="#'
-														+ curStepBtn + '"]')
-												.parent().next().children("a"), curInputs = curStep
-												.find("input[type='text'],input[type='url']"), isValid = true;
-
-										$(".form-group").removeClass(
-												"has-error");
-										for (var i = 0; i < curInputs.length; i++) {
-											if (!curInputs[i].validity.valid) {
-												isValid = false;
-												$(curInputs[i]).closest(
-														".form-group")
-														.addClass("has-error");
-											}
-										}
-
-										if (isValid)
-											nextStepWizard.removeAttr(
-													'disabled')
-													.trigger('click');
-									});
-
-							$('div.setup-panel div a.btn-success').trigger(
-									'click');
-							//µ¥ÀÌÆ®ÇÇÄ¿
-							var clareCalendar = {
-								monthNamesShort : [ '1¿ù', '2¿ù', '3¿ù', '4¿ù',
-										'5¿ù', '6¿ù', '7¿ù', '8¿ù', '9¿ù', '10¿ù',
-										'11¿ù', '12¿ù' ],
-								dayNamesMin : [ 'ÀÏ', '¿ù', 'È­', '¼ö', '¸ñ', '±İ',
-										'Åä' ],
-								weekHeader : 'Wk',
-								dateFormat : 'yy-mm-dd', //Çü½Ä(20120303)
-								autoSize : false, //¿ÀÅä¸®»çÀÌÁî(bodyµî »óÀ§ÅÂ±×ÀÇ ¼³Á¤¿¡ µû¸¥´Ù)
-								changeMonth : true, //¿ùº¯°æ°¡´É
-								changeYear : true, //³âº¯°æ°¡´É
-								showMonthAfterYear : true, //³â µÚ¿¡ ¿ù Ç¥½Ã
-								changeMonth : true, // ¿ùÀ» ¹Ù²Ü¼ö ÀÖ´Â ¼¿·ºÆ® ¹Ú½º¸¦ Ç¥½ÃÇÑ´Ù
-								changeYear : true, // ³âÀ» ¹Ù²Ü ¼ö ÀÖ´Â ¼¿·ºÆ® ¹Ú½º¸¦ Ç¥½ÃÇÑ´Ù.
-
-								showOn : "both", //¿¤¸®¸ÕÆ®¿Í ÀÌ¹ÌÁö µ¿½Ã »ç¿ë(both,button)
-								yearRange : '1900:2020', //1990³âºÎÅÍ 2020³â±îÁö
-								showOn : "button", //button:¹öÆ°À» Ç¥½ÃÇÏ°í,¹öÆ°À» ´­·¯¾ß¸¸ ´Ş·Â Ç¥½Ã ^ both:¹öÆ°À» Ç¥½ÃÇÏ°í,¹öÆ°À» ´©¸£°Å³ª inputÀ» Å¬¸¯ÇÏ¸é ´Ş·Â Ç¥½Ã     
-								buttonImage : "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", //¹öÆ° ÀÌ¹ÌÁö °æ·Î
-								buttonImageOnly : true, //±âº» ¹öÆ°ÀÇ È¸»ö ºÎºĞÀ» ¾ø¾Ö°í, ÀÌ¹ÌÁö¸¸ º¸ÀÌ°Ô ÇÔ
-								buttonText : "¼±ÅÃ" //¹öÆ°¿¡ ¸¶¿ì½º °®´Ù ´òÀ» ¶§ Ç¥½ÃµÇ´Â ÅØ½ºÆ®      
-							};
-
-							$("#form_dt").datepicker(clareCalendar);
-							$("#ui-datepicker-div").hide(); //ÀÚµ¿À¸·Î »ı¼ºµÇ´Â div°´Ã¼ ¼û±è 
-							$("#form_dt").datepicker("getDate"); //ÇöÀç ¼±ÅÃµÇ¾î ÀÖ´Â ³¯Â¥ °¡Á®¿À±â (Date ÇüÀ¸·Î ¹İÈ¯)
-						});
-		$('#emailchk')
-				.on(
-						'click',
-						function() {
-							$
-									.ajax({
-										url : "emailchk",
-										type : "post",
-										data : {
-											email : $('#email').val()
-										},
-										success : function(data) {//data==1 : Áßº¹µÇ´Â °ªÀÌ ÀÖÀ½. data==0: Áßº¹µÇ´Â °ªÀÌ ¾øÀ½.
-											console.log(data);
-											if ($('#email').val() === '') { //ºóÄ­ÀÏ ¶§.
-												emailchk = 'false';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
-												return;
-											} else if (data === 1
-													&& $('#email').val() !== email) {//Áßº¹µÇ´Â °ªÀÌ ÀÖ°í, ¿ø·¡ ÀÌ¸ŞÀÏ°ú °ªÀÌ ´Ş¶óÁ³À» ¶§.												
-												emailchk = 'false';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù</p>";
-												return;
-
-											} else if ($('#email').val() === email) {//°ªÀÌ Áßº¹ÀÌ µÇµç ¾ÈµÇµç, ¿ø·¡ ÀÌ¸ŞÀÏ°ú °ªÀÌ °°À» ¶§.												
-												emailchk = 'true';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
-												return;
-											} else if (data === 0
-													&& $('#email').val() !== email
-													&& rexemail === 'true') { //Áßº¹µÇ´Â °ªÀÌ ¾ø°í, ¿ø·¡ ÀÌ¸ŞÀÏ°ªÀÌ¶û ´Ù¸£°í, Á¤±Ô½Äµµ ¸¸Á·.
-												emailchk = 'true';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
-												return;
-											} else if (data === 0
-													&& $('#email').val() !== email
-													&& rexemail === 'false') { //Áßº¹µÇ´Â °ªÀÌ ¾ø°í, ¿ø·¡ ÀÌ¸ŞÀÏ°ªÀÌ¶û ´Ù¸£Áö¸¸ Á¤±Ô½ÄÀÌ ¾Æ´Ò ¶§.
-												emailchk = 'false';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏ Çü½ÄÀ» ¸ÂÃçÁÖ¼¼¿ä.</p>";
-												return;
-											}
-
-										},
-										error : function() {
-											console.log("ajax error");
-										}
-									})
-
-						})
-	</script>
-
-	<script>
-		/*
-		 Ã³¸®ÇØ¾ßÇÒ°Í.
-		 1. Áßº¹Ã¼Å©¸¦ Çß´ÂÁö
-		 1-1 ÇßÀ¸¸é ±×°Ô Åë°úÇß´ÂÁö
-		 2. ºñ¹Ğ¹øÈ£¿Í ºñ¹Ğ¹øÈ£ È®ÀÎÀÌ ¸Â´ÂÁö.
-		 3. º°¸íÀÌ Áßº¹Ã¼Å© Çß´ÂÁö.
-		 3-1 ÇßÀ¸¸é ±×°Ô Åë°úÇß´ÂÁö
-
-		
-		
-		 */
-
-		//ºñ¹Ğ¹øÈ£ È®ÀÎ 
-		$('#pwdchk')
-				.change(
-						function() {
-
-							if ($('#join_pwd').val() != $('#pwdchk').val()) {
-								if ($('#pwdchk').val() !== '') {
-									$('#pwdchk').empty();
-									document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù</p>";
-
-								}
-							} else {
-								if ($('#join_pwd').val() != ''
-										&& $('#pwdchk').val() != '') {
-									document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ºñ¹Ğ¹øÈ£°¡ °°½À´Ï´Ù</p>";
-								}
-							}
-						})
-
-		$('#join_pwd')
-				.change(
-						function() {
-
-							if ($('#join_pwd').val() != $('#pwdchk').val()) {
-								if ($('#pwdchk').val() !== '') {
-									alert("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
-									$('#join_pwd').empty();
-
-									document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù</p>";
-
-								}
-							} else {
-								if ($('#join_pwd').val() != ''
-										&& $('#pwdchk').val() != '') {
-
-									document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ºñ¹Ğ¹øÈ£°¡ °°½À´Ï´Ù</p>";
-
-								}
-							}
-						})
-
-		$('#join_user_id')
-				.change(
-						function() {
-							document.getElementById("idlabel").innerHTML = "";
-							if ($('#join_user_id').val() === '') { //°ªÀÌ ´Ş¶óÁ³´Âµ¥ ºóÄ­ÀÌ¸é
-								document.getElementById("idlabel").innerHTML = "<p style='color:red'>¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>";
-								idchk = 'false';
-							}
-							idchk = 'false'; //¾ÆÀÌµğ ºÎºĞÀÇ °ªÀÌ ¹Ù²î¸é false·Î º¯°æ.
-						});
-
-		$('#nickname')
-				.change(
-						function() {
-							document.getElementById("nicknamelabel").innerHTML = "";
-							if ($('#nickname').val() === '') { //°ªÀÌ ´Ş¶óÁ³´Âµ¥ ºóÄ­ÀÌ¸é
-								document.getElementById("nicknamelabel").innerHTML = "<p style='color:red'>º°¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>";
-								nickchk = 'false';
-							}
-							nickchk = 'false'; //¾ÆÀÌµğ ºÎºĞÀÇ °ªÀÌ ¹Ù²î¸é false·Î º¯°æ.
-						});
-		$('#email')
-				.change(
-						function() {
-							document.getElementById("emaillabel").innerHTML = "";
-							if ($('#email').val() === '') { //°ªÀÌ ´Ş¶óÁ³´Âµ¥ ºóÄ­ÀÌ¸é
-								document.getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>";
-								emailchk = 'false';
-							}
-							emailchk = 'false'; //¾ÆÀÌµğ ºÎºĞÀÇ °ªÀÌ ¹Ù²î¸é false·Î º¯°æ.
-						});
-
-		var idchk = 'false';
-		var nickchk = 'false';
-		var emailchk = 'false';
-		var rexemail = 'false';
-
-		//¾ÆÀÌµğ Ã¼Å©.
-		$('#idchk').click(function() {
-					console.log('eeee')
-					$.ajax({
-						url : "idchk",
-						type : "post",
-						data : {
-							id : $('#join_user_id').val()
-						},
-						success : function(data) {
-							if ($('#join_user_id').val() === '') {//ºóÄ­
-								idchk = 'false';
-								document.getElementById("idlabel").innerHTML = "<p style='color:red'>¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
-								return;
-								}
-							if (data === 1) {
-								idchk = 'false';
-								document.getElementById("idlabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù</p>";
-
-											} else if (data === 0
-													&& $('join_user_id').val() !== '') {
-
-												idchk = 'true';
-												document
-														.getElementById("idlabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.</p>";
-											}
-										},
-										error : function() {
-											console.log("ajax error");
-										}
-									})
-
-						})
-
-		////º°¸í Ã¼Å©
-		$('#nickchk')
-				.on(
-						'click',
-						function() {
-
-							$
-									.ajax({
-										url : "nickchk",
-										type : "post",
-										data : {
-											nickname : $('#nickname').val()
-										},
-										success : function(data) {
-											console.log(data);
-											if ($('#nickname').val() === '') { //ºóÄ­ÀÏ ¶§.
-												nickchk = 'false';
-												document
-														.getElementById("nicknamelabel").innerHTML = "<p style='color:red'>º°¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
-												return;
-											} else if (data === 1) {
-
-												nickchk = 'false';
-												document
-														.getElementById("nicknamelabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ º°¸íÀÔ´Ï´Ù.</p>";
-
-												//$('#send').attr('disabled', 'disabled');
-											} else if (data === 0) {
-												nickchk = 'true';
-												document
-														.getElementById("nicknamelabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ º°¸íÀÔ´Ï´Ù.</p>";
-											}
-										},
-										error : function() {
-											console.log("ajax error");
-										}
-									})
-
-						})
-		/*Âü°í : https://myjamong.tistory.com/17*/
-
-		////ÀÌ¸ŞÀÏ Ã¼Å©
-		$('#emailchk')
-				.on(
-						'click',
-						function() {
-
-							$
-									.ajax({
-										url : "emailchk",
-										type : "post",
-										data : {
-											email : $('#email').val()
-										},
-										success : function(data) {
-											console.log(data);
-											if ($('#email').val() === '') { //ºóÄ­ÀÏ ¶§.
-												emailchk = 'false';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
-												return;
-
-											}
-											if (data === 1) { //Áßº¹µÈ °ªÀÌ ÀÖÀ» ¶§.
-												emailchk = 'false';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
-												return;
-
-											} else if (data === 0
-													&& rexemail === 'true') { //Áßº¹µÈ °ªÀÌ ¾ø°í, Á¤±Ô½Ä¸¸Á·
-												emailchk = 'true';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
-												return;
-
-											} else if (data === 0
-													&& rexemail === 'false') { //Áßº¹µÇ´Â °ªÀÌ ¾øÁö¸¸, Á¤±Ô½ÄÀÌ ¸ÂÁö ¾ÊÀ» ¶§.
-												emailchk = 'false';
-												document
-														.getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏ Çü½ÄÀ» ¸ÂÃçÁÖ¼¼¿ä.</p>";
-												return;
-
-											}
-
-										},
-										error : function() {
-											console.log("ajax error");
-										}
-									})
-
-						})
-
-
-		//step1~7 Àü¼Û
-		//Àü¼ÛÇÒ ¶§, Áßº¹Ã¼Å© ¿©ºÎ È®ÀÎ
-		function memberjoin(){
-			 if (idchk === 'false') {
-					alert("¾ÆÀÌµğ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä");
-				} else if (nickchk === 'false') {
-					alert("º°¸í Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä");
-				} else if (emailchk === 'false') {
-					alert('ÀÌ¸ŞÀÏ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä');
-				} else if (rexemail === 'false') {
-					alert('ÀÌ¸ŞÀÏ Çü½ÄÀ» È®ÀÎÇØÁÖ¼¼¿ä');
-				} else if ($("#form_dt").datepicker("getDate") === null) {
-					alert("³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
-				}else if (nickchk === 'true' && idchk === 'true'&& rexemail === 'true' && emailchk === 'true'
-						&& $("#form_dt").datepicker("getDate") !== null) 
-				{					
-					$('form')[0].submit();
-					
-				}
-		}
-
-
-		//·Î±×ÀÎ
-		$('#login_submit').on('click', function() {
-			$('#logindo').submit();
-		})
-
-		var rexemail = 'false';
-
-		function rexEmail() {
-			var email = $("#email").val();
-
-			var rex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-			// ÀÌ¸ŞÀÏ Á¤±Ô½Ä
-
-			if (rex.test(email)) {
-				rexemail = 'true';
-			} else {
-				rexemail = 'false';
-			}
-		}
-
-		//ÆÄÀÏ
-		$("#file").change(
-				function() {
-					if (this.files && this.files[0]) {
-						var reader = new FileReader;
-						reader.onload = function(data) {
-							$("#profileimg").attr("src", data.target.result)
-									.width(250);
-						}
-						reader.readAsDataURL(this.files[0]);
-					}
-				});
-		//https://kuzuro.blogspot.com/2018/10/11.html
-	</script>
-
-
-
-
-
-
-
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
-
-
-	<!--===============================================================================================-->
-	<script src="resources/vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-<!-- 	<script src="resources/vendor/bootstrap/js/popper.js"></script> -->
-	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="resources/vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="resources/vendor/daterangepicker/moment.min.js"></script>
-	<script src="resources/vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="resources/vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="resources/js/main.js"></script>
+      </div>
+   </div>
+   </div>
+   </div>
+
+
+   <div id="dropDownSelect1"></div>
+   
+   <script>
+      $(function(){
+         var msg = '${msg}'
+         if(msg !== '' && msg !== 'failure'){
+            alert(msg);
+         }
+         
+      })
+   </script>
+   
+   
+   <script>
+      $(document)
+            .ready(
+                  function() {
+
+                     var navListItems = $('div.setup-panel div a'), allWells = $('.setup-content'), allNextBtn = $('.nextBtn');
+
+                     allWells.hide();
+
+                     navListItems
+                           .click(function(e) {
+                              e.preventDefault();
+                              var $target = $($(this).attr('href')), $item = $(this);
+
+                              if (!$item.hasClass('disabled')) {
+                                 navListItems.removeClass(
+                                       'btn-success').addClass(
+                                       'btn-default');
+                                 $item.addClass('btn-success');
+                                 allWells.hide();
+                                 $target.show();
+                                 $target.find('input:eq(0)').focus();
+                              }
+                           });
+
+                     allNextBtn
+                           .click(function() {
+                              var curStep = $(this).closest(
+                                    ".setup-content"), curStepBtn = curStep
+                                    .attr("id"), nextStepWizard = $(
+                                    'div.setup-panel div a[href="#'
+                                          + curStepBtn + '"]')
+                                    .parent().next().children("a"), curInputs = curStep
+                                    .find("input[type='text'],input[type='url']"), isValid = true;
+
+                              $(".form-group").removeClass(
+                                    "has-error");
+                              for (var i = 0; i < curInputs.length; i++) {
+                                 if (!curInputs[i].validity.valid) {
+                                    isValid = false;
+                                    $(curInputs[i]).closest(
+                                          ".form-group")
+                                          .addClass("has-error");
+                                 }
+                              }
+
+                              if (isValid)
+                                 nextStepWizard.removeAttr(
+                                       'disabled')
+                                       .trigger('click');
+                           });
+
+                     $('div.setup-panel div a.btn-success').trigger(
+                           'click');
+                     //ë°ì´íŠ¸í”¼ì»¤
+                     var clareCalendar = {
+                        monthNamesShort : [ '1ì›”', '2ì›”', '3ì›”', '4ì›”',
+                              '5ì›”', '6ì›”', '7ì›”', '8ì›”', '9ì›”', '10ì›”',
+                              '11ì›”', '12ì›”' ],
+                        dayNamesMin : [ 'ì¼', 'ì›”', 'í™”', 'ìˆ˜', 'ëª©', 'ê¸ˆ',
+                              'í† ' ],
+                        weekHeader : 'Wk',
+                        dateFormat : 'yy-mm-dd', //í˜•ì‹(20120303)
+                        autoSize : false, //ì˜¤í† ë¦¬ì‚¬ì´ì¦ˆ(bodyë“± ìƒìœ„íƒœê·¸ì˜ ì„¤ì •ì— ë”°ë¥¸ë‹¤)
+                        changeMonth : true, //ì›”ë³€ê²½ê°€ëŠ¥
+                        changeYear : true, //ë…„ë³€ê²½ê°€ëŠ¥
+                        showMonthAfterYear : true, //ë…„ ë’¤ì— ì›” í‘œì‹œ
+                        changeMonth : true, // ì›”ì„ ë°”ê¿€ìˆ˜ ìˆëŠ” ì…€ë ‰íŠ¸ ë°•ìŠ¤ë¥¼ í‘œì‹œí•œë‹¤
+                        changeYear : true, // ë…„ì„ ë°”ê¿€ ìˆ˜ ìˆëŠ” ì…€ë ‰íŠ¸ ë°•ìŠ¤ë¥¼ í‘œì‹œí•œë‹¤.
+
+                        showOn : "both", //ì—˜ë¦¬ë¨¼íŠ¸ì™€ ì´ë¯¸ì§€ ë™ì‹œ ì‚¬ìš©(both,button)
+                        yearRange : '1900:2020', //1990ë…„ë¶€í„° 2020ë…„ê¹Œì§€
+                        showOn : "button", //button:ë²„íŠ¼ì„ í‘œì‹œí•˜ê³ ,ë²„íŠ¼ì„ ëˆŒëŸ¬ì•¼ë§Œ ë‹¬ë ¥ í‘œì‹œ ^ both:ë²„íŠ¼ì„ í‘œì‹œí•˜ê³ ,ë²„íŠ¼ì„ ëˆ„ë¥´ê±°ë‚˜ inputì„ í´ë¦­í•˜ë©´ ë‹¬ë ¥ í‘œì‹œ     
+                        buttonImage : "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", //ë²„íŠ¼ ì´ë¯¸ì§€ ê²½ë¡œ
+                        buttonImageOnly : true, //ê¸°ë³¸ ë²„íŠ¼ì˜ íšŒìƒ‰ ë¶€ë¶„ì„ ì—†ì• ê³ , ì´ë¯¸ì§€ë§Œ ë³´ì´ê²Œ í•¨
+                        buttonText : "ì„ íƒ" //ë²„íŠ¼ì— ë§ˆìš°ìŠ¤ ê°–ë‹¤ ëŒ”ì„ ë•Œ í‘œì‹œë˜ëŠ” í…ìŠ¤íŠ¸      
+                     };
+
+                     $("#form_dt").datepicker(clareCalendar);
+                     $("#ui-datepicker-div").hide(); //ìë™ìœ¼ë¡œ ìƒì„±ë˜ëŠ” divê°ì²´ ìˆ¨ê¹€ 
+                     $("#form_dt").datepicker("getDate"); //í˜„ì¬ ì„ íƒë˜ì–´ ìˆëŠ” ë‚ ì§œ ê°€ì ¸ì˜¤ê¸° (Date í˜•ìœ¼ë¡œ ë°˜í™˜)
+                  });
+      $('#emailchk')
+            .on(
+                  'click',
+                  function() {
+                     $
+                           .ajax({
+                              url : "emailchk",
+                              type : "post",
+                              data : {
+                                 email : $('#email').val()
+                              },
+                              success : function(data) {//data==1 : ì¤‘ë³µë˜ëŠ” ê°’ì´ ìˆìŒ. data==0: ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ìŒ.
+                                 console.log(data);
+                                 if ($('#email').val() === '') { //ë¹ˆì¹¸ì¼ ë•Œ.
+                                    emailchk = 'false';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                                    return;
+                                 } else if (data === 1
+                                       && $('#email').val() !== email) {//ì¤‘ë³µë˜ëŠ” ê°’ì´ ìˆê³ , ì›ë˜ ì´ë©”ì¼ê³¼ ê°’ì´ ë‹¬ë¼ì¡Œì„ ë•Œ.                                    
+                                    emailchk = 'false';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤</p>";
+                                    return;
+
+                                 } else if ($('#email').val() === email) {//ê°’ì´ ì¤‘ë³µì´ ë˜ë“  ì•ˆë˜ë“ , ì›ë˜ ì´ë©”ì¼ê³¼ ê°’ì´ ê°™ì„ ë•Œ.                                    
+                                    emailchk = 'true';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                    return;
+                                 } else if (data === 0
+                                       && $('#email').val() !== email
+                                       && rexemail === 'true') { //ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ê³ , ì›ë˜ ì´ë©”ì¼ê°’ì´ë‘ ë‹¤ë¥´ê³ , ì •ê·œì‹ë„ ë§Œì¡±.
+                                    emailchk = 'true';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                    return;
+                                 } else if (data === 0
+                                       && $('#email').val() !== email
+                                       && rexemail === 'false') { //ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ê³ , ì›ë˜ ì´ë©”ì¼ê°’ì´ë‘ ë‹¤ë¥´ì§€ë§Œ ì •ê·œì‹ì´ ì•„ë‹ ë•Œ.
+                                    emailchk = 'false';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ í˜•ì‹ì„ ë§ì¶°ì£¼ì„¸ìš”.</p>";
+                                    return;
+                                 }
+
+                              },
+                              error : function() {
+                                 console.log("ajax error");
+                              }
+                           })
+
+                  })
+   </script>
+
+   <script>
+      /*
+       ì²˜ë¦¬í•´ì•¼í• ê²ƒ.
+       1. ì¤‘ë³µì²´í¬ë¥¼ í–ˆëŠ”ì§€
+       1-1 í–ˆìœ¼ë©´ ê·¸ê²Œ í†µê³¼í–ˆëŠ”ì§€
+       2. ë¹„ë°€ë²ˆí˜¸ì™€ ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì´ ë§ëŠ”ì§€.
+       3. ë³„ëª…ì´ ì¤‘ë³µì²´í¬ í–ˆëŠ”ì§€.
+       3-1 í–ˆìœ¼ë©´ ê·¸ê²Œ í†µê³¼í–ˆëŠ”ì§€
+
+      
+      
+       */
+         var imgchk = 'false';
+         //í”„ë¡œí•„ì‚¬ì§„ ì²´í¬.
+         $('#imgchk').click(function() {
+            //console.log('imgimgí´ë¦­ë˜ì—ˆë‹ˆ?')
+            //var image = $("#file").val();
+            //console.log(image);
+            var formData = new FormData();
+            var inputFile = $("input[name='file']");
+            var files = inputFile[0].files;
+            console.log(files);
+                  
+            for (var i = 0; i < files.length; i++) {
+               formData.append("uploadFile", files[i]);
+            }
+            
+             $.ajax({
+               url : "imgchk",
+               processData: false,
+               contentType: false,
+               data: formData,
+               type : "POST",
+               enctype: 'multipart/form-data',
+               success : function(data) {
+                  if (data !== 1) {
+                     imgchk = 'false';
+                     document.getElementById("imglabel").innerHTML = "<p style='color:red'>ì–¼êµ´ì‚¬ì§„ì„ ë„£ì–´ì£¼ì„¸ìš”</p>";
+                     }else {
+                        imgchk = 'true';
+                        document.getElementById("imglabel").innerHTML = "<p style='color:green'>ì–¼êµ´ì‚¬ì§„ ì…ë‹ˆë‹¤.</p>";
+                     }   
+                  },
+               error : function(request, status, error) {
+                  alert("code = " + request.status + " message = "
+                        + request.responseText + " error = " + error); // ì‹¤íŒ¨ ì‹œ ì²˜ë¦¬
+                  }
+               }) 
+
+            })
+       
+      //ë¹„ë°€ë²ˆí˜¸ í™•ì¸ 
+      $('#pwdchk')
+            .change(
+                  function() {
+
+                     if ($('#join_pwd').val() != $('#pwdchk').val()) {
+                        if ($('#pwdchk').val() !== '') {
+                           $('#pwdchk').empty();
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤</p>";
+
+                        }
+                     } else {
+                        if ($('#join_pwd').val() != ''
+                              && $('#pwdchk').val() != '') {
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ë¹„ë°€ë²ˆí˜¸ê°€ ê°™ìŠµë‹ˆë‹¤</p>";
+                        }
+                     }
+                  })
+
+      $('#join_pwd')
+            .change(
+                  function() {
+
+                     if ($('#join_pwd').val() != $('#pwdchk').val()) {
+                        if ($('#pwdchk').val() !== '') {
+                           alert("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
+                           $('#join_pwd').empty();
+
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤</p>";
+
+                        }
+                     } else {
+                        if ($('#join_pwd').val() != ''
+                              && $('#pwdchk').val() != '') {
+
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ë¹„ë°€ë²ˆí˜¸ê°€ ê°™ìŠµë‹ˆë‹¤</p>";
+
+                        }
+                     }
+                  })
+
+      $('#join_user_id')
+            .change(
+                  function() {
+                     document.getElementById("idlabel").innerHTML = "";
+                     if ($('#join_user_id').val() === '') { //ê°’ì´ ë‹¬ë¼ì¡ŒëŠ”ë° ë¹ˆì¹¸ì´ë©´
+                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>";
+                        idchk = 'false';
+                     }
+                     idchk = 'false'; //ì•„ì´ë”” ë¶€ë¶„ì˜ ê°’ì´ ë°”ë€Œë©´ falseë¡œ ë³€ê²½.
+                  });
+
+      $('#nickname')
+            .change(
+                  function() {
+                     document.getElementById("nicknamelabel").innerHTML = "";
+                     if ($('#nickname').val() === '') { //ê°’ì´ ë‹¬ë¼ì¡ŒëŠ”ë° ë¹ˆì¹¸ì´ë©´
+                        document.getElementById("nicknamelabel").innerHTML = "<p style='color:red'>ë³„ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>";
+                        nickchk = 'false';
+                     }
+                     nickchk = 'false'; //ì•„ì´ë”” ë¶€ë¶„ì˜ ê°’ì´ ë°”ë€Œë©´ falseë¡œ ë³€ê²½.
+                  });
+      $('#email')
+            .change(
+                  function() {
+                     document.getElementById("emaillabel").innerHTML = "";
+                     if ($('#email').val() === '') { //ê°’ì´ ë‹¬ë¼ì¡ŒëŠ”ë° ë¹ˆì¹¸ì´ë©´
+                        document.getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>";
+                        emailchk = 'false';
+                     }
+                     emailchk = 'false'; //ì•„ì´ë”” ë¶€ë¶„ì˜ ê°’ì´ ë°”ë€Œë©´ falseë¡œ ë³€ê²½.
+                  });
+
+      var idchk = 'false';
+      var nickchk = 'false';
+      var emailchk = 'false';
+      var rexemail = 'false';
+
+      //ì•„ì´ë”” ì²´í¬.
+      $('#idchk').click(function() {
+               console.log('eeee')
+               $.ajax({
+                  url : "idchk",
+                  type : "post",
+                  data : {
+                     id : $('#join_user_id').val()
+                  },
+                  success : function(data) {
+                     if ($('#join_user_id').val() === '') {//ë¹ˆì¹¸
+                        idchk = 'false';
+                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                        return;
+                        }
+                     if (data === 1) {
+                        idchk = 'false';
+                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤</p>";
+
+                                 } else if (data === 0
+                                       && $('join_user_id').val() !== '') {
+
+                                    idchk = 'true';
+                                    document
+                                          .getElementById("idlabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.</p>";
+                                 }
+                              },
+                              error : function() {
+                                 console.log("ajax error");
+                              }
+                           })
+
+                  })
+
+      ////ë³„ëª… ì²´í¬
+      $('#nickchk')
+            .on(
+                  'click',
+                  function() {
+
+                     $
+                           .ajax({
+                              url : "nickchk",
+                              type : "post",
+                              data : {
+                                 nickname : $('#nickname').val()
+                              },
+                              success : function(data) {
+                                 console.log(data);
+                                 if ($('#nickname').val() === '') { //ë¹ˆì¹¸ì¼ ë•Œ.
+                                    nickchk = 'false';
+                                    document
+                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:red'>ë³„ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                                    return;
+                                 } else if (data === 1) {
+
+                                    nickchk = 'false';
+                                    document
+                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ë³„ëª…ì…ë‹ˆë‹¤.</p>";
+
+                                    //$('#send').attr('disabled', 'disabled');
+                                 } else if (data === 0) {
+                                    nickchk = 'true';
+                                    document
+                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ë³„ëª…ì…ë‹ˆë‹¤.</p>";
+                                 }
+                              },
+                              error : function() {
+                                 console.log("ajax error");
+                              }
+                           })
+
+                  })
+      /*ì°¸ê³  : https://myjamong.tistory.com/17*/
+
+      ////ì´ë©”ì¼ ì²´í¬
+      $('#emailchk')
+            .on(
+                  'click',
+                  function() {
+
+                     $
+                           .ajax({
+                              url : "emailchk",
+                              type : "post",
+                              data : {
+                                 email : $('#email').val()
+                              },
+                              success : function(data) {
+                                 console.log(data);
+                                 if ($('#email').val() === '') { //ë¹ˆì¹¸ì¼ ë•Œ.
+                                    emailchk = 'false';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                                    return;
+
+                                 }
+                                 if (data === 1) { //ì¤‘ë³µëœ ê°’ì´ ìˆì„ ë•Œ.
+                                    emailchk = 'false';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                    return;
+
+                                 } else if (data === 0
+                                       && rexemail === 'true') { //ì¤‘ë³µëœ ê°’ì´ ì—†ê³ , ì •ê·œì‹ë§Œì¡±
+                                    emailchk = 'true';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                    return;
+
+                                 } else if (data === 0
+                                       && rexemail === 'false') { //ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ì§€ë§Œ, ì •ê·œì‹ì´ ë§ì§€ ì•Šì„ ë•Œ.
+                                    emailchk = 'false';
+                                    document
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ í˜•ì‹ì„ ë§ì¶°ì£¼ì„¸ìš”.</p>";
+                                    return;
+
+                                 }
+
+                              },
+                              error : function() {
+                                 console.log("ajax error");
+                              }
+                           })
+
+                  })
+
+
+      //step1~7 ì „ì†¡
+      //ì „ì†¡í•  ë•Œ, ì¤‘ë³µì²´í¬ ì—¬ë¶€ í™•ì¸
+      function memberjoin(){
+          if (idchk === 'false') {
+               alert("ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”");
+            } else if (nickchk === 'false') {
+               alert("ë³„ëª… ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”");
+            } else if (emailchk === 'false') {
+               alert('ì´ë©”ì¼ ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”');
+            } else if (rexemail === 'false') {
+               alert('ì´ë©”ì¼ í˜•ì‹ì„ í™•ì¸í•´ì£¼ì„¸ìš”');
+            } else if ($("#form_dt").datepicker("getDate") === null) {
+               alert("ë‚ ì§œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
+            }else if(imgchk === 'false'){
+               alert("í”„ë¡œí•„ì‚¬ì§„ì„ ì–¼êµ´ë¡œ ì„¤ì •í•´ì£¼ì„¸ìš”");
+            }else if (nickchk === 'true' && idchk === 'true'&& rexemail === 'true' && emailchk === 'true' && imgchk === 'true'
+                  && $("#form_dt").datepicker("getDate") !== null) 
+            {               
+               $('form')[0].submit();
+               
+            }
+      }
+
+
+      //ë¡œê·¸ì¸
+      $('#login_submit').on('click', function() {
+         $('#logindo').submit();
+      })
+
+      var rexemail = 'false';
+
+      function rexEmail() {
+         var email = $("#email").val();
+
+         var rex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+         // ì´ë©”ì¼ ì •ê·œì‹
+
+         if (rex.test(email)) {
+            rexemail = 'true';
+         } else {
+            rexemail = 'false';
+         }
+      }
+
+      //íŒŒì¼
+      $("#file").change(
+            function() {
+               if (this.files && this.files[0]) {
+                  var reader = new FileReader;
+                  reader.onload = function(data) {
+                     $("#profileimg").attr("src", data.target.result)
+                           .width(250);
+                  }
+                  reader.readAsDataURL(this.files[0]);
+               }
+            });
+      //https://kuzuro.blogspot.com/2018/10/11.html
+   </script>
+
+
+
+
+
+
+
+   <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+   <script
+      src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+
+   <!--===============================================================================================-->
+   <script src="resources/vendor/animsition/js/animsition.min.js"></script>
+   <!--===============================================================================================-->
+<!--    <script src="resources/vendor/bootstrap/js/popper.js"></script> -->
+   <script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+   <!--===============================================================================================-->
+   <script src="resources/vendor/select2/select2.min.js"></script>
+   <!--===============================================================================================-->
+   <script src="resources/vendor/daterangepicker/moment.min.js"></script>
+   <script src="resources/vendor/daterangepicker/daterangepicker.js"></script>
+   <!--===============================================================================================-->
+   <script src="resources/vendor/countdowntime/countdowntime.js"></script>
+   <!--===============================================================================================-->
+   <script src="resources/js/main.js"></script>
 
 </body>
 </html>

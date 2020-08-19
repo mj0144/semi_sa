@@ -19,4 +19,8 @@ order by DBMS_RANDOM.VALUE) WHERE ROWNUM = 1
 	from user_info a,lovetype b 
 	where a.user_num=b.user_num and a.user_num=#{user_num}
 	</select>
+	
+	 <select id="findname" resultType="String">
+   select looklike from lovetype
+   </select>
 </mapper>

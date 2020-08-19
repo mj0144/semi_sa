@@ -1,295 +1,217 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <%@include file="header.jsp"%>
 <%@include file="side.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-
-<!-- ì¢‹ì•„ìš” ë° ì¢‹ì•„ìš” ì·¨ì†Œ  -->
-<script>
- 	function toggleImage() {
-		var like = 'false';
-		
-		var hearton = "resources/img/btn/hearton.png"; //ì°¨ìˆëŠ” í•˜íŠ¸
-		var heartoff = "resources/img/btn/heartoff.png"; //ë¹„ì–´ìˆëŠ” í•˜íŠ¸
-		
-		console.log("ê¸€ì“´ì´ : " + $('#friend_num').val());
-		
-		
-		var user_num = ${sessionScope.user_num};
-		
-		if ($('#img1').attr("src") === hearton) {
-				$('#img1').attr("src", "resources/img/btn/heartoff.png"); //í•˜íŠ¸ ë²„ë¦¼
-				$("img1").attr('data-original-title', 'ì¢‹ì•„ìš”').tooltip('show');
-				like='false';
-			//console.log(${param.op_num});
-		} else {
-				$('#img1').attr("src", "resources/img/btn/hearton.png"); //í•˜íŠ¸ ì±„ì›€
-				$('#img1').attr('data-original-title', 'ì¢‹ì•„ìš” ì·¨ì†Œ').tooltip('show')
-				like='true';
-		}
-		
-		var param = {"like" : like, "liked_user" : $('#friend_num').val(), "user_num": user_num};
-
-		ajax(param);
-	}
-	
-	function ajax(param){			
-		$.ajax({
-				url : "likeox",
-				type : "post",
-				data : param,
-				success : function(data){
-					
-				},
-				error : function(){
-					
-				}
-			});
-	}
-
-</script>
-
-<!-- ë¸”ë½ ë° ë¸”ë½ ì·¨ì†Œ  -->
-<script>
-
-	function blockImage() {
-		
-		var block = 'false';
-		
-		var blockon = "resources/img/btn/dislike.png"; //ë¸”ë½í•œ ìƒíƒœ(ë¹¨ê°„ìƒ‰)
-		var blockoff = "resources/img/btn/like.png"; //ë¸”ë½ ì•ˆí•œ ìƒíƒœ(ê¹Œë§Œìƒ‰)
-		
-		console.log("ê¸€ì“´ì´ : " + $('#friend_num').val());
-		
-		
-		var user_num = ${sessionScope.user_num};
-		
-		if ($('#img2').attr("src") === blockon) {
-				$('#img2').attr("src", "resources/img/btn/like.png"); //ë¸”ë½ì·¨ì†Œ
-				$('#img2').attr('data-original-title', 'ì¶”ì²œ ì œì™¸ ì·¨ì†Œ').tooltip('show')
-				block='true';
-		} else {
-				$('#img2').attr("src", "resources/img/btn/dislike.png"); //ë¸”ë½
-				$('#img2').attr('data-original-title', 'ì¶”ì²œì—ì„œ ì œì™¸').tooltip('show')
-				block='false';
-		}
-		
-		var pm = {"block" : block, "blocked_user" : $('#friend_num').val()};
-		
-		blocked(pm);
-
-	}
-	
-	function blocked(pm){
-		
-		console.log("ë“¤ì–´ì˜¤ë‹ˆ?");
-		
-		$.ajax({
-				url : "blockox",
-				type : "post",
-				data : pm,
-				success : function(data){
-					
-				},
-				error : function(){
-					
-				}
-			});
-	}
-
-
-</script>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <div id="colorlib-main">
 
-	<section class="ftco-section">
-		<div class="hero-wrap" style="margin-bottom: -75px; margin-left: -27px;">
-			<div class="overlay"></div>
-			<div class="d-flex">
-				<div class="author-image text img p-md-5"
-					style="background-image: url(resources/upload/${membervo.user_img});">
-				</div>
-				<div class="author-info text p-4 p-md-5 mt-5 mb-5">
-					<div class="desc">
-						<div style="margin-top: -100px; margin-bottom: 40px;">
-							<p style="text-align: center; float: left;">
-								<c:choose>
-									<c:when test="${heartchk == 1}">
-										<img id="img1" src="resources/img/btn/hearton.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ì¢‹ì•„ìš” ì·¨ì†Œ"/>
-									</c:when>
-									<c:otherwise>
-										<img id="img1" src="resources/img/btn/heartoff.png" onclick="toggleImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ì¢‹ì•„ìš”"/>
-									</c:otherwise>
-								</c:choose>
-								<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
-							</p>
-							<p style="text-align: center; margin-left: -300px;">
-							<!-- 	<a href="#">ì±„íŒ…í•˜ê¸°<img src="images/chat.png" style="margin-left: 10px;"></a> -->
-							</p>
-							<!-- ë¸”ë½ ë° ë¸”ë½ ì·¨ì†Œ -->
-							<p style="text-align: center; float: right;">
-								<c:choose>
-									<c:when test="${blockchk == 1}">
-										<img id="img2" src="resources/img/btn/like.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ì¶”ì²œ ì œì™¸ ì·¨ì†Œ"/>
-									</c:when>
-									<c:otherwise>
-										<img id="img2" src="resources/img/btn/dislike.png" onclick="blockImage()" style="width: 50px; cursor: pointer;"
-										data-toggle="tooltip" data-placement="top" title="ì¶”ì²œì—ì„œ ì œì™¸"/>
-									</c:otherwise>
-								</c:choose>
-							</p>
-							<!-- ë¸”ë½ ë -->
-						</div>
-						<br>
-						<h1 class="mb-4">
-							<span>ì €ëŠ” ${membervo.name}ì…ë‹ˆë‹¤</span>
-						</h1>
-						<p class="mb-4">${membervo.user_intro}</p>
-						<h3 class="signature h1">Eric</h3>
-						<button type="button" id="chatrequest" onclick="chatrequest()">ì±„íŒ…ì‹ ì²­</button>
-					</div>
-					<div id="boardBtn_group" ><button type="button" id="modal_open_btn" style="float: right;">ì‹ ê³ í•˜ê¸°</button></div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="ftco-section ftco-counter img" id="section-counter"
-		style="background-image: url(images/bg_1.jpg); padding: -50px 0;">
-		<div class="container">
-			<div class="row justify-content-start">
-				<div class="col-md-10">
-					<div class="row">
+   <section class="ftco-section">
+      <div class="hero-wrap" style="margin-bottom: -75px; margin-left: -27px;">
+         <div class="overlay"></div>
+         <div class="d-flex">
+            <div class="author-image text img p-md-5"
+               style="background-image: url(resources/upload/${membervo.user_img});">
+            </div>
+            <div class="author-info text p-4 p-md-5 mt-5 mb-5">
+            <div>
+ 
+            </div>
+               <div class="desc">
+                  <br>
+                  <h1 class="mb-4">
+                     <span>Àú´Â ${membervo.name}ÀÔ´Ï´Ù</span>
+                  </h1>
+                  <p class="mb-4">${membervo.user_intro}</p>
+                  <h3 class="signature h1">Eric</h3>
+                  <div>
+                  	           <div>
 
-						<div
-							class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
-							<div class="block-18">
-								<div class="text d-flex align-items-center">
-									<span> </span>
-								</div>
-							</div>
-						</div>
-						<div
-							class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
-							<div class="block-18">
-								<div class="text d-flex align-items-center">
-									<span>ë°›ì€ ì¢‹ì•„ìš”</span>
-									<strong class="number" data-number="${liked_cnt}">0</strong> 
-								</div>
-							</div>
-						</div>
-						<div
-							class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
-							<div class="block-18">
-								<div class="text d-flex align-items-center">
-									<span>ë³´ë‚¸ ì¢‹ì•„ìš”</span>
-									<strong class="number" data-number="${like_cnt}">0</strong> 
-								</div>
-							</div>
-						</div>
-						<div
-							class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
-							<div class="block-18">
-								<div class="text d-flex align-items-center">
-									<span>ê²Œì‹œê¸€</span>
-									<strong class="number" data-number="${board_cnt}">0</strong> 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-				<section class="ftco-section-3">
-		<div class="photograhy">
-			<div class="row">
-			<c:forEach var="e" items="${blist }">
-				<div class="col-md-4 ftco-animate">
-					<a href="board?board_num=${e.board_num }">
-						<img src="resources/upload/${e.board_img }" class="photography-entry img d-flex justify-content-start align-items-end" style="width: 420px;">
-						<div class="overlay"></div>
-					</a>
-				</div>
-			</c:forEach>
-			</div>
-		</div>
-	</section>
+											<!-- ºí¶ô Ãß°¡ ±¸Çö -->                				            
+                				            <c:set var="blockox" value="false"/>
+											<c:forEach var="g" items="${set.blist }">
+												<c:choose>
+													<c:when test="${g == profile.USER_NUM}">
+														<c:set var="blockox" value="true"/>
+													</c:when>													
+												</c:choose>
+											</c:forEach>
+											 		
+											<c:choose>
+												<c:when test="${blockox == 'true'}">
+													<img id="${profile.USER_NUM}" class="blockox" style="width:15%; cursor: pointer;" 
+													src="resources/img/btn/like.png" data-toggle="tooltip" data-placement="top" title="ÃßÃµ Á¦¿Ü Ãë¼Ò"/>
+												</c:when>
+												<c:otherwise>
+													<img id="${profile.USER_NUM}" class="blockox" style="width: 15%; cursor:pointer;" 
+													src="resources/img/btn/dislike.png" data-toggle="tooltip" data-placement="top" title="ÃßÃµ¿¡¼­ Á¦¿Ü"/>												
+												</c:otherwise>
+											</c:choose>
+                				            <!-- ºí¶ô Ãß°¡ ±¸Çö ³¡ -->
+                				            
+                				            <!-- ÇÁ·ÎÇÊ ÀÌµ¿ ±¸Çö -->
+                				            <img src="resources/img/btn/profile.png" style="width:15%; cursor: pointer;" onclick="profile()"
+                				            data-toggle="tooltip" data-placement="top" title="»ó¼¼ ÇÁ·ÎÇÊ º¸±â">
+											<!-- ÇÁ·ÎÇÊ ÀÌµ¿ ³¡ -->
+                				            
+                				            <img src="resources/img/btn/chat.png" style="width:15%; cursor: pointer;" onclick="chatting()"
+                				            data-toggle="tooltip" data-placement="top" title="Ã¤ÆÃÇÏ±â">
+
+			        						<!-- ÁÁ¾Æ¿ä ¹öÆ° ±¸Çö -->
+			        						<c:set var="hearton" value="false"/>
+											<c:forEach var="g" items="${heart }">
+												<c:choose>
+													<c:when test="${g.liked_user == profile.USER_NUM}">
+														<c:set var="hearton" value="true"/>
+													</c:when>													
+												</c:choose>
+											</c:forEach>
+											<c:choose>
+												<c:when test="${hearton == 'true'}">
+													<img id="${profile.USER_NUM}" class="heart" style="width: 15%; cursor:pointer;" 
+													src="resources/img/btn/hearton.png" data-toggle="tooltip" data-placement="top" title="ÁÁ¾Æ¿ä Ãë¼Ò"/>
+												</c:when>
+												<c:otherwise>
+													<img id="${profile.USER_NUM}" class="heart" style="width: 15%; cursor:pointer;" 
+													src="resources/img/btn/heartoff.png" data-toggle="tooltip" data-placement="top" title="ÁÁ¾Æ¿ä"/>												
+												</c:otherwise>
+											</c:choose>
+											<!-- ÁÁ¾Æ¿ä ¹öÆ° ³¡ -->
+			                   			</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   
+   <section class="ftco-section ftco-counter img" id="section-counter"
+      style="background-image: url(images/bg_1.jpg); padding: -50px 0;">
+      <div class="container">
+         <div class="row justify-content-start">
+            <div class="col-md-10">
+               <div class="row">
+
+                  <div
+                     class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                     <div class="block-18">
+                        <div class="text d-flex align-items-center">
+                           <span> </span>
+                        </div>
+                     </div>
+                  </div>
+                  <div
+                     class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                     <div class="block-18">
+                        <div class="text d-flex align-items-center">
+                           <span>¹ŞÀº ÁÁ¾Æ¿ä</span>
+                           <strong class="number" data-number="${liked_cnt}">0</strong> 
+                        </div>
+                     </div>
+                  </div>
+                  <div
+                     class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                     <div class="block-18">
+                        <div class="text d-flex align-items-center">
+                           <span>º¸³½ ÁÁ¾Æ¿ä</span>
+                           <strong class="number" data-number="${like_cnt}">0</strong> 
+                        </div>
+                     </div>
+                  </div>
+                  <div
+                     class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                     <div class="block-18">
+                        <div class="text d-flex align-items-center">
+                           <span>°Ô½Ã±Û</span>
+                           <strong class="number" data-number="${board_cnt}">0</strong> 
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+            <section class="ftco-section-3">
+      <div class="photograhy">
+         <div class="row">
+         <c:forEach var="e" items="${blist }">
+            <div class="col-md-4 ftco-animate">
+               <a href="board?board_num=${e.board_num }">
+                  <img src="resources/upload/${e.board_img }" class="photography-entry img d-flex justify-content-start align-items-end" style="width: 420px;">
+                  <div class="overlay"></div>
+               </a>
+            </div>
+         </c:forEach>
+         </div>
+      </div>
+   </section>
+   	<script>	
+		//ÇÏÆ® ´­·¶À» ¶§, ÇÏÆ® on/off ¸ğ¾ç º¯È­		
+		$(document).on('click', '.heart', function(event) { 
+				 var like = 'false';
+			     var user_num = ${sessionScope.user_num};
+			      
+			      if ($(this).attr("src") === "resources/img/btn/hearton.png") {
 	
-	<!-- Modal -->
-				    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				        <div class="modal-dialog  modal-dialog-centered" role="document">
-				            <div class="modal-content">
-				                <div class="modal-header">
-				                    <b><h2 class="modal-title" id="myModalLabel">ë¶ˆëŸ‰ìœ ì € ì‹ ê³ í•˜ê¸°</h2></b>
-				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right;">
-				                        <span aria-hidden="true">&times;</span>
-				                    </button>
-				                </div>
-				                <div class="modal-body" >
-										<hr style="color: gray;"><br><br>
-										<form method="post" id="checked" action="reportUser">
-										<input type="radio" name="report_comment" value="ì˜ì‹¬ìŠ¤ëŸ½ê±°ë‚˜ ìŠ¤íŒ¸ì…ë‹ˆë‹¤." checked/> ì˜ì‹¬ìŠ¤ëŸ½ê±°ë‚˜ ìŠ¤íŒ¸ì…ë‹ˆë‹¤. <br/><br/>
-										<input type="radio" name="report_comment" value="ê³„ì • í•´í‚¹ì´ ì˜ì‹¬ë©ë‹ˆë‹¤."/> ê³„ì • í•´í‚¹ì´ ì˜ì‹¬ë©ë‹ˆë‹¤.<br/><br/>
-										<input type="radio" name="report_comment" value="ì‹ ê³ ì ë³¸ì¸,ë˜ëŠ” íƒ€ì¸ì„ ì‚¬ì¹­í•˜ê³  ìˆìŠµë‹ˆë‹¤."/> ì‹ ê³ ì ë³¸ì¸,ë˜ëŠ” íƒ€ì¸ì„ ì‚¬ì¹­í•˜ê³  ìˆìŠµë‹ˆë‹¤.<br/><br/>
-										<input type="radio" name="report_comment" value="ë¶€ì í•©í•œ ê²Œì‹œë¬¼ì„ ê²Œì‹œí–ˆìŠµë‹ˆë‹¤."/> ë¶€ì í•©í•œ ê²Œì‹œë¬¼ì„ ê²Œì‹œí–ˆìŠµë‹ˆë‹¤.<br/><br/>
-										<input type="radio" name="report_comment" value="ê¸°íƒ€"/> ê¸°íƒ€<br/><br/>
-										<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
-								</div>
-				                <div class="modal-footer">
-				                    <button type="submit" class="btn btn-primary" id="report_btn">ì œì¶œ</button>
-				                     </form>
-				                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="report_cancel">ì·¨ì†Œ</button>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-	<%@include file="footer.jsp"%>
-	<script>
-	$(document).ready(function() {
-		$('#modal_open_btn').click(function() {
-			$('#myModal').modal('show');
-		});
+			    	  $(this).attr("src", "resources/img/btn/heartoff.png"); //ÇÏÆ® ¹ö¸²
+			    	  $(this).attr('data-original-title', 'ÁÁ¾Æ¿ä').tooltip('show');
+			    	  like='false';
+			         
+		 			} else if($(this).attr("src") === "resources/img/btn/heartoff.png") {
+		 			
+		 				$(this).attr("src", "resources/img/btn/hearton.png"); //ÇÏÆ® Ã¤¿ò
+		 				$(this).attr('data-original-title', 'ÁÁ¾Æ¿ä Ãë¼Ò').tooltip('show')
+		 				like='true';
+		 			}
+			      var param = {"like" : like, "liked_user" : $(this).attr("id"), "user_num": user_num};
+	
+			      ajax(param);
+				
+			});
 		
-		$('#report_btn').click(function() {
- 			alert('ì‹ ê³ ê°€ ì ‘ìˆ˜ë˜ì—ˆìŠµë‹ˆë‹¤.')
-		})
-	})
-	function chatrequest() {
-		var responeUser = $("#userNum").val(); //ë°›ëŠ”ì
-		var link = "chatRequest"
-		var param = new Object();
-		var requestUser = ${sessionScope.user_num}; //ë³´ë‚´ëŠ”ì
-		var nickname = $("#nickname").val();
-		console.log("nickname"+nickname);
-		param.notifyLink = link;
-		param.notifycontent = nickname+"ë‹˜ì´ íšŒì›ë‹˜ì—ê²Œ ì±„íŒ…ì„ ìš”ì²­í•˜ì˜€ìŠµë‹ˆë‹¤.";
-		param.notifyuser  = responeUser; //ë°›ëŠ”ì
-		param.notifyusernum = requestUser; //ë³´ë‚´ëŠ”ì
-		var paramJson = JSON.stringify(param);
-		$.ajax({
-			type : "POST",
-			url : "notifyin",
-			contentType: "application/json; charset=utf-8",
-			dataType : "json",
-			data : paramJson,
-			success :  function(res){
-				console.log("ì•ŒëŒë³´ë‚´ê¸° ì„±ê³µ!!!");
-				if(res.result == "success"){
-					var notifyparam = 'ì±„íŒ…|'+link+"|"+nickname;
-					notifyon(notifyparam);
-				}else{
-					alert("ì•ŒëŒì„ ë³´ë‚´ëŠ”ë„ì¤‘ ajax ë¬¸ì œê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
-				}
-			},
-			error:function(request,status,error){
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-			}
-		});
-	}
+		 //ÁÁ¾Æ¿ä À¯¹« °ª ¹Ş¾Æ¿Í¼­ ¶ç¿ì±â   
+		 function ajax(param){
+		   $.ajax({
+		         url : "likeox",
+		         type : "post",
+		         data : param,
+		         success : function(data){
+		            
+		         },
+		         error : function(){
+		            
+		         }
+		      });
+		   }
 	</script>
+	
+	<script>
+		$(document).on('click', '.blockox', function(event) {
+			
+			var block = 'false';
+			
+			var blockon = "resources/img/btn/dislike.png"; //ºí¶ô ÇÏ±â
+			var blockoff = "resources/img/btn/like.png"; //ºí¶ô ÇØÁ¦
+			
+			var user_num = ${sessionScope.user_num};
+			
+			if ($(this).attr("src") === blockon) {
+					$(this).attr("src", "resources/img/btn/like.png"); //ºí¶ôÃë¼Ò
+					$(this).attr('data-original-title', 'ÃßÃµ Á¦¿Ü Ãë¼Ò').tooltip('show')
+					block='true';
+			} else if($(this).attr("src") === blockoff){
+					$(this).attr("src", "resources/img/btn/dislike.png"); //ºí¶ô
+					$(this).attr('data-original-title', 'ÃßÃµ¿¡¼­ Á¦¿Ü').tooltip('show')
+					block='false';
+			}
+			
+			var pm = {"block" : block, "blocked_user" : $('#user_num').val()};
+			
+			blocked(pm);
+	
+		});
+		</script>
+   <%@include file="footer.jsp"%>
