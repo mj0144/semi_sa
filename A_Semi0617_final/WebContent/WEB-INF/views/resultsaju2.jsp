@@ -59,7 +59,7 @@
 		         
  				</div>	
  			</div>
- 			
+ 			 
 		 		<div class="col-md-4 col-md-offset-4 text-center">
 		 			<h3><strong><a href="listSome?code=1">다른 테스트</a></strong></h3> 
 		 			 <div class="single-team">
