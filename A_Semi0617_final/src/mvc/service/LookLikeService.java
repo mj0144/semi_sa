@@ -37,18 +37,23 @@ public class LookLikeService {
    
    @Autowired
    	private LooklikeDao looklikedao;
-   public void insertLooklike(String images, MemberVO vo,IdealVO ivo) {
-	      
-	      Map<String, Object> map = apiExamFace.face(images);
-	      System.out.println("µ∆¥œ?");
-	      System.out.println(vo.getUser_id());
-	      int user_num = joinDao.user_num(vo.getUser_id());
-	      map.put("user_num", user_num);
-	      System.out.println("√÷¡æMAP:" + map);
-	      //System.out.println(vo.getUser_img());
-
-	      joinDao.looklike(map);
-	   }
+   public boolean insertLooklike(String images, MemberVO vo,IdealVO ivo) {
+       
+       Map<String, Object> map = apiExamFace.face(images);
+       System.out.println("µ∆¥œ?");
+       System.out.println(vo.getUser_id());
+       int user_num = joinDao.user_num(vo.getUser_id());
+       map.put("user_num", user_num);
+       System.out.println("√÷¡æMAP:" + map);
+       //System.out.println(vo.getUser_img());
+       if (map.containsKey("looklike")) {
+       joinDao.looklike(map);
+       return true;
+    }else {
+       return false;
+    }
+       
+    }
 
    public void updateLooklike(HttpSession session,String image, MemberVO vo) {
 	   int user_num =(int) session.getAttribute("user_num");
