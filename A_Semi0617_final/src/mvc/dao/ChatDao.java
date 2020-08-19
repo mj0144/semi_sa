@@ -24,4 +24,20 @@ public class ChatDao extends FeedAbstract{
 	public List<HashMap<String, Object>> chatList(int roomNum) throws Exception{
 		return (List<HashMap<String, Object>>) selectList(nameSpace+"meList", roomNum);
 	}
+	//채팅방목록
+	@SuppressWarnings("unchecked")
+	public List<HashMap<String, Object>> roomSelect(int chat_num) throws Exception{
+		return (List<HashMap<String, Object>>) selectList(nameSpace+"roomSelect", chat_num);
+	}
+	//채팅내용
+	@SuppressWarnings("unchecked")
+	public HashMap<String, Object> inToSelect(HashMap<String, Object> params) throws Exception{
+		return (HashMap<String, Object>) selectOne(nameSpace+"inToSelect", params);
+	}
+	@SuppressWarnings("unchecked")
+	public HashMap<String, Object> responeSelect(int roomNum) throws Exception{
+		return (HashMap<String, Object>) selectOne(nameSpace+"responeSelect", roomNum);
+	}
+	
+	
 }

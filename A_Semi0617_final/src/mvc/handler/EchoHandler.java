@@ -30,6 +30,10 @@ public class EchoHandler extends TextWebSocketHandler{
 		logger.info("{} 연결됨 ", session.getId());
 	}
 
+	@Override
+	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
+		this.logger.error("web socket error!", exception);
+	}
 	//메세지 전송 실행 메소드
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
