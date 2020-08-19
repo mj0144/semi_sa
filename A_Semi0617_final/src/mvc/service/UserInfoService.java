@@ -34,6 +34,7 @@ public class UserInfoService {
 	
 	@Autowired
 	private BoardService boardService;
+
 	//바뀐 회원정보 세팅
 	public void userInfoSetting(HttpSession session, MemberVO vo, HttpServletRequest request, MultipartFile file) {
 		JoinService iljusetting = new JoinService();

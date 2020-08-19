@@ -54,7 +54,7 @@ public class ImgUtils {
 
 		// 파일업로드
 		System.out.println("파일저장시작");
-
+		System.out.println("이거이어거 이어감리야"+file);
 		if (!file.isEmpty()) {
 			// 파일이름 받고 확장자 저장
 			String oriFileName = file.getOriginalFilename();

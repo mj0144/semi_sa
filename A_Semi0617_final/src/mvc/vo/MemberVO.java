@@ -39,9 +39,15 @@ public class MemberVO {
    private String user_body;
    private IdealVO idealvo;
    
-   private String looklike;
+   private String looklike, percent;
 
    
+   public String getPercent() {
+	return percent;
+   }	
+   public void setPercent(String percent) {
+	   this.percent = percent;
+   }
    public String getLooklike() {
       return looklike;
    }

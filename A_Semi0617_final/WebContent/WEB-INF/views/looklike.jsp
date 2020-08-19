@@ -2,8 +2,6 @@
     pageEncoding="EUC-KR"%>
 <%@include file="header.jsp" %>
 <%@include file="side.jsp" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
       <div id="colorlib-main">
          <section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
       <div class="container">
@@ -13,41 +11,68 @@
             </div>
          </div>
       </div>
-   </section></div>
+   </section>
    <div >
-      <h1 style="text-align: center;"><br><br><b>나랑 닮은 연예인은?</b></h1>
+      <h1 style="text-align: center;"><br><b>나랑 닮은 연예인은?</b></h1>
    </div>
    <section class="ftco-section contact-section">
-       <div class="container">
+       <div class="container" style="margin-left: 230px;">
          <div class="row">
                   <div class=".col-xs-6 .col-sm-4">
-                    <div class="single-team">
-                        <div class="team-photo">
-                            <img style="height:400px" width="300px" src="resources/img/default.png">
+                        <div>
+                            <img id="profileimg" style="height:300px; width:200px;" src="resources/upload/${mylist.USER_IMG}">
                         </div>
                         <br>
-                        <h4>홍길동</h4>
+                        <h4>나의 프로필 사진</h4>
+                        <h6 style="color: orange;">*프로필 수정시 결과는 바뀝니다.*</h6>
+                </div>
+               
+                
+                   <div class=".col-xs-6 .col-sm-4">
+                    <div>
+                        <img style="height:150px; width:400px;" src="resources/img/icon/here.png">
+                </div>
+                <div>
+                 <div><h1 style="text-align: center;"><b> ${mylist.PERCENT}%</b></h1>
+                 <h3  style="text-align: center;">닮았습니다</h3></div>
+                 </div>
+                 </div>
+                 <div class=".col-xs-6 .col-sm-4">
+                    <div>
+                        <div>
+                            <img style="height:300px; width:200px;" src="resources/upload/IMAG01_1.jpg">
+                        </div>
+                        <div>
+                        <br>
+                        <h4 style="text-align: center;"> ${mylist.LOOKLIKE}</h4>
+                       
+                    </div>
                     </div>
                 </div>
-                   <div class=".col-xs-6 .col-sm-4">
-                    
-                    <div>
-                        <img style="height:100px; line-height:100px; vertical-align:middle;" src="resources/img/icon/here.png">
-                </div>
-                <div style="float: right; width:30%;">
-                 <div><h5> 누구를 몇프로닮음</h5></div>
-                 </div>
-                        <div class="team-photo">
-                            <img src="resources/img/default.png">
-                        <br>
-                        <h4>홍길동</h4>
-                     </div>
-                   <div class=".col-xs-6 .col-sm-4">
-                   
-                   </div>
                 </div>
                 </div>
             
        </section>
-   
+   <script>
+
+  //이미지 미리보기.
+      $("#file").change(function() {
+         console.log("files[0] : " + this.files[0]);
+         console.log("files : " + this.files);
+         if (this.files && this.files[0]) {
+            var reader = new FileReader;
+            reader.onload = function(data) {
+               $("#profileimg").attr("src", data.target.result).width(250);
+            }
+            reader.readAsDataURL(this.files[0]);
+         }
+      });
+ 
+ function submitchange() {
+			$('#form').submit();
+		
+}
+
+
+   </script>
 <%@ include file="footer.jsp" %>

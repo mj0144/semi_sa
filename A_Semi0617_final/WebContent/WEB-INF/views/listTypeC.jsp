@@ -339,6 +339,10 @@ input[type="checkbox"]:checked + label:before {
 			</div>
 		</div>
 	</section>
+	
+	
+
+
 	<script src="https://d3js.org/d3.v3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

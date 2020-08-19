@@ -99,6 +99,7 @@ public class JoinService {
 	}
 	
 	
+	//회원가입
 	public void join(MemberVO vo, IdealVO ivo) {
 		try {
 			joinDao.join(vo); //회원가입
@@ -108,8 +109,8 @@ public class JoinService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
+
 	//등급초기화
 	public void gradeInit(MemberVO vo) {
 		Map<String, Object> map = new HashMap<String, Object>();;

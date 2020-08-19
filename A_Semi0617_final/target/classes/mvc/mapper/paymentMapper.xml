@@ -44,8 +44,22 @@ WHEN NOT MATCHED THEN
         VALUES (#{product_num}, #{buyer_num}, #{paid_date}, #{expiry_date})
  </insert> 
  
-
+<update id="singleGradeUpdate" parameterType="payvo">
+	UPDATE mapping_grade_user SET grade_name='bronze' where user_num=#{buyer_num}
+</update>
  
+<update id="setGradeUpdate" parameterType="payvo">
+	UPDATE mapping_grade_user SET grade_name
+	<choose>
+		<when test="product_num==3">
+			='gold'
+		</when>
+		<otherwise>
+			='silver'
+		</otherwise>
+	</choose>
+ 	where user_num=#{buyer_num}
+</update>
 
  <select id="selectproduct_info" parameterType="int" resultType="productvo">
  	select * from product_info where product_num=#{product_num}

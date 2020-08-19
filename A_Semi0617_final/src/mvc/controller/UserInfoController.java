@@ -61,6 +61,7 @@ public class UserInfoController {
 		return "redirect:/mypage";
 
 	}
+
 	
 
 	

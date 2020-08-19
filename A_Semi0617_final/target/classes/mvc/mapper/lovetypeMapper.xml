@@ -14,4 +14,13 @@ order by DBMS_RANDOM.VALUE) WHERE ROWNUM = 1
 		select percent from lovetype where user_num = #{user_num}
 	</select>
 
+	<select id="mylook" parameterType="int" resultType="hashMap">
+	select a.user_num user_num, a.nickname nickname, a.user_img user_img,b.looklike looklike, b.percent percent 
+	from user_info a,lovetype b 
+	where a.user_num=b.user_num and a.user_num=#{user_num}
+	</select>
+	
+	 <select id="findname" resultType="String">
+   select looklike from lovetype
+   </select>
 </mapper>
