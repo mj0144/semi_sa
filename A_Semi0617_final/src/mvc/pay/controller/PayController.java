@@ -1,5 +1,7 @@
 package mvc.pay.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.aspectj.lang.annotation.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,10 @@ public class PayController {
 	
 	
 	@RequestMapping("/pay")
-	public String pay() {
-		return "payment/pay_productList";
+	public ModelAndView pay(String msg) {
+		ModelAndView mav = new ModelAndView("payment/pay_productList");
+		mav.addObject("msg", msg);
+		return mav;
 	}
 	@RequestMapping(value="/pay_productcart", method=RequestMethod.GET)
 	public ModelAndView pay_productcart(int product_num) {
@@ -44,11 +48,9 @@ public class PayController {
 	 
 	@RequestMapping("/pay_compelte")
 	@ResponseBody
-	public boolean pay_compelte(PaymentVO vo) {
-		
-		
+	public boolean pay_compelte(PaymentVO vo, HttpSession session) {
 		//결제 완료 정보 insert
-		payService.payListInsert(vo);
+		payService.payListInsert(vo, session);
 
 		return true;
 	}

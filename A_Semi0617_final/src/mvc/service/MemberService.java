@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.MemberDao;
+import mvc.dao.PayDao;
 import mvc.dao.UserInfoDao;
 import mvc.vo.MemberVO;
 
@@ -16,6 +17,9 @@ public class MemberService {
 
 	@Autowired
 	MemberDao memberDao;
+	
+	@Autowired
+	private PayDao payDao;
 
 
 	public boolean loginCheck(MemberVO vo, HttpSession session) {
@@ -32,6 +36,12 @@ public class MemberService {
 			
 
 		}
+
+		//채팅개수
+		session.setAttribute("chatcount", payDao.chatCount(vo.getUser_num()));
+		//등급.
+		session.setAttribute("grade_name", payDao.gradeName(vo.getUser_num()));
+		
 		return result;
 	}
 

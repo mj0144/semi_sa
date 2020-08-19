@@ -36,7 +36,7 @@ public class MemberVO {
    private String user_mbti;
    private String user_height;
    private String user_loc;
-   private String user_body;
+   private int user_body;
    private IdealVO idealvo;
    
    private String looklike, percent;
@@ -72,10 +72,10 @@ public class MemberVO {
    public void setUser_loc(String user_loc) {
       this.user_loc = user_loc;
    }
-   public String getUser_body() {
+   public int getUser_body() {
       return user_body;
    }
-   public void setUser_body(String user_body) {
+   public void setUser_body(int user_body) {
       this.user_body = user_body;
    }
    public IljuVO getIljuvo() {

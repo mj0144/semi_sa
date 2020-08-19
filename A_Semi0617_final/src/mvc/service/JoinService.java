@@ -116,7 +116,7 @@ public class JoinService {
 		Map<String, Object> map = new HashMap<String, Object>();;
 		vo.setUser_num(joinDao.user_num(vo.getUser_id()));
 		map.put("user_num", vo.getUser_num());
-		map.put("grade", "bronze");
+		map.put("grade", "gold");
 		map.put("left_count", 5);
 		joinDao.gradeInit(map);
 	}

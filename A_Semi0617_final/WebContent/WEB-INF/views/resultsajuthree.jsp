@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <link rel="stylesheet" href="resources/css/viewsaju3.css">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="header.jsp" %>
 <%@include file="side.jsp" %>
 		<div id="colorlib-main">

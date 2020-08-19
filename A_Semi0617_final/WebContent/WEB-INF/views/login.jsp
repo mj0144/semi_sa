@@ -326,27 +326,27 @@ body {
 										</div>
 									</div>
 
-									<div class="panel panel-primary setup-content" id="step-3">
+									<div class="panel panel-primary setup-content" id="step-4">
 										<div class="panel-heading">
 											<span class="login100-form-title p-b-49">당신의 이상형은? </span>
 										</div>
 										<div class="panel-body">
 											<!-- Select Basic -->
 											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">체형</label>
+												<label class="col-md-4 control-label" for="selectbasic">이상형 몸무게</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_body" name="ideal_body"
 														class="form-control">
-														<option value="1">마름</option>
-														<option value="2">보통</option>
-														<option value="3">통통</option>
+														<c:forEach begin="30" step="1" end="150" var="i">
+											               <option value="${i }">${i }</option>
+											            </c:forEach> 
 													</select>
 												</div>
 											</div>
 
 											<!-- Select Basic -->
 											<div class="form-group">
-												<label class="col-md-4 control-label" for="키">키</label>
+												<label class="col-md-4 control-label" for="키">이상형 키</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_height" name="ideal_height"
 														class="form-control">
@@ -359,16 +359,13 @@ body {
 											</div>
 											<!-- Select Basic -->
 											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">나이
-													차이는 몇 살 까지?</label>
+												<label class="col-md-4 control-label" for="selectbasic">이상형 나이</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="ideal_age" name="ideal_age"
 														class="form-control">
-														<c:forEach begin="20" step="1" end="60" var="i">
-															<option value="${i }">${i }</option>
-														</c:forEach>
-														
-
+														<c:forEach begin="10" step="1" end="100" var="i">
+											               <option value="${i }">${i }</option>
+											            </c:forEach>
 													</select>
 												</div>
 											</div>
@@ -379,20 +376,20 @@ body {
 										</div>
 									</div>
 
-									<div class="panel panel-primary setup-content" id="step-4">
+									<div class="panel panel-primary setup-content" id="step-3">
 										<div class="panel-heading">
 											<span class="login100-form-title p-b-49">나의 정보 </span>
 										</div>
 										<div class="panel-body">
 											<!-- Select Basic -->
 											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">체형</label>
+												<label class="col-md-4 control-label" for="selectbasic">나의 몸무게</label>
 												<div class="col-md-2" style="float: none; margin: 0 auto;">
 													<select id="user_body" name="user_body"
 														class="form-control">
-														<option value="1">마름</option>
-														<option value="2">보통</option>
-														<option value="3">통통</option>
+														<c:forEach begin="30" step="1" end="150" var="i">
+											               <option value="${i }">${i }</option>
+											            </c:forEach>  
 													</select>
 												</div>
 											</div>

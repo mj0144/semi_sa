@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp" %>
 <%@include file="side.jsp" %>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -195,6 +195,11 @@ background: #1AA85C;
      </div>
  
      
-   
+   <script type="text/javascript">
+   	var msg = '${msg}'
+   	if(msg!=''){
+   		alert(msg);
+   	}
+   </script>
 
 <%@ include file="footer.jsp" %>

@@ -4,7 +4,7 @@ public class IdealVO {
 	private int user_num;
 	private int ideal_height;
 	private int ideal_age;
-	private String ideal_body;
+	private int ideal_body;
 	
 	
 	public int getUser_num() {
@@ -25,10 +25,10 @@ public class IdealVO {
 	public void setIdeal_age(int ideal_age) {
 		this.ideal_age = ideal_age;
 	}
-	public String getIdeal_body() {
+	public int getIdeal_body() {
 		return ideal_body;
 	}
-	public void setIdeal_body(String ideal_body) {
+	public void setIdeal_body(int ideal_body) {
 		this.ideal_body = ideal_body;
 	}
 	

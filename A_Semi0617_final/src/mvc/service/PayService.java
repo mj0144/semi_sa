@@ -37,7 +37,7 @@ public class PayService {
 	}
 	
 	
-	public void payListInsert(PaymentVO vo) {
+	public void payListInsert(PaymentVO vo, HttpSession session) {
 		vo.setPaid_date(TimestampToDate(vo.getPaid_date())); //UNIX Timestame을 변환 date형식으로 변환
 		//아이디값 가져오기.
 		String user_id = payDao.selectUserId(vo.getBuyer_num());
@@ -49,9 +49,13 @@ public class PayService {
 			payDao.paySingleListInsert(vo); //paylist테이블에 정보저장.			
 		}else {
 			//세트 상품
-			vo = Expiary_date_cal(vo);
+			vo = Expiary_date_cal(vo); // 종료일 계산.
 			payDao.paySetListInsert(vo);			
 		}
+		
+		//세션값 업데이트
+		session.setAttribute("chatcount", payDao.chatCount(vo.getBuyer_num()));
+		session.setAttribute("grade_name", payDao.gradeName(vo.getBuyer_num()));
 	}
 	
 	

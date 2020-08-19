@@ -5,7 +5,7 @@
 }
 
 .dropdown-notification:hover .notification-read {
-  color: #34495E;
+  color: #ff00ff;
 }
 
 .dropdown-notification-all {
@@ -13,7 +13,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   font-style: oblique;
-  background-color: #34495E;
+  background-color: #ff00ff;
   color: white;
 }
 

@@ -124,14 +124,14 @@
 
 						<div class="title">
 						<br>
-							<h4>알림관리</h4>
+							<h4>결제내역 관리</h4>
 						</div>
 
 						<div class="text">
-							<span>결제내역</span>
+							<span>나의 결제내역을 확인할 수 있습니다.</span>
 						</div>
 
-						<a href="#">Learn More</a>
+						<a href="#" onclick="paylist()">Learn More</a>
 
 					</div>
 				</div>
@@ -185,17 +185,123 @@
 	<!-- Modal -->
 	<div class="modal fade" id="modalall" tabindex="-1" role="dialog">
 	  <div class="modal-dialog modal-dialog-scrollable modal-sm" role="document" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-	    <div class="modal-content">
+	    <div class="modal-content" >
+	    	
+	    </div>
 	    </div>
 	  </div>
 	</div>
 
+<!-- <div class="modal-header">
+	    		<h5 class="modal-title" id="modalheader">나의 결제 내역</h5>
+	    	</div>
+	    	<div class="modal-body" id="paylist">
+	    		
+	    	
+	    	</div>
+	    	<div class="modal-footer">
+	    		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	    	</div> -->
+	    	
+	    	
+<div class="modal" tabindex="-1" role="dialog" id="modal">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		      
+		        <h5 class="modal-title">결제확인</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      <br>
+				<table style="width: 100%;">
+					<thead>
+						<tr>
+							<th>상품명</th>
+							<th>결제금액</th>
+							<th>결제날짜</th>
+							<th>결제수량</th>
+						</tr>
+					</thead>
+					<tbody id="paylist">
+					
+					</tbody>
+				</table>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_pop()">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
 	<form action="friend" method="post" id="blfriend">
 		<input type="hidden" value="0" id="user_num" name="user_num">
 	</form>
+	
+	
+	<!-- 결제내역 modal -->
+	<script>
+	function close_pop(flag) {
+        $('#modal').hide();
+   };
+		function paylist(){
+			/* $('#paylist').remove(); */
+			var user_num = ${sessionScope.user_num}
+			var list;
+			$.ajax({
+				data : {'user_num':user_num},
+				url : 'payListModal',
+				type: 'GET',
+				success : function(data){
+					
+					console.log('data : ' + data);
+
+					console.log(data.product_num)
+					
+					
+					for (var i=0;i<data.length;i++) {
+						console.log(data[i].product_name);
+						console.log(data[i]);
+						$("#paylist").append('<tr>')
+					    $("#paylist").append('<td  style="border-bottom: 1px solid #ddd;">'+data[i].product_name+'</td>'); 
+						/* $("#paylist").append('<td style="border-bottom: 1px solid #ddd;">'+data[i].merchant_uid+'</td>');  */
+						$("#paylist").append('<td style="border-bottom: 1px solid #ddd;">'+data[i].paid_amount+'</td>'); 
+						$("#paylist").append('<td style="border-bottom: 1px solid #ddd;">'+data[i].paid_date+'</td>'); 
+						$("#paylist").append('<td style="border-bottom: 1px solid #ddd;">'+data[i].paid_count+'</td>'); 
+						$("#paylist").append('</tr>')
+ 					}
+					
+					
+		       
+					$('#modal').show();
+					
+					
+				},
+				error : function(request,status,error){
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+
+				}
+				
+			})
+		}
+		
+		
+		
+		
+	</script>
+	
+	
+	
+	
+	
 
 	<!--  여기까지 -->
-	<%@ include file="footer.jsp"%>
+<%-- 	<%@ include file="footer.jsp"%> --%>
 	
 	<!-- 이동현 block 모달 구현-->
 	<script>

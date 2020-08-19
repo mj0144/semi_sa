@@ -10,7 +10,16 @@ public class PaymentVO {
 	private String paid_date; //구매날짜
 	private String expiry_date; //종료날짜
 	private String user_id;
+	private String product_name; //상품이름
 	
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
 
 	public String getUser_id() {
 		return user_id;
