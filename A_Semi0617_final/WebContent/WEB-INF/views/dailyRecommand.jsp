@@ -35,7 +35,7 @@
                    		</div>
                		</div>
 	               	<!-- 체크박스 -->
-					<div class="col-md-12" id="checkset" style="border: 1px solid #240B3B; margin-bottom: 30px; padding: 30px; display:none;">
+					
 						<form action="listchk" class="detailck" method="post">
 						<div class="boxes" style="padding-bottom: 30px;">
 						<!-- 성별 체크 박스 -->
