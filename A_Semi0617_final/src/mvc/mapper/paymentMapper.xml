@@ -9,7 +9,7 @@
  
  <!-- 결제 데이터 insert -->
  <insert id="paylistInsert" parameterType="payvo">
- 	insert into paylist values(#{merchant_uid}, #{product_num}, #{buyer_num}, #{imp_uid}, #{paid_amount}, #{paid_date}, #{paid_count})
+ 	insert into paylist values(#{merchant_uid}, #{product_num}, #{buyer_num}, #{imp_uid}, #{paid_amount}, to_date(#{paid_date},'YYYY-MM-DD HH24:MI:SS'), #{paid_count})
  </insert>
  
  <!-- 단품 상품  -->
@@ -44,22 +44,27 @@ WHEN NOT MATCHED THEN
         VALUES (#{product_num}, #{buyer_num}, #{paid_date}, #{expiry_date})
  </insert> 
  
+ 
+<!-- 상품 구매시, 등급 재설정 -->
 <update id="singleGradeUpdate" parameterType="payvo">
-	UPDATE mapping_grade_user SET grade_name='bronze' where user_num=#{buyer_num}
+	UPDATE mapping_grade_user SET grade_name='gold' where user_num=#{buyer_num}
 </update>
  
 <update id="setGradeUpdate" parameterType="payvo">
 	UPDATE mapping_grade_user SET grade_name
 	<choose>
 		<when test="product_num==3">
-			='gold'
+			='vvip'
 		</when>
 		<otherwise>
-			='silver'
+			='vip'
 		</otherwise>
 	</choose>
  	where user_num=#{buyer_num}
 </update>
+
+
+
 
  <select id="selectproduct_info" parameterType="int" resultType="productvo">
  	select * from product_info where product_num=#{product_num}
@@ -68,6 +73,20 @@ WHEN NOT MATCHED THEN
  <select id="selectUserId" parameterType="int" resultType="String">
  	select user_id from user_info where user_num=#{user_num}
  </select>
+ 
+ 
+ <!-- 기본권+구매권 -->
+ <select id="basicchatcount" parameterType="int" resultType="int">
+ 	select left_count from basic_chat_count where user_num=#{user_num} 	
+ </select>
+  <!-- 기본권+구매권 -->
+ <select id="paychatcount" parameterType="int" resultType="int">
+ 	select left_count from single_productlist where buyer_num=#{user_num}
+ </select>
  	
+ 
+ <select id="gradename" parameterType="int" resultType="String">
+ 	select grade_name from mapping_grade_user where user_num=#{user_num}
+ </select>
  
  </mapper>

@@ -240,7 +240,7 @@
       
       <!-- Select Basic -->
       <div class="form-group">
-        <label class="col-md-4 " for="selectbasic">키</label>
+        <label class="col-md-4 " for="selectbasic">나의 키</label>
         <div class="col-md-4">
           <select id="user_height" name="user_height" class="w3-select" style="width:100px; height:30px">
                                     <c:forEach begin="140" step="1" end="200" var="i">
@@ -272,12 +272,12 @@
       </div>
       <!-- Select Basic -->
       <div class="form-group">
-        <label class="col-md-4 " for="selectbasic">체형</label>
+        <label class="col-md-4 " for="selectbasic">나의 몸무게</label>
         <div class="col-md-4">
           <select id="user_body" name="user_body" class="w3-select" style="width:100px; height:30px">
-            <option value="마름">마름</option>
-            <option value="보통">보통</option>
-            <option value="통통">통통</option>
+             <c:forEach begin="30" step="1" end="150" var="i">
+               <option value="${i }">${i }</option>
+            </c:forEach>  
          </select>
         </div>
       </div>
@@ -294,22 +294,22 @@
       </div>
       <!-- Select Basic -->
       <div class="form-group">
-        <label class="col-md-4 " for="selectbasic">이상형 체형</label>
+        <label class="col-md-4 " for="selectbasic">이상형 몸무게</label>
         <div class="col-md-4">
           <select id="ideal_body" name="idealvo.ideal_body"
          class="w3-select" style="width:100px; height:30px">
-            <option value="마름">마름</option>
-            <option value="보통">보통</option>
-            <option value="통통">통통</option>
+             <c:forEach begin="30" step="1" end="150" var="i">
+               <option value="${i }">${i }</option>
+            </c:forEach>    
          </select>
         </div>
       </div>
       <!-- Select Basic -->
       <div class="form-group">
-        <label class="col-md-4 " for="selectbasic">이상형 나이차이</label>
+        <label class="col-md-4 " for="selectbasic">이상형 나이</label>
         <div class="col-md-4">
           <select id="ideal_age" name="idealvo.ideal_age">
-            <c:forEach begin="0" step="1" end="15" var="i">
+            <c:forEach begin="10" step="1" end="100" var="i">
                <option value="${i }">${i }</option>
             </c:forEach>
          </select>

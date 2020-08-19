@@ -66,8 +66,8 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 
 			// 요청된 url이 리스트 일때.
 			if (url.equals("/AFinal/listWhole")) {
-				// 하루 10회 추가 권한(00001000)을 가진 사용자.(gold)
-				if(code_sum==13) {
+				// 하루 10회 추가 권한(00001000)을 가진 사용자.(vvip)
+				if(code_sum==29) {
 					request.setAttribute("paymember", 20);
 					return true;
 				}else {
@@ -75,10 +75,19 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 					return true;
 				}
 
-			} else {
-				return false;
+			} 
+			
+			if (url.equals("/AFinal/findlove")){
+				if(code_sum >= 5) {
+					return true;
+				}else {
+					ModelAndView mav = new ModelAndView("redirect:/pay");
+					mav.addObject("msg", "결제가 필요합니다");
+					throw new ModelAndViewDefiningException(mav);
+				}
 			}
-
+			return false;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			ModelAndView mav = new ModelAndView("redirect:/pay");

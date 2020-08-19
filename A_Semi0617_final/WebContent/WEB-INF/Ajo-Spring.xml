@@ -117,10 +117,12 @@
 			<mvc:mapping path="/chatting/**"/>
 			<ref bean="GradeInterceptor"/>
 		</mvc:interceptor>
-	</mvc:interceptors>
-	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/listWhole/**"/>
+			<ref bean="GradeInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/findlove/**"/>
 			<ref bean="GradeInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
