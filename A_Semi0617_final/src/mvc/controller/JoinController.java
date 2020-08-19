@@ -66,15 +66,11 @@ public class JoinController {
    @RequestMapping(value = "/imgchk", method = RequestMethod.POST)
    @ResponseBody
    public int imgchk(MultipartFile[] uploadFile,HttpServletRequest request, MemberVO vo) {
-      System.out.println("컨트롤러왔니?");
       int result=0;
       for (MultipartFile file : uploadFile) {   
          vo.setUser_img(imgUtils.imgSave(request, file, "in", null));
-         System.out.println("vo에들어갔니?"+vo.getUser_img());
          String images = imgUtils.root_path(request, vo.getUser_img());
-         System.out.println("이미지 rootpath됐니??"+images);
          Map<String, Object> map = apiExamFace.face(images);
-         System.out.println("됐니?");
           System.out.println("최종MAP:" + map);
           if (map.containsKey("looklike")) {
              result=1;
