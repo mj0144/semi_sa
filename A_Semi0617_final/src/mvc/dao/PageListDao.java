@@ -60,6 +60,11 @@ public class PageListDao {
 	// 매일 0시가 되면 추천인 저장한 DB 삭제
 	public void delRprofile() {
 		ss.delete("pagelist.delRprofile");
-	}		
+	}
+	
+	// 차트 뽑기
+	public HashMap<String, Object> getChart(HashMap<String, Object> map){
+		return ss.selectOne("pagelist.score_chart", map);
+	}
 	
 }
