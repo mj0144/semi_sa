@@ -1,5 +1,6 @@
 package mvc.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -36,35 +37,50 @@ public class ProfileController {
 	@Autowired
 	private DeleteService deleteservice;
 
-	//마이페이지
-	@RequestMapping(value = "/mypage")
-	public ModelAndView mypage(HttpSession session) throws Exception {
-		MemberVO vo= profileservice.result_basic(session);
-		
-		session.setAttribute("user_img", vo.getUser_img());
+	@Autowired
+	   private ProfileDao profileDao;
 
-		//팔로우 팔로워 수 띄우기
-		int cnt1 =likeService.like1(session);
-		int cnt2 =likeService.like2(session);
-		
-		//내 게시물 띄우기
-		List<BoardVO> list = boardService.Board(session);
-		
-		//내가 쓴 게시물 숫자 띄우기
-		int vo1=boardService.Boardmax(session);
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("mypage");
-		mav.addObject("member", vo);
-		mav.addObject("cnt2", cnt2);
-		mav.addObject("cnt1", cnt1);
-		mav.addObject("boardlist", list);
-		mav.addObject("maxnum", vo1);
-		return mav;
-		
-		
-		
-	}
+	   //마이페이지
+	   @RequestMapping(value = "/mypage")
+	   public ModelAndView mypage(HttpSession session) throws Exception {
+	      MemberVO vo= profileservice.result_basic(session);
+	      
+	      session.setAttribute("user_img", vo.getUser_img());
+	      int user_num = (int)session.getAttribute("user_num");
+	      
+	      //팔로우 팔로워 수 띄우기
+	      int cnt1 =likeService.like1(session);
+	      int cnt2 =likeService.like2(session);
+	      
+	      //내 게시물 띄우기
+	      List<BoardVO> list = boardService.Board(session);
+	      
+	      //내가 쓴 게시물 숫자 띄우기
+	      int vo1=boardService.Boardmax(session);
+	      ModelAndView mav = new ModelAndView();
+	      
+	      //follower list
+	      List<HashMap<String, Object>> follower = profileDao.followerlist(user_num);
+	      System.out.println(follower);
+	      
+	      //follow list      
+	      List<HashMap<String, Object>> follow = profileDao.followlist(user_num);
+	      System.out.println(follow);
+	            
+	      mav.setViewName("mypage");
+	      mav.addObject("member", vo);
+	      mav.addObject("cnt2", cnt2);
+	      mav.addObject("cnt1", cnt1);
+	      mav.addObject("boardlist", list);
+	      mav.addObject("maxnum", vo1);
+	      mav.addObject("follower", follower);
+	      mav.addObject("follow", follow);
+	      
+	      return mav;
+	      
+	      
+	      
+	   }
 	
 	// 회원탈퇴페이지
 	@RequestMapping(value = "/deletepage")

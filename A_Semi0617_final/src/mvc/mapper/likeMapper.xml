@@ -5,24 +5,34 @@
   
   <mapper namespace="like">
      
-     <!-- liked_user 가져오기 -->
      <select id="userpick" parameterType="mem" resultType="int">
      select user_num from user_info where user_num=#{user_num}
      </select>
      
-     <!-- 좋아요 눌렀을때 -->
      <insert id="follow" parameterType="like">
      insert into likeuser values (#{user_num},#{liked_user},'true')
      </insert>
      
-     <!-- 좋아요 취소 -->
      <delete id="delete" parameterType="like">     
      delete from likeuser where user_num=#{user_num} and liked_user=#{liked_user}
      </delete>
      
-     <!-- 하트 눌린 상태 출력 -->
      <select id="LikeorNot" resultType="like" parameterType="int">
      select * from likeuser where user_num = #{user_num}
+     </select>
+     
+     <select id="followlist" parameterType="int" resultType="hashMap">
+     select a.user_num me_num, b.user_num you_num, b.nickname nickname, b.user_img user_img
+   from user_info a,user_info b 
+   where b.user_num in(select liked_user from likeuser where user_num = #{user_num} and like_ox='true')
+   and a.user_num=#{user_num}
+     </select>
+     
+     <select id="followerlist" parameterType="hashMap">
+     select a.user_num me_num, b.user_num you_num, b.nickname nickname, b.user_img user_img
+   from user_info a,user_info b 
+   where b.user_num=(select user_num from likeuser where liked_user = #{user_num} and like_ox='true')
+   and a.user_num=#{user_num}
      </select>
      
   </mapper>

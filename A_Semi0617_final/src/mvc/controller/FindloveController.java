@@ -68,6 +68,9 @@ public class FindloveController {
 	@RequestMapping(value = "/findlove")
 	public ModelAndView findlove(HttpSession session) throws Exception {
 
+		  // 사용자 번호 세션으로 받아옴
+        int user_num = (int) session.getAttribute("user_num");
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("findlove");
 

@@ -314,6 +314,14 @@
 			<artifactId>iamport-rest-client-java</artifactId>
 			<version>0.2.7</version>
 		</dependency>
+		
+		<!-- jacson -->
+      <dependency>
+          <groupId>org.codehaus.jackson</groupId>
+          <artifactId>jackson-mapper-asl</artifactId>
+          <version>1.4.2</version>
+      </dependency>
+		
 	</dependencies>
 
 	<repositories>

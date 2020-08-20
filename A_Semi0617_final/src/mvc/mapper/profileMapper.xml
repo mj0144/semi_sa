@@ -5,7 +5,6 @@
 
 <mapper namespace="profile">
 
-	<!-- 사주일주를 뺴내는 쿼리문 하나. 일주 빼낸 결과값을 받아서 정보뺴내는 쿼리문 하나...? -->
 
 <resultMap type="ilju" id="ilju">
     <result column="result_basic" property="result_basic"/>
@@ -62,5 +61,20 @@ INSERT INTO withdrawal (user_id,pwd,reason,user_num) values (#{user_id},#{pwd},#
 <delete id="deletereason" parameterType="mem">
 delete from user_info where user_id = #{user_id}
 </delete>
+
+<!-- follow list -->
+<select id="followlist" parameterType="int" resultType="hashMap">
+select a.user_num user_num, b.user_num liker_user, b.nickname nickname, b.user_img user_img
+from user_info a,user_info b 
+where b.user_num in (select liked_user from likeuser where user_num =#{user_num} and like_ox='true') and a.user_num=#{user_num}
+</select>
+
+<!-- follower list -->
+<select id="followerlist" parameterType="int" resultType="hashMap">
+select a.user_num user_num, b.user_num liker_user, b.nickname nickname, b.user_img user_img
+from user_info a,user_info b 
+where b.user_num in (select user_num from likeuser where liked_user=#{user_num} and like_ox='true') and a.user_num=#{user_num}
+</select>
+
 
 </mapper>
