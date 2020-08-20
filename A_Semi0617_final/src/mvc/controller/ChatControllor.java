@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import mvc.service.ChatService;
 import mvc.utils.CommonUtils;
+import mvc.vo.ChatVO;
 
 @Controller //송성근 제작
 public class ChatControllor {
@@ -99,6 +100,19 @@ public class ChatControllor {
 		String date = sqldate.substring(0, 19);
 		result.put("CHATDATE", date);
 		System.out.println("responeSelect : " + result.toString());
+		return result;
+	}
+	
+	//채팅방요청
+	@ResponseBody
+	@RequestMapping(value = "/chRequest", method = RequestMethod.POST)
+	public String roomInsert(@RequestBody String user1, HttpSession session) throws Exception{
+		String result = "success";
+		String substr = user1.substring(6);
+		System.out.println(substr);
+		System.out.println("채팅zz신청 성공? chatting");
+		int user = Integer.parseInt(substr);
+		chatservice.roomInsert(user);
 		return result;
 	}
 }
