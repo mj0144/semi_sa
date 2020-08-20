@@ -12,19 +12,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.dao.ListDao;
+import mvc.dao.MainDao;
 import mvc.vo.IljuVO;
 
-//(성현,수연)
-
 @Service
-public class MainSerivce {
+public class MainService {
 	@Autowired
 	private ListDao listDao;
 	
-	public ModelAndView main1(HttpSession session) {
-		ModelAndView mav = new ModelAndView("index");
-		
-		int user_num=(int)session.getAttribute("user_num");
+	@Autowired
+	private MainDao mainDao;
+	
+	public ModelAndView calIlju(int user_num, ModelAndView mav) {
+	
 		int sky = listDao.sajuilju(user_num).getIlju_sky_num();
 		int land = listDao.sajuilju(user_num).getIlju_land_num();
 		
@@ -70,4 +70,14 @@ public class MainSerivce {
 		return mav;
 		
 	}
+	
+	public int userCount() {
+		return mainDao.userCount();
+	}
+	
+	public int chatRoomCount() {
+		return mainDao.chatRoomCount();
+	}
+	
+	
 }
