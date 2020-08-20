@@ -21,7 +21,9 @@
  
             </div>
                <div class="desc">
-                  <br>
+                  <input type="text" id="user_num" name="user_num" value="${board_writer}">
+                   <img style="height: 50px;" src="images/offline_big.png" class="indicator" id="indicator">
+                   <br>
                   <h1 class="mb-4">
                      <span>저는 ${membervo.name}입니다</span>
                   </h1>
@@ -106,19 +108,21 @@
                   <div
                      class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
                      <div class="block-18">
+                     <a onclick="fillower()" data-target="#followermodal" data-toggle="modal" style="cursor: pointer;">
                         <div class="text d-flex align-items-center">
                            <span>받은 좋아요</span>
                            <strong class="number" data-number="${liked_cnt}">0</strong> 
-                        </div>
+                        </div></a>
                      </div>
                   </div>
                   <div
                      class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
                      <div class="block-18">
+                     <a onclick="follow()" data-target="#followmodal" data-toggle="modal" style="cursor: pointer;">
                         <div class="text d-flex align-items-center">
                            <span>보낸 좋아요</span>
                            <strong class="number" data-number="${like_cnt}">0</strong> 
-                        </div>
+                        </div></a>
                      </div>
                   </div>
                   <div
@@ -149,6 +153,125 @@
          </div>
       </div>
    </section>
+   
+   <!-- Modal -->
+   <div class="modal fade" id="followermodal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered" role="document" style="max-width: 100%; width: 500px; height:600px; display: table;">
+         <div class="modal-content">
+            <div class="modal-header">
+               <b><h2 class="modal-title" id="myModalLabel">좋아요 받은 LIST</h2></b>
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-label="Close" style="float: right;">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+            
+            
+            
+            
+          					 
+                             <c:forEach var="f" items="${follower }" varStatus="r">
+                             <input type="hidden" class="user_number" name="user_number" value="${f.LIKER_USER}">
+                             <div>
+                              <div style="float: left;">
+                               <a href="friend?user_num=${f.LIKER_USER }">
+                              <div style="position: absolute;">
+                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicator${r.count }"></div>
+                              </div>
+                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG }"></a> 
+                              </div>
+                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                              </div>
+                               <hr style="color: gray;">
+                 			 </c:forEach>
+            
+            
+            
+            
+            
+             <%--   <!-- <form method="post" id="checked" action="reportBoard"> -->
+                          <c:forEach var="f" items="${follower }" varStatus="r">
+                             <div>
+                                <div style="float: left;">
+                             <a href="friend?user_num=${f.LIKER_USER }">
+                             <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG }"></a> 
+                             <input type="hidden" class="user_number" name="user_number" value="${f.LIKER_USER }">   
+                     	   <!-- 활동중 -->
+                             <img style="width: 10px;" src="images/offline.png" id="indicator${r.count }">
+                             </div>
+                             <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                             <hr style="color: gray;">
+                  </div>
+                  </c:forEach> --%>
+            </div>
+            <div class="modal-footer">
+               
+            </div>
+         </div>
+      </div>
+   </div>
+   
+      <!-- Modal2 -->
+   <div class="modal fade" id="followmodal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered" role="document" style="max-width: 100%; width: 500px; height:600px; display: table;">
+         <div class="modal-content">
+            <div class="modal-header">
+               <b><h2 class="modal-title" id="myModalLabel">좋아요 누른 LIST</h2></b>
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-label="Close" style="float: right;">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+           <div class="modal-body">
+           
+             
+                             <c:forEach var="f" items="${follow}" varStatus="r">
+                             <input type="hidden" class="user_number2" name="user_number2" value="${f.LIKER_USER}">  
+                             <div>
+                              <div style="float: left;">
+                               <a href="friend?user_num=${f.LIKER_USER }">
+                              <div style="position: absolute;">
+                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicator_rc${r.count }"></div>
+                              </div>
+                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG }"></a> 
+                              </div>
+                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                              </div>
+                               <hr style="color: gray;">
+                 			 </c:forEach>
+           
+           
+          <%--  
+           
+           
+           
+           
+               <!-- <form method="post" id="checked" action="reportBoard"> -->
+                          <c:forEach var="f" items="${follow }" varStatus="r">
+                             <div>
+                                <div style="float: left;">
+                             <a href="friend?user_num=${f.LIKER_USER }">
+                             <img style=" width:50px; height:50px; border-radius:50%; display:block;" src="resources/upload/${f.USER_IMG }"> 
+                             <input type="hidden" class="user_number2" name="user_number2" value="${f.LIKER_USER }">   
+                     <!-- 활동중 -->
+                          <img style="width: 10px;" src="images/offline.png" id="indicator_rc${r.count }">
+                             </a></div>
+                             <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                             <hr style="color: gray;">
+                  </div>
+                  </c:forEach> --%>
+            </div>
+            <div class="modal-footer">
+               
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   
    	<script>	
 		//하트 눌렀을 때, 하트 on/off 모양 변화		
 		$(document).on('click', '.heart', function(event) { 
