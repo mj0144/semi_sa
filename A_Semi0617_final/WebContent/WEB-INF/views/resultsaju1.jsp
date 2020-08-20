@@ -11,34 +11,32 @@
 
 <link href="resources/css/resultsaju.css" rel="stylesheet">
 <script>
-$(function() {
-	$('#sajutwo').click(function() {
-// 		var ilju_sky_num = '2';
-// 		var ilju_land_num = '10';
-		location='resultsajutwo';
+	$(function() {
+		$('#sajutwo').click(function() {
+			location='resultsajutwo';
+		})
 	})
-})
-$(function() {
-	$('#sajuthree').click(function() {
-		location='resultsajuthree';
+	$(function() {
+		$('#sajuthree').click(function() {
+			location='resultsajuthree';
+		})
 	})
-})
-  $(function(){
-        /** btnDown 버튼 클릭 **/
-        $('#btnDown').click(function() {
-            html2canvas($('.printDiv'), {
-                onrendered: function(canvas) {
-                    if (typeof FlashCanvas != "undefined") {
-                        FlashCanvas.initElement(canvas);
-                    }
-                    var image = canvas.toDataURL("image/png"); 
-                    $("#imgData").val(image);
-                    $("#imgForm").submit();
-                    console.log('1');
-                }
-            });
-        });
-    });
+	  $(function(){
+	        /** btnDown 버튼 클릭 **/
+	        $('#btnDown').click(function() {
+	            html2canvas($('.printDiv'), {
+	                onrendered: function(canvas) {
+	                    if (typeof FlashCanvas != "undefined") {
+	                        FlashCanvas.initElement(canvas);
+	                    }
+	                    var image = canvas.toDataURL("image/png"); 
+	                    $("#imgData").val(image);
+	                    $("#imgForm").submit();
+	                    console.log('1');
+	                }
+	            });
+	        });
+	    });
 </script>
 <div id="colorlib-main">
 
@@ -47,7 +45,7 @@ $(function() {
 .wrap > .inner{font-size: 1.1875rem;}
 .wrap > .inner > .small{font-size: 1rem;}
 </style>
-			<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
+	<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
 		<div class="container">
 			<div class="row no-gutters slider-text justify-content-center align-items-center">
 				<div class="col-md-12 ftco-animate text-center">
@@ -56,7 +54,7 @@ $(function() {
 			</div>
 		</div>
 	</section>
-			<section class="ftco-section contact-section">
+	<section class="ftco-section contact-section">
 		 <div class="container">
 	      <div class="row">
                 <div class="col-md-6 text-center">
@@ -126,10 +124,12 @@ $(function() {
 							
 			    			<div class="col-md-12">
 			    				<div class="blog-entry ftco-animate d-md-flex">
-								<img id="sajutwo" src="resources/img/sajutest2.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
+									<img id="sajutwo" src="resources/img/sajutest2.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
 								</div>
+
+								
 								<div class="blog-entry ftco-animate d-md-flex">
-								<img id="sajuthree" src="resources/img/sajutest3.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
+									<img id="sajuthree" src="resources/img/sajutest3.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
 								</div>
 								<div>
 				              		<p class="mb-2"></p>

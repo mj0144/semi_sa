@@ -15,6 +15,7 @@
 			</div>
 		</div>
 	</section>
+	<section class="ftco-section contact-section">
 		 <div class="container">
 	      <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -22,8 +23,8 @@
                         <div class="team-photo">
                             <img src="resources/img/sajutest3.jpg" alt="">
                         </div>
-                        <h6>사주로 보는 성격</h6>
-                        <h4>나는 어떤 일주 동물일까?</h4>
+                        <h6>사주로 보는 귀인</h6>
+                        <h4>하늘이 내린 선물같은 사람은?</h4>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-8" style="text-align: center;">
@@ -40,13 +41,12 @@
             </div>
             </div>
 	    </section>
-	    	    <script>
-$(function() {
-	$('#viewhelp').click(function() {
-// 		var ilju_sky_num = '2';
-// 		var ilju_land_num = '10';
-		location='resultsaju3';
-	})
-})
-</script>
+	<script>
+		$(function() {
+			$('#viewhelp').click(function() {
+		
+				location='resultsaju3';
+			})
+		})
+	</script>
 <%@ include file="footer.jsp" %>

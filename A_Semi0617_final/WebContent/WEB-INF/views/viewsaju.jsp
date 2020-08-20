@@ -41,7 +41,7 @@
                         <div class="team-photo">
                             <a href="resultsajuthree"><img src="resources/img/sajutest3.jpg" alt=""></a>
                         </div>
-                        <h6>사주로 보는 궁합</h6>
+                        <h6>사주로 보는 귀인</h6>
                         <h4>하늘이 내린 선물같은 사람은?</h4>
                     </div>
                 </div>
