@@ -23,36 +23,35 @@
       <!-- 내용들어갈자리 -->
       <div class="container">
          <div class="row">
-            <div class="col-lg-8 ftco-animate">
+            <div class="col-lg-12 ftco-animate">
                <input type="hidden" name="board_num" id="board_num"
                   value="${view.BOARD_NUM }"> <input type="hidden"
                   id="usernum" value="${view.USER_NUM }">
                <div class="col-xs-12" style="margin: 15px auto;">
                   <div id="cmBtn_group">
-                     <img src="images/board.PNG" style="width: 20px;"> <label
-                        style="font-size: 20px; color: black; font: bolder; float: left;">제목
-                        : ${view.BOARD_TITLE }</label>
+                     <img src="images/board.PNG" style="width: 50px;"> <label
+                        style="font-size: 35px; color: black; font: bolder; float: left;">${view.BOARD_TITLE }</label>
                      <button type="button" id="modal_open_btn"
-                        style="float: right; border: 0; outline: 0;">
+                        style="float: right; border: 0; outline: 0; font-size: 20px; width: 200px;">
                         <b>신고하기</b>
                      </button>
                      <hr style="color: gray;">
                   </div>
                   
                   
-                  <p style="text-align: right;">
+                  <p style="text-align: right; font-size: 22px">
                      <input type="hidden" id="user_num" value="${view.USER_NUM }">
                      <!-- 활동중 -->
-                        <img style="height: 30px;" src="images/offline_big.png" id="indicator" class="indicator">
+                        <img style="height: 50px;" src="images/offline_big.png" id="indicator" class="indicator">
                      <a href="friend?user_num=${view.USER_NUM }"> 작성자 :
                         ${view.NICKNAME }</a> | 작성시간 : ${view.BOARD_DATE }
                   </p>
                </div>
-               <p>
+               <p><br>
                   <img src="resources/upload/${view.BOARD_IMG }" alt=""
-                     class="img-fluid">
+                     class="img-fluid" style="width: 80%; height: auto;">
                </p>
-               <p>${view.BOARD_CONTENT }</p>
+               <p style="font-size: 22px;">${view.BOARD_CONTENT }</p>
                <%-- <c:if test="${user_num eq view.user_num }"> --%>
                <form name="delUp" action="post">
                   <div class="ftco-section2">

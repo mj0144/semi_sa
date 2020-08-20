@@ -37,9 +37,6 @@
    console.log("메세지데이타"+messageData);
    $('#msgData1').val(messageData);
    
-   if (what === "This_Is_UserList") {
-      console.log('여기부터는 User_List 를 위한 메세지 보낸것입니다');
-
       var session = sessions.split(' ');
       for ( var i in session ) {
           map.set(session[i],'usernum');   
@@ -48,76 +45,68 @@
       console.log($('.indicator').attr('src'));
       //console.log($('#user_num').val());
       //console.log($('#${item.USER_NUM }').val());
+     if (map.has($('#user_num').val())) {
+    	 console.log('==========online');
+         $('#indicator').attr("src","images/online_big.png");
+	}
       
-      for (var k of map.keys()) {
+     /*  for (var k of map.keys()) {
          if(k === $('#user_num').val()){
             console.log('==========online');
             $('.indicator').attr("src","images/online_big.png");
-            
+            return;
          };
-         
-         $('.user_number').each(function(idx,item){
-            if(k === item.value){
-               console.log('==========online');
-               $('#indicator'+(idx+1)).attr("src","images/online.png");
-               
-            }
-            //console.log(k+":"+item.value);
-         });
-         
-         
-         $('.user_number2').each(function(idx,item){
-            if(k === item.value){
-               console.log('==========online');
-               $('#indicator_rc'+(idx+1)).attr("src","images/online.png");
-            }
-            //console.log(k+":"+item.value);
-         });
-         
-         $('.user_number3').each(function(idx,item) {
-			if (k === item.value) {
-				console.log('========online');
-				$('#indicator_fr'+(idx+1)).attr("src","images/online.png");
-			}
-		});
-         
-         $('.user_number4').each(function(idx,item) {
-			if (k === item.value) {
-				console.log('========online');
-				 $('#indicator_f'+(idx+1)).attr("src","images/online.png");
-			}
-		})
-        
-      };
+      }; */
+      
+    	  $('.user_number').each(function(idx,item){
+    	         if(map.has(item.value)){
+    	            console.log('==========online');
+    	            $('#indicator'+(idx+1)).attr("src","images/online.png");
+    	            return;
+    	         }
+    	         //console.log(k+":"+item.value);
+    	      });
       
       
+    	  $('.user_number2').each(function(idx,item){
+    	         if(map.has(item.value)){
+    	            console.log('==========online');
+    	            $('#indicator_rc'+(idx+1)).attr("src","images/online.png");
+    	            return;
+    	         }
+    	         //console.log(k+":"+item.value);
+    	      });
       
       
+ /*      
+      for (var k of map.keys()) {
+    	  $('.user_number').each(function(idx,item){
+    	         if(k === item.value){
+    	            console.log('==========online');
+    	            $('#indicator'+(idx+1)).attr("src","images/online.png");
+    	            return;
+    	         }
+    	         //console.log(k+":"+item.value);
+    	      });
+      }
       
       
+      for (var k of map.keys()) {
+    	  $('.user_number2').each(function(idx,item){
+    	         if(k === item.value){
+    	            console.log('==========online');
+    	            $('#indicator_rc'+(idx+1)).attr("src","images/online.png");
+    	            return;
+    	         }
+    	         //console.log(k+":"+item.value);
+    	      });
+      } */
       
-      
-/*       for (var k of map.keys()) {
-         $('.user_number').each(function(idx,item){
-            if(k === item.value){
-               console.log('==========online');
-               //console.log($('.indicator').attr("src","images/online.png"))
-               $('#indicator'+(idx+1)).attr("src","images/online.png");
-               //console.log("you"+$(".indicator:eq(idx)").attr('src'));
-               return;
-            }
-            
-            console.log(k+":"+item.value);
-         });
-      };   
-          */
-         
       //접속자수
       var size= map.size-1;
       console.log("사이즈"+size);
       document.getElementById('size').value = size;
       //
-   }
    
    };
    sockjs.onclose=function(event){
@@ -130,7 +119,7 @@
    }
 
 
-   var sessiontest
+   var sessiontest;
 
       $(document).ready(function(){
          sessiontest='aaa'

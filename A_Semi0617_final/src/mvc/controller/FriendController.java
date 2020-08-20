@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.dao.FriendDao;
+import mvc.dao.ProfileDao;
 import mvc.service.BoardService;
 import mvc.service.FriendService;
 import mvc.vo.BoardVO;
@@ -29,15 +30,26 @@ public class FriendController {
 
 	@Autowired
 	private FriendDao friendDao;
+	
+	@Autowired
+	private ProfileDao profileDao;
 
 	@RequestMapping(value = "/friend")
-	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { // user_num : �۾���.
+	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { 
 		
 		ModelAndView mav = new ModelAndView("friend");
 		
 		IljuVO ilvo = friendDao.friendprofile(user_num); 
 		MemberVO vo = ilvo.getMem().get(0);
 
+		//follow modal
+		//follower list
+	      List<HashMap<String, Object>> follower = profileDao.followerlist(user_num);
+	      System.out.println(follower);
+	      
+	      //follow list      
+	      List<HashMap<String, Object>> follow = profileDao.followlist(user_num);
+	      System.out.println(follow);
 		
 		
 		int like_cnt = friendDao.friendlike(user_num); 
@@ -68,6 +80,9 @@ public class FriendController {
 		mav.addObject("board_writer", user_num); 
 		mav.addObject("heartchk", heartchk);
 		mav.addObject("blockchk", blockchk);
+		 mav.addObject("follower", follower);
+	      mav.addObject("follow", follow);
+		
 
 		return mav;
 	}
