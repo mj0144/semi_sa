@@ -41,8 +41,8 @@ public class EchoHandler extends TextWebSocketHandler{
       System.out.println("핸들텍스트메세지");
       userSession = session.getAttributes();
       userid = userSession.get("user_num").toString();
-      System.out.println("유저아이디"+userid);
-      System.out.println("메세지"+message.getPayload());
+    //  System.out.println("유저아이디"+userid);
+    //  System.out.println("메세지"+message.getPayload());
       
       //suyeon start------------------------------------------------------------------
        StringBuffer sb = new StringBuffer();
@@ -63,7 +63,7 @@ public class EchoHandler extends TextWebSocketHandler{
       
       
       //suyeon start---------------------------------------------------------------
-      System.out.println(sb);
+     // System.out.println(sb);
       //end------------------------------------------------------------------------
    }
    
