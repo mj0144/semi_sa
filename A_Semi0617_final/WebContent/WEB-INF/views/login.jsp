@@ -575,7 +575,7 @@ body {
                            <div class="btn btn-outline-dark"
                               onclick="fileclick()">사진추가</div> -->
  
-					       <div class="form-group" style="text-align: center; width:400px;">
+					       <div class="form-group" style="text-align: center; width:400px; margin-left: 120px;">
 					         <input type="file" id="file" name="file" style="display:none;" accept=".jpg,.jpeg,.png,.gif,.PNG">
 					          <div id="file_upload" class="btn btn-outline-dark"
 					                              onclick="fileclick()">사진추가</div>     

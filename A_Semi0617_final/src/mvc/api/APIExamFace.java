@@ -16,11 +16,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class APIExamFace {
 	static String img;
-	Map<String, Object> map = new HashMap<String, Object>();
+	
 	String result = "false";
 
 	public Map<String, Object> face(String image) {
-
+		Map<String, Object> map = new HashMap<String, Object>();
 		img = image;
 
 		StringBuffer reqStr = new StringBuffer();
