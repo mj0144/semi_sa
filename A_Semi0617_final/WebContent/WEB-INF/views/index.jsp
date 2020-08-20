@@ -25,11 +25,45 @@
                   <h1 class="mb-4">
                      <span>상대방과의</span> 사주궁합 <span>지금 찾아보세요</span>
                   </h1>
-                  <p class="mb-4">사주를 바탕으로 빅데이터를 통해 당신의 인연을 찾아드립니다. 운명 속에 인연을 만나보세요.</p>
+                  <!-- <p class="mb-4">사주를 바탕으로 빅데이터를 통해 당신의 인연을 찾아드립니다. 운명 속에 인연을 만나보세요.</p>
                   <h3 class="signature h1">To the world you may be one person, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								But to one person you may be world.</h3>
+								But to one person you may be world.</h3> -->
 
                </div>
+               <div class="msp_bn_area count">
+							<div class="temp">
+								<div style="display:block; float:left; width:201px; height:53px; border-bottom:2px solid rgba(0,0,0,1); font-family:'Noto Sans KR'; font-size:16px; color:#000; font-weight:700; text-align:center; line-height:53px;">국내유일 실시간 회원수 공개</div>
+								<div class="member">
+									<div style="font-size:16px; line-height:20px;">회원수</div>
+									<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
+										<span id="m_cnt">${usercount }</span></span>명</div>
+								</div>
+								<div class="couple">
+									<div style="font-size:16px; line-height:20px;">성혼회원수</div>
+									<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
+										<span id="r_cnt">${matavg}</span></span>%</div>
+								</div>
+								<div class="day">2020.8.17 기준</div>
+							</div>
+							<div class="btt"><a onclick="marriagepopup_open();">안내자료 요청</a></div>
+						</div>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
             </div>
          </div>
       </div>

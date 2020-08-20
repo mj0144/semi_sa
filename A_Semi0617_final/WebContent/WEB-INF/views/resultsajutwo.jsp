@@ -24,7 +24,7 @@ $(function() {
 			</div>
 		</div>
 	</section>
-			<section class="ftco-section contact-section">
+	<section class="ftco-section contact-section">
 		 <div class="container">
 	      <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -32,7 +32,7 @@ $(function() {
                         <div class="team-photo">
                             <img src="resources/img/sajutest2.jpg" alt="">
                         </div>
-                        <h6>사주로 보는 인연</h6>
+                        <h6>사주로 보는 궁합</h6>
                         <h4>나의 찰떡궁합 인연은?</h4>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <link rel="stylesheet" href="resources/css/viewsaju3.css">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="header.jsp"%>
 <%@include file="side.jsp"%>
 <div id="colorlib-main">

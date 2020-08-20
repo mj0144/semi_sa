@@ -1,27 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<footer class="ftco-footer ftco-bg-dark ftco-section"
-	style="padding: 50px 0; background-color: skyblue;">
-	<div class="container px-md-5 ft1"
-		style="margin: 0 auto; text-align: center;">
-		<div class="row">
-			<div class="col-md-12">
-				<input type="hidden" id="session_id_ssg" value="${sessionScope.user_num }">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script>
-									document.write(new Date().getFullYear());
-								</script>
-					All rights reserved | This template is made with <i
-						class="icon-heart" aria-hidden="true"></i> by <a
-						class="signature
-									target="_blank">Eric , Jacob</a>
-				</p>
-			</div>
-		</div>
-	</div>
-</footer>
 
 </div>
 <!-- END COLORLIB-MAIN -->

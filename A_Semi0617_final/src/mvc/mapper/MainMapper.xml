@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main">
+	<select id="userCount" resultType="int">
+		select count(*) from user_info
+	</select>
+	
+	<select id="chatRoomCount" resultType="int">
+		select count(*) from user_info u, chatroom c where c.user1=u.user_num
+	</select>
+
+</mapper>
+  
+  

@@ -52,7 +52,7 @@
 <link href="resources/css/main.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!--===============================================================================================-->
-<!-- ì›¹í°íŠ¸ -->
+<!-- À¥ÆùÆ® -->
 <link
    href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&family=Noto+Serif+KR:wght@200;900&display=swap"
    rel="stylesheet">
@@ -70,6 +70,8 @@
 
 <link rel="stylesheet" href="css/jquery-ui.css">
 <style>
+
+
 .jumbotron {
    color: #FBEFFB;
    background-color: #F7F8E0;
@@ -133,15 +135,15 @@ body {
    border-radius: 15px;
 }
 
-#mbtihover:hover { <---- 'menubar 'ì•ˆì— ìˆëŠ” divë“¤ì—ê²Œ ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ë©´ background:#555;
+#mbtihover:hover { <---- 'menubar '¾È¿¡ ÀÖ´Â divµé¿¡°Ô ¸¶¿ì½º¸¦ ¿Ã¸®¸é background:#555;
    color: #ff00ff;
    <----
-   ë°°ê²½ìƒ‰ì´
-   #555ìƒ‰ìƒìœ¼ë¡œ
-   ë³€í•˜ê³ 
-   ê¸€ììƒ‰ìƒì´
-   #fffìƒ‰ìƒìœ¼ë¡œ
-   ë³€í•´ìš”!
+   ¹è°æ»öÀÌ
+   #555»ö»óÀ¸·Î
+   º¯ÇÏ°í
+   ±ÛÀÚ»ö»óÀÌ
+   #fff»ö»óÀ¸·Î
+   º¯ÇØ¿ä!
 }
 
 body {
@@ -154,445 +156,485 @@ body {
 
 
 <body>
+   <div
+      style="background-image: url('resources/img/start/couple2.gif'); background-size: 100% 100%; overflow: hidden; margin_top: 0%">
+      <div class="limiterw">
 
-	<div
-		style="background-image: url('resources/img/start/couple2.gif'); background-size: 100% 100%; overflow: hidden; margin_top: 0%">
-		<div class="limiterw">
+         <div class="container-login100">
 
-			<div class="container-login100">
+            <div class="col-md-5 banner-sec wrap-login100"
+               style="background-color: rgba(255, 255, 255, 0.95);">
+               <br>
+               <br>
+               <br>
+         <div class="wrapper">
+            <div class="slidelist">
+               <div class="container text-center">
 
-				<div class="col-md-5 banner-sec wrap-login100"
-					style="background-color: rgba(255, 255, 255, 0.95);">
-					<br>
-					<br>
-					<br>
-			<div class="wrapper">
-				<div class="slidelist">
-					<div class="container text-center">
-
-							<div class="stepwizard">
-									<div class="stepwizard-row setup-panel">
-										<div class="stepwizard-step col-xs-3">
-											<a href="#step-1" type="button"
-												class="btn btn-success btn-circle">1</a>
-										</div>
-										<div class="stepwizard-step col-xs-3">
-											<a href="#step-2" type="button"
-												class="btn btn-default btn-circle"  disabled="disabled">2</a>
-										</div>
-										<div class="stepwizard-step col-xs-3">
-											<a href="#step-3" type="button"
-												class="btn btn-default btn-circle" disabled="disabled">3</a>
-										</div>
-										<div class="stepwizard-step col-xs-3">
-											<a href="#step-4" type="button"
-												class="btn btn-default btn-circle" disabled="disabled">4</a>
-										</div>
-										<div class="stepwizard-step col-xs-3">
-											<a href="#step-5" type="button"
-												class="btn btn-default btn-circle" disabled="disabled">5</a>
-										</div>
-										<div class="stepwizard-step col-xs-3">
-											<a href="#step-6" type="button"
-												class="btn btn-default btn-circle" disabled="disabled">6</a>
-										</div>
-									</div>
-								</div>
-
-
-						<form  method="post" action="joinaction" class="login100-form validate-form" name="joinform" enctype="multipart/form-data" id="joinform">
-						
-									<div class="panel panel-primary setup-content text-center"
-										id="step-1">
-										<div class="jumbotron well">
-											<h1 class="login100-form-title p-b-49 text-center"
-												style="color: black;">ì²˜ìŒ ë°©ë¬¸í•˜ì…¨ë‚˜ìš”?</h1>
-											<h4 class="text-center" style="color: black;">
-												MBTIì™€ ìƒì¼ ë“± ê°„ë‹¨í•œ ì •ë³´ë¥¼ ì…ë ¥í•˜ì‹œë©´ <br>ì¸ì—°ì„ ì¶”ì²œí•´ë“œë ¤ìš”
-											</h4>
-										</div>
-										<div class="panel-heading">
-											<span class="login100-form-title p-b-30"> íƒœì–´ë‚œ ë‚ ì„
-												ì…ë ¥í•´ë³´ì„¸ìš”. </span> <label>íƒœì–´ë‚œ ì‹œê°„ì„ ëª¨ë¥¼ ê²½ìš° 00ì‹œ 00ë¶„ ì²´í¬</label>
-										</div>
-										<div class="panel-body text-center">
-											<table style="margin: auto; text-align: center;">
-												<tbody>
-													<tr>
-														<th><br>ìƒë…„ì›”ì¼</th>
-														<c:set var="birth" value="${vo.getBirth()}" />
-														<td>&nbsp;<br> <input name="birth" type="text"
-															style="text-decoration: none; width: 100px" id=form_dt
-															size="5" value=""></td>
-													</tr>
-													<tr>
-														<td><br></td>
-													</tr>
-													<tr>
-														<th>íƒœì–´ë‚œ ì‹œê°„</th>
-														<td><div class="row">
-																<div class="col-4">
-																	<select name="info_hh" class="w3-select">
-																		<c:forEach begin="0" step="1" end="23" var="i">
-																			<option value="${i }">${i }ì‹œ</option>
-																		</c:forEach>
-
-																	</select>
-																</div>
-																<div class="col-4">
-																	<select name="info_mm" class="w3-select">
-																		<c:forEach begin="0" step="1" end="59" var="i">
-																			<option value="${i }" style='width: 20px;'>${i }ë¶„</option>
-																		</c:forEach>
-
-																	</select>
-																</div>
-															</div></td>
-													</tr>
-												</tbody>
-											</table>
-											<button class="btn btn-primary nextBtn pull-right"
-												type="button">Next</button>
-											<br>
-											<br>
-											<br>
-										</div>
-									</div>
-
-									<div class="panel panel-primary setup-content" id="step-2">
-										<div class="panel-heading">
-											<span class="login100-form-title p-b-49"> MBTIë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”
-											</span>
-
-										</div>
-										<div class="panel-body">
-											<!-- Text input-->
-											<div class="form-group">
-												<label class="col-md-4 control-label" for="textinput">MBTI
-													ì„ íƒ</label>
-												<div class="col-md-2" style="float: none; margin: 0 auto;">
-													<select id="user_mbti" name="user_mbti"
-														class="form-control">
-														<option value="ISTJ">ISTJ</option>
-														<option value="ISFJ">ISFJ</option>
-														<option value="INFJ">INFJ</option>
-														<option value="INTJ">INTJ</option>
-														<option value="ISTP">ISTP</option>
-														<option value="ISFP">ISFP</option>
-														<option value="INFP">INFP</option>
-														<option value="INTP">INTP</option>
-														<option value="ESTP">ESTP</option>
-														<option value="ESFP">ESFP</option>
-														<option value="ENFP">ENFP</option>
-														<option value="ENTP">ENTP</option>
-														<option value="ESTJ">ESTJ</option>
-														<option value="ESFJ">ESFJ</option>
-														<option value="ENFJ">ENFJ</option>
-														<option value="ENTJ">ENTJ</option>
-													</select>
-
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="control-label" id="mbtihover">MBTIë¥¼
-													ëª¨ë¥´ì‹­ë‹ˆê¹Œ?</label>
-												<button type="button" class="btn btn-primary"
-													data-toggle="modal" data-target="#myModal">MBTI
-													ê°„ë‹¨ì²´í¬í•˜ê¸°</button>
-												<br>
-												<div class="modal fade" id="myModal" tabindex="-1"
-													role="dialog" aria-labelledby="myModalLabel">
-													<div class="modal-dialog" role="document">
-														<div class="modal-content">
-															<div class="modal-header">
-
-																<h4 class="modal-title" id="myModalLabel">MBTI
-																	ê°„ë‹¨ì²´í¬í•˜ê¸°!</h4>
-															</div>
-															<div class="modal-body">
-																<img src="resources/img/start/mbtiinfo.jpg"
-																	style="width: 100%">
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-default"
-																	data-dismiss="modal">ë‹«ê¸°</button>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<button class="btn btn-primary nextBtn pull-right"
-												type="button">Next</button>
-											<br>
-										</div>
-									</div>
-
-									<div class="panel panel-primary setup-content" id="step-4">
-										<div class="panel-heading">
-											<span class="login100-form-title p-b-49">ë‹¹ì‹ ì˜ ì´ìƒí˜•ì€? </span>
-										</div>
-										<div class="panel-body">
-											<!-- Select Basic -->
-											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">ì´ìƒí˜• ëª¸ë¬´ê²Œ</label>
-												<div class="col-md-2" style="float: none; margin: 0 auto;">
-													<select id="ideal_body" name="ideal_body"
-														class="form-control">
-														<c:forEach begin="30" step="1" end="150" var="i">
-											               <option value="${i }">${i }</option>
-											            </c:forEach> 
-													</select>
-												</div>
-											</div>
-
-											<!-- Select Basic -->
-											<div class="form-group">
-												<label class="col-md-4 control-label" for="í‚¤">ì´ìƒí˜• í‚¤</label>
-												<div class="col-md-2" style="float: none; margin: 0 auto;">
-													<select id="ideal_height" name="ideal_height"
-														class="form-control">
-														<c:forEach begin="140" step="1" end="200" var="i">
-															<option value="${i }">${i }</option>
-														</c:forEach>
-														
-													</select>
-												</div>
-											</div>
-											<!-- Select Basic -->
-											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">ì´ìƒí˜• ë‚˜ì´</label>
-												<div class="col-md-2" style="float: none; margin: 0 auto;">
-													<select id="ideal_age" name="ideal_age"
-														class="form-control">
-														<c:forEach begin="10" step="1" end="100" var="i">
-											               <option value="${i }">${i }</option>
-											            </c:forEach>
-													</select>
-												</div>
-											</div>
-
-											<button class="btn btn-primary nextBtn pull-right"
-												type="button">Next</button>
-											<br>
-										</div>
-									</div>
-
-									<div class="panel panel-primary setup-content" id="step-3">
-										<div class="panel-heading">
-											<span class="login100-form-title p-b-49">ë‚˜ì˜ ì •ë³´ </span>
-										</div>
-										<div class="panel-body">
-											<!-- Select Basic -->
-											<div class="form-group" style="float: none; margin: 0 auto;">
-												<label class="col-md-4 control-label" for="selectbasic">ë‚˜ì˜ ëª¸ë¬´ê²Œ</label>
-												<div class="col-md-2" style="float: none; margin: 0 auto;">
-													<select id="user_body" name="user_body"
-														class="form-control">
-														<c:forEach begin="30" step="1" end="150" var="i">
-											               <option value="${i }">${i }</option>
-											            </c:forEach>  
-													</select>
-												</div>
-											</div>
-
-											<!-- Select Basic -->
-											<div class="form-group">
-												<label class="col-md-4 control-label" for="í‚¤">í‚¤</label>
-												<div class="col-md-2" style="float: none; margin: 0 auto;">
-													<select id="user_height" name="user_height"
-														class="form-control">
-														<c:forEach begin="140" step="1" end="200" var="i">
-															<option value="${i }">${i }</option>
-														</c:forEach>
-														
-													</select>
-												</div>
-											</div>
-											<!-- Select Basic -->
-											<div class="form-group">
-												<label class="col-md-4 control-label" for="selectbasic">ì‚¬ëŠ”
-													ì§€ì—­</label>
-												<div class="col-md-3" style="float: none; margin: 0 auto;">
-													<select id="user_loc" name="user_loc" class="form-control">
-														<option value="ì„œìš¸íŠ¹ë³„ì‹œ">ì„œìš¸íŠ¹ë³„ì‹œ</option>
-														<option value="ê²½ê¸°ë„">ê²½ê¸°ë„</option>
-														<option value="ê°•ì›ë„">ê°•ì›ë„</option>
-														<option value="ê²½ìƒë‚¨ë„">ê²½ìƒë‚¨ë„</option>
-														<option value="ê²½ìƒë¶ë„">ê²½ìƒë¶ë„</option>
-														<option value="ì¶©ì²­ë‚¨ë„">ì¶©ì²­ë‚¨ë„</option>
-														<option value="ì¶©ì²­ë¶ë„">ì¶©ì²­ë¶ë„</option>
-														<option value="ì „ë¼ë‚¨ë„">ì „ë¼ë‚¨ë„</option>
-														<option value="ì „ë¼ë¶ë„">ì „ë¼ë¶ë„</option>
-														<option value="ì œì£¼ë„">ì œì£¼ë„</option>
-														<option value="ê¸°íƒ€">ê¸°íƒ€</option>
-													</select>
-												</div>
-											</div>
+                     <div class="stepwizard">
+                           <div class="stepwizard-row setup-panel">
+                              <div class="stepwizard-step col-xs-3">
+                                 <a href="#step-1" type="button"
+                                    class="btn btn-success btn-circle">1</a>
+                              </div>
+                              <div class="stepwizard-step col-xs-3">
+                                 <a href="#step-2" type="button"
+                                    class="btn btn-default btn-circle"  disabled="disabled">2</a>
+                              </div>
+                              <div class="stepwizard-step col-xs-3">
+                                 <a href="#step-3" type="button"
+                                    class="btn btn-default btn-circle" disabled="disabled">3</a>
+                              </div>
+                              <div class="stepwizard-step col-xs-3">
+                                 <a href="#step-4" type="button"
+                                    class="btn btn-default btn-circle" disabled="disabled">4</a>
+                              </div>
+                              <div class="stepwizard-step col-xs-3">
+                                 <a href="#step-5" type="button"
+                                    class="btn btn-default btn-circle" disabled="disabled">5</a>
+                              </div>
+                              <div class="stepwizard-step col-xs-3">
+                                 <a href="#step-6" type="button"
+                                    class="btn btn-default btn-circle" disabled="disabled">6</a>
+                              </div>
+                           </div>
+                        </div>
 
 
-											<button class="btn btn-primary nextBtn pull-right"
-												type="button">Next</button>
-											<br>
-										</div>
-									</div>
+                  <form  method="post" action="joinaction" class="login100-form validate-form" name="joinform" enctype="multipart/form-data" id="joinform">
+                  
+                           <div class="panel panel-primary setup-content text-center"
+                              id="step-1">
+                              <div class="jumbotron well" style="text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; color:white; opacity:0.9; background-image: url('resources/img/start/force.gif');">
+	                              
+	                                 <h1 class="login100-form-title p-b-49 text-center"
+	                                    style="color: #011E52; font-weight: bold">Ã³À½ ¹æ¹®ÇÏ¼Ì³ª¿ä?</h1>
+	                                 <span class="text-center lead" style="color: #011E52; font-weight: bold">
+	                                   MBTI¿Í »ıÀÏ µî °£´ÜÇÑ Á¤º¸¸¦ ÀÔ·ÂÇÏ½Ã¸é <br>ÀÎ¿¬À» ÃßÃµÇØµå·Á¿ä
+	                                 </span>
+                              </div>
+                              <div class="panel-heading">
+                                 <span class="login100-form-title p-b-30"> ÅÂ¾î³­ ³¯À» ÀÔ·ÂÇØº¸¼¼¿ä. </span> 
+                                 <label>ÅÂ¾î³­ ½Ã°£À» ¸ğ¸¦ °æ¿ì 00½Ã 00ºĞ Ã¼Å©</label>
+                              </div>
+                              <div class="panel-body text-center">
+                                 <table style="margin: auto; text-align: center;">
+                                    <tbody>
+                                       <tr>
+                                          <th> <br><span class="text-center lead" style="font-weight: bold">
+	»ı³â¿ùÀÏ	                                 </span></th>
+                                          <c:set var="birth" value="${vo.getBirth()}" />
+                                          <td>&nbsp;<br> <input name="birth" type="text"
+                                             style="text-decoration: none; width: 100px" id=form_dt
+                                             size="5" value=""></td>
+                                       </tr>
+                                       <tr>
+                                          <td><br></td>
+                                       </tr>
+                                       <tr>
+                                          <th> <span class="text-center lead" style="font-weight: bold">
+	                                   ÅÂ¾î³­ ½Ã°£
+	                                 </span></th>
+                                          <td><div class="row">
+                                                <div class="col-4">
+                                                   <select name="info_hh" class="w3-select">
+                                                      <c:forEach begin="0" step="1" end="23" var="i">
+                                                         <option value="${i }">${i }½Ã</option>
+                                                      </c:forEach>
 
-									<div class="panel panel-primary setup-content" id="step-5">
-										<div class="panel-heading">
-											<span class="login100-form-title p-b-49">ìƒì„¸ì •ë³´ </span>
+                                                   </select>
+                                                </div>
+                                                <div class="col-4">
+                                                   <select name="info_mm" class="w3-select">
+                                                      <c:forEach begin="0" step="1" end="59" var="i">
+                                                         <option value="${i }" style='width: 20px;'>${i }ºĞ</option>
+                                                      </c:forEach>
 
-										</div>
-										<div class="panel-body ">
-											<table style="margin: auto; text-align: center;">
-												<tbody>
-													<tr>
-														<th>ì•„ì´ë””</th>
-														<td><p>
-																<input class="w3-input" placeholder="ì•„ì´ë””" type="text"
-																	required="required" name="user_id" id="join_user_id"><label
-																	id="idlabel"></label>
-															</p></td>
-														<td><button type="button" class="btn btn-warning"
-																id="idchk">ì¤‘ë³µí™•ì¸</button></td>
-													</tr>
-													<tr>
-														<th>ë¹„ë°€ë²ˆí˜¸</th>
-														<td><p>
-																<input class="w3-input" placeholder="ë¹„ë°€ë²ˆí˜¸"
-																	type="password" required="required" name="pwd" id="join_pwd">
-															</p></td>
-													</tr>
+                                                   </select>
+                                                </div>
+                                             </div></td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                                 <button class="btn btn-primary nextBtn pull-right"
+                                    type="button">Next</button>
+                                 <br>
+                                 <br>
+                                 <br>
+                              </div>
+                           </div>
 
-													<tr>
-														
-														<th>ë¹„ë°€ë²ˆí˜¸ í™•ì¸</th>
-														<td><p>
-																<br> <input class="w3-input" placeholder="ë¹„ë°€ë²ˆí˜¸í™•ì¸"
-																	type="password" required="required" id="pwdchk">
-																<label id="pwdlabel"></label>
-															</p></td>
-													</tr>
+                           <div class="panel panel-primary setup-content" id="step-2">
+                              <div class="panel-heading">
+                                 <span class="login100-form-title p-b-49"> MBTI¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä
+                                 </span>
 
-													<tr>
-														<th>ì´ë¦„</th>
-														<td><p>
-																<input class="w3-input" placeholder="ì´ë¦„" type="text"
-																	required="required" name="name" id="name">
-															</p></td>
-													</tr>
+                              </div>
+                              <div class="panel-body">
+                                 <!-- Text input-->
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label lead" for="textinput">MBTI
+                                       ¼±ÅÃ</label>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="user_mbti" name="user_mbti"
+                                          class="form-control">
+                                          <option value="ISTJ">ISTJ</option>
+                                          <option value="ISFJ">ISFJ</option>
+                                          <option value="INFJ">INFJ</option>
+                                          <option value="INTJ">INTJ</option>
+                                          <option value="ISTP">ISTP</option>
+                                          <option value="ISFP">ISFP</option>
+                                          <option value="INFP">INFP</option>
+                                          <option value="INTP">INTP</option>
+                                          <option value="ESTP">ESTP</option>
+                                          <option value="ESFP">ESFP</option>
+                                          <option value="ENFP">ENFP</option>
+                                          <option value="ENTP">ENTP</option>
+                                          <option value="ESTJ">ESTJ</option>
+                                          <option value="ESFJ">ESFJ</option>
+                                          <option value="ENFJ">ENFJ</option>
+                                          <option value="ENTJ">ENTJ</option>
+                                       </select>
 
-													<tr>
-														<th>ë³„ëª…</th>
-														<td><p>
-																<input class="w3-input" placeholder="ë³„ëª…" type="text"
-																	name="nickname" id="nickname"><label
-																	id="nicknamelabel"></label>
-															</p></td>
-														<td><button type="button" class="btn btn-warning"
-																id="nickchk">ì¤‘ë³µí™•ì¸</button></td>
-													</tr>
-													<tr>
-														<th>ì´ë©”ì¼</th>
-														<td><p>
-																<input class="w3-input" placeholder="ì´ë©”ì¼" type="email"
-																	name="email" id="email" onchange="rexEmail()"
-																	value=${vo.getEmail() }> <label id="emaillabel"></label>
+                                    </div>
+                                 </div>
+                                 <div class="form-group">
+                                    <label class="control-label lead" id="mbtihover">MBTI¸¦
+                                       ¸ğ¸£½Ê´Ï±î?</label>
+                                    <button type="button" class="btn btn-primary"
+                                       data-toggle="modal" data-target="#myModal">MBTI
+                                       °£´ÜÃ¼Å©ÇÏ±â</button>
+                                    <br>
+                                    <div class="modal fade" id="myModal" tabindex="-1"
+                                       role="dialog" aria-labelledby="myModalLabel">
+                                       <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                             <div class="modal-header">
 
-															</p></td>
-														<td><button type="button" class="btn btn-warning"
-																id="emailchk">ì¤‘ë³µí™•ì¸</button></td>
-													</tr>
+                                                <h4 class="modal-title" id="myModalLabel">MBTI
+                                                   °£´ÜÃ¼Å©ÇÏ±â!</h4>
+                                             </div>
+                                             <div class="modal-body">
+                                                <img src="resources/img/start/mbtiinfo.jpg"
+                                                   style="width: 100%">
+                                             </div>
+                                             <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                   data-dismiss="modal">´İ±â</button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <button class="btn btn-primary nextBtn pull-right"
+                                    type="button">Next</button>
+                                 <br>
+                              </div>
+                           </div>
 
-													<tr>
-														<th>ì„±ë³„</th>
-														<td><p>
-																<br> <input class="w3-radio" type="radio"
-																	name="sex" value="m" checked> <label>ë‚¨ì</label>
-																<input class="w3-radio" type="radio" name="sex"
-																	value="f"> <label>ì—¬ì</label>
-															</p></td>
-													</tr>
-												</tbody>
-											</table>
-											<button class="btn btn-primary nextBtn pull-right"
-												type="button"  id="spec_submit">Next</button>
-											<br>
-						
+                           <div class="panel panel-primary setup-content" id="step-4">
+                              <div class="panel-heading">
+                                 <span class="login100-form-title p-b-49">´ç½ÅÀÇ ÀÌ»óÇüÀº? </span>
+                              </div>
+                              <div class="panel-body">
+                                 
 
-							</div>
-						</div>
+                                 <!-- Select Basic -->
+                                 <div class="form-group">
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                		  ÀÌ»óÇü Å°
+	                                 </span>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="ideal_height" name="ideal_height"
+                                          class="form-control">
+                                          <c:forEach begin="140" step="1" end="200" var="i">
+                                             <option value="${i }">${i }</option>
+                                          </c:forEach>
+                                          
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <!-- Select Basic -->
+                                 <div class="form-group" style="float: none; margin: 0 auto;">
+                                     <span class="text-center lead" style="font-weight: bold">
+	                                		  ÀÌ»óÇü ¸ö¹«°Ô
+	                                 </span>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="ideal_body" name="ideal_body"
+                                          class="form-control">
+                                          <c:forEach begin="30" step="1" end="150" var="i">
+                                                <option value="${i }">${i }</option>
+                                             </c:forEach> 
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <!-- Select Basic -->
+                                 <div class="form-group" style="float: none; margin: 0 auto;">
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                		  ³ªÀÌ
+	                                 </span>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="ideal_age" name="ideal_age"
+                                          class="form-control">
+                                          <c:forEach begin="10" step="1" end="100" var="i">
+                                                <option value="${i }">${i }</option>
+                                             </c:forEach>
+                                       </select>
+                                    </div>
+                                 </div>
 
-									<div class="panel panel-primary setup-content" id="step-6">
-							<div class="panel-heading">
-								<span class="login100-form-title p-b-49">í”„ë¡œí•„ ì‘ì„±</span>
-							</div>
-							<div class="panel-body">
+                                 <button class="btn btn-primary nextBtn pull-right"
+                                    type="button">Next</button>
+                                 <br>
+                              </div>
+                           </div>
 
-								<div class="profile_base .img-rounded"
-									style="width: 250px; margin: 0 auto;">
+                           <div class="panel panel-primary setup-content" id="step-3">
+                              <div class="panel-heading">
+                                 <span class="login100-form-title p-b-49">³ªÀÇ Á¤º¸ </span>
+                              </div>
+                              <div class="panel-body">
+                            
 
-									<img class="profile_img .img-rounded"
-										style="width: 250px; margin: 0 auto; margin: auto; text-align: center;"
-										id="profileimg" src="resources/img/default.png">
+                                 <!-- Select Basic -->
+                                 <div class="form-group">
+                                     <span class="text-center lead" style="font-weight: bold">
+	                                   		³ªÀÇ Å°
+	                                 </span>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="user_height" name="user_height"
+                                          class="form-control">
+                                          <c:forEach begin="140" step="1" end="200" var="i">
+                                             <option value="${i }">${i }</option>
+                                          </c:forEach>
+                                          
+                                       </select>
+                                    </div>
+                                 </div>
+                                      <!-- Select Basic -->
+                                 <div class="form-group" style="float: none; margin: 0 auto;">
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                   		³ªÀÇ ¸ö¹«°Ô
+	                                 </span>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="user_body" name="user_body"
+                                          class="form-control">
+                                          <c:forEach begin="30" step="1" end="150" var="i">
+                                                <option value="${i }">${i }</option>
+                                             </c:forEach>  
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <!-- Select Basic -->
+                                 <div class="form-group">
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                   		<br>³»°¡ »ç´Â Áö¿ª
+	                                 </span>
+                                    <div class="col-md-3" style="float: none; margin: 0 auto;">
+                                       <select id="user_loc" name="user_loc" class="form-control">
+                                          <option value="¼­¿ïÆ¯º°½Ã">¼­¿ïÆ¯º°½Ã</option>
+                                          <option value="°æ±âµµ">°æ±âµµ</option>
+                                          <option value="°­¿øµµ">°­¿øµµ</option>
+                                          <option value="°æ»ó³²µµ">°æ»ó³²µµ</option>
+                                          <option value="°æ»óºÏµµ">°æ»óºÏµµ</option>
+                                          <option value="ÃæÃ»³²µµ">ÃæÃ»³²µµ</option>
+                                          <option value="ÃæÃ»ºÏµµ">ÃæÃ»ºÏµµ</option>
+                                          <option value="Àü¶ó³²µµ">Àü¶ó³²µµ</option>
+                                          <option value="Àü¶óºÏµµ">Àü¶óºÏµµ</option>
+                                          <option value="Á¦ÁÖµµ">Á¦ÁÖµµ</option>
+                                          <option value="±âÅ¸">±âÅ¸</option>
+                                       </select>
+                                    </div>
+                                 </div>
 
-								</div>
-								<br>
+
+                                 <button class="btn btn-primary nextBtn pull-right"
+                                    type="button">Next</button>
+                                 <br>
+                              </div>
+                           </div>
+
+                           <div class="panel panel-primary setup-content" id="step-5">
+                              <div class="panel-heading">
+                                 <span class="login100-form-title p-b-49">»ó¼¼Á¤º¸ </span>
+
+                              </div>
+                              <div class="panel-body ">
+                                 <table style="margin: auto; text-align: center;">
+                                    <tbody>
+                                       <tr>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  ¾ÆÀÌµğ
+	                                 </span></th>
+                                          <td><p>
+                                                <input class="w3-input" placeholder="¾ÆÀÌµğ" type="text"
+                                                   required="required" name="user_id" id="join_user_id"><label
+                                                   id="idlabel"></label>
+                                             </p></td>
+                                          <td><button type="button" class="btn btn-warning"
+                                                id="idchk">Áßº¹È®ÀÎ</button></td>
+                                       </tr>
+                                       <tr>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  ºñ¹Ğ¹øÈ£
+	                                 </span></th>
+                                          <td><p>
+                                                <input class="w3-input" placeholder="ºñ¹Ğ¹øÈ£"
+                                                   type="password" required="required" name="pwd" id="join_pwd">
+                                             </p></td>
+                                       </tr>
+
+                                       <tr>
+                                          
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  ºñ¹Ğ¹øÈ£ È®ÀÎ
+	                                 </span></th>
+                                          <td><p>
+                                                <br> <input class="w3-input" placeholder="ºñ¹Ğ¹øÈ£È®ÀÎ"
+                                                   type="password" required="required" id="pwdchk">
+                                                <label id="pwdlabel"></label>
+                                             </p></td>
+                                       </tr>
+
+                                       <tr>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  ÀÌ¸§
+	                                 </span></th>
+                                          <td><p>
+                                                <input class="w3-input" placeholder="ÀÌ¸§" type="text"
+                                                   required="required" name="name" id="name">
+                                             </p></td>
+                                       </tr>
+
+                                       <tr>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		´Ğ³×ÀÓ
+	                                 </span></th>
+                                          <td><p>
+                                                <input class="w3-input" placeholder="º°¸í" type="text"
+                                                   name="nickname" id="nickname"><label
+                                                   id="nicknamelabel"></label>
+                                             </p></td>
+                                          <td><button type="button" class="btn btn-warning"
+                                                id="nickchk">Áßº¹È®ÀÎ</button></td>
+                                       </tr>
+                                       <tr>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  ÀÌ¸ŞÀÏ
+	                                 </span></th>
+                                          <td><p>
+                                                <input class="w3-input" placeholder="ÀÌ¸ŞÀÏ" type="email"
+                                                   name="email" id="email" onchange="rexEmail()"
+                                                   value=${vo.getEmail() }> <label id="emaillabel"></label>
+
+                                             </p></td>
+                                          <td><button type="button" class="btn btn-warning"
+                                                id="emailchk">Áßº¹È®ÀÎ</button></td>
+                                       </tr>
+
+                                       <tr>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		 ¼ºº°
+	                                 </span></th>
+                                          <td><p>
+                                                <br> <input class="w3-radio" type="radio"
+                                                   name="sex" value="m" checked> <label>³²ÀÚ</label>
+                                                <input class="w3-radio" type="radio" name="sex"
+                                                   value="f"> <label>¿©ÀÚ</label>
+                                             </p></td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                                 <button class="btn btn-primary nextBtn pull-right"
+                                    type="button"  id="spec_submit">Next</button>
+                                 <br>
+                  
+
+                     </div>
+                  </div>
+
+                           <div class="panel panel-primary setup-content" id="step-6">
+                     <div class="panel-heading">
+                        <span class="login100-form-title p-b-49">ÇÁ·ÎÇÊ ÀÛ¼º</span>
+                     </div>
+                     <div class="panel-body">
+
+                        <div class="profile_base .img-rounded"
+                           style="width: 250px; margin: 0 auto;">
+
+                           <img class="profile_img .img-rounded"
+                              style="width: 250px; margin: 0 auto; margin: auto; text-align: center;"
+                              id="profileimg" src="resources/img/default.png">
+
+                        </div>
+                        <br>
 
 
-								<div class="text-center">
-									<input type="file" id="file" name="file" style="display: none">
-									<div class="btn btn-outline-dark"
-										onclick="onclick=document.all.file.click()">ì‚¬ì§„ì¶”ê°€</div>
-								</div>
-								<br>
-								<table style="margin: auto; text-align: center;">
-									<tbody>
+                        <div class="text-center">
+<!--                             <input type="file" id="file" name="file" style="display: none">
+                           <div class="btn btn-outline-dark"
+                              onclick="fileclick()">»çÁøÃß°¡</div> -->
+ 
+					       <div class="form-group" style="text-align: center; width:400px;">
+					         <input type="file" id="file" name="file" style="display:none;" accept=".jpg,.jpeg,.png,.gif,.PNG">
+					          <div id="file_upload" class="btn btn-outline-dark"
+					                              onclick="fileclick()">»çÁøÃß°¡</div>     
+					            <button type="button" class="btn btn-outline-dark" id="imgchk">»ç¶÷È®ÀÎ</button>
+					                                                <br><label id="imglabel"></label>
+					      </div>
+ 
+                        </div> 
+                        <br>
+                        <table style="margin: auto; text-align: center;">
+                           <tbody>
 
-										<tr>
-											<td>
-												<div class="form-group text-center">
-													<label for="message">ìê¸°ì†Œê°œ</label><br>
-													<textarea name="user_intro" id="user_intro" cols="40"
-														rows="5" class="form-control" placeholder="ìê¸°ì†Œê°œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”"></textarea>
-												</div>
+                              <tr>
+                                 <td>
+                                    <div class="form-group text-center">
+                                       <span class="text-center lead" style="font-weight: bold">
+	                                		  ÀÚ±â¼Ò°³
+	                                 </span><br>
+                                       <textarea name="user_intro" id="user_intro" cols="40"
+                                          rows="5" class="form-control" placeholder="ÀÚ±â¼Ò°³¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"></textarea>
+                                    </div>
 
-											</td>
+                                 </td>
 
-										</tr>
-									</tbody>
-								</table>
-								<br>
-								<!-- <p style="text-align: right; color: red;">*ëŠ” í•„ìˆ˜í•­ëª©ì…ë‹ˆë‹¤.</p> -->
-								<br> <br>
-								<div class="container-login100-form-btn text-center">
-									<div class="wrap-login100-form-btn">
-										<div class="login100-form-bgbtn"></div>
-										<button class="btn btn-outline-info" onclick="memberjoin()" id="joinsucess">
-											íšŒì›ê°€ì…ì™„ë£Œ</button>
-									</div>
-								</div>
-								<br>
-							</div>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <br>
+                        <!-- <p style="text-align: right; color: red;">*´Â ÇÊ¼öÇ×¸ñÀÔ´Ï´Ù.</p> -->
+                        <br> <br>
+                        <div class="container-login100-form-btn text-center">
+                           <div class="wrap-login100-form-btn">
+                              <div class="login100-form-bgbtn"></div>
+                              <button class="btn btn-outline-info" onclick="memberjoin()" id="joinsucess">
+                                 È¸¿ø°¡ÀÔ¿Ï·á</button>
+                           </div>
+                        </div>
+                        <br>
+                     </div>
 
-						</div>
-						</form>
-					</div>
-				</div>
+                  </div>
+                  </form>
+               </div>
+            </div>
 
-			</div>
+         </div>
 
 
-		</div>
+      </div>
 
-		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 ml-4"
-			style="background-color: rgba(255, 255, 255, 0.95);">
-
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 ml-4"
+         style="background-color: rgba(255, 255, 255, 0.95);">
      <form method="post" action="logindo" class="login100-form validate-form" id="logindo">
 
          <span class="login100-form-title p-b-49"> Login </span>
 
          <div class="wrap-input100 validate-input m-b-23"
             data-validate="Username is reauired">
-            <span class="label-input100">ì•„ì´ë””</span> <input class="input100"
+            <span class="label-input100">¾ÆÀÌµğ</span> <input class="input100"
                type="text" id="user_id" name="user_id"
                placeholder="Type your username"> <span
                class="focus-input100" data-symbol="&#xf206;"></span>
@@ -600,24 +642,24 @@ body {
 
          <div class="wrap-input100 validate-input"
             data-validate="Password is required">
-            <span class="label-input100">ë¹„ë°€ë²ˆí˜¸</span> <input class="input100"
+            <span class="label-input100">ºñ¹Ğ¹øÈ£</span> <input class="input100"
                type="password" id="pwd" name="pwd"
                placeholder="Type your password"> <span
                class="focus-input100" data-symbol="&#xf190;"></span>
          </div>
          <br>
          <c:if test="${msg == 'failure' }">
-            <div style="color: red;">ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</div>
+            <div style="color: red;">¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.</div>
          </c:if>
          <c:if test="${msg == 'logout' }">
-            <div style="color: red;">ë¡œê·¸ì•„ì›ƒë˜ì—ˆìŠµë‹ˆë‹¤.</div>
+            <div style="color: red;">·Î±×¾Æ¿ôµÇ¾ú½À´Ï´Ù.</div>
          </c:if>
 
          <div class="container-login100-form-btn text-center">
             <div class="wrap-login100-form-btn">
                <div class="login100-form-bgbtn"></div>
                <button id="login_submit" class="btn btn-outline-info">
-                  ë¡œê·¸ì¸</button>
+                  ·Î±×ÀÎ</button>
             </div>
          </div>
    </form>
@@ -628,30 +670,6 @@ body {
             <a href="findidform"> Forgot ID? </a> <br> <a
                href="findpwdform"> Forgot password? </a>
          </div>
-
-
-
-         <%-- 
-               <div class="txt1 text-center p-t-54 p-b-20">
-                  <span>
-                     Or Sign Up Using
-                  </span>
-               </div>
-               
-                <div class="flex-c-m">
-                  <a href="#" class="login100-social-item bg1">
-                     <i class="fa fa-facebook"></i>
-                  </a>
-
-                  <a href="${naver_url}" class="login100-social-item bg2">
-                     <i class="fa fa-kakaotalk"></i>
-                  </a>
-
-                  <a href="${google_url}" class="login100-social-item bg3">
-                     <i class="fa fa-google"></i>
-                  </a>
-               </div>  --%>
-
       </div>
    </div>
    </div>
@@ -659,6 +677,54 @@ body {
 
 
    <div id="dropDownSelect1"></div>
+   <script>
+   
+   
+		   var imgchk = 'false';
+		   //ÇÁ·ÎÇÊ»çÁø Ã¼Å©.
+		   $('#imgchk').click(function() {
+		      //console.log('imgimgÅ¬¸¯µÇ¾ú´Ï?')
+		      //var image = $("#file").val();
+		      //console.log(image);
+		      var formData = new FormData();
+		      var inputFile = $("input[name='file']");
+		      var files = inputFile[0].files;
+		      console.log(files);
+		            
+		      for (var i = 0; i < files.length; i++) {
+		         formData.append("uploadFile", files[i]);
+		      }
+		      
+		       $.ajax({
+		         url : "imgchk",
+		         processData: false,
+		         contentType: false,
+		         data: formData,
+		         type : "POST",
+		         enctype: 'multipart/form-data',
+		         success : function(data) {
+		            if (data !== 1) {
+		               imgchk = 'false';
+		               document.getElementById("imglabel").innerHTML = "<p style='color:red'>¾ó±¼»çÁøÀ» ³Ö¾îÁÖ¼¼¿ä</p>";
+		               }else {
+		                  imgchk = 'true';
+		                  document.getElementById("imglabel").innerHTML = "<p style='color:green'>¾ó±¼»çÁø ÀÔ´Ï´Ù.</p>";
+		               }   
+		            },
+		         error : function(request, status, error) {
+		            alert("code = " + request.status + " message = "
+		                  + request.responseText + " error = " + error); // ½ÇÆĞ ½Ã Ã³¸®
+		            }
+		         }) 
+		
+		      })
+      </script>
+   
+   
+   
+   
+   
+   
    
    <script>
       $(function(){
@@ -669,7 +735,11 @@ body {
          
       })
    </script>
-   
+   <script type="text/javascript">
+   		function fileclick(){
+   			$('#file').click();
+   		}
+   </script>
    
    <script>
       $(document)
@@ -725,33 +795,33 @@ body {
 
                      $('div.setup-panel div a.btn-success').trigger(
                            'click');
-                     //ë°ì´íŠ¸í”¼ì»¤
+                     //µ¥ÀÌÆ®ÇÇÄ¿
                      var clareCalendar = {
-                        monthNamesShort : [ '1ì›”', '2ì›”', '3ì›”', '4ì›”',
-                              '5ì›”', '6ì›”', '7ì›”', '8ì›”', '9ì›”', '10ì›”',
-                              '11ì›”', '12ì›”' ],
-                        dayNamesMin : [ 'ì¼', 'ì›”', 'í™”', 'ìˆ˜', 'ëª©', 'ê¸ˆ',
-                              'í† ' ],
+                        monthNamesShort : [ '1¿ù', '2¿ù', '3¿ù', '4¿ù',
+                              '5¿ù', '6¿ù', '7¿ù', '8¿ù', '9¿ù', '10¿ù',
+                              '11¿ù', '12¿ù' ],
+                        dayNamesMin : [ 'ÀÏ', '¿ù', 'È­', '¼ö', '¸ñ', '±İ',
+                              'Åä' ],
                         weekHeader : 'Wk',
-                        dateFormat : 'yy-mm-dd', //í˜•ì‹(20120303)
-                        autoSize : false, //ì˜¤í† ë¦¬ì‚¬ì´ì¦ˆ(bodyë“± ìƒìœ„íƒœê·¸ì˜ ì„¤ì •ì— ë”°ë¥¸ë‹¤)
-                        changeMonth : true, //ì›”ë³€ê²½ê°€ëŠ¥
-                        changeYear : true, //ë…„ë³€ê²½ê°€ëŠ¥
-                        showMonthAfterYear : true, //ë…„ ë’¤ì— ì›” í‘œì‹œ
-                        changeMonth : true, // ì›”ì„ ë°”ê¿€ìˆ˜ ìˆëŠ” ì…€ë ‰íŠ¸ ë°•ìŠ¤ë¥¼ í‘œì‹œí•œë‹¤
-                        changeYear : true, // ë…„ì„ ë°”ê¿€ ìˆ˜ ìˆëŠ” ì…€ë ‰íŠ¸ ë°•ìŠ¤ë¥¼ í‘œì‹œí•œë‹¤.
+                        dateFormat : 'yy-mm-dd', //Çü½Ä(20120303)
+                        autoSize : false, //¿ÀÅä¸®»çÀÌÁî(bodyµî »óÀ§ÅÂ±×ÀÇ ¼³Á¤¿¡ µû¸¥´Ù)
+                        changeMonth : true, //¿ùº¯°æ°¡´É
+                        changeYear : true, //³âº¯°æ°¡´É
+                        showMonthAfterYear : true, //³â µÚ¿¡ ¿ù Ç¥½Ã
+                        changeMonth : true, // ¿ùÀ» ¹Ù²Ü¼ö ÀÖ´Â ¼¿·ºÆ® ¹Ú½º¸¦ Ç¥½ÃÇÑ´Ù
+                        changeYear : true, // ³âÀ» ¹Ù²Ü ¼ö ÀÖ´Â ¼¿·ºÆ® ¹Ú½º¸¦ Ç¥½ÃÇÑ´Ù.
 
-                        showOn : "both", //ì—˜ë¦¬ë¨¼íŠ¸ì™€ ì´ë¯¸ì§€ ë™ì‹œ ì‚¬ìš©(both,button)
-                        yearRange : '1900:2020', //1990ë…„ë¶€í„° 2020ë…„ê¹Œì§€
-                        showOn : "button", //button:ë²„íŠ¼ì„ í‘œì‹œí•˜ê³ ,ë²„íŠ¼ì„ ëˆŒëŸ¬ì•¼ë§Œ ë‹¬ë ¥ í‘œì‹œ ^ both:ë²„íŠ¼ì„ í‘œì‹œí•˜ê³ ,ë²„íŠ¼ì„ ëˆ„ë¥´ê±°ë‚˜ inputì„ í´ë¦­í•˜ë©´ ë‹¬ë ¥ í‘œì‹œ     
-                        buttonImage : "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", //ë²„íŠ¼ ì´ë¯¸ì§€ ê²½ë¡œ
-                        buttonImageOnly : true, //ê¸°ë³¸ ë²„íŠ¼ì˜ íšŒìƒ‰ ë¶€ë¶„ì„ ì—†ì• ê³ , ì´ë¯¸ì§€ë§Œ ë³´ì´ê²Œ í•¨
-                        buttonText : "ì„ íƒ" //ë²„íŠ¼ì— ë§ˆìš°ìŠ¤ ê°–ë‹¤ ëŒ”ì„ ë•Œ í‘œì‹œë˜ëŠ” í…ìŠ¤íŠ¸      
+                        showOn : "both", //¿¤¸®¸ÕÆ®¿Í ÀÌ¹ÌÁö µ¿½Ã »ç¿ë(both,button)
+                        yearRange : '1900:2020', //1990³âºÎÅÍ 2020³â±îÁö
+                        showOn : "button", //button:¹öÆ°À» Ç¥½ÃÇÏ°í,¹öÆ°À» ´­·¯¾ß¸¸ ´Ş·Â Ç¥½Ã ^ both:¹öÆ°À» Ç¥½ÃÇÏ°í,¹öÆ°À» ´©¸£°Å³ª inputÀ» Å¬¸¯ÇÏ¸é ´Ş·Â Ç¥½Ã     
+                        buttonImage : "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", //¹öÆ° ÀÌ¹ÌÁö °æ·Î
+                        buttonImageOnly : true, //±âº» ¹öÆ°ÀÇ È¸»ö ºÎºĞÀ» ¾ø¾Ö°í, ÀÌ¹ÌÁö¸¸ º¸ÀÌ°Ô ÇÔ
+                        buttonText : "¼±ÅÃ" //¹öÆ°¿¡ ¸¶¿ì½º °®´Ù ´òÀ» ¶§ Ç¥½ÃµÇ´Â ÅØ½ºÆ®      
                      };
 
                      $("#form_dt").datepicker(clareCalendar);
-                     $("#ui-datepicker-div").hide(); //ìë™ìœ¼ë¡œ ìƒì„±ë˜ëŠ” divê°ì²´ ìˆ¨ê¹€ 
-                     $("#form_dt").datepicker("getDate"); //í˜„ì¬ ì„ íƒë˜ì–´ ìˆëŠ” ë‚ ì§œ ê°€ì ¸ì˜¤ê¸° (Date í˜•ìœ¼ë¡œ ë°˜í™˜)
+                     $("#ui-datepicker-div").hide(); //ÀÚµ¿À¸·Î »ı¼ºµÇ´Â div°´Ã¼ ¼û±è 
+                     $("#form_dt").datepicker("getDate"); //ÇöÀç ¼±ÅÃµÇ¾î ÀÖ´Â ³¯Â¥ °¡Á®¿À±â (Date ÇüÀ¸·Î ¹İÈ¯)
                   });
       $('#emailchk')
             .on(
@@ -764,38 +834,38 @@ body {
                               data : {
                                  email : $('#email').val()
                               },
-                              success : function(data) {//data==1 : ì¤‘ë³µë˜ëŠ” ê°’ì´ ìˆìŒ. data==0: ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ìŒ.
+                              success : function(data) {//data==1 : Áßº¹µÇ´Â °ªÀÌ ÀÖÀ½. data==0: Áßº¹µÇ´Â °ªÀÌ ¾øÀ½.
                                  console.log(data);
-                                 if ($('#email').val() === '') { //ë¹ˆì¹¸ì¼ ë•Œ.
+                                 if ($('#email').val() === '') { //ºóÄ­ÀÏ ¶§.
                                     emailchk = 'false';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
                                     return;
                                  } else if (data === 1
-                                       && $('#email').val() !== email) {//ì¤‘ë³µë˜ëŠ” ê°’ì´ ìˆê³ , ì›ë˜ ì´ë©”ì¼ê³¼ ê°’ì´ ë‹¬ë¼ì¡Œì„ ë•Œ.                                    
+                                       && $('#email').val() !== email) {//Áßº¹µÇ´Â °ªÀÌ ÀÖ°í, ¿ø·¡ ÀÌ¸ŞÀÏ°ú °ªÀÌ ´Ş¶óÁ³À» ¶§.                                    
                                     emailchk = 'false';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù</p>";
                                     return;
 
-                                 } else if ($('#email').val() === email) {//ê°’ì´ ì¤‘ë³µì´ ë˜ë“  ì•ˆë˜ë“ , ì›ë˜ ì´ë©”ì¼ê³¼ ê°’ì´ ê°™ì„ ë•Œ.                                    
+                                 } else if ($('#email').val() === email) {//°ªÀÌ Áßº¹ÀÌ µÇµç ¾ÈµÇµç, ¿ø·¡ ÀÌ¸ŞÀÏ°ú °ªÀÌ °°À» ¶§.                                    
                                     emailchk = 'true';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
                                     return;
                                  } else if (data === 0
                                        && $('#email').val() !== email
-                                       && rexemail === 'true') { //ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ê³ , ì›ë˜ ì´ë©”ì¼ê°’ì´ë‘ ë‹¤ë¥´ê³ , ì •ê·œì‹ë„ ë§Œì¡±.
+                                       && rexemail === 'true') { //Áßº¹µÇ´Â °ªÀÌ ¾ø°í, ¿ø·¡ ÀÌ¸ŞÀÏ°ªÀÌ¶û ´Ù¸£°í, Á¤±Ô½Äµµ ¸¸Á·.
                                     emailchk = 'true';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
                                     return;
                                  } else if (data === 0
                                        && $('#email').val() !== email
-                                       && rexemail === 'false') { //ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ê³ , ì›ë˜ ì´ë©”ì¼ê°’ì´ë‘ ë‹¤ë¥´ì§€ë§Œ ì •ê·œì‹ì´ ì•„ë‹ ë•Œ.
+                                       && rexemail === 'false') { //Áßº¹µÇ´Â °ªÀÌ ¾ø°í, ¿ø·¡ ÀÌ¸ŞÀÏ°ªÀÌ¶û ´Ù¸£Áö¸¸ Á¤±Ô½ÄÀÌ ¾Æ´Ò ¶§.
                                     emailchk = 'false';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ í˜•ì‹ì„ ë§ì¶°ì£¼ì„¸ìš”.</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏ Çü½ÄÀ» ¸ÂÃçÁÖ¼¼¿ä.</p>";
                                     return;
                                  }
 
@@ -810,56 +880,18 @@ body {
 
    <script>
       /*
-       ì²˜ë¦¬í•´ì•¼í• ê²ƒ.
-       1. ì¤‘ë³µì²´í¬ë¥¼ í–ˆëŠ”ì§€
-       1-1 í–ˆìœ¼ë©´ ê·¸ê²Œ í†µê³¼í–ˆëŠ”ì§€
-       2. ë¹„ë°€ë²ˆí˜¸ì™€ ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì´ ë§ëŠ”ì§€.
-       3. ë³„ëª…ì´ ì¤‘ë³µì²´í¬ í–ˆëŠ”ì§€.
-       3-1 í–ˆìœ¼ë©´ ê·¸ê²Œ í†µê³¼í–ˆëŠ”ì§€
+       Ã³¸®ÇØ¾ßÇÒ°Í.
+       1. Áßº¹Ã¼Å©¸¦ Çß´ÂÁö
+       1-1 ÇßÀ¸¸é ±×°Ô Åë°úÇß´ÂÁö
+       2. ºñ¹Ğ¹øÈ£¿Í ºñ¹Ğ¹øÈ£ È®ÀÎÀÌ ¸Â´ÂÁö.
+       3. º°¸íÀÌ Áßº¹Ã¼Å© Çß´ÂÁö.
+       3-1 ÇßÀ¸¸é ±×°Ô Åë°úÇß´ÂÁö
 
       
       
        */
-         var imgchk = 'false';
-         //í”„ë¡œí•„ì‚¬ì§„ ì²´í¬.
-         $('#imgchk').click(function() {
-            //console.log('imgimgí´ë¦­ë˜ì—ˆë‹ˆ?')
-            //var image = $("#file").val();
-            //console.log(image);
-            var formData = new FormData();
-            var inputFile = $("input[name='file']");
-            var files = inputFile[0].files;
-            console.log(files);
-                  
-            for (var i = 0; i < files.length; i++) {
-               formData.append("uploadFile", files[i]);
-            }
-            
-             $.ajax({
-               url : "imgchk",
-               processData: false,
-               contentType: false,
-               data: formData,
-               type : "POST",
-               enctype: 'multipart/form-data',
-               success : function(data) {
-                  if (data !== 1) {
-                     imgchk = 'false';
-                     document.getElementById("imglabel").innerHTML = "<p style='color:red'>ì–¼êµ´ì‚¬ì§„ì„ ë„£ì–´ì£¼ì„¸ìš”</p>";
-                     }else {
-                        imgchk = 'true';
-                        document.getElementById("imglabel").innerHTML = "<p style='color:green'>ì–¼êµ´ì‚¬ì§„ ì…ë‹ˆë‹¤.</p>";
-                     }   
-                  },
-               error : function(request, status, error) {
-                  alert("code = " + request.status + " message = "
-                        + request.responseText + " error = " + error); // ì‹¤íŒ¨ ì‹œ ì²˜ë¦¬
-                  }
-               }) 
 
-            })
-       
-      //ë¹„ë°€ë²ˆí˜¸ í™•ì¸ 
+      //ºñ¹Ğ¹øÈ£ È®ÀÎ 
       $('#pwdchk')
             .change(
                   function() {
@@ -867,13 +899,13 @@ body {
                      if ($('#join_pwd').val() != $('#pwdchk').val()) {
                         if ($('#pwdchk').val() !== '') {
                            $('#pwdchk').empty();
-                           document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤</p>";
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù</p>";
 
                         }
                      } else {
                         if ($('#join_pwd').val() != ''
                               && $('#pwdchk').val() != '') {
-                           document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ë¹„ë°€ë²ˆí˜¸ê°€ ê°™ìŠµë‹ˆë‹¤</p>";
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ºñ¹Ğ¹øÈ£°¡ °°½À´Ï´Ù</p>";
                         }
                      }
                   })
@@ -884,17 +916,17 @@ body {
 
                      if ($('#join_pwd').val() != $('#pwdchk').val()) {
                         if ($('#pwdchk').val() !== '') {
-                           alert("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
+                           alert("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
                            $('#join_pwd').empty();
 
-                           document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤</p>";
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:red'>ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù</p>";
 
                         }
                      } else {
                         if ($('#join_pwd').val() != ''
                               && $('#pwdchk').val() != '') {
 
-                           document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ë¹„ë°€ë²ˆí˜¸ê°€ ê°™ìŠµë‹ˆë‹¤</p>";
+                           document.getElementById("pwdlabel").innerHTML = "<p style='color:blue'>ºñ¹Ğ¹øÈ£°¡ °°½À´Ï´Ù</p>";
 
                         }
                      }
@@ -904,32 +936,32 @@ body {
             .change(
                   function() {
                      document.getElementById("idlabel").innerHTML = "";
-                     if ($('#join_user_id').val() === '') { //ê°’ì´ ë‹¬ë¼ì¡ŒëŠ”ë° ë¹ˆì¹¸ì´ë©´
-                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>";
+                     if ($('#join_user_id').val() === '') { //°ªÀÌ ´Ş¶óÁ³´Âµ¥ ºóÄ­ÀÌ¸é
+                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>";
                         idchk = 'false';
                      }
-                     idchk = 'false'; //ì•„ì´ë”” ë¶€ë¶„ì˜ ê°’ì´ ë°”ë€Œë©´ falseë¡œ ë³€ê²½.
+                     idchk = 'false'; //¾ÆÀÌµğ ºÎºĞÀÇ °ªÀÌ ¹Ù²î¸é false·Î º¯°æ.
                   });
 
       $('#nickname')
             .change(
                   function() {
                      document.getElementById("nicknamelabel").innerHTML = "";
-                     if ($('#nickname').val() === '') { //ê°’ì´ ë‹¬ë¼ì¡ŒëŠ”ë° ë¹ˆì¹¸ì´ë©´
-                        document.getElementById("nicknamelabel").innerHTML = "<p style='color:red'>ë³„ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>";
+                     if ($('#nickname').val() === '') { //°ªÀÌ ´Ş¶óÁ³´Âµ¥ ºóÄ­ÀÌ¸é
+                        document.getElementById("nicknamelabel").innerHTML = "<p style='color:red'>º°¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>";
                         nickchk = 'false';
                      }
-                     nickchk = 'false'; //ì•„ì´ë”” ë¶€ë¶„ì˜ ê°’ì´ ë°”ë€Œë©´ falseë¡œ ë³€ê²½.
+                     nickchk = 'false'; //¾ÆÀÌµğ ºÎºĞÀÇ °ªÀÌ ¹Ù²î¸é false·Î º¯°æ.
                   });
       $('#email')
             .change(
                   function() {
                      document.getElementById("emaillabel").innerHTML = "";
-                     if ($('#email').val() === '') { //ê°’ì´ ë‹¬ë¼ì¡ŒëŠ”ë° ë¹ˆì¹¸ì´ë©´
-                        document.getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.</p>";
+                     if ($('#email').val() === '') { //°ªÀÌ ´Ş¶óÁ³´Âµ¥ ºóÄ­ÀÌ¸é
+                        document.getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.</p>";
                         emailchk = 'false';
                      }
-                     emailchk = 'false'; //ì•„ì´ë”” ë¶€ë¶„ì˜ ê°’ì´ ë°”ë€Œë©´ falseë¡œ ë³€ê²½.
+                     emailchk = 'false'; //¾ÆÀÌµğ ºÎºĞÀÇ °ªÀÌ ¹Ù²î¸é false·Î º¯°æ.
                   });
 
       var idchk = 'false';
@@ -937,7 +969,7 @@ body {
       var emailchk = 'false';
       var rexemail = 'false';
 
-      //ì•„ì´ë”” ì²´í¬.
+      //¾ÆÀÌµğ Ã¼Å©.
       $('#idchk').click(function() {
                console.log('eeee')
                $.ajax({
@@ -947,21 +979,21 @@ body {
                      id : $('#join_user_id').val()
                   },
                   success : function(data) {
-                     if ($('#join_user_id').val() === '') {//ë¹ˆì¹¸
+                     if ($('#join_user_id').val() === '') {//ºóÄ­
                         idchk = 'false';
-                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
                         return;
                         }
                      if (data === 1) {
                         idchk = 'false';
-                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤</p>";
+                        document.getElementById("idlabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù</p>";
 
                                  } else if (data === 0
                                        && $('join_user_id').val() !== '') {
 
                                     idchk = 'true';
                                     document
-                                          .getElementById("idlabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.</p>";
+                                          .getElementById("idlabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.</p>";
                                  }
                               },
                               error : function() {
@@ -971,7 +1003,7 @@ body {
 
                   })
 
-      ////ë³„ëª… ì²´í¬
+      ////º°¸í Ã¼Å©
       $('#nickchk')
             .on(
                   'click',
@@ -986,22 +1018,22 @@ body {
                               },
                               success : function(data) {
                                  console.log(data);
-                                 if ($('#nickname').val() === '') { //ë¹ˆì¹¸ì¼ ë•Œ.
+                                 if ($('#nickname').val() === '') { //ºóÄ­ÀÏ ¶§.
                                     nickchk = 'false';
                                     document
-                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:red'>ë³„ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:red'>º°¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
                                     return;
                                  } else if (data === 1) {
 
                                     nickchk = 'false';
                                     document
-                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ë³„ëª…ì…ë‹ˆë‹¤.</p>";
+                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ º°¸íÀÔ´Ï´Ù.</p>";
 
                                     //$('#send').attr('disabled', 'disabled');
                                  } else if (data === 0) {
                                     nickchk = 'true';
                                     document
-                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ë³„ëª…ì…ë‹ˆë‹¤.</p>";
+                                          .getElementById("nicknamelabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ º°¸íÀÔ´Ï´Ù.</p>";
                                  }
                               },
                               error : function() {
@@ -1010,9 +1042,9 @@ body {
                            })
 
                   })
-      /*ì°¸ê³  : https://myjamong.tistory.com/17*/
+      /*Âü°í : https://myjamong.tistory.com/17*/
 
-      ////ì´ë©”ì¼ ì²´í¬
+      ////ÀÌ¸ŞÀÏ Ã¼Å©
       $('#emailchk')
             .on(
                   'click',
@@ -1027,31 +1059,31 @@ body {
                               },
                               success : function(data) {
                                  console.log(data);
-                                 if ($('#email').val() === '') { //ë¹ˆì¹¸ì¼ ë•Œ.
+                                 if ($('#email').val() === '') { //ºóÄ­ÀÏ ¶§.
                                     emailchk = 'false';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä</p>";
                                     return;
 
                                  }
-                                 if (data === 1) { //ì¤‘ë³µëœ ê°’ì´ ìˆì„ ë•Œ.
+                                 if (data === 1) { //Áßº¹µÈ °ªÀÌ ÀÖÀ» ¶§.
                                     emailchk = 'false';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì‚¬ìš©ë¶ˆê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>»ç¿ëºÒ°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
                                     return;
 
                                  } else if (data === 0
-                                       && rexemail === 'true') { //ì¤‘ë³µëœ ê°’ì´ ì—†ê³ , ì •ê·œì‹ë§Œì¡±
+                                       && rexemail === 'true') { //Áßº¹µÈ °ªÀÌ ¾ø°í, Á¤±Ô½Ä¸¸Á·
                                     emailchk = 'true';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>ì‚¬ìš©ê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤.</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:blue'>»ç¿ë°¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.</p>";
                                     return;
 
                                  } else if (data === 0
-                                       && rexemail === 'false') { //ì¤‘ë³µë˜ëŠ” ê°’ì´ ì—†ì§€ë§Œ, ì •ê·œì‹ì´ ë§ì§€ ì•Šì„ ë•Œ.
+                                       && rexemail === 'false') { //Áßº¹µÇ´Â °ªÀÌ ¾øÁö¸¸, Á¤±Ô½ÄÀÌ ¸ÂÁö ¾ÊÀ» ¶§.
                                     emailchk = 'false';
                                     document
-                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ì´ë©”ì¼ í˜•ì‹ì„ ë§ì¶°ì£¼ì„¸ìš”.</p>";
+                                          .getElementById("emaillabel").innerHTML = "<p style='color:red'>ÀÌ¸ŞÀÏ Çü½ÄÀ» ¸ÂÃçÁÖ¼¼¿ä.</p>";
                                     return;
 
                                  }
@@ -1065,22 +1097,22 @@ body {
                   })
 
 
-      //step1~7 ì „ì†¡
-      //ì „ì†¡í•  ë•Œ, ì¤‘ë³µì²´í¬ ì—¬ë¶€ í™•ì¸
+       //step1~7 Àü¼Û
+      //Àü¼ÛÇÒ ¶§, Áßº¹Ã¼Å© ¿©ºÎ È®ÀÎ
       function memberjoin(){
           if (idchk === 'false') {
-               alert("ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”");
+               alert("¾ÆÀÌµğ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä");
             } else if (nickchk === 'false') {
-               alert("ë³„ëª… ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”");
+               alert("º°¸í Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä");
             } else if (emailchk === 'false') {
-               alert('ì´ë©”ì¼ ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”');
+               alert('ÀÌ¸ŞÀÏ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä');
             } else if (rexemail === 'false') {
-               alert('ì´ë©”ì¼ í˜•ì‹ì„ í™•ì¸í•´ì£¼ì„¸ìš”');
+               alert('ÀÌ¸ŞÀÏ Çü½ÄÀ» È®ÀÎÇØÁÖ¼¼¿ä');
             } else if ($("#form_dt").datepicker("getDate") === null) {
-               alert("ë‚ ì§œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
-            }else if(imgchk === 'false'){
-               alert("í”„ë¡œí•„ì‚¬ì§„ì„ ì–¼êµ´ë¡œ ì„¤ì •í•´ì£¼ì„¸ìš”");
-            }else if (nickchk === 'true' && idchk === 'true'&& rexemail === 'true' && emailchk === 'true' && imgchk === 'true'
+               alert("³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+            }else if (imgchk === 'false'){
+               alert("ÇÁ·ÎÇÊ»çÁøÀ» ¾ó±¼·Î ¼³Á¤ÇØÁÖ¼¼¿ä");
+            } else if (nickchk === 'true' && idchk === 'true'&& rexemail === 'true' && emailchk === 'true' && imgchk === 'true'
                   && $("#form_dt").datepicker("getDate") !== null) 
             {               
                $('form')[0].submit();
@@ -1088,8 +1120,7 @@ body {
             }
       }
 
-
-      //ë¡œê·¸ì¸
+      //·Î±×ÀÎ
       $('#login_submit').on('click', function() {
          $('#logindo').submit();
       })
@@ -1100,7 +1131,7 @@ body {
          var email = $("#email").val();
 
          var rex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-         // ì´ë©”ì¼ ì •ê·œì‹
+         // ÀÌ¸ŞÀÏ Á¤±Ô½Ä
 
          if (rex.test(email)) {
             rexemail = 'true';
@@ -1109,7 +1140,7 @@ body {
          }
       }
 
-      //íŒŒì¼
+      //ÆÄÀÏ
       $("#file").change(
             function() {
                if (this.files && this.files[0]) {
