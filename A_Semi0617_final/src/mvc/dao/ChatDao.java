@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import mvc.service.FeedAbstract;
+import mvc.vo.ChatVO;
 
 @Repository
 public class ChatDao extends FeedAbstract{
@@ -16,8 +17,8 @@ public class ChatDao extends FeedAbstract{
 		return (int) insert(nameSpace+"chatIn", params);
 	}
 	//채팅room Number insert
-	public int roomInsert() throws Exception {
-		return (int) insert(nameSpace+"roomIn");
+	public int roomInsert(int user1) throws Exception {
+		return (int) insert(nameSpace+"roomIn", user1);
 	}
 	//1:1 채팅 내역
 	@SuppressWarnings("unchecked")

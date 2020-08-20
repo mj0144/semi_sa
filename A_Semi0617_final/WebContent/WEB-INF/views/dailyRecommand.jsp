@@ -378,7 +378,20 @@
             $('#modal').hide();
        };
        $('#chatOn').click(function(){
-          $('#chatting').submit();
+    	   var user1 = ${sessionScope.user_num};
+			$.ajax({
+				type : "POST",
+				url : "chRequest",
+				data : "user1="+user1,
+				success : function(res){
+					alert("상대방에게 채팅신청하였습니다. 상대방 수락시 채팅방이 개설됩니다.");
+				},
+				error : function(request,status,error){
+					console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
+          document.location.href = document.location.href;
        })
   
       
