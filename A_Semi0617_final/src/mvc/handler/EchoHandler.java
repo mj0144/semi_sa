@@ -40,7 +40,12 @@ public class EchoHandler extends TextWebSocketHandler{
    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
       userSession = session.getAttributes();
       userid = userSession.get("user_num").toString();
-      System.out.println("유저아이디"+userid+" 메세지 "+message.getPayload());
+
+    //  System.out.println("유저아이디"+userid);
+    //  System.out.println("메세지"+message.getPayload());
+
+     // System.out.println("유저아이디"+userid+" 메세지 "+message.getPayload());
+
       
       //suyeon start------------------------------------------------------------------
        StringBuffer sb = new StringBuffer();
@@ -70,7 +75,7 @@ public class EchoHandler extends TextWebSocketHandler{
       
       
       //suyeon start---------------------------------------------------------------
-      System.out.println(sb);
+     // System.out.println(sb);
       //end------------------------------------------------------------------------
    }
    

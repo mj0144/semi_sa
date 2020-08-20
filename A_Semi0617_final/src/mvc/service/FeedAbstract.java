@@ -25,6 +25,7 @@ public abstract class FeedAbstract {
 	public int insert(String nameSpace, Object param) throws Exception {
 		return ss.insert(nameSpace, param);
 	}
+	
 	public Object insert(String nameSpace) throws Exception {
 		return ss.insert(nameSpace);
 	}
