@@ -18,14 +18,11 @@
 			</div>
 		</div>
 	</section>
-	<br>
-	<br>
-	<br>
-	
-	<hr>
-	<h5 style="color: orange; text-align: center;">*이상형 인 연예인의 이름을
-		적어주세요*</h5>
-	<div class="col-sm-12 pull-center well" style="margin-left: 400px;">
+	 
+	<div class="col-md-6 pull-center well" style="margin-left: 300px; margin-top: 100px;">
+	<div style="margin-bottom: 100px; margin-left: 100px;">
+	<h2><br><b>이상형 인 연예인의 이름을
+		적어주세요</b></h2>
 		<form id="love" class="form-inline" action="lovesearch" method="post">
 
 			<div class="input-group custom-search-form">
@@ -44,17 +41,14 @@
 	</div>
 	<hr>
 	<br>
-	<br>
-	<hr>
-	<section>
+	<div>
 		<div style="height: 100px; text-align: center;">
-			<h5 style="color:orange">*나랑 닮은 연예인 보러가기*</h5>
+			  <h2 style="text-align: center;"><br><b>나랑 닮은 연예인 보러가기</b></h2>
 			<button class="btn btn-default" id="searchbtn" type="button" onclick="location.href='looklike'"
-						style="height: 50px; width: 60px; border-radius: 10px 10px 10px 10px; background-color: black; color: white;">
+						style="height: 80px; width: 300px; border-radius: 10px 10px 10px 10px; background-color: black; color: white;">
 						Go!</button>
 		</div>
-		<hr>
-	</section>	
+	</div>	
 	<br>
 	<br>
 	<br>
