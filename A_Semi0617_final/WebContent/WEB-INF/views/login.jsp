@@ -70,6 +70,8 @@
 
 <link rel="stylesheet" href="css/jquery-ui.css">
 <style>
+
+
 .jumbotron {
    color: #FBEFFB;
    background-color: #F7F8E0;
@@ -538,10 +540,19 @@ body {
 
 
                         <div class="text-center">
-                           <input type="file" id="file" name="file" style="display: none">
+<!--                             <input type="file" id="file" name="file" style="display: none">
                            <div class="btn btn-outline-dark"
-                              onclick="onclick=document.all.file.click()">사진추가</div>
-                        </div>
+                              onclick="fileclick()">사진추가</div> -->
+ 
+					       <div class="form-group" style="text-align: center; width:400px;">
+					         <input type="file" id="file" name="file" style="display:none;" accept=".jpg,.jpeg,.png,.gif,.PNG">
+					          <div id="file_upload" class="btn btn-outline-dark"
+					                              onclick="fileclick()">사진추가</div>     
+					            <button type="button" class="btn btn-outline-dark" id="imgchk">사람확인</button>
+					                                                <br><label id="imglabel"></label>
+					      </div>
+ 
+                        </div> 
                         <br>
                         <table style="margin: auto; text-align: center;">
                            <tbody>
@@ -626,30 +637,6 @@ body {
             <a href="findidform"> Forgot ID? </a> <br> <a
                href="findpwdform"> Forgot password? </a>
          </div>
-
-
-
-         <%-- 
-               <div class="txt1 text-center p-t-54 p-b-20">
-                  <span>
-                     Or Sign Up Using
-                  </span>
-               </div>
-               
-                <div class="flex-c-m">
-                  <a href="#" class="login100-social-item bg1">
-                     <i class="fa fa-facebook"></i>
-                  </a>
-
-                  <a href="${naver_url}" class="login100-social-item bg2">
-                     <i class="fa fa-kakaotalk"></i>
-                  </a>
-
-                  <a href="${google_url}" class="login100-social-item bg3">
-                     <i class="fa fa-google"></i>
-                  </a>
-               </div>  --%>
-
       </div>
    </div>
    </div>
@@ -657,6 +644,54 @@ body {
 
 
    <div id="dropDownSelect1"></div>
+   <script>
+   
+   
+		   var imgchk = 'false';
+		   //프로필사진 체크.
+		   $('#imgchk').click(function() {
+		      //console.log('imgimg클릭되었니?')
+		      //var image = $("#file").val();
+		      //console.log(image);
+		      var formData = new FormData();
+		      var inputFile = $("input[name='file']");
+		      var files = inputFile[0].files;
+		      console.log(files);
+		            
+		      for (var i = 0; i < files.length; i++) {
+		         formData.append("uploadFile", files[i]);
+		      }
+		      
+		       $.ajax({
+		         url : "imgchk",
+		         processData: false,
+		         contentType: false,
+		         data: formData,
+		         type : "POST",
+		         enctype: 'multipart/form-data',
+		         success : function(data) {
+		            if (data !== 1) {
+		               imgchk = 'false';
+		               document.getElementById("imglabel").innerHTML = "<p style='color:red'>얼굴사진을 넣어주세요</p>";
+		               }else {
+		                  imgchk = 'true';
+		                  document.getElementById("imglabel").innerHTML = "<p style='color:green'>얼굴사진 입니다.</p>";
+		               }   
+		            },
+		         error : function(request, status, error) {
+		            alert("code = " + request.status + " message = "
+		                  + request.responseText + " error = " + error); // 실패 시 처리
+		            }
+		         }) 
+		
+		      })
+      </script>
+   
+   
+   
+   
+   
+   
    
    <script>
       $(function(){
@@ -667,7 +702,11 @@ body {
          
       })
    </script>
-   
+   <script type="text/javascript">
+   		function fileclick(){
+   			$('#file').click();
+   		}
+   </script>
    
    <script>
       $(document)
@@ -1025,7 +1064,7 @@ body {
                   })
 
 
-      //step1~7 전송
+       //step1~7 전송
       //전송할 때, 중복체크 여부 확인
       function memberjoin(){
           if (idchk === 'false') {
@@ -1038,14 +1077,15 @@ body {
                alert('이메일 형식을 확인해주세요');
             } else if ($("#form_dt").datepicker("getDate") === null) {
                alert("날짜를 입력해주세요");
-            }else if (nickchk === 'true' && idchk === 'true'&& rexemail === 'true' && emailchk === 'true'
+            }else if (imgchk === 'false'){
+               alert("프로필사진을 얼굴로 설정해주세요");
+            } else if (nickchk === 'true' && idchk === 'true'&& rexemail === 'true' && emailchk === 'true' && imgchk === 'true'
                   && $("#form_dt").datepicker("getDate") !== null) 
             {               
                $('form')[0].submit();
                
             }
       }
-
 
       //로그인
       $('#login_submit').on('click', function() {
