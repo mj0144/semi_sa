@@ -6,6 +6,16 @@
 <%@include file="side.jsp" %>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+$(function() {
+	$('#sajuone').click(function() {
+		location='resultsaju';
+	})
+})
+$(function() {
+	$('#sajuthree').click(function() {
+		location='resultsajuthree';
+	})
+})
 	    $(document).on('click', '#person', function(event) {
 			$(this).children('#send_num').submit();
 		});
@@ -50,10 +60,7 @@
 							<p class="card-text">${ilju.result_basic}</p>
 			
 							<h5>유명인 중 나와 잘맞는 일주동물을 가진 사람</h5><p class="card-text"> ${ilju.result_influ}</p>
-							<ul class="ftco-social mt-3" style="text-align: center;">
-				              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-				              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-				            </ul>
+							
 						</div>
 		                
 		         
@@ -75,7 +82,7 @@
 							
 			    			<div class="col-md-12">
 			    				<div class="blog-entry ftco-animate d-md-flex">
-								<img id="sajutwo" src="resources/img/sajutest2.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
+								<img id="sajuone" src="resources/img/sajutest1.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
 								</div>
 								<div class="blog-entry ftco-animate d-md-flex">
 								<img id="sajuthree" src="resources/img/sajutest3.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
@@ -89,9 +96,7 @@
 				            		<br>
 								</div>
 								
-			    			</div>
-			    		
-			    		<a href="viewsaju">더 보러가기</a>
+			    			</div>			    		
  					</div>	
  				</div>
         </div>
