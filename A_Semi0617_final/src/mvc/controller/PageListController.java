@@ -2,13 +2,19 @@ package mvc.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.KeyStore.Entry;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.javassist.expr.NewArray;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -106,12 +112,15 @@ public class PageListController {
 		if (num > maxNum) {
 			
 			System.out.println("랜덤 추천인 뽑기");
+			System.out.println(user_num);
 			
 			// 추천인 랜덤으로 뽑기
 			profile = pagelistDao.getRProfile(map);
-			
+		
 			// 랜덤으로 출력된 추천인 DB에 저장
 			HashMap<String, Object> map2 = new HashMap<String, Object>();
+			
+			System.out.println(profile.get("USER_NUM"));
 			
 			user_num2 = ((BigDecimal)profile.get("USER_NUM")).intValue();
 			
@@ -141,6 +150,8 @@ public class PageListController {
 
 		// 90점 이상인 사람이 전체에서 몇 퍼센트인지 가져오기
 		int over90 = pagelistDao.getover90(map);
+		
+		//
 		
 		model.addAttribute("paymember", paymember);
 		model.addAttribute("heart", listheart);
@@ -199,6 +210,47 @@ public class PageListController {
 		mav.addObject("result", map);
 		
 		return mav;
+		
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value= "/listChart")
+	public HashMap<String, Object> listChart(HttpSession session, 
+			@RequestParam(value = "sex", required = false, defaultValue = "m,f,a") String sex,
+			@RequestParam(value = "samb", required = false, defaultValue = "all") String samb,
+			int rec_num
+			
+			) {
+		
+		System.out.println("추천인 번호: " + rec_num);
+		
+		//성별 값이 male, female 이 동시에 들어올 때 null값으로 처리
+		if (sex.length() > 1) {
+			sex = null;
+		}
+		
+		// 유저 번호 세션으로 받아옴
+		int user_num=(int)session.getAttribute("user_num");	
+		
+		// 유저 성별 가져오기
+		char sex2 = (char) session.getAttribute("gender");
+		String sex3 = String.valueOf(sex2);
+		
+		// 차트 뽑기
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("user_num", user_num);
+		map.put("sex2", sex3);
+		map.put("sex", sex);
+		map.put("samb", samb);
+		map.put("rec_num", rec_num);
+		
+		HashMap<String, Object> map2 = pagelistDao.getChart(map);
+		
+		System.out.println(map2);
+		
+		return map2;	
 		
 	}
 	

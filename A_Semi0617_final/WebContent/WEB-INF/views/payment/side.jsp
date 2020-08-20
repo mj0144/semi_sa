@@ -270,9 +270,7 @@
          box-shadow: 5px 1px 5px 0;
          border-radius: 20px;
       }
-      span{
-         margin-left: 30px;
-      }   
+
       </style>
       
          <br>

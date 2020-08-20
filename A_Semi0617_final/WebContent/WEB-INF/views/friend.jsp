@@ -57,9 +57,10 @@
                 				            <!-- 프로필 이동 구현 -->
                 				            <img src="resources/img/btn/profile.png" style="width:15%; cursor: pointer;" onclick="profile()"
                 				            data-toggle="tooltip" data-placement="top" title="상세 프로필 보기">
-											<!-- 프로필 이동 끝 -->
-                				            
-                				            <img src="resources/img/btn/chat.png" style="width:15%; cursor: pointer;" onclick="chatting()"
+											<!-- 채팅 신청 -->
+                				            <input type="hidden" id="nickname" value="${membervo.name }">
+                				            <input type="hidden" id="userNum" value="${board_writer}">
+                				            <img src="resources/img/btn/chat.png" style="width:15%; cursor: pointer;" onclick="chatrequest()" 
                 				            data-toggle="tooltip" data-placement="top" title="채팅하기">
 
 			        						<!-- 좋아요 버튼 구현 -->
@@ -167,7 +168,31 @@
                </button>
             </div>
             <div class="modal-body">
-               <!-- <form method="post" id="checked" action="reportBoard"> -->
+            
+            
+            
+            
+          					 
+                             <c:forEach var="f" items="${follower }" varStatus="r">
+                             <input type="hidden" class="user_number" name="user_number" value="${f.LIKER_USER}">
+                             <div>
+                              <div style="float: left;">
+                               <a href="friend?user_num=${f.LIKER_USER }">
+                              <div style="position: absolute;">
+                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicator${r.count }"></div>
+                              </div>
+                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG }"></a> 
+                              </div>
+                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                              </div>
+                               <hr style="color: gray;">
+                 			 </c:forEach>
+            
+            
+            
+            
+            
+             <%--   <!-- <form method="post" id="checked" action="reportBoard"> -->
                           <c:forEach var="f" items="${follower }" varStatus="r">
                              <div>
                                 <div style="float: left;">
@@ -180,7 +205,7 @@
                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
                              <hr style="color: gray;">
                   </div>
-                  </c:forEach>
+                  </c:forEach> --%>
             </div>
             <div class="modal-footer">
                
@@ -202,6 +227,29 @@
                </button>
             </div>
            <div class="modal-body">
+           
+             
+                             <c:forEach var="f" items="${follow}" varStatus="r">
+                             <input type="hidden" class="user_number2" name="user_number2" value="${f.LIKER_USER}">  
+                             <div>
+                              <div style="float: left;">
+                               <a href="friend?user_num=${f.LIKER_USER }">
+                              <div style="position: absolute;">
+                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicator_rc${r.count }"></div>
+                              </div>
+                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG }"></a> 
+                              </div>
+                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                              </div>
+                               <hr style="color: gray;">
+                 			 </c:forEach>
+           
+           
+          <%--  
+           
+           
+           
+           
                <!-- <form method="post" id="checked" action="reportBoard"> -->
                           <c:forEach var="f" items="${follow }" varStatus="r">
                              <div>
@@ -215,7 +263,7 @@
                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
                              <hr style="color: gray;">
                   </div>
-                  </c:forEach>
+                  </c:forEach> --%>
             </div>
             <div class="modal-footer">
                
@@ -290,5 +338,48 @@
 			blocked(pm);
 	
 		});
+		function chatrequest() {
+			var responeUser = $("#userNum").val(); //받는자
+			var link = "mypage"
+			var param = new Object();
+			var requestUser = ${sessionScope.user_num}; //보내는자
+			var nickname = $("#nickname").val();
+			param.notifyLink = link;
+			param.notifycontent = nickname+"님이 회원님에게 채팅을 요청하였습니다.";
+			param.notifyuser  = responeUser; //받는자
+			param.notifyusernum = requestUser; //보내는자
+			var paramJson = JSON.stringify(param);
+			$.ajax({
+				type : "POST",
+				url : "notifyin",
+				contentType: "application/json; charset=utf-8",
+				dataType : "json",
+				data : paramJson,
+				success :  function(res){
+					if(res.result == "success"){
+						var notifyparam = '채팅|'+link+"|"+nickname;
+						notifyon(notifyparam);
+					}else{
+						alert("알람을 보내는도중 ajax 문제가 발생하였습니다.");
+					}
+				},
+				error:function(request,status,error){
+					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
+			var user1 = ${sessionScope.user_num};
+			$.ajax({
+				type : "POST",
+				url : "chRequest",
+				data : "user1="+user1,
+				success : function(res){
+					alert("상대방에게 채팅신청하였습니다. 상대방 수락시 채팅방이 개설됩니다.");
+				},
+				error : function(request,status,error){
+					console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
+		}
 		</script>
    <%@include file="footer.jsp"%>

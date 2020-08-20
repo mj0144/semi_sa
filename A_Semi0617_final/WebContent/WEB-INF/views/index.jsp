@@ -32,20 +32,20 @@
                </div>
                <div class="msp_bn_area count">
 							<div class="temp">
-								<div style="display:block; float:left; width:201px; height:53px; border-bottom:2px solid rgba(0,0,0,1); font-family:'Noto Sans KR'; font-size:16px; color:#000; font-weight:700; text-align:center; line-height:53px;">국내유일 실시간 회원수 공개</div>
+								
+								
 								<div class="member">
 									<div style="font-size:16px; line-height:20px;">회원수</div>
 									<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
 										<span id="m_cnt">${usercount }</span></span>명</div>
 								</div>
 								<div class="couple">
-									<div style="font-size:16px; line-height:20px;">성혼회원수</div>
+									<div style="font-size:16px; line-height:20px;">채팅률</div>
 									<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
 										<span id="r_cnt">${matavg}</span></span>%</div>
 								</div>
 								<div class="day">2020.8.17 기준</div>
 							</div>
-							<div class="btt"><a onclick="marriagepopup_open();">안내자료 요청</a></div>
 						</div>
                
                
