@@ -6,8 +6,8 @@
 	<insert id="chatIn" parameterType="HashMap">
 	insert into chat values(CHAT_SEQ.nextval,#{chatroom},#{chatuser},#{chatcontent},sysdate)
 	</insert>
-	<insert id="roomIn">
-	insert into chatroom values(CHAT_ROOM_SEQ.nextval)
+	<insert id="roomIn" parameterType="int">
+	insert into chatroom values(CHAT_ROOM_SEQ.nextval,#{user1,jdbcType=INTEGER},0)
 	</insert>
 	
 	<select id="meList" parameterType="int" resultType="hashMap">

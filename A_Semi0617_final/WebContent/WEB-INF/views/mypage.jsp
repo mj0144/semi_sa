@@ -53,14 +53,13 @@
 								            		<p class="mb-4"> </p>
 								            		<br>
 												</div>
-												
 							    			</div>
-							    		
 							    		<a href="chat.do">채팅 보러가기</a>
 				 					</div>	
 	                     	   </div>
                       	 	 </div>
               			 </div>
+              			 <!-- 채팅확인 영역 끝 -->
               	    </div>
                </div>
             </div>
