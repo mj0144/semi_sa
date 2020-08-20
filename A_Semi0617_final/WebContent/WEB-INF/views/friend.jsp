@@ -167,7 +167,31 @@
                </button>
             </div>
             <div class="modal-body">
-               <!-- <form method="post" id="checked" action="reportBoard"> -->
+            
+            
+            
+            
+          					 
+                             <c:forEach var="f" items="${follower }" varStatus="r">
+                             <input type="hidden" class="user_number" name="user_number" value="${f.LIKER_USER}">
+                             <div>
+                              <div style="float: left;">
+                               <a href="friend?user_num=${f.LIKER_USER }">
+                              <div style="position: absolute;">
+                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicator${r.count }"></div>
+                              </div>
+                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG }"></a> 
+                              </div>
+                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                              </div>
+                               <hr style="color: gray;">
+                 			 </c:forEach>
+            
+            
+            
+            
+            
+             <%--   <!-- <form method="post" id="checked" action="reportBoard"> -->
                           <c:forEach var="f" items="${follower }" varStatus="r">
                              <div>
                                 <div style="float: left;">
@@ -180,7 +204,7 @@
                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
                              <hr style="color: gray;">
                   </div>
-                  </c:forEach>
+                  </c:forEach> --%>
             </div>
             <div class="modal-footer">
                
@@ -202,6 +226,29 @@
                </button>
             </div>
            <div class="modal-body">
+           
+             
+                             <c:forEach var="f" items="${follow}" varStatus="r">
+                             <input type="hidden" class="user_number2" name="user_number2" value="${f.LIKER_USER}">  
+                             <div>
+                              <div style="float: left;">
+                               <a href="friend?user_num=${f.LIKER_USER }">
+                              <div style="position: absolute;">
+                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicator_rc${r.count }"></div>
+                              </div>
+                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG }"></a> 
+                              </div>
+                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
+                              </div>
+                               <hr style="color: gray;">
+                 			 </c:forEach>
+           
+           
+          <%--  
+           
+           
+           
+           
                <!-- <form method="post" id="checked" action="reportBoard"> -->
                           <c:forEach var="f" items="${follow }" varStatus="r">
                              <div>
@@ -215,7 +262,7 @@
                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME }</div><br>
                              <hr style="color: gray;">
                   </div>
-                  </c:forEach>
+                  </c:forEach> --%>
             </div>
             <div class="modal-footer">
                
