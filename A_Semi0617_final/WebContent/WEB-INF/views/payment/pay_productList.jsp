@@ -102,9 +102,9 @@ background: #1AA85C;
       <div class="row m-auto text-center w-75">
         
         <div class="col-4 princing-item red">
-          <div class="pricing-divider ">
+          <div class="pricing-divider " style="margin: 0 auto">
               <h4 class="text-light">채팅신청 5회권</h4>
-            <span class="my-0 display-2 text-light font-weight-normal mb-3"><span class="h5" style="font-size:0.7em">3000<span style="font-size:0.5em">원</span></span><br>  <span class="h6">/5회</span></span>
+            <span class="my-0 display-2 text-light font-weight-normal mb-3" style="margin-left: 0;"><span class="h5" style="font-size:0.7em">3000<span style="font-size:0.5em">원</span></span><br>  <span class="h6">/5회</span></span>
              <svg class='pricing-divider-img' enable-background='new 0 0 300 100' height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1' viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
           <path class='deco-layer deco-layer--1' d='M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
 	c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z' fill='#FFFFFF' opacity='0.6'></path>
