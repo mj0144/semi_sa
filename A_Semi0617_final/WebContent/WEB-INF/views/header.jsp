@@ -42,7 +42,7 @@
     	         if(map.has(item.value)){
     	           // console.log('==========online');
     	            $('#indicator'+(idx+1)).attr("src","images/online.png");
-    	            return;
+    	            //break;
     	         }
     	      });
       
@@ -51,7 +51,7 @@
     	         if(map.has(item.value)){
     	           // console.log('==========online');
     	            $('#indicator_rc'+(idx+1)).attr("src","images/online.png");
-    	            return;
+    	            //break;
     	         }
     	      });
       
