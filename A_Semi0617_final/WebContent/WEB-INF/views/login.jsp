@@ -203,22 +203,24 @@ body {
                   
                            <div class="panel panel-primary setup-content text-center"
                               id="step-1">
-                              <div class="jumbotron well">
-                                 <h1 class="login100-form-title p-b-49 text-center"
-                                    style="color: black;">처음 방문하셨나요?</h1>
-                                 <h4 class="text-center" style="color: black;">
-                                    MBTI와 생일 등 간단한 정보를 입력하시면 <br>인연을 추천해드려요
-                                 </h4>
+                              <div class="jumbotron well" style="text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; color:white; opacity:0.9; background-image: url('resources/img/start/force.gif');">
+	                              
+	                                 <h1 class="login100-form-title p-b-49 text-center"
+	                                    style="color: #011E52; font-weight: bold">처음 방문하셨나요?</h1>
+	                                 <span class="text-center lead" style="color: #011E52; font-weight: bold">
+	                                   MBTI와 생일 등 간단한 정보를 입력하시면 <br>인연을 추천해드려요
+	                                 </span>
                               </div>
                               <div class="panel-heading">
-                                 <span class="login100-form-title p-b-30"> 태어난 날을
-                                    입력해보세요. </span> <label>태어난 시간을 모를 경우 00시 00분 체크</label>
+                                 <span class="login100-form-title p-b-30"> 태어난 날을 입력해보세요. </span> 
+                                 <label>태어난 시간을 모를 경우 00시 00분 체크</label>
                               </div>
                               <div class="panel-body text-center">
                                  <table style="margin: auto; text-align: center;">
                                     <tbody>
                                        <tr>
-                                          <th><br>생년월일</th>
+                                          <th> <br><span class="text-center lead" style="font-weight: bold">
+	생년월일	                                 </span></th>
                                           <c:set var="birth" value="${vo.getBirth()}" />
                                           <td>&nbsp;<br> <input name="birth" type="text"
                                              style="text-decoration: none; width: 100px" id=form_dt
@@ -228,7 +230,9 @@ body {
                                           <td><br></td>
                                        </tr>
                                        <tr>
-                                          <th>태어난 시간</th>
+                                          <th> <span class="text-center lead" style="font-weight: bold">
+	                                   태어난 시간
+	                                 </span></th>
                                           <td><div class="row">
                                                 <div class="col-4">
                                                    <select name="info_hh" class="w3-select">
@@ -267,7 +271,7 @@ body {
                               <div class="panel-body">
                                  <!-- Text input-->
                                  <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">MBTI
+                                    <label class="col-md-4 control-label lead" for="textinput">MBTI
                                        선택</label>
                                     <div class="col-md-2" style="float: none; margin: 0 auto;">
                                        <select id="user_mbti" name="user_mbti"
@@ -293,7 +297,7 @@ body {
                                     </div>
                                  </div>
                                  <div class="form-group">
-                                    <label class="control-label" id="mbtihover">MBTI를
+                                    <label class="control-label lead" id="mbtihover">MBTI를
                                        모르십니까?</label>
                                     <button type="button" class="btn btn-primary"
                                        data-toggle="modal" data-target="#myModal">MBTI
@@ -331,22 +335,13 @@ body {
                                  <span class="login100-form-title p-b-49">당신의 이상형은? </span>
                               </div>
                               <div class="panel-body">
-                                 <!-- Select Basic -->
-                                 <div class="form-group" style="float: none; margin: 0 auto;">
-                                    <label class="col-md-4 control-label" for="selectbasic">이상형 몸무게</label>
-                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
-                                       <select id="ideal_body" name="ideal_body"
-                                          class="form-control">
-                                          <c:forEach begin="30" step="1" end="150" var="i">
-                                                <option value="${i }">${i }</option>
-                                             </c:forEach> 
-                                       </select>
-                                    </div>
-                                 </div>
+                                 
 
                                  <!-- Select Basic -->
                                  <div class="form-group">
-                                    <label class="col-md-4 control-label" for="키">이상형 키</label>
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                		  이상형 키
+	                                 </span>
                                     <div class="col-md-2" style="float: none; margin: 0 auto;">
                                        <select id="ideal_height" name="ideal_height"
                                           class="form-control">
@@ -359,7 +354,23 @@ body {
                                  </div>
                                  <!-- Select Basic -->
                                  <div class="form-group" style="float: none; margin: 0 auto;">
-                                    <label class="col-md-4 control-label" for="selectbasic">이상형 나이</label>
+                                     <span class="text-center lead" style="font-weight: bold">
+	                                		  이상형 몸무게
+	                                 </span>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="ideal_body" name="ideal_body"
+                                          class="form-control">
+                                          <c:forEach begin="30" step="1" end="150" var="i">
+                                                <option value="${i }">${i }</option>
+                                             </c:forEach> 
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <!-- Select Basic -->
+                                 <div class="form-group" style="float: none; margin: 0 auto;">
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                		  나이
+	                                 </span>
                                     <div class="col-md-2" style="float: none; margin: 0 auto;">
                                        <select id="ideal_age" name="ideal_age"
                                           class="form-control">
@@ -381,22 +392,13 @@ body {
                                  <span class="login100-form-title p-b-49">나의 정보 </span>
                               </div>
                               <div class="panel-body">
-                                 <!-- Select Basic -->
-                                 <div class="form-group" style="float: none; margin: 0 auto;">
-                                    <label class="col-md-4 control-label" for="selectbasic">나의 몸무게</label>
-                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
-                                       <select id="user_body" name="user_body"
-                                          class="form-control">
-                                          <c:forEach begin="30" step="1" end="150" var="i">
-                                                <option value="${i }">${i }</option>
-                                             </c:forEach>  
-                                       </select>
-                                    </div>
-                                 </div>
+                            
 
                                  <!-- Select Basic -->
                                  <div class="form-group">
-                                    <label class="col-md-4 control-label" for="키">키</label>
+                                     <span class="text-center lead" style="font-weight: bold">
+	                                   		나의 키
+	                                 </span>
                                     <div class="col-md-2" style="float: none; margin: 0 auto;">
                                        <select id="user_height" name="user_height"
                                           class="form-control">
@@ -407,10 +409,25 @@ body {
                                        </select>
                                     </div>
                                  </div>
+                                      <!-- Select Basic -->
+                                 <div class="form-group" style="float: none; margin: 0 auto;">
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                   		나의 몸무게
+	                                 </span>
+                                    <div class="col-md-2" style="float: none; margin: 0 auto;">
+                                       <select id="user_body" name="user_body"
+                                          class="form-control">
+                                          <c:forEach begin="30" step="1" end="150" var="i">
+                                                <option value="${i }">${i }</option>
+                                             </c:forEach>  
+                                       </select>
+                                    </div>
+                                 </div>
                                  <!-- Select Basic -->
                                  <div class="form-group">
-                                    <label class="col-md-4 control-label" for="selectbasic">사는
-                                       지역</label>
+                                    <span class="text-center lead" style="font-weight: bold">
+	                                   		<br>내가 사는 지역
+	                                 </span>
                                     <div class="col-md-3" style="float: none; margin: 0 auto;">
                                        <select id="user_loc" name="user_loc" class="form-control">
                                           <option value="서울특별시">서울특별시</option>
@@ -444,7 +461,9 @@ body {
                                  <table style="margin: auto; text-align: center;">
                                     <tbody>
                                        <tr>
-                                          <th>아이디</th>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  아이디
+	                                 </span></th>
                                           <td><p>
                                                 <input class="w3-input" placeholder="아이디" type="text"
                                                    required="required" name="user_id" id="join_user_id"><label
@@ -454,7 +473,9 @@ body {
                                                 id="idchk">중복확인</button></td>
                                        </tr>
                                        <tr>
-                                          <th>비밀번호</th>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  비밀번호
+	                                 </span></th>
                                           <td><p>
                                                 <input class="w3-input" placeholder="비밀번호"
                                                    type="password" required="required" name="pwd" id="join_pwd">
@@ -463,7 +484,9 @@ body {
 
                                        <tr>
                                           
-                                          <th>비밀번호 확인</th>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  비밀번호 확인
+	                                 </span></th>
                                           <td><p>
                                                 <br> <input class="w3-input" placeholder="비밀번호확인"
                                                    type="password" required="required" id="pwdchk">
@@ -472,7 +495,9 @@ body {
                                        </tr>
 
                                        <tr>
-                                          <th>이름</th>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  이름
+	                                 </span></th>
                                           <td><p>
                                                 <input class="w3-input" placeholder="이름" type="text"
                                                    required="required" name="name" id="name">
@@ -480,7 +505,9 @@ body {
                                        </tr>
 
                                        <tr>
-                                          <th>별명</th>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		닉네임
+	                                 </span></th>
                                           <td><p>
                                                 <input class="w3-input" placeholder="별명" type="text"
                                                    name="nickname" id="nickname"><label
@@ -490,7 +517,9 @@ body {
                                                 id="nickchk">중복확인</button></td>
                                        </tr>
                                        <tr>
-                                          <th>이메일</th>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		  이메일
+	                                 </span></th>
                                           <td><p>
                                                 <input class="w3-input" placeholder="이메일" type="email"
                                                    name="email" id="email" onchange="rexEmail()"
@@ -502,7 +531,9 @@ body {
                                        </tr>
 
                                        <tr>
-                                          <th>성별</th>
+                                          <th><span class="text-center lead" style="font-weight: bold">
+	                                		 성별
+	                                 </span></th>
                                           <td><p>
                                                 <br> <input class="w3-radio" type="radio"
                                                    name="sex" value="m" checked> <label>남자</label>
@@ -549,7 +580,9 @@ body {
                               <tr>
                                  <td>
                                     <div class="form-group text-center">
-                                       <label for="message">자기소개</label><br>
+                                       <span class="text-center lead" style="font-weight: bold">
+	                                		  자기소개
+	                                 </span><br>
                                        <textarea name="user_intro" id="user_intro" cols="40"
                                           rows="5" class="form-control" placeholder="자기소개를 입력해주세요"></textarea>
                                     </div>
