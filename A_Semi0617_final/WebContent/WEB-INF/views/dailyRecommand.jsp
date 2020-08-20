@@ -383,6 +383,10 @@
 				type : "POST",
 				url : "chRequest",
 				data : "user1="+user1,
+				//이제 요청 보내기 직전에 사용 되는 함수
+/* 				beforeSend : function(xmlHttpRequest){
+	                xmlHttpRequest.setRequestHeader("AJAX", "true"); // ajax 호출을  header에 기록
+	            }, */
 				success : function(res){
 					alert("상대방에게 채팅신청하였습니다. 상대방 수락시 채팅방이 개설됩니다.");
 				},

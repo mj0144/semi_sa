@@ -19,13 +19,15 @@ MERGE INTO single_productlist A
     USING (select distinct * from paylist where buyer_num=#{buyer_num} and merchant_uid=#{merchant_uid}) B
     ON (B.buyer_num=A.buyer_num)
 WHEN MATCHED THEN 
-        UPDATE SET left_count = (select left_count from basic_chat_count where user_num=#{buyer_num}) 
+       <!--  UPDATE SET left_count = (select left_count from chat_count where user_num=#{buyer_num}) 
         + (select left_count from single_productlist where product_num=#{product_num} and buyer_num=#{buyer_num})
-        + (#{paid_count}*5)
-        , paid_date=#{paid_date}
+        + (#{paid_count}*5) -->
+        UPDATE SET left_count = (select left_count from single_productlist where buyer_num=#{buyer_num}) 
+       	+ (#{paid_count}*5)
+        , paid_date=#{paid_date}, paid_count=#{paid_count}
 WHEN NOT MATCHED THEN
-        INSERT (product_num, buyer_num, paid_date, left_count) 
-        VALUES (#{product_num}, #{buyer_num}, #{paid_date},(select charge_count from product_info where product_num=#{product_num}))
+        INSERT (product_num, buyer_num, paid_date, left_count, paid_count) 
+        VALUES (#{product_num}, #{buyer_num}, #{paid_date},(select charge_count from product_info where product_num=#{product_num}), #{paid_count})
  </insert>
  
  
@@ -76,13 +78,10 @@ WHEN NOT MATCHED THEN
  
  
  <!-- 기본권+구매권 -->
- <select id="basicchatcount" parameterType="int" resultType="int">
- 	select left_count from basic_chat_count where user_num=#{user_num} 	
+ <select id="chatcount" parameterType="int" resultType="int">
+ 	select left_count from chat_count where user_num=#{user_num} 	
  </select>
-  <!-- 기본권+구매권 -->
- <select id="paychatcount" parameterType="int" resultType="int">
- 	select left_count from single_productlist where buyer_num=#{user_num}
- </select>
+
  	
  
  <select id="gradename" parameterType="int" resultType="String">

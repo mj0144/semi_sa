@@ -5,6 +5,10 @@
 <%@include file="side.jsp"%>
 <div id="colorlib-main">
    
+   
+  <style>
+  
+  </style> 
    <section class="ftco-section-no-padding bg-light">
       <div class="hero-wrap">
          <div class="overlay"></div>
@@ -30,12 +34,20 @@
 								But to one person you may be world.</h3> -->
 
                </div>
-               <div class="msp_bn_area count">
+               <div class="msp_bn_area count" style="    float: none;
+    margin: 0;
+    padding: 0;
+    background-image: none;
+    min-width: 0;
+    display: block;
+    margin: 0 auto;
+    width: 201px;
+    height: 282px;">
 							<div class="temp">
 								<div style="display:block; float:left; width:201px; height:53px; border-bottom:2px solid rgba(0,0,0,1); font-family:'Noto Sans KR'; font-size:16px; color:#000; font-weight:700; text-align:center; line-height:53px;">국내유일 실시간 회원수 공개</div>
 								<div class="member">
-									<div style="font-size:16px; line-height:20px;">회원수</div>
-									<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
+									<div style="font-size:16px; line-height:20px; font-family: 'Noto Sans KR';">회원수</div>
+									<div style="font-size:40px; line-height:44px; font-family: 'Noto Sans KR';"><span style="font-weight:700;">
 										<span id="m_cnt">${usercount }</span></span>명</div>
 								</div>
 								<div class="couple">

@@ -12,22 +12,25 @@
 		where m.grade_name=a.grade_name and m.user_num=#{user_num}
 	</select>
 	
-	<!-- 채팅권 사용 -> 업데이트 -->
+	<!-- 단일권 채팅권 사용 -> 업데이트 -->
 	<update id="leftCountUpdate" parameterType="int">
 		update single_productlist 
 		set left_count=((select left_count from single_productlist where buyer_num=#{user_num})-1) 
 		where buyer_num=#{user_num}		
 	</update>
+<!-- 	
+	<update id="chatcountUpdate" parameterType="int">
+		update chat_count set left_count = ((select left_count from chat_count where user_num=#{user_num})-1)
+		where user_num=#{user_num}
+	</update> -->
 	
 	
 	
 	
 	
-	<select id="basicChatChk" parameterType="String">
-		select left_count from basic_chat_count where id=#{user_id};
+	<select id="ChatChk" parameterType="int" resultType="int">
+		select left_count from chat_count where user_num=#{user_num}
 	</select>
-	<select id="payChatChk" parameterType="String">
-	 
-	</select>
+
 
 </mapper>

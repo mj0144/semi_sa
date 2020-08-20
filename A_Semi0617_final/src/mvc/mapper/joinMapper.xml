@@ -17,7 +17,7 @@
 		insert into mapping_grade_user values('${user_num}', '${grade}')
 	</insert>
 	<insert id= "chatTicket" parameterType="hashMap">
-		insert into basic_chat_count values('${user_num}', '${left_count}')
+		insert into chat_count values('${user_num}', '${left_count}')
 	</insert>
 	
 	<select id="selc_user_num" parameterType="String" resultType="int">

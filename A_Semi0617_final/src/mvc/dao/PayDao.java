@@ -40,24 +40,10 @@ public class PayDao {
 	
 	//남은 채팅권
 	public int chatCount(int user_num) {
-		int basic=0;
-		int pay=0;
-		int count =0;		
-		try {			
-			basic = ss.selectOne("pay.basicchatcount", user_num);
-			pay = ss.selectOne("pay.paychatcount", user_num);
-			
-		} catch (NullPointerException e) {
-			// TODO: handle exception
-			pay=0;
-		}finally {
-			count= (basic+pay);
-		}
-		return count;
-		
+		return ss.selectOne("pay.chatcount", user_num);		
 	}
 	
-	//등급이름.
+	//등급이름 조회
 	public String gradeName(int user_num) {
 		return ss.selectOne("pay.gradename", user_num);
 	}

@@ -18,70 +18,79 @@
 
 
 
-<!-- 해당 패키지의 모든 @을 bean으로 등록. -->
-	<context:component-scan base-package="mvc"/>
+	<!-- 해당 패키지의 모든 @을 bean으로 등록. -->
+	<context:component-scan base-package="mvc" />
 
-<mvc:annotation-driven/>
-<mvc:resources location="/css/" mapping="/css/**"/>
-<mvc:resources location="/images/" mapping="/images/**"/>
-<mvc:resources location="/fonts/" mapping="/fonts/**"/>
-<mvc:resources location="/js/" mapping="/js/**"/>
-<mvc:resources location="/resources/" mapping="/resources/**"/>
-<mvc:resources location="file:///c:/" mapping="/img/**" />
-<mvc:resources location="/se2/" mapping="/se2/**" />
+	<mvc:annotation-driven />
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/images/" mapping="/images/**" />
+	<mvc:resources location="/fonts/" mapping="/fonts/**" />
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/resources/"
+		mapping="/resources/**" />
+	<mvc:resources location="file:///c:/" mapping="/img/**" />
+	<mvc:resources location="/se2/" mapping="/se2/**" />
 
 	<!-- dataSource 설정 -->
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/myora"/> <!-- java:comp/env/jdbc/myora -> 드라이버로딩. 여기서 context.xml읽어옴. -->
+	<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/myora" /> <!-- java:comp/env/jdbc/myora -> 드라이버로딩. 여기서 context.xml읽어옴. -->
 	</bean>
-	
+
 	<!-- Mybatis 설정 -->
 	<!-- 모든 설정을 sqlsessionFactorbean이 관리함. -->
-	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		 <property name="configLocation" value="classpath:mvc/config/config.xml"/>
-		<property name="mapperLocations" value="classpath*:mvc/mapper/*.xml"></property>
+	<bean id="factoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:mvc/config/config.xml" />
+		<property name="mapperLocations"
+			value="classpath*:mvc/mapper/*.xml"></property>
 	</bean>
-	
+
 	<!-- sqlSessionTemplate 설정 -->
-	<!--  -->
+	<!-- -->
 	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="factoryBean"></constructor-arg> <!-- 여기서는 mapper 받아 쓸려고 주입 받음. -->
-	</bean> 
-	
-	
+	</bean>
+
+
 	<!-- Transaction 설정 : 회원탈퇴 -->
-	<bean id="tm" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="tm"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
-	<tx:annotation-driven transaction-manager="tm"/>
 
-<!-- 메일 보내기  -->
-      <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-         <property name="host" value="smtp.gmail.com" />
-         <property name="port" value="587" />
-         <property name="defaultEncoding" value="utf-8"/>
-         <property name="username" value="soulmatch64@gmail.com"/>
-         <property name="password" value="ikosmo64" />
+	<tx:annotation-driven transaction-manager="tm" />
 
-         <!-- email 요청시는 SMTP -->
-         <property name="javaMailProperties">
-            <props>
-               <prop key="mail.transport.protocol">smtp</prop>
-               <prop key="mail.smtp.auth">true</prop>
-               <prop key="mail.smtp.starttls.enable">true</prop>
-               <prop key="mail.debug">true</prop>
-            </props>
-         </property>
-      </bean>
-  	<!-- 웹소켓 API설정 -->
-	<websocket:handlers  allowed-origins="*">
-	    <websocket:mapping handler="echoHandler" path="/echo" />
-	    <websocket:handshake-interceptors>
-  		 	<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-   		</websocket:handshake-interceptors>
-   		<websocket:sockjs websocket-enabled="true" />
+	<!-- 메일 보내기 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="username" value="soulmatch64@gmail.com" />
+		<property name="password" value="ikosmo64" />
+
+		<!-- email 요청시는 SMTP -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 웹소켓 API설정 -->
+	<websocket:handlers allowed-origins="*">
+		<websocket:mapping handler="echoHandler"
+			path="/echo" />
+		<websocket:handshake-interceptors>
+			<bean
+				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+		<websocket:sockjs websocket-enabled="true" />
 	</websocket:handlers>
 	<bean id="echoHandler" class="mvc.handler.EchoHandler" />
 
@@ -90,43 +99,55 @@
 	<bean id="emailSender" class="mvc.email.EmailSender">
 	</bean>
 
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"/>
-		<property name="suffix" value=".jsp"/>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
 	</bean>
-	
-	
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
-		
 
-		
-<aop:aspectj-autoproxy></aop:aspectj-autoproxy> 		
-	
 
-		
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+
+
+
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+
+
 
 	<!-- scheduler 설정 -->
-		<context:component-scan base-package="mvc.controller.scheduler"/>
-		<task:scheduler id="Scheduler"/>
-		<task:annotation-driven scheduler="Scheduler"/>
-		
-		
-	<bean id="GradeInterceptor" class="mvc.interceptor.GradeInterceptor"/>
+	<context:component-scan
+		base-package="mvc.controller.scheduler" />
+	<task:scheduler id="Scheduler" />
+	<task:annotation-driven scheduler="Scheduler" />
+
+
+	<bean id="GradeInterceptor"
+		class="mvc.interceptor.GradeInterceptor" />
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/chatting/**"/>
-			<ref bean="GradeInterceptor"/>
+			<mvc:mapping path="/chatting/**" />
+			<ref bean="GradeInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/listWhole/**"/>
-			<ref bean="GradeInterceptor"/>
+			<mvc:mapping path="/listWhole/**" />
+			<ref bean="GradeInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/findlove/**"/>
-			<ref bean="GradeInterceptor"/>
+			<mvc:mapping path="/findlove/**" />
+			<ref bean="GradeInterceptor" />
 		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/chRequest/**" />
+			<ref bean="GradeInterceptor" />
+		</mvc:interceptor>
+		
+		
+		
 	</mvc:interceptors>
-		
-		
-		
+
+
+
 </beans>
