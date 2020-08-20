@@ -7,12 +7,24 @@
 <link href="resources/css/resultsaju.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+		$(function() {
+			$('#sajutwo').click(function() {
+				location='resultsajutwo';
+			})
+		})
+		$(function() {
+			$('#sajuone').click(function() {
+				location='resultsaju';
+			})
+		})
+
+
 	    $(document).on('click', '#person', function(event) {
 			$(this).children('#send_num').submit();
 		});
 </script>
 <div id="colorlib-main">
-			<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
+	<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
 		<div class="container">
 			<div class="row no-gutters slider-text justify-content-center align-items-center">
 				<div class="col-md-12 ftco-animate text-center">
@@ -21,7 +33,7 @@
 			</div>
 		</div>
 	</section>
-			<section class="ftco-section contact-section">
+	<section class="ftco-section contact-section">
 		 <div class="container">
 	      <div class="row">
                 <div class="col-md-6 text-center">
@@ -50,10 +62,7 @@
 							<p class="card-text">${plus.result_basic}</p>
 			
 							<h5>유명인 중 나와 잘맞는 일주동물을 가진 사람</h5><p class="card-text"> ${plus.result_influ}</p>
-							<ul class="ftco-social mt-3" style="text-align: center;">
-				              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-				              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-				            </ul>
+							
 						</div>
 		                
 		         
@@ -87,10 +96,7 @@
 							<p class="card-text">${minus.result_basic}</p>
 			
 							<h5>유명인 중 나와 잘맞는 일주동물을 가진 사람</h5><p class="card-text"> ${minus.result_influ}</p>
-							<ul class="ftco-social mt-3" style="text-align: center;">
-				              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-				              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-				            </ul>
+							
 						</div>
 		                
 		         
@@ -104,33 +110,35 @@
 		 			 <div class="single-team">
 	               		 <div class="team-photo">
 		               		 <div class="explain">
-								<h5>당신의 인연은 어디있을까요?</h5>
-								<p class="card-text">인연 찾으러 가기</p>
+								<h5>나는 어떤 일주 동물일까?</h5>
+								<p class="card-text">사주 동물 확인하러 가기</p>
 							</div>
 					 	 </div>
+					 	 
 					 </div>		
+					 
 				 
 				 	 <div class="single-team">
 							
-			    			<div class="col-md-12">
-			    				<div class="blog-entry ftco-animate d-md-flex">
-								<img id="sajutwo" src="resources/img/sajutest2.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
+			    			
+			    				<div class="blog-entry ftco-animate d-md-flex" style="float: right;">
+									<img id="sajuone" src="resources/img/sajutest1.jpg" alt="iljuanimal" style="margin-top: 10px; float: right;" class="col-md-12">
 								</div>
-								<div class="blog-entry ftco-animate d-md-flex">
-								<img id="sajuthree" src="resources/img/sajutest3.jpg" alt="iljuanimal" style="margin-top: 10px;" class="col-md-12">
-								</div>
-								<div>
-				              		<p class="mb-2"></p>
-				           	 			<div class="meta-wrap">
-											<p class="meta"></p>
-			              				</div>
-				            		<p class="mb-4"> </p>
-				            		<br>
+								<div class="single-team">
+						               		 <div class="team-photo" >
+							               		 <div class="explain">
+													<h5>나의 찰떡궁합은 누구일까?</h5>
+													<p class="card-text">궁합맞는 천생연분 찾으러 가기</p>
+												</div>
+										 	 </div>
+								 </div>	
+								<div class="blog-entry ftco-animate d-md-flex" style="float: right;">
+									<img id="sajutwo" src="resources/img/sajutest2.jpg" alt="iljuanimal" style="margin-top: 10px; float: right;" class="col-md-12">
 								</div>
 								
-			    			</div>
+								
+			    			
 			    		
-			    		<a href="viewsaju">더 보러가기</a>
  					</div>	
  				</div>
 				
