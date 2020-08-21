@@ -106,4 +106,7 @@ where
 user_num
 in (select distinct n.notifyusernum from notify n, chatroom c where n.notifyusernum=c.user1 and n.notifyuser=#{usernum} and c.user2=0)
 	</select>
+	<update id="reqChatOK" parameterType="HashMap">
+update chatroom SET user2 = #{user2} where user1 = #{user1}
+	</update>
 </mapper>	

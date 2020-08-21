@@ -122,4 +122,12 @@ public class ChatControllor {
 		List<HashMap<String, Object>> resultMap = chatservice.responeChatList(usernum);
 		return resultMap;
 	}
+	@ResponseBody
+	@RequestMapping(value= "/updateRoom", method = RequestMethod.POST)
+	public String reqChatupdate (@RequestBody HashMap<String, Object> params) throws Exception{
+		String result = "success";
+		System.out.println("업데이트" + params.toString());
+		chatservice.reqChatOK(params);
+		return result;
+	}
 }

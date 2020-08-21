@@ -413,6 +413,7 @@
       function insertReplySubmit() {
          var content = $("#content").val();
          var notifycontent = $("#notifyNickname").val();
+         console.log("ÀÌ°Å¹¹Áö?"+notifycontent);
          var boardNum = '${param.board_num}';
          var param = new Object();
          if (content == '') {

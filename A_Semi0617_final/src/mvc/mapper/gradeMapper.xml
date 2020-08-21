@@ -6,7 +6,7 @@
 <mapper namespace="grade">
 
 	<!-- 권한 코드 체크 -->
-	<select id="gradeChk" parameterType="int" resultType="String">
+	<select id="gradeCodeChk" parameterType="int" resultType="String">
 		select a.code 
 		from access_code a, mapping_grade_user m 
 		where m.grade_name=a.grade_name and m.user_num=#{user_num}
@@ -18,18 +18,21 @@
 		set left_count=((select left_count from single_productlist where buyer_num=#{user_num})-1) 
 		where buyer_num=#{user_num}		
 	</update>
-<!-- 	
+	
 	<update id="chatcountUpdate" parameterType="int">
 		update chat_count set left_count = ((select left_count from chat_count where user_num=#{user_num})-1)
 		where user_num=#{user_num}
-	</update> -->
+	</update> 
 	
 	
 	
 	
-	
+	<!-- 채팅권확인 -->
 	<select id="ChatChk" parameterType="int" resultType="int">
 		select left_count from chat_count where user_num=#{user_num}
+	</select>
+	<select id="gradeChk" parameterType="int" resultType="String">
+		select grade_name from mapping_grade_user where user_num=#{user_num}
 	</select>
 
 

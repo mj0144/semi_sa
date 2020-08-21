@@ -45,14 +45,14 @@ public class MemberController {
 	}
 
 	// 로그아웃처리
-	@RequestMapping(value = "/logoutdo")
-	public ModelAndView logout(HttpSession session) {
-		memberService.logout(session);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("login");
-		mav.addObject("msg", "logout");
-		return mav;
-	}
+//	@RequestMapping(value = "/logoutdo")
+//	public ModelAndView logout(HttpSession session) {
+//		memberService.logout(session);
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("login");
+//		mav.addObject("msg", "logout");
+//		return mav;
+//	}
 
 
 }

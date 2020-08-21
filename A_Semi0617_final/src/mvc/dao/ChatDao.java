@@ -45,6 +45,9 @@ public class ChatDao extends FeedAbstract{
 	public List<HashMap<String, Object>> responeChatList(int usernum) throws Exception{
 		return (List<HashMap<String, Object>>) selectList(nameSpace+"responeChatList", usernum);
 	}
+	public void reqChatOK(HashMap<String, Object> params) throws Exception{
+		update(nameSpace+"reqChatOK", params);
+	}
 	
 	
 	

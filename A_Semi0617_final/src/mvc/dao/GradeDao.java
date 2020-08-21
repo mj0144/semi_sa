@@ -15,22 +15,27 @@ public class GradeDao {
 	private SqlSession ss;
 	
 	
-	//등급체크
-	public List<String> gradeChk(int user_num) {
-		return ss.selectList("grade.gradeChk", user_num);
+	//등급코드 체크
+	public List<String> gradeCodeChk(int user_num) {
+		return ss.selectList("grade.gradeCodeChk", user_num);
 	}
 	
 	//채팅권 사용 -> 업데이트
 	@Transactional
 	public void leftCountUpdate(int user_num) {
-		ss.update("grade.leftCountUpdate", user_num);
-		//ss.update("grade.chatcountUpdate", user_num);
+		int update = ss.update("grade.leftCountUpdate", user_num);
+		if(update==0 ) {
+			ss.update("grade.chatcountUpdate", user_num);
+		}
 	}
 	
 	
 		//채팅권 횟수 체크
-		public int ChatChk(int user_num) {
+		public int chatChk(int user_num) {
 			return ss.selectOne("grade.ChatChk", user_num);
+		}
+		public String gradeChk(int user_num) {
+			return ss.selectOne("grade.gradeChk", user_num);
 		}
 		
 
