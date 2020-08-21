@@ -41,15 +41,16 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 
 		try {
 			// 요청된 url이 채팅일 때.
-			if (url.equals("/AFinal/chatting")) {
+			/*if (url.equals("/AFinal/chRequest")) {*/
+			if(isAjaxRequest(request)) {
 				try {
 					// 채팅 권한은 1(0000001)만 아니면 채팅에 접근가능.
 					if (code_sum != 1) {
 						// 단, code_sum이 3(00000011)일 떄는 채팅 횟수 감소.
 						if (code_sum == 3) {
-							gradeService.leftCountUpdate(user_num);
+							gradeService.leftCountUpdate(user_num, session);
 						}
-
+						return true;
 					} else {
 						ModelAndView mav = new ModelAndView("redirect:/pay");
 						mav.addObject("msg", "결제가 필요합니다");
@@ -96,6 +97,18 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 		}
 	
 	}
+	
+	
+	
+	private boolean isAjaxRequest(HttpServletRequest req) {
+       // String ajaxHeader = "AJAX";
+        
+         //return req.getHeader(ajaxHeader) != null && req.getHeader(ajaxHeader).equals(Boolean.TRUE.toString());
+        return "XMLHttpRequest".equals(req.getHeader("x-requested-with"));
+    }
+
+
+	
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
