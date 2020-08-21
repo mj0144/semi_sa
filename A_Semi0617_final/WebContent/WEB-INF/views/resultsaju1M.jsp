@@ -73,7 +73,7 @@ $(function() {
 <!-- 다운로드 영역 -->
                 <div class="printDiv">
                 <div class="single-team">
-	                <div class="team-photo">
+	                <div class="team-photo" style="display: table; margin-left: auto; margin-right: auto; display: inline-block;">
 							<div class="col-md-12 img-fluid center-block" style=" background-repeat: no-repeat; background-image: url('resources/img/iljusky/${ilju.ilju_sky_num}.JPG'); 
 <!-- 							width:480px; height:370px; background-size: contain; -->
 							">
@@ -101,11 +101,6 @@ $(function() {
 				</div>
 							
 							<a id="btnDown" class="btn btn-warning small w-auto">이미지 저장</a>
-							<ul class="ftco-social mt-3" style="text-align: center;">
-							
-				              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-				              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-				            </ul>
 						</div>
 		                
 		         

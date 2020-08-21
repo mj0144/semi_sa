@@ -34,47 +34,28 @@
 								But to one person you may be world.</h3> -->
 
                </div>
-               <div class="msp_bn_area count" style="    float: none;
-    margin: 0;
-    padding: 0;
-    background-image: none;
-    min-width: 0;
-    display: block;
-    margin: 0 auto;
-    width: 201px;
-    height: 282px;">
-							<div class="temp">
-								
-								
-								<div class="member">
-									<div style="font-size:16px; line-height:20px; font-family: 'Noto Sans KR';">회원수</div>
-									<div style="font-size:40px; line-height:44px; font-family: 'Noto Sans KR';"><span style="font-weight:700;">
-										<span id="m_cnt">${usercount }</span></span>명</div>
-								</div>
-								<div class="couple">
-									<div style="font-size:16px; line-height:20px;">채팅률</div>
-									<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
-										<span id="r_cnt">${matavg}</span></span>%</div>
-								</div>
-								<div class="day">2020.8.17 기준</div>
+               <div class="msp_bn_area count p-md-5" style="float: none; margin: 0; padding: 0; background-image: none; min-width: 0; display: block; margin: 0 auto;">
+					<div class="temp">
+						<div class="member" style="float: left">
+							<div style="font-size:16px; line-height:20px; font-family: 'Noto Sans KR';">회원수</div>
+							<div style="font-size:40px; line-height:44px; font-family: 'Noto Sans KR';"><span style="font-weight:700;">
+							<span id="m_cnt">${usercount }</span></span>명</div>
+						</div>
+						<div class="couple"style="float: left">
+							<div style="font-size:16px; line-height:20px;">매칭률</div>
+							<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
+							<span id="r_cnt">${matavg}</span></span>%
 							</div>
 						</div>
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
+						<div class="couple">
+							<div style="font-size:16px; line-height:20px;">실시간 접속자</div>
+							<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
+							<span id="r_cnt">${matavg}</span></span>%
+							</div>
+						</div>
+						<div class="day"></div>
+					</div>
+				</div>
                
             </div>
          </div>
