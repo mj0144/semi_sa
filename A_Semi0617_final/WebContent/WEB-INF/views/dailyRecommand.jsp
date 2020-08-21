@@ -262,62 +262,62 @@
 
    <script>
    
-  	  $(document).ready(function(){
-  		  var user_num = ${profile.USER_NUM}
-  		  var samb = '${set.samb}'
-  		  var sex = '${set.sex}'
-  		  var label = ["ÏÇ¨Ï£º", "MBTI", "ÌÇ§", "Î™∏Î¨¥Í≤å", "ÎÇòÏù¥"]
-  		  var data = []
+       $(document).ready(function(){
+          var user_num = ${profile.USER_NUM}
+          var samb = '${set.samb}'
+          var sex = '${set.sex}'
+          var label = ["ÏÇ¨Ï£º", "MBTI", "ÌÇ§", "Î™∏Î¨¥Í≤å", "ÎÇòÏù¥"]
+          var data = []
 
           $.ajax({
               url : "listChart",
               type : "post",
               data : {"rec_num" : user_num, "samb" : samb, "sex" : sex},
               success : function(data){
-            	          	  
-            	  if (samb == "saju") {
-					label = ["ÏÇ¨Ï£º", "ÌÇ§", "Î™∏Î¨¥Í≤å", "ÎÇòÏù¥"];
-					data = [data.SAJU_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-				}else if (samb == "mbti") {
-					label = ["MBTI", "ÌÇ§", "Î™∏Î¨¥Í≤å", "ÎÇòÏù¥"];
-					data = [data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-				}else {
-					data = [data.SAJU_SCORE,data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-				}
-            	  
-			      new Chart(document.getElementById("radar-chart"), {
-			          type: 'radar',
-			          data: {
-			            labels: label,
-			            datasets: [
-			              {
-			                label: '',
-			                fill: true,
-			                backgroundColor: "rgba(255,99,132,0.2)",
-			                borderColor: "rgba(255,99,132,1)",
-			                pointBorderColor: "#fff",
-			                pointBackgroundColor: "rgba(255,99,132,1)",
-			                pointBorderColor: "#fff",
-			                data: data
-			              }
-			            ]
-			          },
-			          options: {
-			            title: {
-			              display: true,
-			              text: 'Í∂ÅÌï© Ï†êÏàò'
-			            }
-			          }
-			      });
+                              
+                 if (samb == "saju") {
+               label = ["ÏÇ¨Ï£º", "ÌÇ§", "Î™∏Î¨¥Í≤å", "ÎÇòÏù¥"];
+               data = [data.SAJU_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+            }else if (samb == "mbti") {
+               label = ["MBTI", "ÌÇ§", "Î™∏Î¨¥Í≤å", "ÎÇòÏù¥"];
+               data = [data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+            }else {
+               data = [data.SAJU_SCORE,data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+            }
+                 
+               new Chart(document.getElementById("radar-chart"), {
+                   type: 'radar',
+                   data: {
+                     labels: label,
+                     datasets: [
+                       {
+                         label: '',
+                         fill: true,
+                         backgroundColor: "rgba(255,99,132,0.2)",
+                         borderColor: "rgba(255,99,132,1)",
+                         pointBorderColor: "#fff",
+                         pointBackgroundColor: "rgba(255,99,132,1)",
+                         pointBorderColor: "#fff",
+                         data: data
+                       }
+                     ]
+                   },
+                   options: {
+                     title: {
+                       display: true,
+                       text: 'Í∂ÅÌï© Ï†êÏàò'
+                     }
+                   }
+               });
                  
               },
               error : function(request, status, error){
-            	  console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                 console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 
               }
            });
         
-  	      
+           
       });
       //    Ï∞®Ìä∏
 
@@ -418,23 +418,23 @@
             $('#modal').hide();
        };
        $('#chatOn').click(function(){
-    	   var user1 = ${sessionScope.user_num};
-			$.ajax({
-				type : "POST",
-				url : "chRequest",
-				data : "user1="+user1,
-				//¿Ã¡¶ ø‰√ª ∫∏≥ª±‚ ¡˜¿¸ø° ªÁøÎ µ«¥¬ «‘ºˆ
-/* 				beforeSend : function(xmlHttpRequest){
-	                xmlHttpRequest.setRequestHeader("AJAX", "true"); // ajax »£√‚¿ª  headerø° ±‚∑œ
-	            }, */
-				success : function(res){
-					alert("ªÛ¥ÎπÊø°∞‘ √§∆√Ω≈√ª«œø¥Ω¿¥œ¥Ÿ. ªÛ¥ÎπÊ ºˆ∂ÙΩ√ √§∆√πÊ¿Ã ∞≥º≥µÀ¥œ¥Ÿ.");
-				},
-				error : function(request,status,error){
-					console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-				}
-			});
+          var user1 = ${sessionScope.user_num};
+         $.ajax({
+            type : "POST",
+            url : "chRequest",
+            data : "user1="+user1,
+            //       √ª                    «¥   ‘º 
+/*             beforeSend : function(xmlHttpRequest){
+                   xmlHttpRequest.setRequestHeader("AJAX", "true"); // ajax »£      header      
+               }, */
+            success : function(res){
+               alert("   Êø°   √§ √Ω √ª œø    œ¥ .             √§ √π         À¥œ¥ .");
+            },
+            error : function(request,status,error){
+               console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+               alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+            }
+         });
           document.location.href = document.location.href;
        })
   
