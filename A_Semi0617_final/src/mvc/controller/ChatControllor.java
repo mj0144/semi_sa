@@ -109,10 +109,17 @@ public class ChatControllor {
 	public String roomInsert(@RequestBody String user1, HttpSession session) throws Exception{
 		String result = "success";
 		String substr = user1.substring(6);
-		System.out.println(substr);
-		System.out.println("채팅zz신청 성공? chatting");
 		int user = Integer.parseInt(substr);
 		chatservice.roomInsert(user);
 		return result;
+	}
+	
+	//채팅신청한 유저 정보
+	@ResponseBody
+	@RequestMapping(value = "responeChatList", method = RequestMethod.GET)
+	public List<HashMap<String, Object>> responeChatList(String user)throws Exception{
+		int usernum = Integer.parseInt(user);
+		List<HashMap<String, Object>> resultMap = chatservice.responeChatList(usernum);
+		return resultMap;
 	}
 }

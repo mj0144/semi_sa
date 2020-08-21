@@ -30,20 +30,9 @@
                         <div class="col-md-12 col-md-offset-12 text-center" id="checkset" style="border: 1px solid #240B3B; margin-bottom: 30px; padding: 30px; display:none;">
 	                        <div class="widget-content-wrapper">
                         		<div class="col-md-12 col-md-offset-12 text-center">
-								 	 <div class="single-team">
-							    			<div class="col-md-12">
-							    				<div class="blog-entry ftco-animate d-md-flex" style="float: left;">
-<!-- 							    				유저사진 -->
-												<img id="sajutwo" src="images/iu2.png" alt="iljuanimal" style="margin-top: 10px;" class="col-md-4">
-												<span class="col-md-6">
-												<h4>유저닉네임</h4>
-												<br>
-												나와의 점수
-												</span>
-												<button class="border-0 btn-transition btn btn-outline-success col-md-1"> <i class="fa fa-check"></i></button> <button class="border-0 btn-transition btn btn-outline-danger col-md-1"> <i class="fa fa-check"></i> </button> 
-												</div>
+							    			<div class="col-md-12" id="chatRequestList">
+											</div>
 												<div class="blog-entry ftco-animate d-md-flex">
-													
 												</div>
 												<div>
 								              		<p class="mb-2"></p>
@@ -53,12 +42,11 @@
 								            		<p class="mb-4"> </p>
 								            		<br>
 												</div>
-							    			</div>
 							    		<a href="chat.do">채팅 보러가기</a>
-				 					</div>	
-	                     	   </div>
-                      	 	 </div>
-              			 </div>
+			 					</div>	
+                     	   </div>
+                  	 	 </div>
+            			 </div>
               			 <!-- 채팅확인 영역 끝 -->
               	    </div>
                </div>
@@ -237,10 +225,39 @@
 	<script>
 		// 체크박스 슬라이드 토글
 		$(document).on('click', '#chat', function(event) {
-			$("#checkset").slideToggle(); 
+			$("#checkset").slideToggle();
+			var user = ${sessionScope.user_num};
+			$.ajax({
+				url : "responeChatList",
+				type : "GET",
+				data : {user : user},
+				contentType : "application/json; chatset=utf-8",
+				dataType : "json",
+				success : function(res){
+					console.log(res);
+					for(var i = 0; i<res.length; i++){
+						var map = res[i];
+						console.log(map);
+						var	printHTML = '<div class="blog-entry ftco-animate d-md-flex fadeInUp ftco-animated" style="float: left;">';
+						printHTML += '<img id="sajutwo" src="resources/upload/'+map["USER_IMG"]+'" alt="iljuanimal" style="margin-top: 10px;" class="col-md-4">';
+						printHTML += '<span class="col-md-6">';
+						printHTML += '<h4>'+map["NICKNAME"]+'</h4>';
+						printHTML += '</span>';
+						printHTML += '<button class="border-0 btn-transition btn btn-outline-success col-md-1" onclick="successChat"> <i class="fa fa-check"></i></button>';
+						printHTML += '<button class="border-0 btn-transition btn btn-outline-danger col-md-1" onclick="deleteChat"> <i class="fa fa-check"></i> </button>'; 
+						printHTML += '</div>';
+						$("#chatRequestList").append(printHTML);
+					}
+				},
+				error : function(request,status,error){
+					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
 		});
+		function () {
+			
+		}
 	</script>
-
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>
 <script src="js/popper.min.js"></script>
