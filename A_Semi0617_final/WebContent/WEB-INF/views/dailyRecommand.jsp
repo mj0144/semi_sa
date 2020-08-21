@@ -286,7 +286,7 @@
             }
                  
                new Chart(document.getElementById("radar-chart"), {
-                   type: 'radar',
+                   type: 'bar',
                    data: {
                      labels: label,
                      datasets: [
@@ -425,7 +425,11 @@
             data : "user1="+user1,
 
             success : function(res){
-               alert("채팅신청이 완료되었습니다.");
+            	if(res == 'success'){
+                    alert("채팅신청이 완료되었습니다.");
+            	}else{
+            		alert('채팅권이 모두 소진되어 채팅신청이 불가능합니다.')
+            	}
             },
             error : function(request,status,error){
                console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);

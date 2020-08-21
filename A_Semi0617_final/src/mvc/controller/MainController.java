@@ -2,6 +2,7 @@ package mvc.controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +44,22 @@ public class MainController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ModelAndView Login(String msg) {
 		ModelAndView mav = new ModelAndView("login");
 		mav.addObject("msg", msg);
 
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView LoginGet(String msg, HttpSession session, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("login");
+		if(session.getAttribute("user_num") != null) {
+			session.invalidate();
+			mav.addObject("msg", "logout");
+		}
 		return mav;
 	}
 	
