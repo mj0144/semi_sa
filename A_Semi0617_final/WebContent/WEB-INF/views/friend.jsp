@@ -21,6 +21,8 @@
  
             </div>
                <div class="desc">
+               <div style="float: right;"><div id="boardBtn_group" ><button type="button" id="modal_open_btn" style="float: right;">신고하기</button></div></div>
+               
                   <input type="hidden" id="user_num" name="user_num" value="${board_writer}">
                    <img style="height: 50px;" src="images/offline_big.png" class="indicator" id="indicator">
                    <br>
@@ -30,6 +32,7 @@
                   <p class="mb-4">${membervo.user_intro}</p>
                   <h3 class="signature h1">Eric</h3>
                   <div>
+                  
                   	           <div>
 
 											<!-- 블락 추가 구현 -->                				            
@@ -154,6 +157,36 @@
          </div>
       </div>
    </section>
+   
+	<!-- Modal -->
+				    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				        <div class="modal-dialog  modal-dialog-centered" role="document">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <b><h2 class="modal-title" id="myModalLabel">불량유저 신고하기</h2></b>
+				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right;">
+				                        <span aria-hidden="true">&times;</span>
+				                    </button>
+				                </div>
+				                <div class="modal-body" >
+										<hr style="color: gray;"><br><br>
+										<form method="post" id="checked" action="reportUser">
+										<input type="radio" name="report_comment" value="의심스럽거나 스팸입니다." checked/> 의심스럽거나 스팸입니다. <br/><br/>
+										<input type="radio" name="report_comment" value="계정 해킹이 의심됩니다."/> 계정 해킹이 의심됩니다.<br/><br/>
+										<input type="radio" name="report_comment" value="신고자 본인,또는 타인을 사칭하고 있습니다."/> 신고자 본인,또는 타인을 사칭하고 있습니다.<br/><br/>
+										<input type="radio" name="report_comment" value="부적합한 게시물을 게시했습니다."/> 부적합한 게시물을 게시했습니다.<br/><br/>
+										<input type="radio" name="report_comment" value="기타"/> 기타<br/><br/>
+										<input type="hidden" name="friend_num" id="friend_num" value="${board_writer }"/>
+								</div>
+				                <div class="modal-footer">
+				                    <button type="submit" class="btn btn-primary" id="report_btn">제출</button>
+				                     </form>
+				                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="report_cancel">취소</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+   
    
    <!-- Modal -->
    <div class="modal fade" id="followermodal" tabindex="-1" role="dialog"
@@ -383,4 +416,16 @@
 			});
 		}
 		</script>
+		
+		<script>
+	$(document).ready(function() {
+		$('#modal_open_btn').click(function() {
+			$('#myModal').modal('show');
+		});
+		
+		$('#report_btn').click(function() {
+ 			alert('신고가 접수되었습니다.')
+		})
+	})
+	</script>
    <%@include file="footer.jsp"%>
