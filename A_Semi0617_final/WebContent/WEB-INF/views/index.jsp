@@ -32,22 +32,22 @@ span {
 				<div class="author-image text img d-flex">
 					<section class="home-slider js-fullheight owl-carousel">
 						<div class="slider-item js-fullheight"
-							style="background-image: url(images/mainbanner2.jpg);"></div>
+							style="background-image: url(resources/img/banner.png);"></div>
 
 						<div class="slider-item js-fullheight"
-							style="background-image: url(images/mainbanner4.jpg);"></div>
+							style="background-image: url(resources/img/banner2.png);"></div>
 					</section>
 				</div>
 				<div class="author-info text p-3 p-md-5">
 					<div class="desc">
-						<span class="subheading">운명속에</span>
+						<span class="subheading">운명속</span>
 						<h1 class="big-letter">나의 인연은?</h1>
 						<h1 class="mb-4">
-							<span>상대방과의</span> 사주궁합 <span>지금 찾아보세요</span>
+							<span>상대방과의</span> 사주궁합 <span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							지금 찾아보세요</span>
 						</h1>
-						<!-- <p class="mb-4">사주를 바탕으로 빅데이터를 통해 당신의 인연을 찾아드립니다. 운명 속에 인연을 만나보세요.</p>
-                  <h3 class="signature h1">To the world you may be one person, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								But to one person you may be world.</h3> -->
+						
 
 					</div>
 					<div class="msp_bn_area count p-md-5"
