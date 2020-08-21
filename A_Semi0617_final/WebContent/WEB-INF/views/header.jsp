@@ -93,7 +93,7 @@
    });
 </script>
 
-<title>h</title>
+<title>SOUL MATCH</title>
 
 <meta charset="utf-8">
 <meta name="viewport"
