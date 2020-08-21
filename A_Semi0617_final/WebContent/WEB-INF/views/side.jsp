@@ -250,7 +250,7 @@
          <li><a href="mypage">마이페이지</a></li>
          <li><a href="pay">Shop</a></li>
          <li><a href="qnapage">Q&A</a></li>
-         <li><a href="logoutdo">로그아웃</a></li>
+         <li><a href="/AFinal/">로그아웃</a></li>
       </ul>
       <h3>
          <img src="images/heart.png">

@@ -651,9 +651,9 @@ body {
          <c:if test="${msg == 'failure' }">
             <div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
          </c:if>
-         <c:if test="${msg == 'logout' }">
+          <c:if test="${msg == 'logout' }">
             <div style="color: red;">로그아웃되었습니다.</div>
-         </c:if>
+         </c:if> 
 
          <div class="container-login100-form-btn text-center">
             <div class="wrap-login100-form-btn">
@@ -727,13 +727,21 @@ body {
    
    
    <script>
-      $(function(){
-         var msg = '${msg}'
-         if(msg !== '' && msg !== 'failure'){
-            alert(msg);
-         }
-         
-      })
+   
+/*    window.onload = function () { 
+
+	   var msg = '${msg}'
+	         if(msg !== '' && msg !== 'failure' && msg !=='logout'){
+	            alert(msg);
+	         }
+   } */
+   setTimeout(function(){
+	   var msg = '${msg}'
+	         if(msg !== '' && msg !== 'failure' && msg !=='logout'){
+	            alert(msg);
+	         }
+	  }, 1000);
+
    </script>
    <script type="text/javascript">
    		function fileclick(){
