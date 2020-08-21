@@ -35,7 +35,7 @@
           map.set(session[i],'usernum');   
       }
          
-     if (map.has($('#user_num').val())) {
+    /*  if (map.has($('#user_num').val())) {
          $('#indicator').attr("src","images/online_big.png");
 	}
     	  $('.user_number').each(function(idx,item){
@@ -53,12 +53,12 @@
     	            $('#indicator_rc'+(idx+1)).attr("src","images/online.png");
     	            //break;
     	         }
-    	      });
+    	      }); */
       
       //접속자수
-     // var size= map.size-1;
+      var size= map.size-1;
      // console.log("사이즈"+size);
-    //document.getElementById('size').value = size; 
+      document.getElementById('size').value = size;
       //
    
    };
