@@ -36,11 +36,15 @@ public class MemberService {
 			
 
 		}
-
-		//채팅개수
-		session.setAttribute("chatcount", payDao.chatCount(vo.getUser_num()));
-		//등급.
-		session.setAttribute("grade_name", payDao.gradeName(vo.getUser_num()));
+		try {
+			//채팅개수
+			session.setAttribute("chatcount", payDao.chatCount(vo.getUser_num()));
+			//등급.
+			session.setAttribute("grade_name", payDao.gradeName(vo.getUser_num()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		return result;
 	}
