@@ -88,7 +88,7 @@
 
       if (session === '' || session === 'null') {
          alert('로그인이 만료되었습니다.다시로그인바람');
-         document.location.href = "login";
+         document.location.href = "/AFinal/";
       }
    });
 </script>
