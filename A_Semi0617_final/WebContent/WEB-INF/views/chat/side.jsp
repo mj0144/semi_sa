@@ -255,30 +255,7 @@
       <h3>
          <img src="images/heart.png">
       </h3>
-      
-      <style>
-      #size{
-         width: 30px;
-         margin: 0 15px;
-         border-style: none;
-         text-shadow: 20px;
-      }
-   
-      .count{
-         font-weight: bold;
-         border: 2.5px solid lightgray;
-         box-shadow: 5px 1px 5px 0;
-         border-radius: 20px;
-      }
-      span{
-         margin-left: 30px;
-      }   
-      </style>
-      
-         <br>
-      <div class="count" style="top: 10; margin: 0 50px;">
-         <span>현재접속자수</span> <input type="text" id="size" name="size" value="">
-         </div>
+
    </nav>
 </aside>
 <script>
