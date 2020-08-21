@@ -165,23 +165,7 @@ public class PageListController {
 		return "dailyRecommand";
 		
 	}
-	
-	//체크박스로 조건을 변경할 경우
-	@RequestMapping(value = "/listchk")
-	public String listChk(RedirectAttributes rd, HttpSession session, String sex, String samb) {
-		
-		int user_num = (int) session.getAttribute("user_num");
-		int num = pagelistDao.getaMaxnum(user_num)+1;
-		
-		System.out.println(num);
-		
-		rd.addAttribute("sex", sex);
-		rd.addAttribute("samb", samb);
-		rd.addAttribute("num", num);
-		
-		return "redirect:listWhole";		
-	}
-	
+
 	
 	//사주 모달 뽑기
 	@RequestMapping(value = "/sajumodal", method = RequestMethod.GET)

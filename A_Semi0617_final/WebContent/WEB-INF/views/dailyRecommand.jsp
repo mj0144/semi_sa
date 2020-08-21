@@ -36,7 +36,7 @@
                      </div>
                      <!-- 체크박스 -->
                <div class="col-md-12" id="checkset" style="border: 1px solid #240B3B; margin-bottom: 30px; padding: 30px; display:none;">
-                  <form action="listchk" class="detailck" method="post">
+                  <form action="listWhole" class="detailck" method="post">
                   <div class="boxes" style="padding-bottom: 30px;">
                   <!-- 성별 체크 박스 -->
                     <div style="float: left; margin-right: 100px;">성별 </div>
@@ -64,14 +64,9 @@
                        <label for="box2-3">사주 + MBTI</label>
                     </div>
                   <div>
-                  <c:choose>
-                  <c:when test="${num >= paymember }">
-                  <input type="button" value="실행" style="float: right;" onclick="nextProfile()">                  
-                  </c:when>
-                  <c:otherwise>
+				 <input type="hidden" name="num" value="${num }">                
                   <input type="submit" value="실행" style="float: right;">
-                  </c:otherwise>
-                  </c:choose>
+
                   </div>
                   </form>
                </div>
