@@ -6,9 +6,24 @@
 <div id="colorlib-main">
    
    
-  <style>
-  
-  </style> 
+<style>
+      #size{
+         width: 30px;
+         margin: 0 15px;
+         border-style: none;
+         text-shadow: 20px;
+      }
+   
+      .count{
+         font-weight: bold;
+         border: 2.5px solid lightgray;
+         box-shadow: 5px 1px 5px 0;
+         border-radius: 20px;
+      }
+      span{
+         margin-left: 30px;
+      }   
+</style>
    <section class="ftco-section-no-padding bg-light">
       <div class="hero-wrap">
          <div class="overlay"></div>
@@ -36,21 +51,22 @@
                </div>
                <div class="msp_bn_area count p-md-5" style="float: none; margin: 0; padding: 0; background-image: none; min-width: 0; display: block; margin: 0 auto;">
 					<div class="temp">
-						<div class="member" style="float: left">
-							<div style="font-size:16px; line-height:20px; font-family: 'Noto Sans KR';">회원수</div>
+						<div class="member" style="float: left; margin-right: 10px;">
+							<div style="font-size:16px; line-height:20px; font-family: 'Noto Sans KR'; margin-left: 70px;">회원수</div>
 							<div style="font-size:40px; line-height:44px; font-family: 'Noto Sans KR';"><span style="font-weight:700;">
 							<span id="m_cnt">${usercount }</span></span>명</div>
 						</div>
-						<div class="couple"style="float: left">
-							<div style="font-size:16px; line-height:20px;">매칭률</div>
+						<div class="couple"style="float: left; margin-right: 10px;">
+							<div style="font-size:16px; line-height:20px; margin-left: 50px;">매칭률</div>
 							<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
 							<span id="r_cnt">${matavg}</span></span>%
 							</div>
 						</div>
-						<div class="couple">
-							<div style="font-size:16px; line-height:20px;">실시간 접속자</div>
+						<div class="couple" style="margin-left: 20px;"">
+							
+							<div style="font-size:16px; line-height:20px; margin-left: 100px;">실시간 접속자</div>
 							<div style="font-size:40px; line-height:44px;"><span style="font-weight:700;">
-							<span id="r_cnt">${matavg}</span></span>%
+							<input style="font-weight:700; color: gray;" type="text" id="size" name="size" value=""></span>명
 							</div>
 						</div>
 						<div class="day"></div>
@@ -109,4 +125,5 @@
          </div>
       </div>
    </section>
+   
    <%@ include file="footer.jsp"%>
