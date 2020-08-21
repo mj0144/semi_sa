@@ -51,6 +51,8 @@ public class ChatService{
 	public List<HashMap<String, Object>> responeChatList (int usernum) throws Exception{
 		return chatdao.responeChatList(usernum);
 	}
-	
+	public void reqChatOK (HashMap<String, Object> params) throws Exception{
+		chatdao.reqChatOK(params);
+	}
 	
 }
