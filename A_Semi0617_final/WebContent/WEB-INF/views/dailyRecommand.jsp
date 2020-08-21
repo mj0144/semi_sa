@@ -11,14 +11,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
-<!-- ì´ë™í˜„ -->
+<!-- ÀÌµ¿Çö -->
 
 <div id="colorlib-main">
    <section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
       <div class="container">
          <div class="row no-gutters slider-text justify-content-center align-items-center">
             <div class="col-md-12 ftco-animate text-center">
-               <h1 class="bread" style="color:white;"><b>ì˜¤ëŠ˜ì˜ ì¸ì—° ì¶”ì²œë°›ê¸°</b></h1>
+               <h1 class="bread" style="color:white;"><b>¿À´ÃÀÇ ÀÎ¿¬ ÃßÃµ¹Ş±â</b></h1>
             </div>
          </div>
       </div>
@@ -29,48 +29,48 @@
             <div class="col-xs-12 col-sm-6 col-md-12" style="text-align: center;">
                      <div class="single-team">
                          <div class="explain">
-                            <h3> ${sessionScope.name }ë‹˜ê³¼ 90ì  ì´ìƒì¸ ì¸ì—°ì´ ${over90 }% ìˆìŠµë‹ˆë‹¤.
+                            <h3> ${sessionScope.name }´Ô°ú 90Á¡ ÀÌ»óÀÎ ÀÎ¿¬ÀÌ ${over90 }% ÀÖ½À´Ï´Ù.
                             </h3><br>
-                     <img src="images/setting.png" id="set" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="ì„¤ì •">
+                     <img src="images/setting.png" id="set" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="¼³Á¤">
                          </div>
                      </div>
-                     <!-- ì²´í¬ë°•ìŠ¤ -->
+                     <!-- Ã¼Å©¹Ú½º -->
                <div class="col-md-12" id="checkset" style="border: 1px solid #240B3B; margin-bottom: 30px; padding: 30px; display:none;">
                   <form action="listWhole" class="detailck" method="post">
                   <div class="boxes" style="padding-bottom: 30px;">
-                  <!-- ì„±ë³„ ì²´í¬ ë°•ìŠ¤ -->
-                    <div style="float: left; margin-right: 100px;">ì„±ë³„ </div>
+                  <!-- ¼ºº° Ã¼Å© ¹Ú½º -->
+                    <div style="float: left; margin-right: 100px;">¼ºº° </div>
                     <input type="checkbox" id="box-1" class="chk" name="sex" value="m"<c:if test="${set.sex =='m' ||set.sex == null }">checked</c:if>>
-                    <label for="box-1">ë‚¨ì</label>
+                    <label for="box-1">³²ÀÚ</label>
                     
                     <input type="checkbox" id="box-2" class="chk" name="sex" value="f" <c:if test="${set.sex =='f'||set.sex == null}">checked</c:if>>
-                    <label for="box-2">ì—¬ì</label>
+                    <label for="box-2">¿©ÀÚ</label>
                      
                     <input type="checkbox" id="box-3" name="sex" value="a" <c:if test="${set.sex == null}">checked</c:if>>
-                    <label for="box-3">ì „ì²´</label>
+                    <label for="box-3">ÀüÃ¼</label>
                     
                   </div>
                   <hr>
-                  <!-- ì‚¬ì£¼, MBTI ìœ ë¬´ ì²´í¬ë°•ìŠ¤ -->
+                  <!-- »çÁÖ, MBTI À¯¹« Ã¼Å©¹Ú½º -->
                     <div class="boxes2" style="padding-bottom: 30px;">
-                       <div style="float: left; margin-right: 100px;">ì„ íƒ </div>
+                       <div style="float: left; margin-right: 100px;">¼±ÅÃ </div>
                        <input type="checkbox" id="box2-1" class="chk2" name="samb" value="saju"<c:if test="${set.samb != 'mbti'}">checked</c:if>>
-                       <label for="box2-1">ì‚¬ì£¼</label>
+                       <label for="box2-1">»çÁÖ</label>
                        
                        <input type="checkbox" id="box2-2" class="chk2" name="samb" value="mbti"<c:if test="${set.samb != 'saju'}">checked</c:if>>
                        <label for="box2-2">MBTI</label>
                         
                        <input type="checkbox" id="box2-3" name="samb" value="all"<c:if test="${set.samb !='saju' && set.samb !='mbti'}">checked</c:if>>
-                       <label for="box2-3">ì‚¬ì£¼ + MBTI</label>
+                       <label for="box2-3">»çÁÖ + MBTI</label>
                     </div>
                   <div>
-				 <input type="hidden" name="num" value="${num }">                
-                  <input type="submit" value="ì‹¤í–‰" style="float: right;">
+             <input type="hidden" name="num" value="${num }">                
+                  <input type="submit" value="½ÇÇà" style="float: right;">
 
                   </div>
                   </form>
                </div>
-               <!-- ì²´í¬ë°•ìŠ¤ ë -->
+               <!-- Ã¼Å©¹Ú½º ³¡ -->
                    <br>
                  </div>
          </div>
@@ -85,35 +85,36 @@
                               <div class="single-team">
                                   <div style="height:395px">
                                 <div class="col-md-12 col-sm-12" style="margin-top:10%; margin-left: 0 auto; margin-right: 0 auto;">
-                                   <div>
+                                   <h3 class="" style="color : #A50002; ">³ª¿ÍÀÇ Á¡¼ö</h3>
+                                   <div class="" style="margin-left: 30px; margin-top: -20px">
                                    <canvas id="radar-chart" width="800" height="600"></canvas>
                                    </div>
-                                 <!--ì°¨íŠ¸ url   https://www.chartjs.org/docs/latest/charts/radar.html -->
+                                 <!--Â÷Æ® url   https://www.chartjs.org/docs/latest/charts/radar.html -->
                                 </div>
 
                                 <div>
-                                <h4>${profile.F_SCORE + profile.HEIGHT_NUM + profile.BODY_NUM + profile.AGE_NUM }ì </h4>
+                                <h4>${profile.F_SCORE + profile.HEIGHT_NUM + profile.BODY_NUM + profile.AGE_NUM }Á¡</h4>
                                 </div>
-                                <!-- mbti ë° ì‚¬ì£¼ ê²°ê³¼ -->
+                                <!-- mbti ¹× »çÁÖ °á°ú -->
                                 <div style="position: fixed; bottom: 10px;">
 
                                    <div class="team-photo">
-                                    <div class="col-md-6 text-center" style="float:left;" data-toggle="tooltip" data-placement="top" title="ì‚¬ì£¼ ì„¤ëª…ë³´ê¸°">
+                                    <div class="col-md-6 text-center" style="float:left;" data-toggle="tooltip" data-placement="top" title="»çÁÖ ¼³¸íº¸±â">
                                        <img class="img-fluid center-block" src="resources/img/ilju_animal/${ilju.RESULT_IMG }.png" alt="iljuanimal"
                                         style="width:50%; cursor: pointer;" onclick="saju()" data-target="#modalall" data-toggle="modal">
-                                       <h5 style=" font-size:1rem"><b> ${ilju.ILJU }ì¼ì£¼</b></h5>
+                                       <h5 style=" font-size:1rem"><b> ${ilju.ILJU }ÀÏÁÖ</b></h5>
                                     </div>
-                                    <div class="col-md-6 text-center" style="float:left;" data-toggle="tooltip" data-placement="top" title="mbti ì„¤ëª…ë³´ê¸°">
+                                    <div class="col-md-6 text-center" style="float:left;" data-toggle="tooltip" data-placement="top" title="mbti ¼³¸íº¸±â">
                                        <img class="img-fluid center-block" src="resources/img/mbti_img/${mbti.MBTI_IMG }.png" alt="mbti_img" 
                                        style="width:50%; cursor: pointer;" onclick="mbti()" data-target="#modalall" data-toggle="modal">
                                     </div>
                                    </div>
                                 </div>
-                                <!-- mbti ë° ì‚¬ì£¼ ê²°ê³¼ ë -->
+                                <!-- mbti ¹× »çÁÖ °á°ú ³¡ -->
                                  </div>
                               </div>
                           </div>
-                          <!-- ì¶”ì²œì¸ ì–¼êµ´ -->
+                          <!-- ÃßÃµÀÎ ¾ó±¼ -->
                           <div class="col-xs-4 col-sm-4 col-md-4" style="text-align: center; float: left">
                               <div class="single-team">
                                  <div style="height:430px">
@@ -121,23 +122,23 @@
                            </div>
                         </div>
                           </div>
-                          <!-- ì¶”ì²œì¸ ì–¼êµ´ ë -->
+                          <!-- ÃßÃµÀÎ ¾ó±¼ ³¡ -->
                           
                           
-                          <!-- ì¶”ì²œì¸ ì •ë³´ ë° ë²„íŠ¼(ì¢‹ì•„ìš”, í”„ë¡œí•„ë³´ê¸°, ì±„íŒ…í•˜ê¸°, ë¸”ë½í•˜ê¸°) -->
+                          <!-- ÃßÃµÀÎ Á¤º¸ ¹× ¹öÆ°(ÁÁ¾Æ¿ä, ÇÁ·ÎÇÊº¸±â, Ã¤ÆÃÇÏ±â, ºí¶ôÇÏ±â) -->
                           <div class="col-xs-4 col-sm-4 col-md-4" style="text-align: center; float: left">
                               <div class="single-team">
                                  <div style="height:430px; padding-top: 10%;">
                                      <h3> ${profile.NICKNAME }</h3>
-                                     <!-- í™œë™ì¤‘ -->
+                                     <!-- È°µ¿Áß -->
                                      <img style="height: 30px;;" src="images/offline_big.png" id="indicator" class="indicator">
                                       <p>${profile.BIRTH }</p><br>
                                      <h5> ${profile.USER_INTRO }</h5>
                                      
-                                     <!-- ë²„íŠ¼ êµ¬í˜„ -->
+                                     <!-- ¹öÆ° ±¸Çö -->
                                      <div style="position:fixed; bottom: 25px;">
 
-                                 <!-- ë¸”ë½ ì¶”ê°€ êµ¬í˜„ -->                                        
+                                 <!-- ºí¶ô Ãß°¡ ±¸Çö -->                                        
                                         <c:set var="blockox" value="false"/>
                                  <c:forEach var="g" items="${set.blist }">
                                     <c:choose>
@@ -150,24 +151,24 @@
                                  <c:choose>
                                     <c:when test="${blockox == 'true'}">
                                        <img id="${profile.USER_NUM}" class="blockox" style="width:15%; cursor: pointer;" 
-                                       src="resources/img/btn/like.png" data-toggle="tooltip" data-placement="top" title="ì¶”ì²œ ì œì™¸ ì·¨ì†Œ"/>
+                                       src="resources/img/btn/like.png" data-toggle="tooltip" data-placement="top" title="ÃßÃµ Á¦¿Ü Ãë¼Ò"/>
                                     </c:when>
                                     <c:otherwise>
                                        <img id="${profile.USER_NUM}" class="blockox" style="width: 15%; cursor:pointer;" 
-                                       src="resources/img/btn/dislike.png" data-toggle="tooltip" data-placement="top" title="ì¶”ì²œì—ì„œ ì œì™¸"/>                                    
+                                       src="resources/img/btn/dislike.png" data-toggle="tooltip" data-placement="top" title="ÃßÃµ¿¡¼­ Á¦¿Ü"/>                                    
                                     </c:otherwise>
                                  </c:choose>
-                                        <!-- ë¸”ë½ ì¶”ê°€ êµ¬í˜„ ë -->
+                                        <!-- ºí¶ô Ãß°¡ ±¸Çö ³¡ -->
                                         
-                                        <!-- í”„ë¡œí•„ ì´ë™ êµ¬í˜„ -->
+                                        <!-- ÇÁ·ÎÇÊ ÀÌµ¿ ±¸Çö -->
                                         <img src="resources/img/btn/profile.png" style="width:15%; cursor: pointer;" onclick="profile()"
-                                        data-toggle="tooltip" data-placement="top" title="ìƒì„¸ í”„ë¡œí•„ ë³´ê¸°">
-                                 <!-- í”„ë¡œí•„ ì´ë™ ë -->
+                                        data-toggle="tooltip" data-placement="top" title="»ó¼¼ ÇÁ·ÎÇÊ º¸±â">
+                                 <!-- ÇÁ·ÎÇÊ ÀÌµ¿ ³¡ -->
                                         
                                         <img src="resources/img/btn/chat.png" style="width:15%; cursor: pointer;" onclick="chatting()"
-                                        data-toggle="tooltip" data-placement="top" title="ì±„íŒ…í•˜ê¸°">
+                                        data-toggle="tooltip" data-placement="top" title="Ã¤ÆÃÇÏ±â">
 
-                                   <!-- ì¢‹ì•„ìš” ë²„íŠ¼ êµ¬í˜„ -->
+                                   <!-- ÁÁ¾Æ¿ä ¹öÆ° ±¸Çö -->
                                    <c:set var="hearton" value="false"/>
                                  <c:forEach var="g" items="${heart }">
                                     <c:choose>
@@ -179,33 +180,33 @@
                                  <c:choose>
                                     <c:when test="${hearton == 'true'}">
                                        <img id="${profile.USER_NUM}" class="heart" style="width: 15%; cursor:pointer;" 
-                                       src="resources/img/btn/hearton.png" data-toggle="tooltip" data-placement="top" title="ì¢‹ì•„ìš” ì·¨ì†Œ"/>
+                                       src="resources/img/btn/hearton.png" data-toggle="tooltip" data-placement="top" title="ÁÁ¾Æ¿ä Ãë¼Ò"/>
                                     </c:when>
                                     <c:otherwise>
                                        <img id="${profile.USER_NUM}" class="heart" style="width: 15%; cursor:pointer;" 
-                                       src="resources/img/btn/heartoff.png" data-toggle="tooltip" data-placement="top" title="ì¢‹ì•„ìš”"/>                                    
+                                       src="resources/img/btn/heartoff.png" data-toggle="tooltip" data-placement="top" title="ÁÁ¾Æ¿ä"/>                                    
                                     </c:otherwise>
                                  </c:choose>
-                                 <!-- ì¢‹ì•„ìš” ë²„íŠ¼ ë -->
+                                 <!-- ÁÁ¾Æ¿ä ¹öÆ° ³¡ -->
                                      </div>
-                                     <!-- ë²„íŠ¼ êµ¬í˜„ ë -->
+                                     <!-- ¹öÆ° ±¸Çö ³¡ -->
                                  </div>
                              </div>
                           </div>
-                          <!-- ì¶”ì²œì¸ ì •ë³´ ë° ë²„íŠ¼ ë -->
+                          <!-- ÃßÃµÀÎ Á¤º¸ ¹× ¹öÆ° ³¡ -->
                             <br>
                          </div>
                      </div>
                    <br>
                  </div>
-                 <!-- ì´ì „ í˜ì´ì§€ ë° ë‹¤ìŒ í˜ì´ì§€ -->
+                 <!-- ÀÌÀü ÆäÀÌÁö ¹× ´ÙÀ½ ÆäÀÌÁö -->
                  <div class="col-xs-4 col-sm-4 col-md-12" style="text-align: center;">
                    <c:if test="${num != 1 }">
                <img src="resources/img/btn/back.png" style="width:5em; float: left; cursor: pointer;" onclick="prevProfile()">
                 </c:if>
                 <img src="resources/img/btn/forword.png" style="width:5em; float: right; cursor: pointer;" onclick="nextProfile()">
              </div>
-             <!-- ì´ì „ í˜ì´ì§€ ë° ë‹¤ìŒ í˜ì´ì§€ ë -->
+             <!-- ÀÌÀü ÆäÀÌÁö ¹× ´ÙÀ½ ÆäÀÌÁö ³¡ -->
          </div>
         </div>         
    </section>
@@ -240,17 +241,17 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">ê²°ì œí™•ì¸</h5>
+              <h5 class="modal-title">°áÁ¦È®ÀÎ</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <p>ì±„íŒ…ê¶Œì´ ì†Œì§„ë©ë‹ˆë‹¤. ì±„íŒ…ì‹ ì²­ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?</p>
+              <p>Ã¤ÆÃ±ÇÀÌ ¼ÒÁøµË´Ï´Ù. Ã¤ÆÃ½ÅÃ»À» ÇÏ½Ã°Ú½À´Ï±î?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_pop()">ì·¨ì†Œ</button>
-              <button type="button" class="btn btn-primary" id="chatOn">í™•ì¸</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_pop()">Ãë¼Ò</button>
+              <button type="button" class="btn btn-primary" id="chatOn">È®ÀÎ</button>
             </div>
           </div>
         </div>
@@ -263,7 +264,7 @@
           var user_num = ${profile.USER_NUM}
           var samb = '${set.samb}'
           var sex = '${set.sex}'
-          var label = ["ì‚¬ì£¼", "MBTI", "í‚¤", "ëª¸ë¬´ê²Œ", "ë‚˜ì´"]
+          var label = ["»çÁÖ", "MBTI", "Å°", "¸ö¹«°Ô", "³ªÀÌ"]
           var data = []
 
           $.ajax({
@@ -273,17 +274,17 @@
               success : function(data){
                               
                  if (samb == "saju") {
-               label = ["ì‚¬ì£¼", "í‚¤", "ëª¸ë¬´ê²Œ", "ë‚˜ì´"];
+               label = ["»çÁÖ", "Å°", "¸ö¹«°Ô", "³ªÀÌ"];
                data = [data.SAJU_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
             }else if (samb == "mbti") {
-               label = ["MBTI", "í‚¤", "ëª¸ë¬´ê²Œ", "ë‚˜ì´"];
+               label = ["MBTI", "Å°", "¸ö¹«°Ô", "³ªÀÌ"];
                data = [data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
             }else {
                data = [data.SAJU_SCORE,data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
             }
                  
                new Chart(document.getElementById("radar-chart"), {
-                   type: 'bar',
+                   type: 'radar',
                    data: {
                      labels: label,
                      datasets: [
@@ -300,17 +301,21 @@
                      ]
                    },
                    options: {
-                	   scale:{
+                      scale:{
                            ticks: {
                               beginAtZero: true,
                                min: 0,
                                max: 10
                            }
-                	   },
+                      },
                      title: {
+                        
                        display: true,
-                       text: 'ê¶í•© ì ìˆ˜'
-                     }
+                       text: ''
+                     },
+                      legend: {
+                          display: false
+                       }
                    }
                });
                  
@@ -323,26 +328,26 @@
         
            
       });
-      //    ì°¨íŠ¸
+      //    Â÷Æ®
 
    </script>
    
    <script>   
-      //í•˜íŠ¸ ëˆŒë €ì„ ë•Œ, í•˜íŠ¸ on/off ëª¨ì–‘ ë³€í™”      
+      //ÇÏÆ® ´­·¶À» ¶§, ÇÏÆ® on/off ¸ğ¾ç º¯È­      
       $(document).on('click', '.heart', function(event) { 
              var like = 'false';
               var user_num = ${sessionScope.user_num};
                
                if ($(this).attr("src") === "resources/img/btn/hearton.png") {
    
-                  $(this).attr("src", "resources/img/btn/heartoff.png"); //í•˜íŠ¸ ë²„ë¦¼
-                  $(this).attr('data-original-title', 'ì¢‹ì•„ìš”').tooltip('show');
+                  $(this).attr("src", "resources/img/btn/heartoff.png"); //ÇÏÆ® ¹ö¸²
+                  $(this).attr('data-original-title', 'ÁÁ¾Æ¿ä').tooltip('show');
                   like='false';
                   
                 } else if($(this).attr("src") === "resources/img/btn/heartoff.png") {
                 
-                   $(this).attr("src", "resources/img/btn/hearton.png"); //í•˜íŠ¸ ì±„ì›€
-                   $(this).attr('data-original-title', 'ì¢‹ì•„ìš” ì·¨ì†Œ').tooltip('show')
+                   $(this).attr("src", "resources/img/btn/hearton.png"); //ÇÏÆ® Ã¤¿ò
+                   $(this).attr('data-original-title', 'ÁÁ¾Æ¿ä Ãë¼Ò').tooltip('show')
                    like='true';
                 }
                var param = {"like" : like, "liked_user" : $(this).attr("id"), "user_num": user_num};
@@ -351,7 +356,7 @@
             
          });
       
-       //ì¢‹ì•„ìš” ìœ ë¬´ ê°’ ë°›ì•„ì™€ì„œ ë„ìš°ê¸°   
+       //ÁÁ¾Æ¿ä À¯¹« °ª ¹Ş¾Æ¿Í¼­ ¶ç¿ì±â   
        function ajax(param){
          $.ajax({
                url : "likeox",
@@ -372,18 +377,18 @@
          
          var block = 'false';
          
-         var blockon = "resources/img/btn/dislike.png"; //ë¸”ë½ í•˜ê¸°
-         var blockoff = "resources/img/btn/like.png"; //ë¸”ë½ í•´ì œ
+         var blockon = "resources/img/btn/dislike.png"; //ºí¶ô ÇÏ±â
+         var blockoff = "resources/img/btn/like.png"; //ºí¶ô ÇØÁ¦
          
          var user_num = ${sessionScope.user_num};
          
          if ($(this).attr("src") === blockon) {
-               $(this).attr("src", "resources/img/btn/like.png"); //ë¸”ë½ì·¨ì†Œ
-               $(this).attr('data-original-title', 'ì¶”ì²œ ì œì™¸ ì·¨ì†Œ').tooltip('show')
+               $(this).attr("src", "resources/img/btn/like.png"); //ºí¶ôÃë¼Ò
+               $(this).attr('data-original-title', 'ÃßÃµ Á¦¿Ü Ãë¼Ò').tooltip('show')
                block='true';
          } else if($(this).attr("src") === blockoff){
-               $(this).attr("src", "resources/img/btn/dislike.png"); //ë¸”ë½
-               $(this).attr('data-original-title', 'ì¶”ì²œì—ì„œ ì œì™¸').tooltip('show')
+               $(this).attr("src", "resources/img/btn/dislike.png"); //ºí¶ô
+               $(this).attr('data-original-title', 'ÃßÃµ¿¡¼­ Á¦¿Ü').tooltip('show')
                block='false';
          }
          
@@ -409,12 +414,12 @@
    </script>
    
    <script>
-      //ìƒì„¸ í”„ë¡œí•„ë¡œ ì´ë™ ì‹œ íŒŒë¼ë¯¸í„°ê°’ controllerë¡œ ë„˜ê¹€
+      //»ó¼¼ ÇÁ·ÎÇÊ·Î ÀÌµ¿ ½Ã ÆÄ¶ó¹ÌÅÍ°ª controller·Î ³Ñ±è
       function profile() {
          $("#profile").submit();
       };
       
-    //ì±„íŒ….
+    //Ã¤ÆÃ.
       function chatting(){
           $('#modal').show();
       }
@@ -429,13 +434,15 @@
             data : "user1="+user1,
 
             success : function(res){
-               alert("ì±„íŒ…ì‹ ì²­ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
-            	if(res == 'success'){
-                
-                    alert("ì±„íŒ…ì‹ ì²­ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
-            	}else{
-            		alert('ì±„íŒ…ê¶Œì´ ëª¨ë‘ ì†Œì§„ë˜ì–´ ì±„íŒ…ì‹ ì²­ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.')
-            	}
+<<<<<<< HEAD
+               alert("Ã¤ÆÃ½ÅÃ»ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+=======
+               if(res == 'success'){
+                    alert("Ã¤ÆÃ½ÅÃ»ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+               }else{
+                  alert('Ã¤ÆÃ±ÇÀÌ ¸ğµÎ ¼ÒÁøµÇ¾î Ã¤ÆÃ½ÅÃ»ÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.')
+               }
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
             },
             error : function(request,status,error){
                console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
@@ -450,14 +457,14 @@
    </script>
    
    <script>
-      // ì²´í¬ë°•ìŠ¤ ìŠ¬ë¼ì´ë“œ í† ê¸€
+      // Ã¼Å©¹Ú½º ½½¶óÀÌµå Åä±Û
       $(document).on('click', '#set', function(event) {
          $("#checkset").slideToggle(); 
       });
    </script>
    
    <script>
-      //ì²´í¬ë°•ìŠ¤ ì „ì²´ì„ íƒ ë° ì „ì²´í•´ì œ(ì„±ë³„)
+      //Ã¼Å©¹Ú½º ÀüÃ¼¼±ÅÃ ¹× ÀüÃ¼ÇØÁ¦(¼ºº°)
       $(document).on('click', '#box-3', function(event) {
       
           if($("#box-3").is(":checked")){
@@ -468,7 +475,7 @@
           }
       });
       
-      // ì²´í¬ë°•ìŠ¤ ì „ì²´ì„ íƒ ë° ì „ì²´ í•´ì œ(ì„ íƒ) -->
+      // Ã¼Å©¹Ú½º ÀüÃ¼¼±ÅÃ ¹× ÀüÃ¼ ÇØÁ¦(¼±ÅÃ) -->
       $(document).on('click', '#box2-3', function(event) {
       
           if($("#box2-3").is(":checked")){
@@ -480,7 +487,7 @@
       });
       
           
-      // í•œê°œì˜ ì²´í¬ë°•ìŠ¤ ì„ íƒ í•´ì œì‹œ ì „ì²´ì„ íƒ ì²´í¬ë°•ìŠ¤ë„ í•´ì œ(ì„±ë³„)
+      // ÇÑ°³ÀÇ Ã¼Å©¹Ú½º ¼±ÅÃ ÇØÁ¦½Ã ÀüÃ¼¼±ÅÃ Ã¼Å©¹Ú½ºµµ ÇØÁ¦(¼ºº°)
       $(document).on('click', '.chk', function(event) {
           if($("input[class='chk']:checked").length == 2){
               $("#box-3").prop("checked", true);
@@ -489,7 +496,7 @@
           }
       });
       
-      // í•œê°œì˜ ì²´í¬ë°•ìŠ¤ ì„ íƒ í•´ì œì‹œ ì „ì²´ì„ íƒ ì²´í¬ë°•ìŠ¤ë„ í•´ì œ(ì„ íƒ)
+      // ÇÑ°³ÀÇ Ã¼Å©¹Ú½º ¼±ÅÃ ÇØÁ¦½Ã ÀüÃ¼¼±ÅÃ Ã¼Å©¹Ú½ºµµ ÇØÁ¦(¼±ÅÃ)
       $(document).on('click', '.chk2', function(event) {
           if($("input[class='chk2']:checked").length == 2){
               $("#box2-3").prop("checked", true);
@@ -501,7 +508,7 @@
    </script>
    
    <script>
-      //ì‚¬ì£¼ & MBTI ëª¨ë‹¬êµ¬í˜„
+      //»çÁÖ & MBTI ¸ğ´Ş±¸Çö
       function saju() {
          var url = 'sajumodal?user_num='+$('#user_num').val();
          //alert(url);
@@ -517,17 +524,17 @@
    </script>
    
    <script>
-      //ì´ì „í˜ì´ì§€ ì´ë™
+      //ÀÌÀüÆäÀÌÁö ÀÌµ¿
       function prevProfile() {
          $("#prevProfile").submit();
       }
       
-      //ë‹¤ìŒí˜ì´ì§€ ì´ë™
+      //´ÙÀ½ÆäÀÌÁö ÀÌµ¿
       function nextProfile() {
          //alert($("#num").val());
          var paymember= ${paymember};
          if ($("#num").val() > paymember) {
-            alert("ì˜¤ëŠ˜ ë³¼ ìˆ˜ ìˆëŠ” ì¸ì›ì„ ì „ë¶€ ì†Œì§„í–ˆìŠµë‹ˆë‹¤.");
+            alert("¿À´Ã º¼ ¼ö ÀÖ´Â ÀÎ¿øÀ» ÀüºÎ ¼ÒÁøÇß½À´Ï´Ù.");
          }else {
             $("#nextProfile").submit();
          }
@@ -536,7 +543,7 @@
    </script>
    
    <script>
-      //tooltip ê¸°ëŠ¥ êµ¬í˜„
+      //tooltip ±â´É ±¸Çö
       $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();   
       });
