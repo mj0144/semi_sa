@@ -36,7 +36,7 @@ $(function() {
                 <div class="col-md-6 text-center">
                 <h3><strong>${name}님의 천생연분은!</strong></h3> 
                 <div class="single-team">
-	                <div class="team-photo">
+	                <div class="team-photo" style="display: table; margin-left: auto; margin-right: auto; display: inline-block;">
 							<div style="background-image: url('resources/img/iljusky/${minus.ilju_sky_num}.JPG'); width:480px; height:370px; background-size: contain;">
 								<div style="float:left;">
 									

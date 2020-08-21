@@ -39,13 +39,13 @@ $(function() {
                 <div class="col-xs-12 col-sm-6 col-md-8" style="text-align: center;">
                     <div class="single-team">
                         <div class="explain">
-                        <h5>어떤 검사일까요?</h5>
-                        <h4>사주 팔자 중 태어난 날의 두 글자만을 통해서 본 나와 잘 어울리는 사주 궁합입니다. 나와 외면과 내면이 모두 잘 맞을 수 있는 사람을 알려드립니다. 100% 맞는게 아니니 재미로만 봐주세요 ㅎ. 
+                        <h5>어떤 검사일까요?</h5><br>
+                        <h4>사주 팔자 중 <br>태어난 날의 두 글자만을 <br> 통해서 본 <br><b>나와 잘 어울리는 사주 궁합 동물입니다.</b><br><br>나와 외면과 내면이 <br>모두 잘 맞을 수 있는 사람을<br> 알려드립니다. <br><br>100% 맞는게 아니니 <br>재미로만 봐주세요. 
                         </h4>
+                      <br><button class="btn btn-warning" id="viewilju">결과보기</button>
                         </div>
                     </div>
                     <br>
-                      <button class="btn btn-warning" id="viewilju">결과보기</button>
                 </div>
             </div>
             </div>

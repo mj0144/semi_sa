@@ -39,7 +39,7 @@
                 <div class="col-md-6 text-center">
                 <h3><strong>√ππ¯¬∞ ${name}¥‘¿« ±Õ¿Œ!</strong></h3> 
                 <div class="single-team">
-	                <div class="team-photo">
+	                <div class="team-photo" style="display: table; margin-left: auto; margin-right: auto; display: inline-block;">
 							<div style="background-image: url('resources/img/iljusky/${plus.ilju_sky_num}.JPG'); width:480px; height:370px; background-size: contain;">
 								<div style="float:left;">
 									<img src="resources/img/ilju_animal/${plus.result_img}.png" alt="iljuanimal" style="margin-top: 80px; width:200px; margin-left: 40px">
@@ -72,7 +72,7 @@
 			<div class="col-md-6 text-center">
                 <h3><strong>µŒπ¯¬∞ ${name}¥‘¿« ±Õ¿Œ!</strong></h3> 
                 <div class="single-team">
-	                <div class="team-photo">
+	                <div class="team-photo" style="display: table; margin-left: auto; margin-right: auto; display: inline-block;">
 							<div style="background-image: url('resources/img/iljusky/${minus.ilju_sky_num}.JPG'); width:480px; height:370px; background-size: contain;">
 								<div style="float:left;">
 									<img src="resources/img/ilju_animal/${minus.result_img}.png" alt="iljuanimal" style="margin-top: 80px; width:200px; margin-left: 40px">

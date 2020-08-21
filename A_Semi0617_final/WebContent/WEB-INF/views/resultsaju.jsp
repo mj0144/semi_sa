@@ -31,12 +31,12 @@
                     <div class="single-team">
                         <div class="explain">
                         <h5>어떤 검사일까요?</h5>
-                        <h4> 사주를 기반으로 내가 어떤 동물 유형인지 알려드립니다. 빅데이터와 인공지능을 통한 분석으로 내가 어떤 성격을 가졌고 유명인 중 누가 나랑 같은 유형인지 알려드려요.
+                        <h4><br> 사주를 기반으로 <br>내가 어떤 <b>동물 유형인지 알려드립니다.</b> <br><br>알고리즘 통한 분석으로<br><b>내가 어떤 성격을 가졌고</b> <br><br>유명인 중 누가 나랑 같은 유형인지 <br>알려드려요.
                         </h4><br>
+                     <br><button class="btn btn-warning" id="viewilju">결과보기</button>
                         </div>
                     </div>
                     <br>
-                     <button class="btn btn-warning" id="viewilju">결과보기</button>
                 </div>
             </div>
             </div>

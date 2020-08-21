@@ -30,13 +30,13 @@
                 <div class="col-xs-12 col-sm-6 col-md-8" style="text-align: center;">
                     <div class="single-team">
                         <div class="explain">
-                        <h5>어떤 검사일까요?</h5>
-                        <h4>나에게 도움이 될 수 있는 사람을 사주 팔자를 기반으로 알려드립니다. 귀인이라고 하죠. 나에가 어떤 사람이 귀인이 될 수 있을지 확인해보세요.
+                        <h5>어떤 검사일까요?</h5><br>
+                        <h4>나에게 도움이 될 수 있는 사람을 <br>사주 팔자를 기반으로 알려드립니다. <br><br><b>귀인</b>이라고 하죠. <br><br>나에게 어떤 사람이 <br> <b>귀인</b>이 될 수 있을지 <br>확인해보세요.
                         </h4>
+                    <br> <button class="btn btn-warning" id="viewhelp">결과보기</button>
                         </div>
                     </div>
                      <br>
-                     <button class="btn btn-warning" id="viewhelp">결과보기</button>
                 </div>
             </div>
             </div>
