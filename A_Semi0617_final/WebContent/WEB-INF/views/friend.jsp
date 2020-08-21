@@ -21,7 +21,7 @@
  
             </div>
                <div class="desc">
-                  <input type="text" id="user_num" name="user_num" value="${board_writer}">
+                  <input type="hidden" id="user_num" name="user_num" value="${board_writer}">
                    <img style="height: 50px;" src="images/offline_big.png" class="indicator" id="indicator">
                    <br>
                   <h1 class="mb-4">
@@ -58,7 +58,7 @@
                 				            <img src="resources/img/btn/profile.png" style="width:15%; cursor: pointer;" onclick="profile()"
                 				            data-toggle="tooltip" data-placement="top" title="상세 프로필 보기">
 											<!-- 채팅 신청 -->
-                				            <input type="hidden" id="nickname" value="${membervo.name }">
+                				            <input type="hidden" id="nickname" value="${sessionScope.nickname }">
                 				            <input type="hidden" id="userNum" value="${board_writer}">
                 				            <img src="resources/img/btn/chat.png" style="width:15%; cursor: pointer;" onclick="chatrequest()" 
                 				            data-toggle="tooltip" data-placement="top" title="채팅하기">
@@ -344,6 +344,7 @@
 			var param = new Object();
 			var requestUser = ${sessionScope.user_num}; //보내는자
 			var nickname = $("#nickname").val();
+			console.log(nickname);
 			param.notifyLink = link;
 			param.notifycontent = nickname+"님이 회원님에게 채팅을 요청하였습니다.";
 			param.notifyuser  = responeUser; //받는자

@@ -93,6 +93,17 @@ where
 	chatroom = #{chatroom} 
 and 
 	rownum = 1
+	</select>
 	
+	<select id="responeChatList" parameterType="int" resultType="HashMap">
+select 
+user_num,
+user_img,
+nickname
+from 
+user_info
+where 
+user_num
+in (select distinct n.notifyusernum from notify n, chatroom c where n.notifyusernum=c.user1 and n.notifyuser=#{usernum} and c.user2=0)
 	</select>
 </mapper>	

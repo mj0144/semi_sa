@@ -35,10 +35,17 @@ public class ChatDao extends FeedAbstract{
 	public HashMap<String, Object> inToSelect(HashMap<String, Object> params) throws Exception{
 		return (HashMap<String, Object>) selectOne(nameSpace+"inToSelect", params);
 	}
+	//1:1채팅 상대방 내용
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> responeSelect(int roomNum) throws Exception{
 		return (HashMap<String, Object>) selectOne(nameSpace+"responeSelect", roomNum);
 	}
+	//채팅방 신청한사람 유저 리스트
+	@SuppressWarnings("unchecked")
+	public List<HashMap<String, Object>> responeChatList(int usernum) throws Exception{
+		return (List<HashMap<String, Object>>) selectList(nameSpace+"responeChatList", usernum);
+	}
+	
 	
 	
 }

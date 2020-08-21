@@ -2,13 +2,11 @@ package mvc.service;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mvc.dao.ChatDao;
-import mvc.vo.ChatVO;
 
 @Service //송성근제작
 public class ChatService{
@@ -48,6 +46,10 @@ public class ChatService{
 	//채팅 신청
 	public int roomInsert(int user1) throws Exception{
 		return chatdao.roomInsert(user1);
+	}
+	//채팅신청한 유저정보
+	public List<HashMap<String, Object>> responeChatList (int usernum) throws Exception{
+		return chatdao.responeChatList(usernum);
 	}
 	
 	
