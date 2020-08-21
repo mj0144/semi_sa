@@ -270,7 +270,7 @@
 				success : function (res) {
 					if(res == "success"){
 						alert("상대방과 채팅을 진행할수있습니다.");
-						doument.location.href = doument.location.href; 
+						doument.location.href = "chat.jsp"; 
 					}
 				},
 				error : function (request,status,error) {

@@ -245,8 +245,8 @@
          <li><a href="viewsaju">사주보기</a></li>
          <li><a href="feed">피드</a></li>
          <li><a href="chat.do">채팅</a></li>
-         <li><a href="listWhole">인연찾기</a></li>
-         <li><a href="findlove">이상형찾기</a></li>
+         <li><a href="listWhole">인연 추천</a></li>
+         <li><a href="findlove">닮은 꼴 찾기</a></li>
          <li><a href="mypage">마이페이지</a></li>
          <li><a href="pay">Shop</a></li>
          <li><a href="qnapage">Q&A</a></li>

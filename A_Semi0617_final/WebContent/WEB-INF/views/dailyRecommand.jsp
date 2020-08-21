@@ -64,7 +64,7 @@
                        <label for="box2-3">사주 + MBTI</label>
                     </div>
                   <div>
-				 <input type="hidden" name="num" value="${num }">                
+             <input type="hidden" name="num" value="${num }">                
                   <input type="submit" value="실행" style="float: right;">
 
                   </div>
@@ -85,7 +85,10 @@
                               <div class="single-team">
                                   <div style="height:395px">
                                 <div class="col-md-12 col-sm-12" style="margin-top:10%; margin-left: 0 auto; margin-right: 0 auto;">
+                                   <h3 class="" style="color : #A50002; ">나와의 점수</h3>
+                                   <div class="" style="margin-left: 30px; margin-top: -20px">
                                    <canvas id="radar-chart" width="800" height="600"></canvas>
+                                   </div>
                                  <!--차트 url   https://www.chartjs.org/docs/latest/charts/radar.html -->
                                 </div>
 
@@ -281,7 +284,7 @@
             }
                  
                new Chart(document.getElementById("radar-chart"), {
-                   type: 'bar',
+                   type: 'radar',
                    data: {
                      labels: label,
                      datasets: [
@@ -298,10 +301,21 @@
                      ]
                    },
                    options: {
+                      scale:{
+                           ticks: {
+                              beginAtZero: true,
+                               min: 0,
+                               max: 10
+                           }
+                      },
                      title: {
+                        
                        display: true,
-                       text: '궁합 점수'
-                     }
+                       text: ''
+                     },
+                      legend: {
+                          display: false
+                       }
                    }
                });
                  
@@ -405,7 +419,7 @@
          $("#profile").submit();
       };
       
-      //채팅.
+    //채팅.
       function chatting(){
           $('#modal').show();
       }
@@ -420,11 +434,15 @@
             data : "user1="+user1,
 
             success : function(res){
-            	if(res == 'success'){
+<<<<<<< HEAD
+               alert("채팅신청이 완료되었습니다.");
+=======
+               if(res == 'success'){
                     alert("채팅신청이 완료되었습니다.");
-            	}else{
-            		alert('채팅권이 모두 소진되어 채팅신청이 불가능합니다.')
-            	}
+               }else{
+                  alert('채팅권이 모두 소진되어 채팅신청이 불가능합니다.')
+               }
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
             },
             error : function(request,status,error){
                console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
@@ -433,6 +451,7 @@
          });
           document.location.href = document.location.href;
        })
+  
   
       
    </script>

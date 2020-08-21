@@ -18,7 +18,7 @@
 			<div class="incoming_msg">
 			<input type="hidden" value="${item.CHATUSER }">
             	<div class="incoming_msg_img">
-            	<a href='mypage'><span class='img'style='background-image: url(resources/upload/${item.USER_IMG}')>¿ÃπÃ¡ˆ</span></a>; 
+            	<a href='mypage'><span class='img'style='background-image: url(resources/upload/${item.USER_IMG}')></span></a>; 
              	</div>
             <div class="received_msg">
                 <div class="received_withd_msg">
