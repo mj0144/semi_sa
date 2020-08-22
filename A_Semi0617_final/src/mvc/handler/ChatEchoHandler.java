@@ -13,11 +13,11 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Configuration
-public class EchoHandler extends TextWebSocketHandler{
+public class ChatEchoHandler extends TextWebSocketHandler{
    //로그인한 전체
    private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
    
-   private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
+   private static Logger logger = LoggerFactory.getLogger(ChatEchoHandler.class);
    
    private Map<String, Object> userSession;
    private String userid;
@@ -41,42 +41,13 @@ public class EchoHandler extends TextWebSocketHandler{
       userSession = session.getAttributes();
       userid = userSession.get("user_num").toString();
 
-    //  System.out.println("유저아이디"+userid);
-    //  System.out.println("메세지"+message.getPayload());
-
-     // System.out.println("유저아이디"+userid+" 메세지 "+message.getPayload());
 
       
-      //suyeon start------------------------------------------------------------------
-       StringBuffer sb = new StringBuffer();
-       //end---------------------------------------------------------------------------
       
       logger.info("{}로 부터 {} 받음", session.getId(), message.getPayload());
-      if(message.getPayload().equals("This_Is_UserList")) {
-	      for(WebSocketSession sess : sessionList) {
-	    	 System.out.println("이거실행");
-	         sess.sendMessage(new TextMessage(userid + "|" + message.getPayload()));
-	         //suyeon start---------------------------------------------------------------
-	         Map<String, Object> map;
-	              map = sess.getAttributes();
-	              System.out.println(map);
-	              user_num = (String) map.get("user_num").toString();
-	              sb.append(user_num+" ");
-	              sess.sendMessage(new TextMessage(sb + "|" + message.getPayload()));
-	              //end------------------------------------------------------------------------
-	      }
-      }
-      if(!message.getPayload().equals("This_Is_UserList")) {
-    	  System.out.println("여기도실행?");
-    	  for(WebSocketSession sess : sessionList) {
-  			sess.sendMessage(new TextMessage(userid + "|" + message.getPayload()));
-  		}
-      }
-      
-      
-      //suyeon start---------------------------------------------------------------
-     // System.out.println(sb);
-      //end------------------------------------------------------------------------
+	  for(WebSocketSession sess : sessionList) {
+		sess.sendMessage(new TextMessage(userid + "|" + message.getPayload()));
+	  }
    }
    
    @Override

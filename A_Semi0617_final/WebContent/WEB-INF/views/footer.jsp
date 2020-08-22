@@ -7,6 +7,7 @@
 <!-- END COLORLIB-PAGE -->
 
 <!-- loader -->
+<input type="hidden" id="session_id_ssg" value="${sessionScope.user_num }">
 <div id="ftco-loader" class="show fullscreen">
 	<svg class="circular" width="48px" height="48px">
 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
