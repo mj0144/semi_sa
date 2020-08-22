@@ -19,7 +19,7 @@
 				sendMessage();
 			});
 		});
-		var sock = new SockJS('<c:url value="/echo"/>');
+		var sock = new SockJS('<c:url value="/chatEcho"/>');
 		//메세지가 나한테 전달됫을때 실행되는 함수
 		sock.onmessage = onMessage;
 		//연결을 해제할때 실행
@@ -84,41 +84,41 @@
 						}
 					},
 					error:function(request,status,error){
-						alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+						console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 					}
 				});
 			}else{
-				var chatRoom = $("#roomNumber").val();
-				$.ajax({
-					type: "POST",
-					url : "responeSelect",
-					data : "param="+chatRoom,
-					success: function (res) {
-						console.log("리스폰실행"+JSON.stringify(res));
-						var printHTML = '<div class="incoming_msg">';
-						printHTML += '<input type="hidden" value='+res["CHATUSER"]+'>';
-						printHTML += '<div class="incoming_msg_img">';
-						printHTML += '<a href="mypage"><span class="img"';
-					    printHTML += 'style="background-image: url(resources/upload/'+res["USER_IMG"]+'")></span></a>';
-						printHTML += '<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">';
-						printHTML += '</div>';
-						printHTML += '<div class="received_msg">';
-						printHTML += '<div class="received_withd_msg">';
-						printHTML += '<p>'+res["CHATCONTENT"]+'</p>';
-						printHTML += '<span class="time_date_left">'+res["CHATDATE"]+'</span></div>';
-						printHTML += '<br>';
-						printHTML += '</div>';
-						printHTML += '</div>';
-						$('#msg_history').append(printHTML);
-						var objDiv = document.getElementById("msg_history");
-						objDiv.scrollTop = objDiv.scrollHeight;
-					},
-					error: function(request,status,error){
-						alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-					}
-				});
-			}
+				setTimeout(function() {
+					var chatRoom = $("#roomNumber").val();
+					$.ajax({
+						type: "POST",
+						url : "responeSelect",
+						data : "param="+chatRoom,
+						success: function (res) {
+							console.log("리스폰실행"+JSON.stringify(res));
+							var printHTML = '<div class="incoming_msg">';
+							printHTML += '<input type="hidden" value='+res["CHATUSER"]+'>';
+							printHTML += '<div class="incoming_msg_img">';
+						    printHTML += '<img src="resources/upload/'+res["USER_IMG"]+'">';
+							printHTML += '</div>';
+							printHTML += '<div class="received_msg">';
+							printHTML += '<div class="received_withd_msg">';
+							printHTML += '<p>'+res["CHATCONTENT"]+'</p>';
+							printHTML += '<span class="time_date_left">'+res["CHATDATE"]+'</span></div>';
+							printHTML += '<br>';
+							printHTML += '</div>';
+							printHTML += '</div>';
+							$('#msg_history').append(printHTML);
+							var objDiv = document.getElementById("msg_history");
+							objDiv.scrollTop = objDiv.scrollHeight;
+						},
+						error: function(request,status,error){
+							console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+						}
+					});
+			}, 100);
 		}
+	}
 		//서버로부터 연결이 끊음
 		function onClose(evt){
 			alert("채팅서버에 문제가 발생했습니다. 다시 접속해주세요.");
@@ -147,7 +147,7 @@
 							printHTML +='<div class="chat_list">';
 						}
 						printHTML += '<div class="chat_people">';
-						printHTML += '<div class="chat_img"> <img src='+map["USER_IMG"]+' alt="sunil"> </div>';
+						printHTML += '<div class="chat_img"> <img src=resources/upload/'+map["USER_IMG"]+'> </div>';
 						printHTML += '<div class="chat_ib">';
 						printHTML += '<input type="hidden" id="user1" value='+map["USER1"]+'>';
 						printHTML += '<h5>'+map["NICKNAME"];
@@ -162,29 +162,4 @@
 				}
 			})
 		}, 0);
-		
-/* 			if(sessionid == map["USER_NUM"]){
-				var printHTML = "<div class='outgoing_msg'>";
-				printHTML += "<div class='sent_msg'>";
-				printHTML += "<input type='hidden' id='roomNum'>";
-				printHTML += "<p>"+map["CHATCONTENT"]+"</p>";
-				printHTML += "<span class='time_date_right'>"+map["CHATDATE"]+"</span> </div>";
-				printHTML += "</div>";
-				$('#msg_history').append(printHTML);
-			}else{
-				var printHTML = '<div class="incoming_msg">';
-				printHTML += '<div class="incoming_msg_img">';
-				printHTML += "<input type='hidden' id='roomNum'>";
-				printHTML += "<a href='mypage'><span class='img'";
-			    printHTML += "style='background-image: url(resources/upload/"+map["USER_IMG"]+"');'></span></a>";
-				printHTML += '<img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">';
-				printHTML += '</div>';
-				printHTML += '<div class="received_msg">';
-				printHTML += '<div class="received_withd_msg">';
-				printHTML += '<p>'+map["CHATCONTENT"]+'</p>';
-				printHTML += '<span class="time_date_left">'+map["CHATDATE"];
-				printHTML += '</span></div><br>';
-				printHTML += '</div>';
-				printHTML += '</div>';
-				printHTML += '<br>';  */
 </script>

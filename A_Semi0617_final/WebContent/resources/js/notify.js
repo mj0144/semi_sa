@@ -1,4 +1,4 @@
-	var message;
+var message;
 	function notifyon(evt) {
 		var a = evt.split('|');
 		console.log("notify로 날라온 매게변수 : "+a);
@@ -23,7 +23,7 @@
 		console.log(result);
 		sock.send(result);
 	}
-	var sock = new SockJS('http://localhost:8080/AFinal/echo');
+	var sock = new SockJS('http://localhost:8080/AFinal/chatEcho');
 	sock.onmessage = function onMessage(evt) {
 		var data = evt.data;
 		var notifyss = data.split('|');
@@ -74,7 +74,6 @@
 				'<a href="{3}" target="{4}" data-notify="url"></a>' +
 			    '</div>'
 			});
-			notifycations();
 		}
 	}
 
