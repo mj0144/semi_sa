@@ -38,26 +38,6 @@
           	<!-- 여기서부터 채팅방 친구목록 -->
           	<!--  active_chat 누굴 클릭해서 읽고있는지확인 class에 추가 -->
           	<a href="#" onclick="choiceUser">
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>닉네임 <span class="chat_date">시간</span></h5>
-                  <p>ㅇㅇ</p>
-                </div>
-              </div>
-            </div>
-            </a>
-            <!-- 한사람의 유저정보 -->
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>11</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <div class="mesgs">
