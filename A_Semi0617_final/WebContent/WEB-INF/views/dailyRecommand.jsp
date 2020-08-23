@@ -36,7 +36,7 @@
                      </div>
                      <!-- 체크박스 -->
                <div class="col-md-12" id="checkset" style="border: 1px solid #240B3B; margin-bottom: 30px; padding: 30px; display:none;">
-                  <form action="listchk" class="detailck" method="post">
+                  <form action="listWhole" class="detailck" method="post">
                   <div class="boxes" style="padding-bottom: 30px;">
                   <!-- 성별 체크 박스 -->
                     <div style="float: left; margin-right: 100px;">성별 </div>
@@ -63,15 +63,9 @@
                        <input type="checkbox" id="box2-3" name="samb" value="all"<c:if test="${set.samb !='saju' && set.samb !='mbti'}">checked</c:if>>
                        <label for="box2-3">사주 + MBTI</label>
                     </div>
+                    <input type="hidden" name = "num" value="${num }">
                   <div>
-                  <c:choose>
-                  <c:when test="${num >= paymember }">
-                  <input type="button" value="실행" style="float: right;" onclick="nextProfile()">                  
-                  </c:when>
-                  <c:otherwise>
                   <input type="submit" value="실행" style="float: right;">
-                  </c:otherwise>
-                  </c:choose>
                   </div>
                   </form>
                </div>
@@ -90,7 +84,7 @@
                               <div class="single-team">
                                   <div style="height:395px">
                                 <div class="col-md-12 col-sm-12" style="margin-top:10%; margin-left: 0 auto; margin-right: 0 auto;">
-                                   <canvas id="radar-chart" width="800" height="600"></canvas>
+                                   <canvas id="radar-chart" width="300px" height="200px"></canvas>
                                  <!--차트 url   https://www.chartjs.org/docs/latest/charts/radar.html -->
                                 </div>
 
@@ -276,14 +270,14 @@
               success : function(data){
                               
                  if (samb == "saju") {
-               label = ["사주", "키", "몸무게", "나이"];
-               data = [data.SAJU_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-            }else if (samb == "mbti") {
-               label = ["MBTI", "키", "몸무게", "나이"];
-               data = [data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-            }else {
-               data = [data.SAJU_SCORE,data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-            }
+                	 label = ["사주", "키", "몸무게", "나이"];
+                	 data = [data.SAJU_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+                }else if (samb == "mbti") {
+                	label = ["MBTI", "키", "몸무게", "나이"];
+               		data = [data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+            	}else {
+               		data = [data.SAJU_SCORE,data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+            	}
                  
                new Chart(document.getElementById("radar-chart"), {
                    type: 'radar',
@@ -302,11 +296,22 @@
                        }
                      ]
                    },
-                   options: {
-                     title: {
-                       display: true,
-                       text: '궁합 점수'
-                     }
+                   options: {        	   
+                	   scale:{
+                           ticks: {
+                        	   beginAtZero: true,
+                               min: 0,
+                               max: 10
+                           }
+                	   },
+
+                       title: {
+                    	   display: true,
+                    	   text: '궁합 점수'
+                    	},
+                    	legend: {
+                    		display: false
+                    	}
                    }
                });
                  

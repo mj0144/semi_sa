@@ -68,6 +68,8 @@ public class PageListController {
 			@RequestParam(value = "num", required = false, defaultValue = "1") int num,
 			HttpServletRequest request) {
 		
+		System.out.println(samb);
+		
 		//사용자 번호 세션으로 받아옴
 		int user_num=(int)session.getAttribute("user_num");	
 		
@@ -111,16 +113,11 @@ public class PageListController {
 		// 새로운 랜덤 추천을 할 경우
 		if (num > maxNum) {
 			
-			System.out.println("랜덤 추천인 뽑기");
-			System.out.println(user_num);
-			
 			// 추천인 랜덤으로 뽑기
 			profile = pagelistDao.getRProfile(map);
 		
 			// 랜덤으로 출력된 추천인 DB에 저장
 			HashMap<String, Object> map2 = new HashMap<String, Object>();
-			
-			System.out.println(profile.get("USER_NUM"));
 			
 			user_num2 = ((BigDecimal)profile.get("USER_NUM")).intValue();
 			
@@ -130,13 +127,10 @@ public class PageListController {
 			pagelistDao.setRecInsert(map2);
 			
 		}else if (num <= maxNum) { // 이전 추천 목록을 가져올 경우
-			
-			System.out.println("이전 추천인 가져오기");
-			
+
 			//이전 추천인 가져오기
 			profile = pagelistDao.getReProfile(map);
-			System.out.println(profile);
-			
+		
 			user_num2 = ((BigDecimal)profile.get("USER_NUM")).intValue();
 		
 		}
@@ -151,7 +145,7 @@ public class PageListController {
 		// 90점 이상인 사람이 전체에서 몇 퍼센트인지 가져오기
 		int over90 = pagelistDao.getover90(map);
 		
-		//
+		System.out.println("사주,MBTI:  "+profile.get("F_SCORE"));
 		
 		model.addAttribute("paymember", paymember);
 		model.addAttribute("heart", listheart);
@@ -165,23 +159,6 @@ public class PageListController {
 		return "dailyRecommand";
 		
 	}
-	
-	//체크박스로 조건을 변경할 경우
-	@RequestMapping(value = "/listchk")
-	public String listChk(RedirectAttributes rd, HttpSession session, String sex, String samb) {
-		
-		int user_num = (int) session.getAttribute("user_num");
-		int num = pagelistDao.getaMaxnum(user_num)+1;
-		
-		System.out.println(num);
-		
-		rd.addAttribute("sex", sex);
-		rd.addAttribute("samb", samb);
-		rd.addAttribute("num", num);
-		
-		return "redirect:listWhole";		
-	}
-	
 	
 	//사주 모달 뽑기
 	@RequestMapping(value = "/sajumodal", method = RequestMethod.GET)
@@ -213,7 +190,7 @@ public class PageListController {
 		
 	}
 	
-	
+	//차트뽑기
 	@ResponseBody
 	@RequestMapping(value= "/listChart")
 	public HashMap<String, Object> listChart(HttpSession session, 
@@ -222,9 +199,7 @@ public class PageListController {
 			int rec_num
 			
 			) {
-		
-		System.out.println("추천인 번호: " + rec_num);
-		
+
 		//성별 값이 male, female 이 동시에 들어올 때 null값으로 처리
 		if (sex.length() > 1) {
 			sex = null;
@@ -248,10 +223,13 @@ public class PageListController {
 		
 		HashMap<String, Object> map2 = pagelistDao.getChart(map);
 		
-		System.out.println(map2);
-		
 		return map2;	
 		
+	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "test";
 	}
 	
 
