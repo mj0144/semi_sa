@@ -60,6 +60,13 @@ public class MainController {
 			session.invalidate();
 			mav.addObject("msg", "logout");
 		}
+		if(msg!=null ) {
+			if(msg.equals("failure")) {
+				mav.addObject("msg", msg);
+			}
+		}
+		
+
 		return mav;
 	}
 	
