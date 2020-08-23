@@ -10,17 +10,13 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
-	<!-- 언어지원. -->
-	<!--servlet filter 요청이 들어오기전의 전처리 개념. -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<!-- init-param 필터안에서만 적용을 하는 키value -->
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>EUC-KR</param-value>
 		</init-param>
-		<!-- 인코딩 강제로 해주세요 -->
 		<init-param>
 			<param-name>forceEncoding</param-name>
 			<param-value>true</param-value>
@@ -32,27 +28,21 @@
 
 
 
-	<!-- 모든 /*형태의 요청은 CharacterEncodingFilter 찾아가려 -->
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 	<servlet>
-		<!-- <servlet-name>-servlet.xml로 예약이 되어있음(기본값) (kosmo-servlet.xml)이 기본 
-			bean파일로 설정이 예약되어 있음. -->
 		<servlet-name>Ajo</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 
 
 
-		<!-- 빈 설정 파일을 하나 이상을 사용하거나, 파일 이름과 경로를 직접 지정해주고 싶다면 contextConfigLocation 
-			라는 초기화 파라미터 값에 빈 설정 파일 경로를 설정 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/Ajo-*.xml</param-value>
 		</init-param>
-		<!-- 웹소켓 비동기 설정 -->
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
 	</servlet>
@@ -67,7 +57,6 @@
 	</context-param>
 
 
-	<!-- /인 요청은 전부 DispatcherServlet으로 가라고 -->
 	<servlet-mapping>
 		<servlet-name>Ajo</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -78,7 +67,6 @@
 	</session-config>
 	
 	
-<!-- 에러-->
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/error404.jsp</location>
@@ -98,7 +86,6 @@
 <!-- 		<exception-type>java.lang.Exception</exception-type> -->
 <!-- 		<location>/WEB-INF/views/error.jsp</location> -->
 <!-- 	</error-page> -->
-<!-- 에러  -->
 
 
 

@@ -23,6 +23,69 @@
 			$(this).children('#send_num').submit();
 		});
 </script>
+
+<script>
+
+	$(document).ready(function() {
+		var result_img1 = '${plus.result_img}'
+		var result_img2 = '${minus.result_img}'
+		
+		$.ajax({
+		    url : "http://192.168.0.172:8000/dpl/result3?result_img1="+result_img1 +'&result_img2='+result_img2,
+		    success : function(data){
+		    	alert('성공')
+		    	data = data.replace(/&#x27;/gi, '"').replace(/&#x27;/gi, '"')
+		    	data = JSON.parse(data)
+		    	console.log(data[0].result1)
+		    	console.log(data[0].result2)
+		    	
+		    	iljuBasic1 = $("#iljuResult1").text().split(" ")
+				result1 = ''
+				console.log(data[0].result1[Object.keys(data[0].result1)[0]])
+
+				for (var i = 0; i < iljuBasic1.length; i++) {
+					if (data[0].result1[Object.keys(data[0].result1)[i]] == 1) {
+						result1 += '<a1>' + iljuBasic1[i] + '&nbsp;'+ '</a1>'
+					}else {
+						result1 += '<b1>' + iljuBasic1[i] + '&nbsp;'+ '</b1>'
+					}
+				}
+
+				$("#iljuResult1").html(result1)
+				
+				iljuBasic2 = $("#iljuResult2").text().split(" ")
+				result2 = ''
+				console.log(data[0].result2[Object.keys(data[0].result2)[0]])
+
+				for (var i = 0; i < iljuBasic2.length; i++) {
+					if (data[0].result2[Object.keys(data[0].result2)[i]] == 1) {
+						result2 += '<a1>' + iljuBasic2[i] + '&nbsp;'+ '</a1>'
+					}else {
+						result2 += '<b1>' + iljuBasic2[i] + '&nbsp;'+ '</b1>'
+					}
+				}
+
+				$("#iljuResult2").html(result2)
+
+
+		    },
+		    error : function(){
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responsetext + "\n" + "error:" + error);
+		    }
+		 });		
+	})
+
+
+</script>
+
+<style>
+a1{color : blue;}
+
+
+</style>
+
+
 <div id="colorlib-main">
 	<section class="ftco-section" style="background-image: url(resources/img/headerimg.png); height:5em">
 		<div class="container">
@@ -59,7 +122,7 @@
 						<div class="explain">
 							<h3>${plus.result_animal} 입니다</h3>
 							<p class="card-text">${plus.result_animal}은(는) ${plus.ilju}일주 입니다.</p>
-							<p class="card-text">${plus.result_basic}</p>
+							<p class="card-text" id="iljuResult1">${plus.result_basic}</p>
 			
 							<h5>유명인 중 나와 잘맞는 일주동물을 가진 사람</h5><p class="card-text"> ${plus.result_influ}</p>
 							
@@ -93,7 +156,7 @@
 						<div class="explain">
 							<h3>${minus.result_animal} 입니다</h3>
 							<p class="card-text">${minus.result_animal}은(는) ${minus.ilju}일주 입니다.</p>
-							<p class="card-text">${minus.result_basic}</p>
+							<p class="card-text" id="iljuResult2">${minus.result_basic}</p>
 			
 							<h5>유명인 중 나와 잘맞는 일주동물을 가진 사람</h5><p class="card-text"> ${minus.result_influ}</p>
 							
