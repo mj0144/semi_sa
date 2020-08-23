@@ -8,7 +8,8 @@
  
   <!-- 새로운 랜덤 추천인 출력 -->
   <select id="recProfile" resultType="hashMap" parameterType="hashMap">
-  select * from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro, h.height_num, b.body_num, a.age_num
+  select * from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro,
+  h.height_num, b.body_num, a.age_num
   
   <choose>
   <when test="samb == 'saju'">
