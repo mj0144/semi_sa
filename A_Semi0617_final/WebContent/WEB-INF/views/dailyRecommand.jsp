@@ -63,10 +63,9 @@
                        <input type="checkbox" id="box2-3" name="samb" value="all"<c:if test="${set.samb !='saju' && set.samb !='mbti'}">checked</c:if>>
                        <label for="box2-3">사주 + MBTI</label>
                     </div>
+                    <input type="hidden" name = "num" value="${num }">
                   <div>
-             <input type="hidden" name="num" value="${num }">                
                   <input type="submit" value="실행" style="float: right;">
-
                   </div>
                   </form>
                </div>
@@ -85,6 +84,7 @@
                               <div class="single-team">
                                   <div style="height:395px">
                                 <div class="col-md-12 col-sm-12" style="margin-top:10%; margin-left: 0 auto; margin-right: 0 auto;">
+
                                    <h3 class="" style="color : #A50002; ">나와의 점수</h3>
                                    <div class="" style="margin-left: 30px; margin-top: -20px">
                                    <canvas id="radar-chart" width="800" height="600"></canvas>
@@ -274,14 +274,14 @@
               success : function(data){
                               
                  if (samb == "saju") {
-               label = ["사주", "키", "몸무게", "나이"];
-               data = [data.SAJU_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-            }else if (samb == "mbti") {
-               label = ["MBTI", "키", "몸무게", "나이"];
-               data = [data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-            }else {
-               data = [data.SAJU_SCORE,data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
-            }
+                	 label = ["사주", "키", "몸무게", "나이"];
+                	 data = [data.SAJU_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+                }else if (samb == "mbti") {
+                	label = ["MBTI", "키", "몸무게", "나이"];
+               		data = [data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+            	}else {
+               		data = [data.SAJU_SCORE,data.MBTI_SCORE,data.HEIGHT_SCORE,data.BODY_SCORE,data.AGE_SCORE]
+            	}
                  
                new Chart(document.getElementById("radar-chart"), {
                    type: 'radar',
@@ -300,6 +300,24 @@
                        }
                      ]
                    },
+<<<<<<< HEAD
+                   options: {        	   
+                	   scale:{
+                           ticks: {
+                        	   beginAtZero: true,
+                               min: 0,
+                               max: 10
+                           }
+                	   },
+
+                       title: {
+                    	   display: true,
+                    	   text: '궁합 점수'
+                    	},
+                    	legend: {
+                    		display: false
+                    	}
+=======
                    options: {
                       scale:{
                            ticks: {
@@ -316,6 +334,7 @@
                       legend: {
                           display: false
                        }
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
                    }
                });
                  
@@ -333,7 +352,7 @@
    </script>
    
    <script>   
-      //하트 눌렀을 때, 하트 on/off 모양 변화      
+      //하트 눌렀을 때, 하트 on/off 모양 변화
       $(document).on('click', '.heart', function(event) { 
              var like = 'false';
               var user_num = ${sessionScope.user_num};
@@ -434,15 +453,12 @@
             data : "user1="+user1,
 
             success : function(res){
-<<<<<<< HEAD
-               alert("채팅신청이 완료되었습니다.");
-=======
+
                if(res == 'success'){
                     alert("채팅신청이 완료되었습니다.");
                }else{
                   alert('채팅권이 모두 소진되어 채팅신청이 불가능합니다.')
                }
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
             },
             error : function(request,status,error){
                console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
