@@ -20,7 +20,7 @@ public class ImgUtils {
 		String filename = reName;
 		String ext = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
 		System.out.println("확장자명 : " + ext);
-		final String[] file_Boolean = { "png", "jpg", "gif", "jpeg", "PNG" };
+		final String[] file_Boolean = { "png", "jpg", "gif", "jpeg", "PNG", "JPG", "GIF" };
 
 		int len = file_Boolean.length;
 		for (int i = 0; i < len; i++) {
@@ -111,7 +111,7 @@ public class ImgUtils {
 		String imagePath = savePath + "\\" + reName;
 		System.out.println("이미지 경로 : " + imagePath);
 		BufferedImage image = null;
-		String[] types = { "png", "jpg", "gif", "jpeg", "PNG" };
+		String[] types = { "png", "jpg", "gif", "jpeg", "PNG", "JPG", "GIF" };
 		System.out.println("local reName : " + reName);
 
 		try {
