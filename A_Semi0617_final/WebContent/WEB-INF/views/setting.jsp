@@ -220,7 +220,7 @@
                      <span>회원님께서 팔로우 한 사람들과 회원님의 팔로워들을 모아보기 할 수 있습니다. </span>
                   </div>
 
-                  <a href="#">Learn More</a>
+                  <a onclick="" data-target="#followmodal" data-toggle="modal" style="cursor: pointer;">Learn More</a>
 
                </div>
             </div>
@@ -268,6 +268,77 @@
        <div class="modal-content">
        </div>
      </div>
+   </div>
+
+
+<!-- 박수연 modal -->
+   <div class="modal fade" id="followmodal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document" style="max-width: 100%; width: 500px; height:600px; display: table;">
+         <div class="modal-content">
+            <div class="modal-header">
+               <b><h2 class="modal-title" id="myModalLabel"></h2></b>
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-label="Close" style="float: right;">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <!-- <form method="post" id="checked" action="reportBoard"> -->
+               				 <div>
+	               				 <div style="width: 50%; float: left;">
+	               				 <b>나를 좋아요한 유저LIST</b><br>
+	               				 <hr style="color:black;">
+	               				 	 <c:forEach var="f" items="${follower}" varStatus="r">
+		                             <input type="hidden" class="user_number" name="user_number" value="${f.LIKER_USER}">  
+		                             <div>
+		                              <div style="float: left;">
+		                               <a href="friend?user_num=${f.LIKER_USER}">
+		                              <div style="position: absolute;">
+		                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicato${r.count}"></div>
+		                              </div>
+		                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG}"></a> 
+		                              </div>
+		                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME}</div><br>
+		                              </div>
+		                               <hr style="color: gray;">
+		                			  </c:forEach>
+	               				 </div>
+	               				 <div style="width: 50%; float: right;">
+	               				 <b>내가 좋아요한 유저LIST</b><br>
+	               				 <hr style="color: black;">
+	               				 	 <c:forEach var="f" items="${follow}" varStatus="r">
+		                             <input type="hidden" class="user_number2" name="user_number2" value="${f.LIKER_USER}">   
+		                             <div>
+		                              <div style="float: left;">
+		                               <a href="friend?user_num=${f.LIKER_USER}">
+		                              <div style="position: absolute;">
+		                              <div style="position: relative;"><img style="width: 10px;" src="images/offline.png" id="indicator_rc${r.count}"></div>
+		                              </div>
+		                              <img style=" width:50px; height:50px; border-radius:50%;display:block;" src="resources/upload/${f.USER_IMG}"></a> 
+		                              </div>
+		                              <div style="color: black; font-size: 20px;">&nbsp;${f.NICKNAME}</div><br>
+		                              </div>
+		                               <hr style="color: gray;">
+		                 			 </c:forEach>
+	               				 </div>
+               				 
+               				 </div>
+               				 
+               				 
+               				 
+               				 
+               				 
+               				 
+               				 
+               				 
+                            
+            </div>
+            <div class="modal-footer">
+               
+            </div>
+         </div>
+      </div>
    </div>
 
    <form action="friend" method="post" id="blfriend">
