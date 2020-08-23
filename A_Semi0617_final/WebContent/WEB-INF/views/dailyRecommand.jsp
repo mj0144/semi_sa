@@ -434,15 +434,13 @@
             data : "user1="+user1,
 
             success : function(res){
-<<<<<<< HEAD
                alert("채팅신청이 완료되었습니다.");
-=======
+
                if(res == 'success'){
                     alert("채팅신청이 완료되었습니다.");
                }else{
                   alert('채팅권이 모두 소진되어 채팅신청이 불가능합니다.')
                }
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
             },
             error : function(request,status,error){
                console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);

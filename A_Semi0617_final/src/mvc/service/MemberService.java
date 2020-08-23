@@ -34,15 +34,16 @@ public class MemberService {
 			session.setAttribute("user_img", vo.getUser_img());
 			session.setAttribute("user_id", vo.getUser_id());
 			session.setAttribute("nickname", vo.getNickname());
+			try {
+				//채팅개수
+				session.setAttribute("chatcount", payDao.chatCount(vo.getUser_num()));
+				//등급.
+				session.setAttribute("grade_name", payDao.gradeName(vo.getUser_num()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		try {
-			//채팅개수
-			session.setAttribute("chatcount", payDao.chatCount(vo.getUser_num()));
-			//등급.
-			session.setAttribute("grade_name", payDao.gradeName(vo.getUser_num()));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 		
 		return result;
