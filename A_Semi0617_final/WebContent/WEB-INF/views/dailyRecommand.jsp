@@ -64,6 +64,7 @@
                        <label for="box2-3">사주 + MBTI</label>
                     </div>
                     <input type="hidden" name = "num" value="${num }">
+                    <input type="hidden" id="nickname" value="${sessionScope.nickname }">
                   <div>
                   <input type="submit" value="실행" style="float: right;">
                   </div>
@@ -300,24 +301,6 @@
                        }
                      ]
                    },
-<<<<<<< HEAD
-                   options: {        	   
-                	   scale:{
-                           ticks: {
-                        	   beginAtZero: true,
-                               min: 0,
-                               max: 10
-                           }
-                	   },
-
-                       title: {
-                    	   display: true,
-                    	   text: '궁합 점수'
-                    	},
-                    	legend: {
-                    		display: false
-                    	}
-=======
                    options: {
                       scale:{
                            ticks: {
@@ -334,7 +317,6 @@
                       legend: {
                           display: false
                        }
->>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
                    }
                });
                  
@@ -446,26 +428,49 @@
             $('#modal').hide();
        };
        $('#chatOn').click(function(){
-          var user1 = ${sessionScope.user_num};
-         $.ajax({
-            type : "POST",
-            url : "chRequest",
-            data : "user1="+user1,
-
-            success : function(res){
-
-               if(res == 'success'){
-                    alert("채팅신청이 완료되었습니다.");
-               }else{
-                  alert('채팅권이 모두 소진되어 채팅신청이 불가능합니다.')
-               }
-            },
-            error : function(request,status,error){
-               console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-               alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-            }
-         });
-          document.location.href = document.location.href;
+    	  	var responeUser = $("#user_num").val(); //받는자
+			var link = "mypage"
+			var param = new Object();
+			var requestUser = ${sessionScope.user_num}; //보내는자
+			var nickname = $("#nickname").val();
+			console.log(nickname);
+			param.notifyLink = link;
+			param.notifycontent = nickname+"님이 회원님에게 채팅을 요청하였습니다.";
+			param.notifyuser  = responeUser; //받는자
+			param.notifyusernum = requestUser; //보내는자
+			var paramJson = JSON.stringify(param);
+			$.ajax({
+				type : "POST",
+				url : "notifyin",
+				contentType: "application/json; charset=utf-8",
+				dataType : "json",
+				data : paramJson,
+				success :  function(res){
+					if(res.result == "success"){
+						var notifyparam = '채팅|'+link+"|"+nickname;
+						notifyon(notifyparam);
+					}else{
+						alert("알람을 보내는도중 ajax 문제가 발생하였습니다.");
+					}
+				},
+				error:function(request,status,error){
+					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
+			var user1 = ${sessionScope.user_num};
+			$.ajax({
+				type : "POST",
+				url : "chRequest",
+				data : "user1="+user1,
+				success : function(res){
+					alert("상대방에게 채팅신청하였습니다. 상대방 수락시 채팅방이 개설됩니다.");
+					document.location.href = document.location.href;
+				},
+				error : function(request,status,error){
+					console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
        })
   
   
