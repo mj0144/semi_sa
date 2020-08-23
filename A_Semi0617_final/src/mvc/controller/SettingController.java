@@ -40,9 +40,10 @@ public class SettingController {
 	    List<HashMap<String, Object>> follow = profileDao.followlist(user_num);
 	    System.out.println(follow);
 		mav.addObject("user_num", user_num);
-		mav.setViewName("setting");
+		
 		mav.addObject("follower", follower);
 	    mav.addObject("follow", follow);
+	    mav.setViewName("setting");
 		return mav;
 	}
 	
