@@ -20,7 +20,7 @@ public class GradeService {
 	
 	//등급 체크
 	public List<String> gradeChk(int user_num) { 
-		return gradeDao.gradeChk(user_num);		
+		return gradeDao.gradeCodeChk(user_num);		
 	}
 	
 	
@@ -29,8 +29,13 @@ public class GradeService {
 		gradeDao.leftCountUpdate(user_num);
 		
 		//채팅권 세션 업데이트
-		int chatChk = gradeDao.ChatChk(user_num);
+		int chatChk = gradeDao.chatChk(user_num);
 		session.setAttribute("chatcount", chatChk);
+		
+		if(chatChk ==0) {
+			String grade_name = gradeDao.gradeChk(user_num);
+			session.setAttribute("grade_name", grade_name);
+		}
 		
 	}
 	

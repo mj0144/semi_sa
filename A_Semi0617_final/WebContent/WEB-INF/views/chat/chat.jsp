@@ -8,15 +8,12 @@
              	</div>
             <div class="received_msg">
                 <div class="received_withd_msg">
-                  <p>상대가보낸거</p>
-                  <span class="time_date_left"> 11:01 AM    |    June 9</span></div>
+                  <p>인연과 대화를 나눠보세요.<br>
+                  상대방에게 채팅 신청 후,<br>
+                     상대방이 요청에 승락하면 채팅방이 개설됩니다.
+                  </p>
+                  <span class="time_date_left"></span></div>
               </div>
-            </div>
-            <!-- 내가보낸거 -->
-            <div class="outgoing_msg">
-              <div class="sent_msg">
-                <p>내가보낸거</p>
-                <span class="time_date_right"> 11:01 AM    |    June 9</span> </div>
             </div>
         </div>
 <%@ include file="chatFooter.jsp"%>

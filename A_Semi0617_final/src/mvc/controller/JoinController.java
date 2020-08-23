@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mvc.api.APIExamFace;
 import mvc.dao.JoinDao;
@@ -37,7 +38,7 @@ public class JoinController {
 
    // 회원가입
    @RequestMapping(value = "/joinaction", method = RequestMethod.POST)
-   public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo) {
+   public String join(MemberVO vo, HttpServletRequest request, MultipartFile file, IdealVO ivo, RedirectAttributes ra) {
 
       vo = joinService.yunYeon(vo); // 생년월일 가공.
       String ilju = joinDao.ilju(vo);
@@ -54,12 +55,16 @@ public class JoinController {
          joinService.join(vo, ivo); // 회원정보,이상형정보 저장.
          joinService.gradeInit(vo); //등급 초기화
          lookLikeService.insertLooklike(images, vo, ivo);
-         
+         //ra.addAttribute("msg", "가입이 완료되었습니다");
+         ra.addFlashAttribute("msg", "가입이 완료되었습니다");
+
+
          
       } catch (Exception e) {
          e.printStackTrace();
       }
-      return "login";
+     
+      return "redirect:/";
    }
 
    //사진 사람인지 구별

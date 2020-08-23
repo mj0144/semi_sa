@@ -413,6 +413,7 @@
       function insertReplySubmit() {
          var content = $("#content").val();
          var notifycontent = $("#notifyNickname").val();
+         console.log("이거뭐지?"+notifycontent);
          var boardNum = '${param.board_num}';
          var param = new Object();
          if (content == '') {
@@ -438,7 +439,6 @@
             success : function(res) {
                console.log(res);
                if (res.result == "success") {
-                  alert("정상적으로 댓글이 입력되었습니다.");
                   //댓글 알람 소켓으로 전송
                   link = '댓글|' + notifyLink + '|' + notifycontent;
                   notifyon(link);
@@ -490,9 +490,8 @@
             success : function(res) {
                console.log(res);
                if (res.result == "success") {
-                  alert("정상적으로 댓글이 입력되었습니다.");
-                  link = '답글|' + notifyLink;
-                  notifyon(link);
+            	   link = '대댓글|' + notifyLink + '|' + notifycontent;
+                   notifyon(link);
                   document.location.href = document.location.href;
                } else {
                   alert("서버와의 통신중에 오류가 발생하였습니다.");

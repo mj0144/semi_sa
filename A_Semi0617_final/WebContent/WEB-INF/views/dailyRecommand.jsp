@@ -84,7 +84,11 @@
                               <div class="single-team">
                                   <div style="height:395px">
                                 <div class="col-md-12 col-sm-12" style="margin-top:10%; margin-left: 0 auto; margin-right: 0 auto;">
-                                   <canvas id="radar-chart" width="300px" height="200px"></canvas>
+
+                                   <h3 class="" style="color : #A50002; ">나와의 점수</h3>
+                                   <div class="" style="margin-left: 30px; margin-top: -20px">
+                                   <canvas id="radar-chart" width="800" height="600"></canvas>
+                                   </div>
                                  <!--차트 url   https://www.chartjs.org/docs/latest/charts/radar.html -->
                                 </div>
 
@@ -296,6 +300,7 @@
                        }
                      ]
                    },
+<<<<<<< HEAD
                    options: {        	   
                 	   scale:{
                            ticks: {
@@ -312,6 +317,24 @@
                     	legend: {
                     		display: false
                     	}
+=======
+                   options: {
+                      scale:{
+                           ticks: {
+                              beginAtZero: true,
+                               min: 0,
+                               max: 10
+                           }
+                      },
+                     title: {
+                        
+                       display: true,
+                       text: ''
+                     },
+                      legend: {
+                          display: false
+                       }
+>>>>>>> branch 'master' of https://github.com/mj0144/semi_sa.git
                    }
                });
                  
@@ -329,7 +352,7 @@
    </script>
    
    <script>   
-      //하트 눌렀을 때, 하트 on/off 모양 변화      
+      //하트 눌렀을 때, 하트 on/off 모양 변화
       $(document).on('click', '.heart', function(event) { 
              var like = 'false';
               var user_num = ${sessionScope.user_num};
@@ -415,7 +438,7 @@
          $("#profile").submit();
       };
       
-      //채팅.
+    //채팅.
       function chatting(){
           $('#modal').show();
       }
@@ -430,7 +453,12 @@
             data : "user1="+user1,
 
             success : function(res){
-               alert("채팅신청이 완료되었습니다.");
+
+               if(res == 'success'){
+                    alert("채팅신청이 완료되었습니다.");
+               }else{
+                  alert('채팅권이 모두 소진되어 채팅신청이 불가능합니다.')
+               }
             },
             error : function(request,status,error){
                console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
@@ -439,6 +467,7 @@
          });
           document.location.href = document.location.href;
        })
+  
   
       
    </script>

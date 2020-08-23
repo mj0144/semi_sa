@@ -84,15 +84,26 @@
 	</bean>
 	<!-- 웹소켓 API설정 -->
 	<websocket:handlers allowed-origins="*">
-		<websocket:mapping handler="echoHandler"
-			path="/echo" />
+		<websocket:mapping handler="chatEchohandler"
+			path="/chatEcho" />
 		<websocket:handshake-interceptors>
 			<bean
 				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
 		</websocket:handshake-interceptors>
 		<websocket:sockjs websocket-enabled="true" />
 	</websocket:handlers>
-	<bean id="echoHandler" class="mvc.handler.EchoHandler" />
+	<!-- 여기는 수연이 소켓 -->
+	<websocket:handlers allowed-origins="*">
+		<websocket:mapping handler="userEchoHandler"
+			path="/userEcho" />
+		<websocket:handshake-interceptors>
+			<bean
+				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+		<websocket:sockjs websocket-enabled="true" />
+	</websocket:handlers>
+	<bean id="chatEchohandler" class="mvc.handler.ChatEchoHandler" />
+	<bean id="userEchoHandler" class="mvc.handler.UserSocketHandler" />
 
 	<bean id="email" class="mvc.email.Email">
 	</bean>

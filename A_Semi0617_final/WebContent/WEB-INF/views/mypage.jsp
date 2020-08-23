@@ -239,12 +239,13 @@
 						var map = res[i];
 						console.log(map);
 						var	printHTML = '<div class="blog-entry ftco-animate d-md-flex fadeInUp ftco-animated" style="float: left;">';
+						printHTML += '<input type="hidden" id="reqChatUser" value='+map["USER_NUM"]+'>'
 						printHTML += '<img id="sajutwo" src="resources/upload/'+map["USER_IMG"]+'" alt="iljuanimal" style="margin-top: 10px;" class="col-md-4">';
 						printHTML += '<span class="col-md-6">';
 						printHTML += '<h4>'+map["NICKNAME"]+'</h4>';
 						printHTML += '</span>';
-						printHTML += '<button class="border-0 btn-transition btn btn-outline-success col-md-1" onclick="successChat"> <i class="fa fa-check"></i></button>';
-						printHTML += '<button class="border-0 btn-transition btn btn-outline-danger col-md-1" onclick="deleteChat"> <i class="fa fa-check"></i> </button>'; 
+						printHTML += '<button class="border-0 btn-transition btn btn-outline-success col-md-1" onclick="successChat()"> <i class="fa fa-check"></i></button>';
+						printHTML += '<button class="border-0 btn-transition btn btn-outline-danger col-md-1" onclick="deleteChat()"> <i class="fa fa-check"></i> </button>'; 
 						printHTML += '</div>';
 						$("#chatRequestList").append(printHTML);
 					}
@@ -254,8 +255,28 @@
 				}
 			});
 		});
-		function () {
-			
+		function successChat() {
+			var sessionId = ${sessionScope.user_num};
+			console.log("수락 펑션  세션아이디 : " + sessionId);
+			var param = new Object;
+			param.user2 = sessionId;
+			param.user1 = $("#reqChatUser").val();
+			var paramJson = JSON.stringify(param);
+			$.ajax({
+				url : "updateRoom",
+				data : paramJson,
+				contentType : "application/json; charset=utf-8",
+				type : "POST",
+				success : function (res) {
+					if(res == "success"){
+						alert("상대방과 채팅을 진행할수있습니다.");
+						doument.location.href = document.location.href;
+					}
+				},
+				error : function (request,status,error) {
+					console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				}
+			});
 		}
 	</script>
 <script src="js/jquery.min.js"></script>

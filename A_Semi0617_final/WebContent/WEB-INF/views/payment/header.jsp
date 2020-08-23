@@ -13,7 +13,7 @@
 
    var messageData = null;
    
-   sockjs= new SockJS("<c:url value="/echo"/>");
+   sockjs= new SockJS("<c:url value="/userEcho"/>");
    sockjs.onopen=function(event){
       console.log('유저리스트 소켓열림');
       sendUsernum();
