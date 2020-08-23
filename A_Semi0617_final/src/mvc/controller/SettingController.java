@@ -1,5 +1,6 @@
 package mvc.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import mvc.dao.ProfileDao;
 import mvc.service.SettingService;
 import mvc.vo.PaymentVO;
 
@@ -22,11 +24,25 @@ public class SettingController {
 	@Autowired
 	private SettingService settingService;
 	
+	@Autowired
+	   private ProfileDao profileDao;
 
 	@RequestMapping(value = "/setting")
 	public ModelAndView settingpage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
+		int user_num= (int) session.getAttribute("user_num");
+		//follower list
+	    List<HashMap<String, Object>> follower = profileDao.followerlist(user_num);
+	    System.out.println(follower);
+	      
+	    //follow list      
+	    List<HashMap<String, Object>> follow = profileDao.followlist(user_num);
+	    System.out.println(follow);
+		mav.addObject("user_num", user_num);
 		mav.setViewName("setting");
+		mav.addObject("follower", follower);
+	    mav.addObject("follow", follow);
 		return mav;
 	}
 	
