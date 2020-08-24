@@ -80,9 +80,9 @@ public class FriendController {
 		mav.addObject("board_writer", user_num); 
 		mav.addObject("heartchk", heartchk);
 		mav.addObject("blockchk", blockchk);
-		 mav.addObject("follower", follower);
-	      mav.addObject("follow", follow);
-		
+		mav.addObject("follower", follower);
+	    mav.addObject("follow", follow);
+		mav.addObject("user_num", (int) session.getAttribute("user_num"));
 
 		return mav;
 	}

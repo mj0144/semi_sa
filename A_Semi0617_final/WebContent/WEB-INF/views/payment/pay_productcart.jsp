@@ -158,11 +158,11 @@
 					//성공시 이동할 페이지
 					console.log(msg);
 					//location.href='pay';
-				} else {
-					msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
-					document.location.href="/pay"; //alert창 확인 후 이동할 url 설정   
-				}
+				}  else {
+		               msg = '결제에 실패하였습니다.';
+		               msg += '에러내용 : ' + rsp.error_msg;
+		               document.location.href="/AFinal/pay"; //alert창 확인 후 이동할 url 설정   
+		            }
 			});
 
 		});

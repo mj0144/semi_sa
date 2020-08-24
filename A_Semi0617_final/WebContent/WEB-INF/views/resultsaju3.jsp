@@ -31,9 +31,8 @@
 		var result_img2 = '${minus.result_img}'
 		
 		$.ajax({
-		    url : "http://192.168.0.172:8000/dpl/result3?result_img1="+result_img1 +'&result_img2='+result_img2,
+		    url : "http://192.168.0.9:8000/dpl/result3?result_img1="+result_img1 +'&result_img2='+result_img2,
 		    success : function(data){
-		    	alert('¼º°ø')
 		    	data = data.replace(/&#x27;/gi, '"').replace(/&#x27;/gi, '"')
 		    	data = JSON.parse(data)
 		    	console.log(data[0].result1)

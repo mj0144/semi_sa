@@ -36,30 +36,19 @@
                   	           <div>
 
 											<!-- 블락 추가 구현 -->                				            
-                				            <c:set var="blockox" value="false"/>
-											<c:forEach var="g" items="${set.blist }">
-												<c:choose>
-													<c:when test="${g == profile.USER_NUM}">
-														<c:set var="blockox" value="true"/>
-													</c:when>													
-												</c:choose>
-											</c:forEach>
 											 		
 											<c:choose>
-												<c:when test="${blockox == 'true'}">
-													<img id="${profile.USER_NUM}" class="blockox" style="width:15%; cursor: pointer;" 
+												<c:when test="${blockchk == 1}">
+													<img id="${user_num}" class="blockox" style="width:15%; cursor: pointer;" 
 													src="resources/img/btn/like.png" data-toggle="tooltip" data-placement="top" title="추천 제외 취소"/>
 												</c:when>
 												<c:otherwise>
-													<img id="${profile.USER_NUM}" class="blockox" style="width: 15%; cursor:pointer;" 
+													<img id="${user_num}" class="blockox" style="width: 15%; cursor:pointer;" 
 													src="resources/img/btn/dislike.png" data-toggle="tooltip" data-placement="top" title="추천에서 제외"/>												
 												</c:otherwise>
 											</c:choose>
                 				            <!-- 블락 추가 구현 끝 -->
                 				            
-                				            <!-- 프로필 이동 구현 -->
-                				            <img src="resources/img/btn/profile.png" style="width:15%; cursor: pointer;" onclick="profile()"
-                				            data-toggle="tooltip" data-placement="top" title="상세 프로필 보기">
 											<!-- 채팅 신청 -->
                 				            <input type="hidden" id="nickname" value="${sessionScope.nickname }">
                 				            <input type="hidden" id="userNum" value="${board_writer}">
@@ -67,21 +56,13 @@
                 				            data-toggle="tooltip" data-placement="top" title="채팅하기">
 
 			        						<!-- 좋아요 버튼 구현 -->
-			        						<c:set var="hearton" value="false"/>
-											<c:forEach var="g" items="${heart }">
-												<c:choose>
-													<c:when test="${g.liked_user == profile.USER_NUM}">
-														<c:set var="hearton" value="true"/>
-													</c:when>													
-												</c:choose>
-											</c:forEach>
 											<c:choose>
-												<c:when test="${hearton == 'true'}">
-													<img id="${profile.USER_NUM}" class="heart" style="width: 15%; cursor:pointer;" 
+												<c:when test="${heartchk == 1}">
+													<img id="${user_num}" class="heart" style="width: 15%; cursor:pointer;" 
 													src="resources/img/btn/hearton.png" data-toggle="tooltip" data-placement="top" title="좋아요 취소"/>
 												</c:when>
 												<c:otherwise>
-													<img id="${profile.USER_NUM}" class="heart" style="width: 15%; cursor:pointer;" 
+													<img id="${user_num}" class="heart" style="width: 15%; cursor:pointer;" 
 													src="resources/img/btn/heartoff.png" data-toggle="tooltip" data-placement="top" title="좋아요"/>												
 												</c:otherwise>
 											</c:choose>
@@ -366,11 +347,29 @@
 					block='false';
 			}
 			
+			console.log(block)
+			
 			var pm = {"block" : block, "blocked_user" : $('#user_num').val()};
 			
 			blocked(pm);
 	
-		});
+		  });
+		
+		
+	    function blocked(pm){
+               
+	          $.ajax({
+	                url : "blockox",
+	                type : "post",
+	                data : pm,
+	                success : function(data){
+	                },
+	                error : function(request, error){
+	                   console.log("code:"+request.status+"\n"+"message:"+request.responsetext+"\n"+"error:"+error);
+	                }
+	             });
+	    }
+		
 		function chatrequest() {
 			var responeUser = $("#userNum").val(); //받는자
 			var link = "mypage"
@@ -407,11 +406,10 @@
 				url : "chRequest",
 				data : "user1="+user1,
 				success : function(res){
-					alert("상대방에게 채팅신청하였습니다. 상대방 수락시 채팅방이 개설됩니다.");
+					alert("상대방에게 채팅신청하였습니다. 상대방 수락시 채팅방이 개설됩니다.");	
 				},
 				error : function(request,status,error){
 					console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
-					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 				}
 			});
 		}

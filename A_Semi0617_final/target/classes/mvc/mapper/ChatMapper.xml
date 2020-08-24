@@ -97,16 +97,17 @@ and
 	
 	<select id="responeChatList" parameterType="int" resultType="HashMap">
 select 
-user_num,
-user_img,
-nickname
+	a.user_num,
+	a.user_img,
+	a.nickname,
+	b.chatroom
 from 
-user_info
-where 
-user_num
+	user_info a, chatroom b
+where a.user_num= b.user1 and
+	user_num
 in (select distinct n.notifyusernum from notify n, chatroom c where n.notifyusernum=c.user1 and n.notifyuser=#{usernum} and c.user2=0)
 	</select>
 	<update id="reqChatOK" parameterType="HashMap">
-update chatroom SET user2 = #{user2} where user1 = #{user1}
+update chatroom SET user2 = #{user2} where user1 = #{user1} and chatroom = #{chatroom}
 	</update>
 </mapper>	

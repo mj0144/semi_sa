@@ -30,8 +30,8 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 		String url = request.getRequestURI(); // 요청된 url
 
 		// response 인코딩.
-		response.setContentType("text/html;charset=EUC_KR");
-		String msg = URLEncoder.encode("결제가 필요합니다", "EUC-KR");
+		response.setContentType("text/html;charset=UTF-8");
+		String msg = URLEncoder.encode("결제가 필요합니다", "UTF-8");
 
 		HttpSession session = request.getSession();
 		int user_num = (int) session.getAttribute("user_num");
@@ -100,11 +100,10 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 
 	}
 
-	// 들어온 요청의 header에 x-requested-with이 있는지 확인.
-	private boolean isAjaxRequest(HttpServletRequest req) {
-		return "XMLHttpRequest".equals(req.getHeader("x-requested-with"));
-	}
-
+	   // 들어온 요청의 header에 x-requested-with이 있는지 확인.
+	   private boolean isAjaxRequest(HttpServletRequest req) {
+	      return "chRequest".equals(req.getHeader("chRequest"));
+	   }
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {

@@ -45,7 +45,7 @@ $(function() {
 $(document).ready(function() {
 	var result_img = ${ilju.result_img}
 	$.ajax({
-	    url : "http://192.168.0.172:8000/dpl/result1?result_img="+result_img+"&sex=f",
+	    url : "http://192.168.0.9:8000/dpl/result1?result_img="+result_img+"&sex=f",
 	    success : function(data){
 	        data = data.replace(/&#x27;/gi, '"').replace(/&#x27;/gi, '"')
 	        data = JSON.parse(data)

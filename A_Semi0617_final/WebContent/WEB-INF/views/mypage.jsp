@@ -239,7 +239,8 @@
 						var map = res[i];
 						console.log(map);
 						var	printHTML = '<div class="blog-entry ftco-animate d-md-flex fadeInUp ftco-animated" style="float: left;">';
-						printHTML += '<input type="hidden" id="reqChatUser" value='+map["USER_NUM"]+'>'
+						printHTML += '<input type="hidden" id="reqChatUser" value='+map["USER_NUM"]+'>';
+						printHTML += '<input type="hidden" id="reqChatNum" value='+map["CHATROOM"]+'>';
 						printHTML += '<img id="sajutwo" src="resources/upload/'+map["USER_IMG"]+'" alt="iljuanimal" style="margin-top: 10px;" class="col-md-4">';
 						printHTML += '<span class="col-md-6">';
 						printHTML += '<h4>'+map["NICKNAME"]+'</h4>';
@@ -261,6 +262,7 @@
 			var param = new Object;
 			param.user2 = sessionId;
 			param.user1 = $("#reqChatUser").val();
+			param.chatroom = $("#reqChatNum").val();
 			var paramJson = JSON.stringify(param);
 			$.ajax({
 				url : "updateRoom",

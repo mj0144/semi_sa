@@ -94,6 +94,7 @@ public class ChatControllor {
 	@RequestMapping(value = "responeSelect", method = RequestMethod.POST )
 	public HashMap<String, Object> responeSelect(@RequestBody String param) throws Exception{
 		String subStr = param.substring(6);
+		System.out.println("subStr"+subStr);
 		int roomNum = Integer.parseInt(subStr);
 		HashMap<String, Object> result = chatservice.responeSelect(roomNum);
 		String sqldate = result.get("CHATDATE").toString();
@@ -107,6 +108,7 @@ public class ChatControllor {
 	@ResponseBody
 	@RequestMapping(value = "/chRequest", method = RequestMethod.POST)
 	public String roomInsert(@RequestBody String user1, HttpSession session) throws Exception{
+		System.out.println("채팅방신청완료");
 		String result = "success";
 		String substr = user1.substring(6);
 		int user = Integer.parseInt(substr);
