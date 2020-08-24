@@ -343,7 +343,7 @@
   	DELETE FROM recprofile
   </delete>
   
-
+  <!-- 차트 뽑기 -->
   <select id="score_chart" resultType="hashMap" parameterType="hashMap">
   select h.height_score, b.body_score, a.age_score
   

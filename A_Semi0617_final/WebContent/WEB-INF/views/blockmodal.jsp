@@ -1,15 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-
-<!-- ÀÌµ¿Çö -->
+<!-- ì´ë™í˜„ -->
 
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<meta name="viewport" content="width-device-width, inital-scale=1">
+<meta name="viewport" content="width-device-width, inital-scale=1" charset="EUC-KR">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -25,7 +24,7 @@
 </head>
 <body>
 <div class="modal-header">
-<h5 class="modal-title" id="modalheader">Â÷´ÜµÈ À¯Àú ¸ñ·Ï</h5>
+<h5 class="modal-title" id="modalheader">ì°¨ë‹¨ëœ ìœ ì € ëª©ë¡</h5>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
@@ -63,16 +62,16 @@
 			
 			var block = 'false';
 			
-			var blockon = "resources/img/btn/dislike.png"; //ºí¶ô ÇÏ±â
-			var blockoff = "resources/img/btn/like.png"; //ºí¶ô ÇØÁ¦
+			var blockon = "resources/img/btn/dislike.png"; //ë¸”ë½ í•˜ê¸°
+			var blockoff = "resources/img/btn/like.png"; //ë¸”ë½ í•´ì œ
 			
 			var user_num = ${sessionScope.user_num};
 			
 			if ($(this).attr("src") === blockon) {
-					$(this).attr("src", "resources/img/btn/like.png"); //ºí¶ôÃë¼Ò
+					$(this).attr("src", "resources/img/btn/like.png"); //ë¸”ë½ì·¨ì†Œ
 					block='true';
 			} else if($(this).attr("src") === blockoff){
-					$(this).attr("src", "resources/img/btn/dislike.png"); //ºí¶ô
+					$(this).attr("src", "resources/img/btn/dislike.png"); //ë¸”ë½
 					block='false';
 			}
 			

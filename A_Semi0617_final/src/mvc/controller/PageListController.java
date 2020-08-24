@@ -2,6 +2,7 @@ package mvc.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URLDecoder;
 import java.security.KeyStore.Entry;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -150,7 +151,7 @@ public class PageListController {
 		model.addAttribute("paymember", paymember);
 		model.addAttribute("heart", listheart);
 		model.addAttribute("profile", profile);
-		model.addAttribute("ilju", ilju);
+		model.addAttribute("ilju",ilju);
 		model.addAttribute("mbti", mbti); 
 		model.addAttribute("over90", over90);
 		model.addAttribute("set", map);

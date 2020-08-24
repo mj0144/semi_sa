@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- ÀÌµ¿Çö -->
+<!-- ì´ë™í˜„ -->
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<meta name="viewport" content="width-device-width, inital-scale=1">
+<meta name="viewport" content="width-device-width, inital-scale=1" charset="EUC-KR">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -35,7 +35,7 @@
         <div class="container">
         	<li style="text-align: center; list-style: none;" >${result.RESULT_BASIC }</li>
         	<br>
-        	<h5 style="text-align: center;">À¯¸íÀÎ Áß ³ª¿Í Àß ¸Â´Â ÀÏÁÖ µ¿¹°À» °¡Áø »ç¶÷</h5>
+        	<h5 style="text-align: center;">ìœ ëª…ì¸ ì¤‘ ë‚˜ì™€ ìž˜ ë§žëŠ” ì¼ì£¼ ë™ë¬¼ì„ ê°€ì§„ ì‚¬ëžŒ</h5>
         	<li style="text-align: center; list-style: none;">${result.RESULT_INFLU }</li>
         </div>
     </div>
