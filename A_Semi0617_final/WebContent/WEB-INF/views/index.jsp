@@ -71,11 +71,11 @@ span {
 							<div class="couple" style="margin-left: 20px;"">
 
 								<div
-									style="font-size: 16px; line-height: 20px; margin-left: 100px;">실시간
+									style="font-size: 16px; line-height: 20px; margin-left: 50px; text-align:right;">실시간
 									접속자</div>
 								<div style="font-size: 40px; line-height: 44px;">
 									<span style="font-weight: 700;"> <input
-										style="font-weight: 700; color: gray;" type="text" id="size"
+										style="font-weight: 700; color: gray; width: 70px; text-align:right;" type="text" id="size"
 										name="size" value=""></span>명
 								</div>
 							</div>
