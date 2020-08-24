@@ -343,9 +343,12 @@
 				type : "POST",
 				url : "chRequest",
 				data : "user1="+user1,
+	            beforeSend : function(request){
+	                request.setRequestHeader("chRequest", "chRequest");
+	            },
 				success : function(res){
 					alert("상대방에게 채팅신청하였습니다. 상대방 수락시 채팅방이 개설됩니다.");
-					document.location.href = document.location.href;
+					//document.location.href = document.location.href;
 				},
 				error : function(request,status,error){
 					console.log("code = "+ request.status + " message = " + request.responseText + " error = " + error);
