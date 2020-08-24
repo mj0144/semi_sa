@@ -42,10 +42,11 @@
         $('#modal').hide();
    };
 		function paylist(){
-			/* $('#paylist').remove(); */
+			$("#paylist").empty();
 			var user_num = ${sessionScope.user_num}
 			var list;
 			$.ajax({
+				//$("#paylist").empty();
 				data : {'user_num':user_num},
 				url : 'payListModal',
 				type: 'GET',
@@ -228,6 +229,8 @@
          </div>
       </div>
    </div>
+   
+   <!-- 결제확인 modal -->
    <div class="modal" tabindex="-1" role="dialog" id="modal">
 		  <div class="modal-dialog modal-lg" role="document">
 		    <div class="modal-content">

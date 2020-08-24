@@ -38,7 +38,6 @@ public class FriendController {
 	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { 
 		
 		ModelAndView mav = new ModelAndView("friend");
-		
 		IljuVO ilvo = friendDao.friendprofile(user_num); 
 		MemberVO vo = ilvo.getMem().get(0);
 
