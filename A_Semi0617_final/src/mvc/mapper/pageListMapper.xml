@@ -4,13 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
   <mapper namespace="pagelist">
-	<!-- 이동현 -->  
+   <!-- 이동현 -->  
  
-  <!-- 새로운 랜덤 추천인 출력 -->
-  <select id="recProfile" resultType="hashMap" parameterType="hashMap">
-  select * from (select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro,
-  h.height_num, b.body_num, a.age_num
-  
+  <!-- 추천인 사주 점수 뽑기 -->
+  <select id="recScore" resultType="hashMap" parameterType="hashMap">
+  select u.user_num, h.height_num, b.body_num, a.age_num
   <choose>
   <when test="samb == 'saju'">
   , (s.sky_score + d.land_score)*7 f_score
@@ -22,12 +20,9 @@
   , (s.sky_score + d.land_score + m.score*2)*7/2 f_score
   </otherwise>
   </choose>
-  
   from user_info u 
-  
   <if test="samb != 'mbti'">
   ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
-  
   <choose>
   <when test='sex2 == "f"'>
   where substr(u.ilju,1,1) = ds.msky 
@@ -38,11 +33,8 @@
   and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
   </otherwise>
   </choose>
-  
   ) s, 
-  
   (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
-  
   <choose>
   <when test='sex2 == "f"'>
   where substr(u.ilju,2,1) = dl.mland  
@@ -53,25 +45,20 @@
   and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
   </otherwise>
   </choose>
-  
   ) d
   </if>
-  
   <if test="samb != 'saju'">
   ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
   where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
   </if>
-  
   , (select u.user_num, round(10- abs(i.ideal_height-u.user_height)*10/a.max_height, 1) height_num  
   from user_info u, (select ideal_height from ideal_type where user_num = #{user_num}) i,
   (select max(abs(i.ideal_height-u.user_height)) max_height from user_info u, 
   (select ideal_height from ideal_type where user_num = #{user_num}) i) a) h,
-
   (select u.user_num, round(10- abs(i.ideal_body-to_number(u.user_body))*10/a.max_body, 1) body_num 
   from user_info u, (select to_number(ideal_body) ideal_body from ideal_type where user_num = #{user_num}) i, 
   (select max(abs(i.ideal_body-to_number(u.user_body))) max_body from user_info u, 
   (select to_number(ideal_body) ideal_body from ideal_type where user_num = #{user_num}) i) a) b,
-
   (select u.user_num, round(10- abs(i.ideal_age-u.user_age)*10/a.max_age, 1) age_num 
   from (select u.user_num, (t.today - to_number(substr(birth,1,4)) +1) user_age from user_info u, 
   (select to_number(to_char(sysdate,'YYYY')) today from dual) t) u, 
@@ -80,7 +67,6 @@
   from (select u.user_num, (t.today - to_number(substr(birth,1,4)) +1) user_age 
   from user_info u, (select to_number(to_char(sysdate,'YYYY')) today from dual) t) u, 
   (select ideal_age from ideal_type where user_num = #{user_num}) i) a) a
-  
   <choose>
   <when test="samb == 'mbti'">
   where u.user_num = m.user_num 
@@ -95,114 +81,123 @@
   and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num
   </otherwise>
   </choose>
+  and u.user_num = #{rec_num}   
+  </select>
   
-  <if test="sex != null">
-  and sex = #{sex}
-  </if>
-  
+  <!-- 새로운 사람 추천 -->
+  <select id="recProfile" resultType="hashMap" parameterType="hashMap">
+   select * from (select * from user_info where sex = #{sex2} and user_num != #{user_num} 
+   
   <if test="blist != null">
   <foreach collection="blist" item="e">
    and u.user_num != ${e}
   </foreach>
   </if>
-   
-  order by DBMS_RANDOM.VALUE) WHERE ROWNUM = 1
   
+  <if test="sex != null">
+  and sex = #{sex}
+  </if>
+   
+   order by DBMS_RANDOM.VALUE) WHERE ROWNUM = 1
   </select>
-   
-   
+  
   <!-- 이전에 추천받았던 인물 출력 -->
   <select id="reProfile" resultType="hashMap" parameterType="hashMap">
-  select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro, h.height_num, b.body_num, a.age_num
-  
-  <choose>
-  <when test="samb == 'saju'">
-  , (s.sky_score + d.land_score)*7 f_score
-  </when>
-  <when test="samb == 'mbti'">
-  , m.score*14 f_score
-  </when>
-  <otherwise>
-  , (s.sky_score + d.land_score + m.score*2)*7/2 f_score
-  </otherwise>
-  </choose>
-  
-  from user_info u 
-  
-  <if test="samb != 'mbti'">
-  ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds 
-  
-  <choose>
-  <when test='sex2 == "f"'>
-  where substr(u.ilju,1,1) = ds.msky 
-  and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})
-  </when>
-  <otherwise>
-  where substr(u.ilju,1,1) = ds.wsky 
-  and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})  
-  </otherwise>
-  </choose>
-  
-  ) s, 
-  
-  (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl 
-  
-  <choose>
-  <when test='sex2 == "f"'>
-  where substr(u.ilju,2,1) = dl.mland  
-  and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
-  </when>
-  <otherwise>
-  where substr(u.ilju,2,1) = dl.wland  
-  and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num})
-  </otherwise>
-  </choose>
-  
-  ) d
-  </if>
-  
-  <if test="samb != 'saju'">
-  ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m 
-  where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m
-  </if>
-  
-  , (select u.user_num, round(10- abs(i.ideal_height-u.user_height)*10/a.max_height, 1) height_num  
-  from user_info u, (select ideal_height from ideal_type where user_num = #{user_num}) i,
-  (select max(abs(i.ideal_height-u.user_height)) max_height from user_info u, 
-  (select ideal_height from ideal_type where user_num = #{user_num}) i) a) h,
-
-  (select u.user_num, round(10- abs(i.ideal_body-to_number(u.user_body))*10/a.max_body, 1) body_num 
-  from user_info u, (select to_number(ideal_body) ideal_body from ideal_type where user_num = #{user_num}) i, 
-  (select max(abs(i.ideal_body-to_number(u.user_body))) max_body from user_info u, 
-  (select to_number(ideal_body) ideal_body from ideal_type where user_num = #{user_num}) i) a) b,
-
-  (select u.user_num, round(10- abs(i.ideal_age-u.user_age)*10/a.max_age, 1) age_num 
-  from (select u.user_num, (t.today - to_number(substr(birth,1,4)) +1) user_age from user_info u, 
-  (select to_number(to_char(sysdate,'YYYY')) today from dual) t) u, 
-  (select ideal_age from ideal_type where user_num = #{user_num}) i, 
-  (select max(abs(i.ideal_age-u.user_age)) max_age 
-  from (select u.user_num, (t.today - to_number(substr(birth,1,4)) +1) user_age 
-  from user_info u, (select to_number(to_char(sysdate,'YYYY')) today from dual) t) u, 
-  (select ideal_age from ideal_type where user_num = #{user_num}) i) a) a
-  
-  <choose>
-  <when test="samb == 'mbti'">
-  where u.user_num = m.user_num 
-  and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num
-  </when>
-  <when test="samb == 'saju'">
-  where u.user_num=d.user_num and u.user_num=s.user_num 
-  and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num 
-  </when>
-  <otherwise>
-  where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num 
-  and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num
-  </otherwise>
-  </choose>
-
-  and u.user_num = (select rec_num from recprofile where user_num = #{user_num} and num = #{num})
-  
+  select * from user_info where user_num = (select rec_num from recprofile where user_num = #{user_num} and num = #{num})
   </select>
+   
+  <!-- 이전에 추천받았던 인물 출력 -->
+<!--   <select id="reProfile" resultType="hashMap" parameterType="hashMap"> -->
+<!--   select u.user_num, u.nickname, u.sex, u.user_img, u.birth, u.user_intro, h.height_num, b.body_num, a.age_num -->
+  
+<!--   <choose> -->
+<!--   <when test="samb == 'saju'"> -->
+<!--   , (s.sky_score + d.land_score)*7 f_score -->
+<!--   </when> -->
+<!--   <when test="samb == 'mbti'"> -->
+<!--   , m.score*14 f_score -->
+<!--   </when> -->
+<!--   <otherwise> -->
+<!--   , (s.sky_score + d.land_score + m.score*2)*7/2 f_score -->
+<!--   </otherwise> -->
+<!--   </choose> -->
+  
+<!--   from user_info u  -->
+  
+<!--   <if test="samb != 'mbti'"> -->
+<!--   ,(select u.user_num, substr(u.ilju,1,1) sky, ds.sky_score from user_info u, daysky_score ds  -->
+  
+<!--   <choose> -->
+<!--   <when test='sex2 == "f"'> -->
+<!--   where substr(u.ilju,1,1) = ds.msky  -->
+<!--   and ds.wsky=(select substr(ilju,1,1) from user_info where user_num = #{user_num}) -->
+<!--   </when> -->
+<!--   <otherwise> -->
+<!--   where substr(u.ilju,1,1) = ds.wsky  -->
+<!--   and ds.msky=(select substr(ilju,1,1) from user_info where user_num = #{user_num})   -->
+<!--   </otherwise> -->
+<!--   </choose> -->
+  
+<!--   ) s,  -->
+  
+<!--   (select u.user_num, substr(u.ilju,2,1) land, dl.land_score from user_info u, dayland_score dl  -->
+  
+<!--   <choose> -->
+<!--   <when test='sex2 == "f"'> -->
+<!--   where substr(u.ilju,2,1) = dl.mland   -->
+<!--   and dl.wland=(select substr(ilju,2,1) from user_info where user_num = #{user_num}) -->
+<!--   </when> -->
+<!--   <otherwise> -->
+<!--   where substr(u.ilju,2,1) = dl.wland   -->
+<!--   and dl.mland=(select substr(ilju,2,1) from user_info where user_num = #{user_num}) -->
+<!--   </otherwise> -->
+<!--   </choose> -->
+  
+<!--   ) d -->
+<!--   </if> -->
+  
+<!--   <if test="samb != 'saju'"> -->
+<!--   ,(select u.user_num, m.youmbti, m.score, m.mymbti from user_info u, mbtiscore m  -->
+<!--   where u.user_mbti=m.youmbti and m.mymbti = (select user_mbti from user_info where user_num = #{user_num})) m -->
+<!--   </if> -->
+  
+<!--   , (select u.user_num, round(10- abs(i.ideal_height-u.user_height)*10/a.max_height, 1) height_num   -->
+<!--   from user_info u, (select ideal_height from ideal_type where user_num = #{user_num}) i, -->
+<!--   (select max(abs(i.ideal_height-u.user_height)) max_height from user_info u,  -->
+<!--   (select ideal_height from ideal_type where user_num = #{user_num}) i) a) h, -->
+
+<!--   (select u.user_num, round(10- abs(i.ideal_body-to_number(u.user_body))*10/a.max_body, 1) body_num  -->
+<!--   from user_info u, (select to_number(ideal_body) ideal_body from ideal_type where user_num = #{user_num}) i,  -->
+<!--   (select max(abs(i.ideal_body-to_number(u.user_body))) max_body from user_info u,  -->
+<!--   (select to_number(ideal_body) ideal_body from ideal_type where user_num = #{user_num}) i) a) b, -->
+
+<!--   (select u.user_num, round(10- abs(i.ideal_age-u.user_age)*10/a.max_age, 1) age_num  -->
+<!--   from (select u.user_num, (t.today - to_number(substr(birth,1,4)) +1) user_age from user_info u,  -->
+<!--   (select to_number(to_char(sysdate,'YYYY')) today from dual) t) u,  -->
+<!--   (select ideal_age from ideal_type where user_num = #{user_num}) i,  -->
+<!--   (select max(abs(i.ideal_age-u.user_age)) max_age  -->
+<!--   from (select u.user_num, (t.today - to_number(substr(birth,1,4)) +1) user_age  -->
+<!--   from user_info u, (select to_number(to_char(sysdate,'YYYY')) today from dual) t) u,  -->
+<!--   (select ideal_age from ideal_type where user_num = #{user_num}) i) a) a -->
+  
+<!--   <choose> -->
+<!--   <when test="samb == 'mbti'"> -->
+<!--   where u.user_num = m.user_num  -->
+<!--   and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num -->
+<!--   </when> -->
+<!--   <when test="samb == 'saju'"> -->
+<!--   where u.user_num=d.user_num and u.user_num=s.user_num  -->
+<!--   and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num  -->
+<!--   </when> -->
+<!--   <otherwise> -->
+<!--   where u.user_num=d.user_num and u.user_num=s.user_num and u.user_num = m.user_num  -->
+<!--   and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num -->
+<!--   </otherwise> -->
+<!--   </choose> -->
+
+<!--   and u.user_num = (select rec_num from recprofile where user_num = #{user_num} and num = #{num}) -->
+  
+<!--   </select> -->
    
   <!-- 추천인 일주 뽑기 -->
   <select id="profileilju" parameterType="int" resultType="hashMap">
@@ -314,15 +309,12 @@
   </otherwise>
   </choose>
   
-  <if test="sex != null">
-  and sex = #{sex}
-  </if>
-  
   <if test="blist != null">
   <foreach collection="blist" item="e">
    and u.user_num != ${e}
   </foreach>
   </if>
+  and u.user_num = #{user_num}
   
   ) where (f_score+height_num+body_num+age_num) >= 90
 
@@ -330,20 +322,20 @@
   
   <!-- 추천인 DB 안에 넣기 -->
   <insert id="recinsert" parameterType="hashMap">
-  	insert into RECPROFILE values(${num},sysdate,${user_num},${rec_num})
+     insert into RECPROFILE values(${num},sysdate,${user_num},${rec_num})
   </insert>
   
   <!-- 추천인 몇 명 DB에 저장되어있는지 출력 -->
   <select id="maxnum" parameterType="int" resultType="int">
-  	select max(num) from recprofile where user_num = ${user_num}
+     select max(num) from recprofile where user_num = ${user_num}
   </select>
   
   <!-- 매일 0시에 추천인 저장된 내용 삭제 -->
   <delete id="delRprofile">
-  	DELETE FROM recprofile
+     DELETE FROM recprofile
   </delete>
   
-  <!-- 차트 뽑기 -->
+  <!-- 차트 -->
   <select id="score_chart" resultType="hashMap" parameterType="hashMap">
   select h.height_score, b.body_score, a.age_score
   
@@ -431,10 +423,6 @@
   and u.user_num = h.user_num and u.user_num = b.user_num and u.user_num = a.user_num
   </otherwise>
   </choose>
-  
-  <if test="sex != null">
-  and sex = #{sex}
-  </if>
   
   and u.user_num = #{rec_num}
   

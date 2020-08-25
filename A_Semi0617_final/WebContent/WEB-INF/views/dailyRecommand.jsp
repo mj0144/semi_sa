@@ -94,7 +94,7 @@
                                 </div>
 
                                 <div>
-                                <h4>${profile.F_SCORE + profile.HEIGHT_NUM + profile.BODY_NUM + profile.AGE_NUM }점</h4>
+                                <h4>${score.F_SCORE + score.HEIGHT_NUM + score.BODY_NUM + score.AGE_NUM }점</h4>
                                 </div>
                                 <!-- mbti 및 사주 결과 -->
                                 <div style="position: fixed; bottom: 10px;">
