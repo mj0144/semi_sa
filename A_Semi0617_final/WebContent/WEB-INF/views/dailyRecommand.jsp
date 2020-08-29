@@ -213,7 +213,7 @@
    </section>
    
 
-   <form action="friend" method="post" id="profile">
+   <form action="friend" method="get" id="profile">
       <input type="hidden" name="user_num" id="user_num" value="${profile.USER_NUM }">
    </form>
    
