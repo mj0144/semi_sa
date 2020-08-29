@@ -58,11 +58,11 @@
 			        						<!-- 좋아요 버튼 구현 -->
 											<c:choose>
 												<c:when test="${heartchk == 1}">
-													<img id="${user_num}" class="heart" style="width: 15%; cursor:pointer;" 
+													<img id="${board_writer}" class="heart" style="width: 15%; cursor:pointer;" 
 													src="resources/img/btn/hearton.png" data-toggle="tooltip" data-placement="top" title="좋아요 취소"/>
 												</c:when>
 												<c:otherwise>
-													<img id="${user_num}" class="heart" style="width: 15%; cursor:pointer;" 
+													<img id="${board_writer}" class="heart" style="width: 15%; cursor:pointer;" 
 													src="resources/img/btn/heartoff.png" data-toggle="tooltip" data-placement="top" title="좋아요"/>												
 												</c:otherwise>
 											</c:choose>
@@ -404,7 +404,7 @@
 			$.ajax({
 				type : "POST",
 				url : "chRequest",
-				data : "user1="+user1,
+				data : "user1="+requestUser,
 	            beforeSend : function(request){
 	                request.setRequestHeader("chRequest", "chRequest");
 	            },

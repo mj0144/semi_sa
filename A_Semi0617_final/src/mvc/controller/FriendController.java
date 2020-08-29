@@ -1,5 +1,6 @@
 package mvc.controller;
 
+import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,8 @@ public class FriendController {
 	@Autowired
 	private ProfileDao profileDao;
 
+
+	
 	@RequestMapping(value = "/friend")
 	public ModelAndView friendprofile(HttpSession session, int user_num) throws Exception { 
 		
@@ -100,6 +103,12 @@ public class FriendController {
 			 map.put("user_id", user_id);
 			 friendDao.reportUser(map);
 			 String referer = request.getHeader("Referer");
+		/*
+		 * dailyRecommand.jsp에서 post로 보낼때.
+		 * StringBuilder sb = new StringBuilder(referer);
+		 * if(referer.equals("http://localhost:8080/AFinal/friend")) {
+		 * sb.append("?user_num="+report_user_num); return "redirect:"+ sb; }
+		 */
 			 return "redirect:"+ referer;
 		}
 		

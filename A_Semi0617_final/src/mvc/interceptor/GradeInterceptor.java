@@ -27,18 +27,18 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		String url = request.getRequestURI(); // ¿äÃ»µÈ url
+		String url = request.getRequestURI(); // ìš”ì²­ëœ url
 
-		// response ÀÎÄÚµù.
+		// response ì¸ì½”ë”©.
 		response.setContentType("text/html;charset=UTF-8");
-		String msg = URLEncoder.encode("°áÁ¦°¡ ÇÊ¿äÇÕ´Ï´Ù", "UTF-8");
+		String msg = URLEncoder.encode("ê²°ì œê°€ í•„ìš”í•©ë‹ˆë‹¤", "UTF-8");
 
 		HttpSession session = request.getSession();
 		int user_num = (int) session.getAttribute("user_num");
 
-		// °áÁ¦ÆäÀÌÁö·Î ÀÌµ¿ÇÒ url
+		// ê²°ì œí˜ì´ì§€ë¡œ ì´ë™í•  url
 		String payUrl = "/AFinal/pay";
-		// ÇØ´ç À¯Àú°¡ °¡Áö°í ÀÖ´Â ±ÇÇÑ ÄÚµåµé.
+		// í•´ë‹¹ ìœ ì €ê°€ ê°€ì§€ê³  ìˆëŠ” ê¶Œí•œ ì½”ë“œë“¤.
 		List<String> code_list = new ArrayList<String>();
 		code_list = gradeService.gradeChk(user_num);
 
@@ -48,13 +48,13 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 		}
 
 		try {
-			// ¿äÃ»µÈ urlÀÌ Ã¤ÆÃÀÏ ¶§.
+			// ìš”ì²­ëœ urlì´ ì±„íŒ…ì¼ ë•Œ.
 			/* if (url.equals("/AFinal/chRequest")) { */
 			if (isAjaxRequest(request)) {
 				try {
-					// Ã¤ÆÃ ±ÇÇÑÀº 1(0000001)¸¸ ¾Æ´Ï¸é Ã¤ÆÃ¿¡ Á¢±Ù°¡´É.
+					// ì±„íŒ… ê¶Œí•œì€ 1(0000001)ë§Œ ì•„ë‹ˆë©´ ì±„íŒ…ì— ì ‘ê·¼ê°€ëŠ¥.
 					if (code_sum != 1) {
-						// ´Ü, code_sumÀÌ 3(00000011)ÀÏ ‹š´Â Ã¤ÆÃ È½¼ö °¨¼Ò.
+						// ë‹¨, code_sumì´ 3(00000011) Âšì±„íŒ… íšŸìˆ˜ ê°ì†Œ.
 						if (code_sum == 3) {
 							gradeService.leftCountUpdate(user_num, session);
 						}
@@ -70,9 +70,9 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 				}
 			}
 
-			// ¿äÃ»µÈ urlÀÌ ¸®½ºÆ® ÀÏ¶§.
+			// ìš”ì²­ëœ urlì´ ë¦¬ìŠ¤íŠ¸ ì¼ë•Œ.
 			if (url.equals("/AFinal/listWhole")) {
-				// ÇÏ·ç 10È¸ Ãß°¡ ±ÇÇÑ(00001000)À» °¡Áø »ç¿ëÀÚ.(vvip)
+				// í•˜ë£¨ 10íšŒ ì¶”ê°€ ê¶Œí•œ(00001000)ì„ ê°€ì§„ ì‚¬ìš©ì.(vvip)
 				if (code_sum == 29) {
 					request.setAttribute("paymember", 20);
 					return true;
@@ -100,7 +100,7 @@ public class GradeInterceptor extends HandlerInterceptorAdapter {
 
 	}
 
-	   // µé¾î¿Â ¿äÃ»ÀÇ header¿¡ x-requested-withÀÌ ÀÖ´ÂÁö È®ÀÎ.
+	   // ë“¤ì–´ì˜¨ ìš”ì²­ì˜ headerì— x-requested-withì´ ìˆëŠ”ì§€ í™•ì¸.
 	   private boolean isAjaxRequest(HttpServletRequest req) {
 	      return "chRequest".equals(req.getHeader("chRequest"));
 	   }

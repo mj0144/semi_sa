@@ -46,9 +46,6 @@ public class BlockController {
 	@RequestMapping("/blockox")
 	public void blockox(String block, int blocked_user, HttpSession session) {
 		
-		System.out.println("컨트롤러 실행");
-		System.out.println(block);
-		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("user_num",(int)session.getAttribute("user_num"));
 		map.put("blocked_user", blocked_user);

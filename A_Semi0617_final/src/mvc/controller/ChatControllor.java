@@ -108,7 +108,7 @@ public class ChatControllor {
 	@ResponseBody
 	@RequestMapping(value = "/chRequest", method = RequestMethod.POST)
 	public String roomInsert(@RequestBody String user1, HttpSession session) throws Exception{
-		System.out.println("채팅방신청완료");
+		System.out.println("채팅방신청완료"+user1);
 		String result = "success";
 		String substr = user1.substring(6);
 		int user = Integer.parseInt(substr);
